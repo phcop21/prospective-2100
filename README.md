@@ -4,7 +4,7 @@
 
 ## 🌡️ Lire le document
 
-**→ [Ouvrir la prospective](https://[VOTRE-PSEUDO].github.io/prospective-2100)**
+**→ [Ouvrir la prospective](https://[phcop21].github.io/prospective-2100)**
 
 *(Remplacez le lien ci-dessus par votre URL GitHub Pages une fois activée)*
 
