@@ -162,17 +162,19 @@
   .chip.water{color:#d8b24a;border-color:rgba(216,178,74,.3);}
   .chip.crit{color:var(--crit);border-color:rgba(200,65,42,.4);}
 
-  .line-clim,.line-soc,.line-tech{position:relative;padding:11px 16px;border-radius:3px;margin:0 0 10px;}
+  .line-clim,.line-soc,.line-tech,.line-def{position:relative;padding:11px 16px;border-radius:3px;margin:0 0 10px;}
   .line-clim{background:rgba(79,125,150,.07);border-left:2px solid var(--steel-deep);}
   .line-soc{background:rgba(181,72,31,.07);border-left:2px solid var(--ember);}
   .line-tech{background:rgba(154,163,173,.06);border-left:2px solid #6e7a86;}
+  .line-def{background:rgba(169,154,108,.06);border-left:2px solid #6b6347;}
   .tag{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.2em;
     text-transform:uppercase;display:inline-block;margin-right:9px;font-weight:600;}
   .line-clim .tag{color:var(--steel);}
   .line-soc .tag{color:var(--ember);}
   .line-tech .tag{color:#9aa3ad;}
-  .line-clim p,.line-soc p,.line-tech p{display:inline;margin:0;font-size:15.5px;color:var(--ink-soft);}
-  .line-soc p strong,.line-clim p strong,.line-tech p strong{color:var(--ink);font-weight:600;}
+  .line-def .tag{color:#a99a6c;}
+  .line-clim p,.line-soc p,.line-tech p,.line-def p{display:inline;margin:0;font-size:15.5px;color:var(--ink-soft);}
+  .line-soc p strong,.line-clim p strong,.line-tech p strong,.line-def p strong{color:var(--ink);font-weight:600;}
 
   /* closing block per scope */
   .verdict{margin:6px 0 0;padding:22px 24px;border:1px solid var(--line);border-radius:3px;
@@ -465,11 +467,11 @@
     .scope-head h2{color:#000 !important;}
     .scope-head .where,.phase-years,.kicker,.panel h4,.verdict h4,.cult-label,.frise-head{color:#9a4a18 !important;}
     h1.title,h1.title em,.scope-head h2{color:#111 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    .line-clim,.line-soc,.line-tech,.panel,.verdict,.cult-card,.axis,.mcell,.mscale,.chrono-warn,.disclaimer,.climgraph{
+    .line-clim,.line-soc,.line-tech,.line-def,.panel,.verdict,.cult-card,.axis,.mcell,.mscale,.chrono-warn,.disclaimer,.climgraph{
       background:#f6f2ea !important;color:#1a1a1a !important;border-color:#d8cfc0 !important;
       -webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    .line-clim p,.line-soc p,.line-tech p,.panel p,.cult-card p,.mcell,.axis p,.scope-head .lede{color:#222 !important;}
-    .line-soc p strong,.line-clim p strong,.line-tech p strong,.cult-card strong,.panel strong,.mcell strong{color:#000 !important;}
+    .line-clim p,.line-soc p,.line-tech p,.line-def p,.panel p,.cult-card p,.mcell,.axis p,.scope-head .lede{color:#222 !important;}
+    .line-soc p strong,.line-clim p strong,.line-tech p strong,.line-def p strong,.cult-card strong,.panel strong,.mcell strong{color:#000 !important;}
     .timeline::before,.tab-synth::before{opacity:.4;}
     .bar,.replant,.fgrid b,.cg-line,.cg-dot,.climgraph svg,.frise svg{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .cg-tick,.cg-head p{fill:#444 !important;color:#444 !important;}
@@ -1018,7 +1020,7 @@ body.branch-open .hub-screen{display:none !important;}
   <!-- ================= FOOTER ================= -->
   <footer>
     <span class="branch-marker" id="branchMarker">Comparaison des trois branches</span>
-    <p class="frame" id="frameLine">Cadre · CMIP7 2026 (van Vuuren et al.) — branche « Haut » ~+3,5 °C, branche « Médian » ~+2,7 °C, cibles de Paris ~+2,0 °C · ancrage observationnel IGCC 2025 (Forster et al. 2026) · AMOC : contraintes 2026 (Portmann et al.) · niveaux marins vs réf. 1995-2014 · cadres : Jancovici (énergie/EROI), Bihouix (métaux/low-tech), Hamant (robustesse).</p>
+    <p class="frame" id="frameLine">Cadre · CMIP7 2026 (van Vuuren et al.) — branche « Haut » ~+3,5 °C, branche « Médian » ~+2,7 °C, cibles de Paris ~+2,0 °C · ancrage observationnel IGCC 2025 (Forster et al. 2026) · AMOC : contraintes 2026 (Portmann et al.) · niveaux marins vs réf. 1995-2014 · cadres : Jancovici (énergie/EROI), Bihouix (métaux/low-tech), Hamant (robustesse), Keller (interdépendances/récits).</p>
     <p class="disclaimer">Exercice de prospective, non de prévision. Aux échelles fines (commune), tout récit relève de l'illustration ancrée dans la géographie réelle.</p>
   </footer>
 
@@ -1070,14 +1072,14 @@ const BRANCHES = [
     ]
   },
   {
-    id:"optimiste", name:"Optimiste", file:"#",
-    accent:"sage", status:"soon",
+    id:"optimiste", name:"La bifurcation", file:"#",
+    accent:"sage", status:"live",
     klabel:"Scénario bas", key2100:"~+2,0 °C", cmip:"Cibles de Paris",
-    synopsis:"<strong>~+2,0 °C</strong>, trajectoire de l'Accord de Paris. Le pic de réchauffement est franchi, puis le climat se stabilise bas. Branche <strong>en cours d'écriture</strong>.",
+    synopsis:"<strong>~+2,0 °C</strong>, la trajectoire de l'Accord de Paris. Le pic est franchi vers 2060, puis le climat <strong>redescend</strong>. La bifurcation réussit — au prix d'une mobilisation de guerre, d'une sobriété organisée et de littoraux reculés.",
     figs:[
-      {lab:"Monde", val:"~+2,0 °C", prov:true},
-      {lab:"Mer", val:"~+0,40 m", prov:true},
-      {lab:"Échelle", val:"communale à venir", soon:true}
+      {lab:"Monde", val:"~+2,0 °C"},
+      {lab:"Mer", val:"~+0,40 m"},
+      {lab:"Folligny", val:"été +38 °C / hiver −4 °C"}
     ]
   }
 ];
@@ -1105,31 +1107,35 @@ const COMPARISON = [
   { lab:"Réchauffement mondial 2100",
     sombre:'<span class="num">+3,5 °C</span> — sans plateau, course encore ouverte',
     median:'<span class="num">+2,7 °C</span> — inflexion vers un plateau',
-    optimiste:'<span class="num">~+2,0 °C</span> — pic franchi, stabilisation', prov:["optimiste"] },
+    optimiste:'<span class="num">~+2,0 °C</span> — pic franchi, stabilisation' },
   { lab:"Élévation marine 2100",
     sombre:'<span class="num">+0,70 m</span> et accélération',
     median:'<span class="num">+0,57 m</span>',
-    optimiste:'<span class="num">~+0,40 m</span>', prov:["optimiste"] },
+    optimiste:'<span class="num">~+0,40 m</span>' },
   { lab:"AMOC",
     sombre:'<strong>Franchit son seuil</strong> ~2035-45 — climat à deux visages, hivers brutaux',
     median:"S'affaiblit <strong>35–50 %</strong> sans franchir — un seul visage, l'été",
-    optimiste:'Affaiblissement modéré, <strong>pas de seuil</strong>', prov:["optimiste"] },
+    optimiste:'Affaiblissement modéré, <strong>pas de seuil</strong>' },
   { lab:"Folligny (Manche, 50) · été / hiver 2100",
     sombre:'été <span class="num">+43 °C</span> / hiver <span class="num">−15 °C</span> — la côte se vide',
     median:'été <span class="num">+40 °C</span> / hiver <span class="num">−4 °C</span> — commune de réception',
-    optimiste:"", soon:["optimiste"] },
+    optimiste:'été <span class="num">+38 °C</span> / hiver <span class="num">−4 °C</span> — refuge respirable, accueil organisé' },
   { lab:"La Faye (Charente, 16) · été / hiver 2100",
     sombre:'été <span class="num">+50 °C</span> / hiver <span class="num">+8,6 °C</span> — désertion estivale',
     median:'été <span class="num">+47 °C</span> / hiver <span class="num">+5 °C</span> — conversion, déclin lent',
-    optimiste:"", soon:["optimiste"] },
+    optimiste:'été <span class="num">+44 °C</span> / hiver <span class="num">+4 °C</span> — terroir transformé, déclin sans exode' },
   { lab:"L'État & la société",
     sombre:'Se défait aux marges : <strong>triage sec</strong>, désertion, zones abandonnées',
     median:"<strong>Tri négocié</strong>, services différenciés ; l'assurance se retire avant l'État",
-    optimiste:"", soon:["optimiste"] },
+    optimiste:"<strong>Planification assumée</strong>, État réarmé pour la transition ; réassurance publique sur les zones orphelines — au prix d'une fiscalité lourde" },
+  { lab:"Fragilité systémique (interdépendances)",
+    sombre:"Couplages <strong>non traités</strong> (eau↔énergie↔alimentation↔transport↔finance) : la défaillance se propage <strong>en cascade</strong>, <strong>effondrement par effet domino</strong> sans amortisseur (Keller)",
+    median:"Robustesse partielle ; <strong>déconnexions tardives et réactives</strong> des systèmes critiques — cascades amorties, non évitées : résilience improvisée (Keller)",
+    optimiste:"Résilience <strong>choisie et anticipée</strong> : déconnexion organisée, redondance et relocalisation des systèmes critiques — cascades largement prévenues (Keller)" },
   { lab:"Le destin de l'eau",
     sombre:"L'eau manque et déplace — l'enjeu devient existentiel",
     median:"L'eau <strong>décide encore</strong> mais se négocie : interconnexion, quota, sobriété",
-    optimiste:"", soon:["optimiste"] }
+    optimiste:"L'eau décide encore mais se gouverne tôt : doctrine de l'eau, quota, sobriété organisée" }
 ];
 
 /* =====================================================================
@@ -1577,7 +1583,7 @@ _safe("initBranch", function(){
         <h3>La cascade</h3>
         <div class="chips"><span class="chip heat">monde ≈ +3,0 °C</span><span class="chip sea">mer +0,45 m</span><span class="chip crit">eau ▮▮▮▮</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Bandes arides et tropiques par endroits proches de l'inhabitable l'été. Récifs effondrés, pêcheries en chute.</p></div>
-        <div class="line-soc"><span class="tag">Société</span><p>Le système mondial, optimisé pour la performance et non la robustesse (<strong>le diagnostic de Hamant</strong>), cède en cascade. Les États faillis se multiplient dans la ceinture chaude. Les migrations <strong>réorganisent l'espèce vers les pôles</strong>. Famines et épidémies sur des systèmes de santé déjà reculés. Le nationalisme des ressources devient la grammaire des relations internationales.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le système mondial, optimisé pour la performance et non la robustesse (<strong>le diagnostic de Hamant</strong>), cède en cascade. Les couplages alimentation↔transport↔énergie↔finance propagent la défaillance sans amortisseur : <strong>l'interdépendance systémique</strong>, jamais traitée, se retourne (Keller). Les États faillis se multiplient dans la ceinture chaude. Les migrations <strong>réorganisent l'espèce vers les pôles</strong>. Famines et épidémies sur des systèmes de santé déjà reculés. Le nationalisme des ressources devient la grammaire des relations internationales.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>La grande divergence technique : les enclaves gardent data centers, robots et drones — au prix d'une part croissante de leur énergie. Partout ailleurs on entretient sans renouveler : <strong>l'âge du stock</strong> remplace l'âge du flux (Bihouix).</p></div>
       </div>
 
@@ -1826,6 +1832,7 @@ _safe("initBranch", function(){
         <div class="chips"><span class="chip heat">côte +36 °C</span><span class="chip sea">mer +0,45 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −9 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Recul du trait de côte accéléré ; submersions de tempête ; certaines zones basses abandonnées.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>La Manche est désormais une <strong>zone de réception</strong> des déplacés du Sud de la France et d'ailleurs : pression démographique, crise du logement, services nationaux qui se dégradent jusqu'ici, tensions entre « anciens » et arrivants. L'eau estivale est tendue mais gérable — au contraire du Sud.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>À mesure que le filet d'arrivants devient vague (~2063), l'ordre public cesse d'être une affaire de friction sociale : il réclame de la force. L'État se retire partout — mais <strong>pas de La Hague ni de Flamanville</strong> : le périmètre nucléaire reste tenu en dur (gendarmerie, zone interdite stricte), une <strong>enclave militarisée</strong> au cœur d'un refuge surchargé. Tout autour, le maintien de l'ordre se municipalise et se privatise faute de moyens nationaux.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>La ligne <strong>Paris–Granville</strong> est sanctuarisée comme axe vital : c'est par le rail qu'arrivent les déplacés et que repart le lait. Autour des gares les bourgs se densifient ; loin d'elles, ils s'éteignent.</p></div>
       </div>
 
@@ -1835,6 +1842,7 @@ _safe("initBranch", function(){
         <div class="chips"><span class="chip heat">côte +37 °C</span><span class="chip sea">mer +0,6 m</span><span class="chip crit">hiver -10 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Coups de froid hivernaux brutaux (effet AMOC) par-dessus des étés caniculaires. Communes côtières en repli vers l'intérieur.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Encombrée, tendue, mais l'une des parts les plus <strong>viables</strong> de France. Réorganisation locale autour de l'eau, de l'alimentation, du low-tech (Hamant/Bihouix). Tension entre fermer la porte et mutualiser.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>Le refuge se barricade pour de bon. La zone protégée autour de <strong>La Hague</strong> fige un point dur que les flux contournent ; ailleurs, ce sont des <strong>polices municipales et des gardes des points d'eau</strong> qui tiennent lieu d'ordre. La vraie question n'est plus « fermer la porte ? » mais qui détient la contrainte légitime — et elle se tranche commune par commune.</p></div>
       </div>
 
       <div class="phase crit">
@@ -1934,7 +1942,7 @@ _safe("initBranch", function(){
         <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip crit">hiver -14 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un bourg dense, quasi autonome, qui gère <strong>sa propre eau et sa propre nourriture</strong> sous un État quasi absent : résilient s'il a choisi la mutualisation, fragile s'il s'est fracturé. La survie estivale tient à l'eau — citernes, récupération, rationnement. L'ordre se maintient localement, ou se dispute.</p></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés à +42 °C, coups de froid hivernaux à -14 °C : le grand écart annuel devient la norme.</p></div>
-        <div class="line-tech"><span class="tag">Technique</span><p>Moins d'écrans, mais la radio, la carte papier, le téléphone filaire de la mairie. La <strong>forge-atelier du bourg est redevenue stratégique</strong> : on y refait les pièces qu'on ne livre plus.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Moins d'écrans, mais la radio, la carte papier, le téléphone filaire de la mairie. Le réseau cuivré, lui, avait été <strong>démantelé dès les années 2030</strong> — le métal récupéré, fondu pour des renouvelables qui ne tournent plus : ce qui reste de filaire est rebricolé localement. La <strong>forge-atelier du bourg est redevenue stratégique</strong> : on y refait les pièces qu'on ne livre plus.</p></div>
       </div>
 
       <div class="phase crit">
@@ -2112,6 +2120,11 @@ _safe("initBranch", function(){
       <h4>En une phrase</h4>
       <p>Les trois colonnes ne racontent qu'une histoire : <em>l'eau décide, la migration redistribue, l'État se retire</em> — et la même physique fabrique des destins inverses, Folligny qui tient, La Faye qui s'efface.</p>
     </div>
+
+    <div class="verdict keller">
+      <h4>Fil rouge systémique (Keller)</h4>
+      <p>Ce qui fait effondrement ici n'est pas la somme des stress sectoriels, mais leur <strong>couplage</strong> : eau, énergie, alimentation, transport, finance et numérique sont si interdépendants qu'une défaillance s'y <strong>propage en cascade</strong>. Faute d'avoir desserré ces liens à temps, la France subit l'<strong>effondrement par effet domino</strong> — chaque chaîne qui se dénoue en entraîne une autre, sans amortisseur. La vulnérabilité était <em>systémique</em> avant d'être thermique (Arthur Keller).</p>
+    </div>
   </section>
 
   <!-- ============ CHRONOLOGIE DES RUPTURES ============ -->
@@ -2135,12 +2148,20 @@ _safe("initBranch", function(){
   <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−29 % de naissances</strong> vs 2010. Le triage de 2049 s'écrit en creux.</p></div>
 </div>
         <div class="evt">
+          <span class="evt-year">2026</span>
+          <div class="evt-body"><span class="cat etat">État</span><span class="cat tech">Technique</span><p>Guerre informationnelle climatique : la <strong>désinformation organisée</strong> (Russie, États-Unis, Big Tech) cible l'opinion européenne — 7,7 % des contenus de désinformation recensés dans l'UE (IRIS / Observatoire Défense &amp; Climat, mai 2026). L'aveuglement collectif n'est plus seulement subi, il est <strong>fabriqué</strong> — et il retarde chaque décision d'adaptation.</p></div>
+        </div>
+        <div class="evt">
           <span class="evt-year">2027</span>
           <div class="evt-body"><span class="cat climat">Climat</span><span class="cat eau">Eau</span><p>Mousson défaillante en Asie du Sud : crise alimentaire, premières émeutes du pain en <strong>Inde et au Pakistan</strong>.</p></div>
         </div>
         <div class="evt">
           <span class="evt-year">2029</span>
           <div class="evt-body"><span class="cat eau">Eau</span><span class="cat etat">État</span><p><strong>Égypte–Éthiopie</strong> au bord de l'affrontement sur le barrage de la Renaissance (Nil) ; une médiation arrache un sursis fragile.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2030</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat tech">Technique</span><p>France : fin du <strong>réseau téléphonique cuivré</strong> (RTC) ; le métal est récupéré et fondu. On démonte une infrastructure réparable et autonome pour alimenter une transition qui, faute d'énergie, n'aboutira pas — <strong>le paradoxe de Bihouix en acte</strong>.</p></div>
         </div>
         <div class="evt ici">
           <span class="evt-year">2031</span>
@@ -2327,7 +2348,7 @@ _safe("initBranch", function(){
 
   <footer>
     <span class="frame">Cadre · CMIP7 « Haut » (van Vuuren et al. 2026 ; ~+3,5 °C en 2100, sans plateau) + forçage par fonte du Groenland · seuil AMOC ~2035-45 (hypothèse haute ; littérature centrée ~2050, contraintes observationnelles 2026 tirant vers l'avant), déclin engagé · ancrage observationnel : IGCC 2025 (Forster et al. 2026) · niveaux marins vs réf. 1995-2014 · Thwaites différé · fil technique : modernité contrainte · variante « société assombrie »</span>
-    Outil de réflexion prospective, non de prévision. Lectures : Jancovici (descente énergétique / EROI), Bihouix (limites des métaux / low-tech), Hamant (robustesse &gt; performance). Branche pessimiste assumée ; les projections communales sont des récits illustratifs ancrés dans la géographie réelle.
+    Outil de réflexion prospective, non de prévision. Lectures : Jancovici (descente énergétique / EROI), Bihouix (limites des métaux / low-tech), Hamant (robustesse &gt; performance), Keller (vulnérabilité systémique / résilience par déconnexion / récits). Branche pessimiste assumée ; les projections communales sont des récits illustratifs ancrés dans la géographie réelle.
   </footer>
 
 </div>
@@ -2450,7 +2471,7 @@ _safe("initBranch", function(){
         <h3>Le palier des nations</h3>
         <div class="chips"><span class="chip heat">monde ≈ +2,5 °C</span><span class="chip sea">mer +0,42 m</span><span class="chip water">eau ▮▮▮▯</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Bandes arides élargies, récifs très dégradés ; tropiques durs l'été mais rarement inhabitable l'année entière. Le gradient Nord/Sud climatique s'installe comme fait géopolitique permanent.</p></div>
-        <div class="line-soc"><span class="tag">Société</span><p>Le système mondial, <em>contraint à la robustesse</em> (Hamant entendu à temps), plie sans cascade généralisée. États fragiles nombreux, effondrements complets rares. Migrations vers les pôles : réelles, graduelles — pesantes pour les sociétés d'accueil, non fatales pour leur cohésion.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le système mondial, <em>contraint à la robustesse</em> (Hamant entendu à temps), plie sans cascade généralisée. Les déconnexions des systèmes critiques — réactives, tardives, mais réelles — amortissent la propagation des défaillances sans l'éliminer : <strong>résilience improvisée</strong> plutôt qu'anticipée (Keller). États fragiles nombreux, effondrements complets rares. Migrations vers les pôles : réelles, graduelles — pesantes pour les sociétés d'accueil, non fatales pour leur cohésion.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>Divergence technique modérée : enclaves bien dotées, ailleurs entretien sans renouvellement — <strong>l'âge du stock</strong> remplace l'âge du flux (Bihouix) ; mais le low-tech est ici choisi et organisé, pas subi dans l'urgence.</p></div>
       </div>
 
@@ -2699,6 +2720,7 @@ _safe("initBranch", function(){
         <div class="chips"><span class="chip heat">côte +35 °C</span><span class="chip sea">mer +0,42 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −3 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Recul côtier accéléré ; submersions ; quelques zones basses repliées vers l'intérieur — négocié, préparé, coûteux. Pas de coups de froid : le territoire reste planifiable.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>La Manche devient zone de réception : pression démographique réelle, mais absorbable grâce à l'interconnexion en eau, à la sobriété et à une gouvernance locale qui anticipe. Tensions anciens/arrivants — gérées par compromis, non par fermeture.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>À mesure que le filet d'arrivants s'épaissit vers la vague (~2065), l'ordre public devient un enjeu réel — mais il reste tenu par des <strong>institutions civiles</strong>. <strong>La Hague et Flamanville</strong> sont gardées comme des infrastructures sensibles (police nationale, accès réglementé), sans devenir une enclave militarisée. Autour, la réception s'organise par <strong>mutualisation</strong> : polices municipales renforcées mais civiles, régies intercommunales, médiation. Les tensions anciens/arrivants sont arbitrées, non tranchées par la force.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>La ligne <strong>Paris–Granville</strong> est sanctuarisée comme axe vital : par le rail arrivent les déplacés, repart le lait. Les bourgs près des gares se densifient ; les hameaux loin des réseaux s'allègent — sans s'éteindre complètement.</p></div>
       </div>
 
@@ -2708,6 +2730,7 @@ _safe("initBranch", function(){
         <div class="chips"><span class="chip heat">côte +36 °C</span><span class="chip sea">mer +0,52 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −2 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés plus chauds — +36 °C sur la côte — hivers doux et lisibles. Les communes côtières les plus exposées achèvent leur repli vers l'intérieur. L'hiver reste une saison de recharge, non une menace.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Encombrée, tendue, mais l'une des parts les plus viables de France — et, pour ses habitants, l'une des plus confortables thermiquement. Réorganisation locale autour de l'eau et de l'alimentation : CUMA élargie, bocage renforcé, circuit court structuré.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>Le refuge ne se barricade pas. <strong>La Hague</strong> reste un point protégé — infrastructure sensible sous garde nationale — mais il ne fige aucune ligne de fracture : les flux sont encadrés et répartis, non refoulés. Ailleurs, l'ordre tient par des <strong>polices municipales civiles</strong> et une gestion mutualisée des points d'eau (régies, intercommunalités). La contrainte légitime reste une affaire d'institutions et de compromis — elle ne se tranche pas commune par commune.</p></div>
       </div>
 
       <div class="phase">
@@ -2806,6 +2829,7 @@ _safe("initBranch", function(){
         <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés à +40 °C, hivers doux : un climat chaud mais d'un seul tenant — <strong>sans grand écart</strong>. La lisibilité est elle-même une ressource : on peut anticiper, planifier, adapter.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un bourg dense, largement autonome pour son eau et sa nourriture, sous un État frugal mais <em>présent</em>. Résilient par la mutualisation (Hamant). La survie estivale tient à l'eau — récupération, sobriété, régie — sans rationnement dramatique. Tendu, pas désespéré.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Moins d'écrans qu'avant, mais une connectivité qui tient : fibre mutualisée, relais hybrides, radio et filaire d'appoint. Le réseau cuivré, lui, avait été <strong>démantelé dès les années 2030</strong> — le métal récupéré, fondu pour des renouvelables qui, ici, <strong>tournent encore</strong>. La <strong>forge-atelier du bourg</strong> n'est pas un pis-aller : c'est un low-tech choisi et entretenu (Hamant, Bihouix), où l'on répare plutôt que remplacer.</p></div>
       </div>
 
       <div class="phase">
@@ -2982,6 +3006,11 @@ _safe("initBranch", function(){
       <h4>En une phrase</h4>
       <p>Les trois colonnes racontent une histoire moins noire : <em>l'eau contraint, la migration redistribue, l'État se reconfigure</em> — et la même physique fabrique un gradient, non une rupture : Folligny s'étoffe, La Faye s'allège, aucune ne bascule.</p>
     </div>
+
+    <div class="verdict keller">
+      <h4>Fil rouge systémique (Keller)</h4>
+      <p>La robustesse (Hamant) protège <em>chaque</em> système, mais Keller vise leur <strong>interdépendance</strong> : la médiane ne déconnecte les systèmes critiques que <strong>tard et par réaction</strong>, une fois la cascade amorcée. Les amortisseurs improvisés — interconnexion d'eau, rationnement, relocalisations partielles — <strong>atténuent</strong> les effets domino sans les éviter. Résilience réelle, mais subie : on desserre les couplages sous la contrainte, pas par anticipation (Arthur Keller).</p>
+    </div>
   </section>
 
   <!-- ============ CHRONOLOGIE DES RUPTURES ============ -->
@@ -3010,6 +3039,10 @@ _safe("initBranch", function(){
         <div class="evt">
           <span class="evt-year">2029</span>
           <div class="evt-body"><span class="cat eau">Eau</span><span class="cat etat">État</span><p><strong>Égypte–Éthiopie</strong> au bord de l'affrontement sur le barrage de la Renaissance (Nil) ; une médiation arrache un sursis fragile.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2030</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat tech">Technique</span><p>France : fin du <strong>réseau téléphonique cuivré</strong> (RTC) ; le métal est récupéré et fondu. Ici, le démontage d'une infrastructure réparable n'est pas un gâchis subi : le cuivre alimente une transition qui aboutit en partie, la connectivité passe à la fibre et à des relais hybrides, et le low-tech est <strong>choisi et organisé</strong> (Hamant, Bihouix). Le paradoxe de Bihouix est posé — mais résolu, non tragique.</p></div>
         </div>
         <div class="evt ici">
           <span class="evt-year">2031</span>
@@ -3175,7 +3208,7 @@ _safe("initBranch", function(){
 
   <footer>
     <span class="frame">Cadre · CMIP7 « Médian » (van Vuuren et al. 2026 ; ~+2,7 °C en 2100, plateau amorcé en fin de siècle) · ralentissement de l'AMOC SANS franchissement de seuil (affaiblissement ~35–50 % d'ici 2100, fourchette Portmann et al. 2026) — pas de bascule en mode froid · ancrage observationnel : IGCC 2025 (Forster et al. 2026) · niveaux marins vs réf. 1995-2014 · fil technique : modernité contrainte mais gérée · variante « ligne de crête »</span>
-    Outil de réflexion prospective, non de prévision. Lectures : Jancovici (descente énergétique / EROI), Bihouix (limites des métaux / low-tech), Hamant (robustesse &gt; performance). Branche médiane assumée ; les projections communales sont des récits illustratifs ancrés dans la géographie réelle.
+    Outil de réflexion prospective, non de prévision. Lectures : Jancovici (descente énergétique / EROI), Bihouix (limites des métaux / low-tech), Hamant (robustesse &gt; performance), Keller (vulnérabilité systémique / résilience par déconnexion / récits). Branche médiane assumée ; les projections communales sont des récits illustratifs ancrés dans la géographie réelle.
   </footer>
 
 </div>
@@ -3199,6 +3232,1301 @@ _safe("initBranch", function(){
   </div>
 </div>
 
+
+
+<!-- ═══ LA BIFURCATION ══════════════════════════════════════════════════ -->
+<div class="app-screen" id="screen-optimiste">
+  <div class="branch-panel" id="branch-optimiste">
+    <div class="back-bar">
+  <button class="back-btn">
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8.5 1.5L3.5 6.5l5 5"/></svg>
+    Toutes les branches
+  </button>
+  <span class="branch-label">La bifurcation</span>
+  <span class="branch-chip">~+2,0 °C · Accord de Paris</span>
+</div>
+    
+
+<div class="progress" id="bo-progress"></div>
+<div class="wrap">
+
+  <header class="mast">
+    <p class="kicker">Prospective climat-société · 2025 → 2100 · variante optimiste (Accord de Paris)</p>
+    <h1 class="title">La <em>bifurcation</em></h1>
+    <p class="subtitle">Une trajectoire <em>tenue</em> : forçage contenu — pic ~+2,04 °C vers 2060, redescente à ~+1,90 °C en 2100 — et une AMOC qui ne perd que ~20 %, seuil frôlé sans être franchi. La société bifurque sans rompre : on a écouté tôt, et l'on suit ce que cela a coûté — sobriété, mobilisation, terroirs transformés.</p>
+    <div class="rule"></div>
+
+    <div class="panel thesis">
+        <h4>Le fil rouge</h4>
+        <p>Descente énergétique <strong>pilotée et anticipée</strong> (Jancovici) + métaux <strong>ménagés par le low-tech choisi</strong> (Bihouix) → l'État <strong>réinvestit et planifie</strong> (redirection écologique). Le diagnostic est entendu tôt — mais le prix fut une <strong>mobilisation de guerre</strong> : fiscalité lourde, actifs fossiles échoués, rationnement équitable mais réel. La robustesse (Hamant) devient le critère des politiques <strong>avant</strong> la crise, non son autopsie.</p>
+        <p><strong>La Faye</strong> ne survit pas seulement, elle <strong>convertit</strong> (sorgho, agrivoltaïsme, irrigation sous quota) — mais l'ancien monde du vin et des paysages est <strong>perdu</strong>, sans retour. <strong>Folligny</strong> accueille <strong>sans la tension hydrique</strong> de la médiane, au prix d'une densification et d'une quiétude effacée. Destins divergents : aucun ne bascule, tous deux tiennent.</p>
+      </div>
+
+    <p class="disclaimer">Exercice de prospective, non de prévision. Branche optimiste assumée : borne basse compatible avec l'Accord de Paris (van Vuuren et al. 2026), <strong>pic ~+2,04 °C vers 2060 puis redescente à ~+1,90 °C en 2100</strong> — la trajectoire qu'une atténuation agressive et soutenue rend atteignable, entre une médiane plausible (~+2,7 °C) et un haut (~+3,5 °C). L'AMOC ne perd que ~20 % d'ici 2100 (branche d'atténuation soutenue, Portmann et al. 2026) <strong>en frôlant son seuil sans le franchir</strong> : système bistable au seuil de localisation inconnue, un risque écarté de justesse — pas un acquis. Un seul visage estival, modéré ; hivers doux (−4 °C au plus froid) et arrosés, sans coups de froid. Le seul à-coup est le <strong>creux AMOC de mi-siècle (~2045-2065)</strong> : hivers plus tempétueux, pêcheries déplacées, érosion — encaissé avant la stabilisation. Ancrage observationnel IGCC 2025 (Forster et al. 2026). Aux échelles fines (commune), tout récit relève de l'illustration ancrée dans la géographie réelle. Sauf mention contraire, les températures estivales citées sont des pointes, non des moyennes ; élévations marines vs réf. 1995-2014.</p>
+  </header>
+
+  <nav class="tabs" aria-label="Échelles">
+    <div class="tabs-inner" role="tablist">
+      <button class="tab" role="tab" aria-selected="true"  data-scope="bo-monde">Monde<span class="sc">global</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-europe">Europe<span class="sc">continent</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-france">France<span class="sc">national</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-manche">Manche<span class="sc">dépt 50</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-folligny">Folligny<span class="sc">50320</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bo-synthese">Synthèse<span class="sc">transversale</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-chrono">Chronologie<span class="sc">ruptures</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-cultures">Cultures<span class="sc">plantation</span></button>
+    </div>
+  </nav>
+
+  <!-- ============ MONDE ============ -->
+  <section class="scope active" id="bo-monde" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Échelle globale</p>
+      <h2>Le sommet franchi</h2>
+      <p class="lede">Le réchauffement plafonne vers 2060 puis <em>amorce sa redescente</em> — une première. Y parvenir aura coûté une mobilisation de guerre ; l'humanité glisse vers les pôles, accompagnée plutôt que livrée à elle-même.</p>
+    </div>
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2030</p>
+        <h3>Les records en série</h3>
+        <div class="chips"><span class="chip heat">monde ≈ +1,5 °C</span><span class="chip sea">mer +0,05 m</span><span class="chip water">eau ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Chaque année bat la précédente — le budget carbone du 1,5 °C s'épuise vers 2029, et le seuil de l'Accord de Paris tombe sans cérémonie. Stress hydrique installé au Maghreb, au Moyen-Orient, en Asie du Sud, dans l'Ouest américain ; <strong>mousson défaillante en Asie du Sud (~2027)</strong>. La fonte du Groenland s'accélère — l'AMOC ralentit déjà, sans bruit.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le monde fonctionne encore — mais cette fois le diagnostic est <strong>entendu</strong>. Les émeutes du pain en Inde et au Pakistan (~2027) et le bras de fer Égypte–Éthiopie sur le Nil (~2029) sont désamorcés par une médiation qui, pour une fois, <strong>tient</strong> ; les premières lois de mobilisation climatique passent. Les déplacés gonflent — on commence, tôt, à leur donner un statut.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2030 — 2035</p>
+        <h3>L'approche, sans le seuil</h3>
+        <div class="chips"><span class="chip heat">monde ≈ +1,6 °C</span><span class="chip sea">mer +0,08 m</span><span class="chip water">eau ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Premières canicules humides quasi létales sous les tropiques — le <strong>record mondial de ~2031 plafonne</strong> plus tôt qu'ailleurs, l'atténuation engagée commence à mordre. L'eau douce du Groenland désature la convection nord-atlantique : le seuil de l'AMOC approche — ici, il sera <strong>frôlé sans être franchi</strong>.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Les flux <strong>Sahel → Maghreb → Europe deviennent structurels (~2033)</strong> ; les frontières se tendent, mais l'on négocie déjà la répartition au lieu de seulement se barricader. La sécurité alimentaire redevient affaire d'État — et le multilatéralisme, plutôt que de s'user, se <strong>réarme</strong> autour du climat, au prix de souverainetés rognées.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2035 — 2040</p>
+        <h3>Le non-événement de 2035</h3>
+        <div class="chips"><span class="chip heat">monde ≈ +1,8 °C</span><span class="chip sea">mer +0,12 m</span><span class="chip sea">AMOC −20 %, seuil frôlé</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'AMOC s'affaiblit — déclin mesurable plafonnant vers <strong>−20 %</strong>, sans bascule. Canicules humides tropicales récurrentes, mais le pic mondial reste <strong>contenu</strong> : un seul visage, modéré. L'atténuation soutenue paie ses premiers dividendes climatiques — chèrement acquis.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>La coordination internationale ne s'use pas, elle se <strong>consolide</strong> : traités proactifs sur l'eau et les céréales, fonds de solidarité Nord→Sud pérennisés. Le prix se lit dans les budgets — <strong>fiscalité de transition lourde</strong>, redistribution arrachée scrutin après scrutin.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2040 — 2045</p>
+        <h3>L'eau sous tension, pas en guerre</h3>
+        <div class="chips"><span class="chip heat">monde ≈ +1,9 °C</span><span class="chip sea">mer +0,17 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Mousson déréglée, canicules récurrentes — sévères mais en deçà du seuil létal généralisé. L'Atlantique Nord se singularise — pêcheries en recul, tempêtes musclées — alors que le <strong>creux AMOC de mi-siècle</strong> s'amorce : la décennie la plus rude de la branche, encaissée avant la stabilisation. Hivers atlantiques doux, sans coups de froid.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Crises de l'eau — Nil, Indus, Euphrate — <strong>désamorcées tôt</strong> par des traités de partage, jamais par les armes : le patron coopératif se renforce. Le coût reste réel et nommé : compromis durs, souveraineté rognée, une injustice Nord-Sud que la solidarité atténue sans l'effacer.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Puces de pointe sous contrôle stratégique, mais la <strong>connectivité de base est préservée</strong> partout — fibre et hybride entretenus. L'IA mondiale maigrit et se rationne par choix ; le <strong>paradoxe des métaux</strong> (Bihouix) est désamorcé par le low-tech assumé, pas subi dans l'urgence.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2050</p>
+        <h3>Le Nil négocié</h3>
+        <div class="chips"><span class="chip heat">monde ≈ +2,0 °C</span><span class="chip sea">mer +0,22 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le déclin de l'AMOC se <strong>stabilise autour de −20 %</strong>, seuil frôlé mais non franchi — un risque écarté de justesse, pas un acquis : le système reste bistable, son seuil de localisation inconnue. Le creux de mi-siècle bat son plein — hivers plus tempétueux, pêcheries déplacées — avant la décrue.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Tension Nil aiguë (~2047), <strong>désamorcée tôt</strong> au prix d'un traité de partage et d'une aide internationale soutenue. Le rationnement énergétique — équitable mais réel — s'installe comme norme, jamais comme panne en cascade. Des dizaines de millions en mouvement, graduellement, intégrés au prix d'un effort de solidarité constant.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2050 — 2070</p>
+        <h3>Le pic franchi</h3>
+        <div class="chips"><span class="chip heat">monde ≈ +2,0 °C</span><span class="chip sea">mer +0,30 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le forçage <strong>passe son maximum vers 2060</strong> (~+2,04 °C) puis entame sa décrue — l'atténuation soutenue inverse la pente. Bandes arides élargies, récifs très dégradés mais quelques-uns sauvés par refuges gérés ; le gradient Nord/Sud s'installe comme fait géopolitique permanent.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le système mondial, <strong>réorganisé autour de la robustesse</strong> (Hamant entendu tôt, pas en autopsie), tient sans cascade. Les couplages critiques ont été <strong>desserrés par anticipation</strong> — redondance, relocalisation, récits de redirection portés tôt dans les institutions — si bien que les défaillances ne se propagent plus en chaîne (Keller). États fragiles encore nombreux, mais aucune rupture majeure : les crises ont été désamorcées en amont. Migrations vers les pôles graduelles — pesantes pour les sociétés d'accueil, soutenues par une solidarité qui a, elle aussi, son prix.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p><strong>L'âge du stock</strong> remplace l'âge du flux (Bihouix), mais partout choisi et organisé : on entretient, on répare, on mutualise. La sobriété matérielle, d'abord imposée, est désormais <strong>intériorisée</strong> — la fin de l'abondance énergétique facile, acceptée.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>La décrue, inégalement partagée</h3>
+        <div class="chips"><span class="chip heat">monde ≈ +2,0 °C</span><span class="chip sea">mer +0,36 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Élévation marine — <strong>+0,36 m</strong>, plus lente que redoutée — qui ronge les deltas (Bengale, Mékong, Nil) : déplacements réels, étalés sur des décennies, <strong>planifiés</strong> plutôt que subis. Les côtes basses les plus exposées reculent par repli organisé.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Monde inégal mais <strong>gouverné</strong> : régionalisation, coordination des ressources, pas d'archipel fermé. La coopération hydrique tient — éprouvée, négociée, réelle. Le prix se paie en libertés rognées à certaines marges et en un État omniprésent dans la transition.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Constellation d'observation <strong>maintenue</strong> — priorité budgétaire assumée : les yeux sur le climat restent grands ouverts, la prévision fine préservée. Ce qui se garde a été payé en renoncements ailleurs.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Le monde légué — en décrue</h3>
+        <div class="chips"><span class="chip heat">monde ≈ +1,9 °C ↘</span><span class="chip sea">mer +0,40 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le forçage <strong>redescend</strong> : 2100 n'est pas un sommet, c'est un <strong>versant</strong> déjà entamé — ~+1,90 °C et en baisse. Pour la première fois depuis deux siècles, la pente est dans le bon sens.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Humanité plus sobre, plus chaude, inégale — mais qui a <strong>tenu sa bifurcation</strong>. Ce qu'on lègue n'est pas indemne : terroirs transformés, littoraux reculés, une décennie de stress AMOC dans le rétroviseur. Mais c'est un monde qui se refroidit lentement, et qui sait pourquoi.</p></div>
+      </div>
+
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>La bifurcation a tenu : non pas un monde sauvé sans douleur, mais <em>un basculement évité de justesse, payé au prix fort et debout</em>.</p>
+    </div>
+  </section>
+
+  <!-- ============ EUROPE ============ -->
+  <section class="scope" id="bo-europe" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Échelle continentale</p>
+      <h2>Le continent qui bifurque</h2>
+      <p class="lede">Le Sud se transforme à grand prix, le Nord atlantique devient un refuge organisé ; l'UE se resserre autour de l'eau et de l'énergie, mais <em>se redirige plus qu'elle ne rétrécit</em>.</p>
+    </div>
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2030</p>
+        <h3>Étés hostiles au Sud</h3>
+        <div class="chips"><span class="chip heat">Sud +1,5 °C l'été</span><span class="chip water">eau ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Canicules et sécheresses récurrentes en Méditerranée ; mégafeux ibériques et grecs chaque été.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient — et, dès 2026, <strong>contre tôt la vague de désinformation climatique</strong> : régulation appliquée, éducation aux médias, le combat informationnel engagé et, ici, gagné. Fin 2025, l'<strong>Islande classe le risque AMOC comme enjeu de sécurité nationale</strong> — le signal est entendu, pas raillé.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2030 — 2035</p>
+        <h3>La pression monte au Sud</h3>
+        <div class="chips"><span class="chip heat">Sud +2 °C l'été</span><span class="chip water">eau ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le déclin amorcé de l'AMOC commence à <strong>muscler les tempêtes atlantiques</strong>. Premières années agricoles noires en Andalousie et en Sicile — mais la <strong>reconversion est déjà planifiée</strong>, pas découverte dans la panique.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Face aux flux structurels venus du Sahel (~2033), l'UE conjugue frontières fermes et <strong>répartition interne négociée</strong> — la solidarité comme condition de tenue, pas comme supplément d'âme. Crises énergétiques hivernales récurrentes, amorties par un rationnement précoce ; premiers départs internes Sud → Nord.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2035 — 2040</p>
+        <h3>Le Sud s'assèche, sans bascule</h3>
+        <div class="chips"><span class="chip heat">Sud +2,5 °C l'été</span><span class="chip sea">côtes +0,12 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'Espagne, l'Italie du Sud, la Grèce s'aridifient — <strong>terroirs transformés</strong>, pas désertés : on bascule vers des cultures et des usages méridionaux. La façade atlantique reçoit des tempêtes plus musclées — mais des hivers doux, sans coups de froid.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Départs internes Sud → Nord, étalés et <strong>accompagnés</strong> — aides à la relocalisation, droits portables. L'UE tient ses frontières extérieures et organise la répartition interne : tension permanente, compromis durs, mais un cadre qui se renforce plutôt qu'il ne craque.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2040 — 2045</p>
+        <h3>La fracture Nord-Sud gérée</h3>
+        <div class="chips"><span class="chip heat">Sud ~+40 °C</span><span class="chip sea">côtes +0,17 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés ibériques autour de +40 °C ; le tourisme estival méditerranéen se <strong>reconfigure</strong> sur une décennie — saison déplacée vers le printemps et l'automne, modèle réinventé à grand coût plutôt que perdu.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Recul agricole réel en Espagne et Italie du Sud, mais <strong>conversion qui aboutit</strong> : filières déplacées, sorgho et oliviers remontants, irrigation sous quota. Tensions UE sur les déplacés surmontées par compromis durs. L'eau alpine : quotas transfrontaliers <strong>anticipés</strong>, gouvernée tôt plutôt que disputée.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2050</p>
+        <h3>Rationnement, pas panne systémique</h3>
+        <div class="chips"><span class="chip heat">Sud ~+41 °C</span><span class="chip sea">côtes +0,22 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Façade atlantique au cœur du <strong>creux AMOC</strong> : tempêtes plus vives, pêcheries déplacées, érosion — la décennie rude, encaissée avant la stabilisation. Un seul visage, l'été, modéré ; le Nord-Ouest reste lisible, humide l'hiver — avantage structurant.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Rationnement énergétique <strong>équitable mais réel</strong> — EROI en baisse (Jancovici), descente pilotée. Pas de panne en cascade : la sobriété, d'abord imposée, devient une norme partagée. Le Nord se densifie sans se barricader, frontières intérieures ouvertes.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>L'Europe fait de la sobriété numérique un <strong>choix</strong> : IA frugale, petits modèles locaux près des barrages, connectivité de base garantie. Le réseau ne se fragmente pas — la fibre et l'hybride, low-tech assumé, tiennent le lien.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2050 — 2070</p>
+        <h3>Le Nord dense, le Sud clairsemé</h3>
+        <div class="chips"><span class="chip heat">Sud ~+42 °C</span><span class="chip sea">côtes +0,30 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'Atlantique sort du creux : <strong>l'AMOC se stabilise</strong> autour de −20 % après la décennie rude, sans coups de froid brutaux. Le gradient Nord/Sud s'installe comme fait permanent — la Scandinavie gagne en habitabilité, la Méditerranée en paie le prix.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Europe à deux vitesses mais reliée <strong>et solidaire</strong> : le Nord dense accueille, l'État réarmé pour la transition — fiscalité lourde, planification, redistribution vers le Sud. La capacité publique s'use sous le coût ininterrompu des migrations et des aléas ; elle tient, parce qu'on la finance.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Le rail électrifié reste la colonne vertébrale — lourd, réparable, amorti depuis un siècle : la <strong>robustesse choisie</strong> plutôt que l'optimisation fragile (Hamant). Les réseaux régionaux se coordonnent au lieu de se cloisonner ; l'interopérabilité coûte, elle est tenue.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>Sociétés d'accueil tendues</h3>
+        <div class="chips"><span class="chip heat">Sud ~+43 °C</span><span class="chip sea">côtes +0,36 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>La mer monte de +0,40 m <strong>quand même</strong> : les littoraux bas de la mer du Nord et de l'Atlantique perdent du terrain — pertes irréversibles. Les communes les plus exposées replient, mais leur repli est négocié et indemnisé, pas subi.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le Nord absorbe des flux importants mais maîtrisés ; la tension est réelle, la cohésion <strong>tient parce qu'on la soutient</strong> — solidarité financée, effort continu. L'UE recomposée, resserrée autour de l'eau et de l'énergie, reste un cadre politique vivant. Le Sud rural se clairseme en partie ; les villes méditerranéennes tiennent, densifiées, aménagées pour la chaleur.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>L'Europe redirigée</h3>
+        <div class="chips"><span class="chip heat">Sud ~+44 °C ↘</span><span class="chip sea">côtes +0,40 m</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Une Europe plus petite et plus septentrionale dans son centre de gravité — inégale, sous tension, mais toujours un <strong>espace politique vivant</strong> : elle délibère encore, elle redirige encore. Le Sud reste habité, plus pauvre, plus lent : un lieu vivant, ni friche ni forteresse. Le prix tient en une formule — la <strong>mobilisation de deux générations</strong>, jamais relâchée.</p></div>
+      </div>
+
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>Le projet européen ne se brise pas : il <em>se redirige vers le Nord et la sobriété choisie, plus solidaire qu'avant</em> — au prix d'une mobilisation de deux générations.</p>
+    </div>
+  </section>
+
+  <!-- ============ FRANCE ============ -->
+  <section class="scope" id="bo-france" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Échelle nationale</p>
+      <h2>L'État qui se réarme</h2>
+      <p class="lede">L'eau reste la variable maîtresse. Plutôt que de rationner en silence, l'État <em>réinvestit et planifie</em> : il redirige, mutualise, protège l'essentiel. La France se recompose vers le Nord-Ouest — au prix d'une fiscalité lourde et de deux générations d'effort.</p>
+    </div>
+    <div class="chrono-warn">
+  <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices déjà visibles : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−29 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : ici, ce basculement « de l'investissement aux arbitrages » est précisément ce que la bifurcation <strong>inverse</strong> : l'État réinvestit, <strong>planifie et redirige</strong> au lieu de rationner en silence. L'IGCC 2025 (Forster et al.) documente aussi un système mondial d'observation du climat sous-financé — missions satellitaires menacées, programme GCOS sans pérennité. <b>Les yeux commençaient à se fermer ; le pari — ici tenu — de cette branche est qu'un réinvestissement public les rouvre à temps.</b>
+</div>
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2030</p>
+        <h3>L'eau, déjà</h3>
+        <div class="chips"><span class="chip heat">étés +37 °C int.</span><span class="chip water">eau ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Canicules récurrentes, restrictions d'eau chaque été. Mai 2026 a donné le ton (Angoulême 37,8 °C).</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Les tensions sur l'irrigation et les <strong>mégabassines</strong> sont vives, mais elles forcent tôt la décision. Conflit larvé entre refroidissement du nucléaire et débit des fleuves. L'adaptation, chiffrée à <strong>21 Md€ d'ici 2030 (IGF)</strong>, cesse d'être un vœu : la mobilisation budgétaire commence à la financer — fiscalité de transition à l'appui.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2030 — 2035</p>
+        <h3>Le premier 48 °C</h3>
+        <div class="chips"><span class="chip heat">pointe 48 °C SO</span><span class="chip water">eau ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p><strong>Première canicule à 48 °C dans le Sud-Ouest (~2031)</strong> ; restrictions d'eau générales d'avril à octobre. Ce record devient, ici, à peu près le <strong>plafond du siècle</strong> : l'atténuation engagée tôt le fait à peine dépasser — jamais d'escalade vers les +50 °C.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Premiers signes nets de migration intérieure Sud → Nord-Ouest. L'État ne se contente plus d'arbitrer : il <strong>planifie l'accueil et la redirection</strong>, et amorce la réindustrialisation bas-carbone du Nord-Ouest.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2035 — 2040</p>
+        <h3>L'agriculture sous contrainte</h3>
+        <div class="chips"><span class="chip heat">Sud-Ouest ~+38 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'AMOC s'affaiblit au large vers son <strong>creux de mi-siècle</strong>, sans franchir son seuil : façade atlantique plus tempétueuse à venir. Le Sud-Ouest continental encaisse des étés durs — rendements céréaliers en baisse, pas en rupture : les filières se déplacent et se convertissent à coût élevé.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Réindustrialisation bas-carbone là où l'eau et l'énergie le permettent ; la <strong>sobriété matérielle est organisée</strong>, le low-tech assumé plutôt que subi (Bihouix). Conflits autour des bassines — vifs, localement violents, pas généralisés : l'État tranche, planifie, indemnise.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2040 — 2045</p>
+        <h3>Les bassines, point chaud</h3>
+        <div class="chips"><span class="chip heat">Sud-Ouest ~+39 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'agriculture du Sud-Ouest se convertit — irrigué sous quota, cultures thermophiles, agroforesterie : <strong>terroirs transformés</strong>, pas désertés. Quelques communes en stress hydrique sérieux ; là où l'assurance privée se retire, une <strong>réassurance publique</strong> prend le relais.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Tensions « bassines » récurrentes — l'État arbitre désormais selon une <strong>doctrine de l'eau</strong> assumée : priorité au potable, quotas agricoles négociés, partage planifié. Émeutes lors des pires étés : épisodiques, pas structurelles. Le coût politique est réel, mais il achète de la prévisibilité.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2050</p>
+        <h3>La planification assumée</h3>
+        <div class="chips"><span class="chip heat">Sud-Ouest ~+40 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés durs au Centre et au Sud ; le Nord-Ouest atlantique, plus frais et encore arrosé l'hiver, s'affirme comme pôle de résilience — même si le <strong>creux AMOC</strong> y muscle les tempêtes ces années-ci. Un écart structurant, pas existentiel : La Faye se convertit, Folligny accueille.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Rationnement énergétique <strong>équitable mais réel</strong> — descente pilotée, pas panne en cascade. La planification devient une politique assumée (~2049) : priorité affichée aux nœuds vitaux, maintien financé dans le rural via régies et réassurance publique. Là où l'assurance privée s'efface, l'État prend le relais plutôt que de laisser des « zones orphelines ».</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Numérique public sobre et résilient ; peu de robots dans les fermes et les hôpitaux — coût des métaux et de la maintenance. Le low-tech est ici un <strong>choix de robustesse</strong> (Bihouix, Hamant), pas un pis-aller : on répare, on mutualise, on dure.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2050 — 2070</p>
+        <h3>L'État frugal</h3>
+        <div class="chips"><span class="chip heat">Sud ~+42 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés durs au Centre et au Sud ; le Nord-Ouest plus frais, ses nappes <strong>rechargées chaque hiver</strong> — l'AMOC sort de son creux et se stabilise, l'Atlantique se calme un peu. L'écart Nord/Sud réorganise l'économie et la démographie sans les fracasser.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>L'État, <strong>réarmé pour la transition</strong>, finance ce qu'il planifie — services ruraux maintenus à dose adaptée, jamais retirés. L'auto-organisation locale complète l'État plutôt qu'elle ne le remplace : régies d'eau, mutuelles de santé, CUMA élargie. Migration intérieure Sud/Centre → Nord-Ouest, graduelle, absorbable dans une France déjà en décroissance démographique.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Administration hybride papier/numérique selon la connexion — service partout maintenu. Le ferroviaire électrique est <strong>préservé comme épine dorsale</strong> : robustesse choisie (Hamant), c'est la carte de ce que l'État finance et défend.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>Cœur dense, intérieur clairsemé</h3>
+        <div class="chips"><span class="chip heat">intérieur Sud ~+43 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Un seul visage climatique — l'été — sans coups de froid : l'AMOC stabilisée à ~−20 % ne déclenche aucun ciseau chaud/froid. Le chaud progresse, lisible ; le gradient Nord/Sud s'installe comme donnée permanente.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>France à gradient, pas à deux corps : cœur nord-atlantique dense et sous tension, Sud-Centre plus clairsemé et rationné en eau — un lieu vivant, ni friche ni désert. L'État, recentré sur ses fonctions vitales, reste présent ailleurs à dose adaptée. La <strong>robustesse mutualiste</strong> (Hamant) est devenue la norme des territoires intermédiaires.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>La France recomposée, sous tension</h3>
+        <div class="chips"><span class="chip heat">Sud ~+44 °C ↘</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Un Nord-Ouest dense, géré à l'eau près ; un intérieur plus pauvre mais habité, sous État frugal et <strong>planificateur</strong>. La vie est tendue, pas précaire partout. Et le climat <strong>redescend</strong> : ce qu'on lègue est dur, mais la pente est, enfin, dans le bon sens.</p></div>
+      </div>
+
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>L'État ne s'est pas effacé : il s'est <em>réarmé pour la transition — planifiant, redistribuant, mutualisant</em> — au prix d'une fiscalité lourde et de deux générations d'effort.</p>
+    </div>
+  </section>
+
+  <!-- ============ MANCHE ============ -->
+  <section class="scope" id="bo-manche" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Département de la Manche (50)</p>
+      <h2>Le refuge respirable</h2>
+      <p class="lede">Épargné par les extrêmes — Atlantique frais, hivers arrosés et sans coups de froid — le département devient une <em>terre d'accueil, organisée pour recevoir</em> : tempêtes et recul côtier bien réels, et un creux AMOC à encaisser au milieu du siècle, mais jamais de grand écart thermique.</p>
+    </div>
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2030</p>
+        <h3>Le calme relatif</h3>
+        <div class="chips"><span class="chip heat">côte +32 °C</span><span class="chip water">eau ▮▯▯▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Doux comparé au Sud, mais les pics existent déjà (Gouville-sur-Mer 35,3 °C en mai 2026). L'élevage laitier souffre des étés secs mais tient.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Socialement calme. Les regards commencent pourtant à se tourner vers ces terres « tempérées ».</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2030 — 2035</p>
+        <h3>Les premiers regards</h3>
+        <div class="chips"><span class="chip heat">côte +32 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −4 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés secs en série ; premières tensions sur les forages laitiers. Tempêtes hivernales en hausse.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Arrivée discrète de néo-ruraux et de retraités « réfugiés thermiques » du Sud. L'immobilier côtier monte — premier signal.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2035 — 2040</p>
+        <h3>La mer change un peu</h3>
+        <div class="chips"><span class="chip heat">côte +33 °C</span><span class="chip sea">mer +0,12 m</span><span class="chip">hiver −4 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'AMOC glisse vers son <strong>creux de mi-siècle</strong> : tempêtes un peu plus vives, érosion qui s'accélère — mais les hivers se réchauffent normalement, restant doux. La pêche décline légèrement ; la grande pêche côtière tient encore.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le premier filet de migrants climatiques intérieurs devient visible — discret, mais réel. Le stress hydrique estival apparaît, modéré : quelques forages laitiers sous tension, premières restrictions locales.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2040 — 2045</p>
+        <h3>Les premiers arrivants</h3>
+        <div class="chips"><span class="chip heat">côte +33 °C</span><span class="chip sea">mer +0,17 m</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −3 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>À l'approche du creux AMOC, submersions de tempête plus fréquentes sur les côtes basses ; recul du trait de côte mesurable chaque hiver. Pas de coups de froid — l'hiver se radoucit, <strong>prévisible</strong>.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>À mesure que le Sud cuit, la Manche attire : pression croissante mais encore douce sur le logement et le foncier. Les arrivants s'installent près des bourgs-gares — le motif se répète.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2050</p>
+        <h3>Le refuge en germe</h3>
+        <div class="chips"><span class="chip heat">côte +34 °C</span><span class="chip sea">mer +0,22 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −3 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>On entre dans le <strong>cœur du creux AMOC</strong> : ce sont les années les plus tempétueuses, pêcheries déplacées, érosion à son comble. Et pourtant aucun ciseau chaud/froid — la Manche reste thermiquement lisible, ce qui permet de planifier à travers la rude décennie.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Flux migratoire intérieur continu — la grande vague viendra plus tard (~2065), graduelle plutôt que brutale. Services nationaux sobres mais maintenus ; <strong>mutualisation de l'eau</strong> organisée tôt : régies intercommunales, gestion partagée des forages.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p><strong>Flamanville et La Hague</strong> concentrent l'État technique dans le département : réseau électrique prioritaire, compétences retenues — une rente de position et une servitude de très long terme que le bourg voisin négocie comme il peut.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2050 — 2070</p>
+        <h3>Zone d'accueil gérable</h3>
+        <div class="chips"><span class="chip heat">côte +34 °C</span><span class="chip sea">mer +0,30 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −3 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le creux AMOC <strong>touche son fond puis se stabilise</strong> (~2060) : recul côtier accéléré, submersions, zones basses repliées vers l'intérieur — négocié, préparé, coûteux. Pas de coups de froid : le territoire reste planifiable, et le pire des tempêtes est désormais derrière.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>La Manche devient zone de réception : pression démographique réelle, mais absorbable grâce à l'interconnexion en eau, à la sobriété et à une gouvernance locale qui anticipe. Tensions anciens/arrivants — gérées par compromis, non par fermeture.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>À mesure que le filet d'arrivants s'épaissit vers la vague (~2065), l'ordre public devient un enjeu réel — mais il reste tenu par des <strong>institutions civiles</strong>. La Hague et Flamanville sont gardées comme infrastructures sensibles (police nationale, accès réglementé), sans devenir une enclave militarisée. Autour, la réception s'organise par <strong>mutualisation choisie</strong> : polices municipales civiles, régies intercommunales, médiation — au prix d'un effort de cohésion sans relâche. Les tensions anciens/arrivants sont arbitrées, non tranchées par la force.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>La ligne <strong>Paris–Granville</strong> est sanctuarisée comme axe vital : par le rail arrivent les déplacés, repart le lait. Les bourgs près des gares se densifient ; les hameaux loin des réseaux s'allègent — sans s'éteindre complètement.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>Densément, raisonnablement viable</h3>
+        <div class="chips"><span class="chip heat">côte +35 °C</span><span class="chip sea">mer +0,36 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −2 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés plus chauds — +35 °C sur la côte — hivers doux et lisibles : le <strong>creux AMOC est passé</strong>, l'Atlantique s'est calmé. Les communes côtières les plus exposées achèvent leur repli vers l'intérieur. L'hiver reste une saison de recharge, non une menace.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Encombrée, tendue, mais l'une des parts les plus viables de France — et, pour ses habitants, l'une des plus confortables thermiquement. Réorganisation locale autour de l'eau et de l'alimentation : CUMA élargie, bocage renforcé, circuit court structuré.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>Le refuge ne se barricade pas. <strong>La Hague</strong> reste un point protégé — infrastructure sensible sous garde nationale — mais il ne fige aucune ligne de fracture : les flux sont encadrés et répartis, non refoulés. Ailleurs, l'ordre tient par des <strong>polices municipales civiles</strong> et une gestion mutualisée des points d'eau (régies, intercommunalités). La contrainte légitime reste une affaire d'institutions et de compromis — elle ne se tranche pas commune par commune.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Le château d'eau tempéré</h3>
+        <div class="chips"><span class="chip heat">côte +35 °C ↘</span><span class="chip sea">mer +0,40 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −2 °C</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Un département dense, géré à l'eau près — sans fortification ni grand écart thermique. La mer a tout de même gagné <strong>+0,40 m</strong> : des bas-pays sont perdus, sans retour. Mais c'est un refuge habitable dans une France recomposée : tendu et vivable, ouvert et organisé. La chance de la Manche est d'avoir pu accueillir sans se fermer.</p></div>
+      </div>
+
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>La fraîcheur de la Manche — ses hivers doux et arrosés — devient un atout durable, payé d'un littoral reculé et d'un accueil organisé sans relâche : <em>on y vient, et l'on peut y rester</em>.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOLLIGNY ============ -->
+  <section class="scope" id="bo-folligny" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Folligny · 50320 · ~1 116 habitants (2026)</p>
+      <h2>Le village qui grossit</h2>
+      <p class="lede">Un bourg rural laitier de la Manche. Ici, son climat plus clément en fait un point de chute — et son histoire passe de la <em>quiétude à une densité gérée</em>, sans surpeuplement extrême ni grand écart climatique.</p>
+    </div>
+
+    <div class="climgraph">
+      <div class="cg-head">
+        <h3>Trajectoire thermique — étés chauds, hivers doux</h3>
+        <p>Étés (max) et hivers (min) projetés, 2030 → 2095. Le trait marquant : les hivers de Folligny <strong>ne plongent pas</strong> — AMOC affaiblie mais sans seuil, donc pas de coups de froid. Folligny et La Faye se réchauffent <strong>tous deux normalement</strong> l'hiver : pas de ciseau, un seul visage — l'été, qui chauffe. Survole un point pour le détail.</p>
+      </div>
+      <div id="bo-climSvg" class="cg-svg"></div>
+      <div class="cg-legend" id="bo-climLegend"></div>
+    </div>
+
+    <div class="climgraph">
+  <div class="cg-head">
+    <h3>Trajectoire hydrique — le refuge garde sa recharge</h3>
+    <p>Bilan estival (P−ETP, trait plein) et recharge hivernale (tireté), 2030 → 2095. Le déficit d'été se creuse partout — la rente de Folligny n'est pas la pluie d'été, mais une <strong>recharge hivernale qui tient</strong>. À La Faye, elle décline <strong>sans rompre</strong> (≈ 190 mm en 2095, pas 150) : d'où une conversion agricole difficile, non un exode. Survole un point pour le détail.</p>
+  </div>
+  <div id="bo-hydroSvg" class="cg-svg"></div>
+  <div class="cg-legend" id="bo-hydroLegend"></div>
+</div>
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2030</p>
+        <h3>La vie d'avant</h3>
+        <div class="chips"><span class="chip heat">été +36 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −7 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. La Hague reste à 116 km — hors de vue.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>~1 116 habitants, prés, fermes laitières, école, commerces. Communauté intacte. Le monde craque au loin ; ici, tout paraît normal.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2030 — 2035</p>
+        <h3>Les étés secs</h3>
+        <div class="chips"><span class="chip heat">été +37 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés secs en série ; les sources donnent moins en août. Premiers arrêtés de restriction durables sur la commune.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>L'école tient, les commerces aussi. Quelques maisons achetées par des familles venues du Sud — anecdotique, croit-on.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2035 — 2040</p>
+        <h3>Le seuil non franchi, vu d'ici</h3>
+        <div class="chips"><span class="chip heat">été +38 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'AMOC s'affaiblit au large — ici, cela se traduit par des tempêtes un peu plus vives sur la côte proche, mais <strong>les hivers se radoucissent</strong> : un seul visage climatique s'installe.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Les services de l'État s'amincissent — médecins, permanences, routes. Le bourg commence à se penser comme un lieu qui devra <strong>compter davantage sur lui-même</strong> : non par renoncement, mais par nécessité calculée.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2040 — 2045</p>
+        <h3>Les sources baissent</h3>
+        <div class="chips"><span class="chip heat">été +38 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p><strong>L'eau estivale se tend</strong> — sources et forages sous pression, recharge hivernale intacte mais insuffisante pour compenser le déficit d'été. La contrainte de fond du lieu s'installe — sans le sentiment d'urgence de La Faye.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le solde migratoire redevient positif — quelques familles du Sud chaque année, pression légère sur le logement. Pas encore une vague : <strong>elle viendra après 2060, progressive</strong>. Le bourg s'étonne de se voir convoité.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2050</p>
+        <h3>Avant l'afflux</h3>
+        <div class="chips"><span class="chip heat">été +38 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −4 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés qui tutoient +38 °C ; les citernes deviennent utiles certaines années, sans être encore indispensables. L'hiver doux recharge — la marge existe, elle se réduit.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le rationnement énergétique national (post-panne européenne) s'installe par épisodes. Premières <strong>mutualisations informelles</strong> — citernes partagées, matériel agricole — qui préfigurent la régie d'eau communale : le bourg pressent ce qui vient et s'y prépare.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2050 — 2070</p>
+        <h3>La commune qui s'étoffe</h3>
+        <div class="chips"><span class="chip heat">été +38 °C</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés chauds — +38 °C — hivers doux et lisibles. L'empreinte de l'AMOC affaiblie se voit dans les tempêtes atlantiques, pas dans le thermomètre hivernal : avantage décisif pour planifier, semer, rester.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Folligny devient <strong>commune de réception</strong> : la population croît nettement (~+25–35 % vs 2026, redistribution dans une France qui se contracte), sans saturer. L'eau d'été est tendue — <strong>mais tenue</strong> : interconnexion, sobriété, régie communale. L'État différencie ses services ; le bourg complète sans le remplacer. Variable clé : l'âge des arrivants — le scénario suppose des familles en âge de travailler, pas des retraités.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>La <strong>gare de Folligny</strong> redevient la porte du bourg — les familles arrivent, le lait repart. Matériel partagé en CUMA élargie, batteries sodium : une mécanique que l'on comprend, donc que l'on garde.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>Gérée, pas rationnée à la goutte</h3>
+        <div class="chips"><span class="chip heat">été +38 °C</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés à +38 °C, hivers doux : un climat chaud mais d'un seul tenant — <strong>sans grand écart</strong>. La lisibilité est elle-même une ressource : on peut anticiper, planifier, adapter.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Un bourg dense, largement autonome pour son eau et sa nourriture, sous un État frugal mais <strong>présent</strong>. Résilient par la mutualisation (Hamant). La survie estivale tient à l'eau — récupération, sobriété, régie — sans rationnement dramatique. Tendu, pas désespéré.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Moins d'écrans qu'avant, mais une connectivité qui tient : fibre mutualisée, relais hybrides, radio et filaire d'appoint. Le réseau cuivré, lui, avait été <strong>démantelé dès les années 2030</strong> — le métal récupéré, fondu pour des renouvelables qui, ici, <strong>tournent encore</strong>. La <strong>forge-atelier du bourg</strong> n'est pas un pis-aller : c'est un low-tech choisi et entretenu (Hamant, Bihouix), où l'on répare plutôt que remplacer.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Refuge, à coût soutenable</h3>
+        <div class="chips"><span class="chip heat">été +38 °C ↘</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>En 2100, Folligny est un bourg dense, géré à l'eau près, largement autogéré — mais <strong>habitable sans drame</strong> : il a payé sa densité par la tension, non par la rareté extrême. Habité, transformé, vivable. Le miroir de La Faye — même pays, destins divergents, aucun ne bascule.</p></div>
+      </div>
+
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>Folligny tient — non parce qu'il a été épargné, mais parce qu'il a <em>absorbé l'afflux et appris la sobriété sans jamais basculer dans la survie</em>.</p>
+    </div>
+  </section>
+
+  <!-- ============ LA FAYE ============ -->
+  <section class="scope" id="bo-lafaye" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">La Faye · Charente · près de Ruffec · ~100 km de La Rochelle</p>
+      <h2>La terre qui se convertit</h2>
+      <p class="lede">Le cas-témoin. Climatiquement éprouvée — étés vers +44 °C, eau qui se raréfie — mais sans coup de grâce : ses hivers se réchauffent normalement et sa recharge tient. La Faye <em>décline et se convertit, sans se vider</em>.</p>
+    </div>
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2030</p>
+        <h3>L'illusion de la normalité</h3>
+        <div class="chips"><span class="chip heat">été +43 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −7 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Sud-Ouest continental, étés déjà rudes (Angoulême 37,8 °C en mai 2026). Les hivers se réchauffent <strong>normalement</strong> — pas de froid AMOC, même trajectoire que Folligny côté hiver. Cela rassure à tort : c'est l'été qui décidera.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Céréales et terroir sous stress ; l'eau est déjà un sujet. Le bourg semble tenir — la trajectoire estivale est implacable, mais le calendrier laisse encore du temps.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2030 — 2035</p>
+        <h3>Le 48 °C régional</h3>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p><strong>La canicule à 48 °C du Sud-Ouest (~2031)</strong> frappe à quelques dizaines de kilomètres. Les nappes se rechargent encore partiellement l'hiver — le record ne sera dépassé que lentement, sans escalade vers les +50 °C.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Premiers départs d'agriculteurs ; les jeunes ne reprennent pas. L'eau devient politiquement explosive dans la région — le vocabulaire des bassines s'installe.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2035 — 2040</p>
+        <h3>Les nappes fléchissent</h3>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés vers +44 °C ; gel en net recul. Nappes et rivières sous pression — <strong>pays des mégabassines</strong>, point chaud régional des conflits de l'eau — mais déclin mesuré, pas de rupture : la recharge hivernale tient encore, réduite.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>La céréaliculture pluviale décroche — bascule vers l'irrigué sous quota et les cultures adaptées (sorgho, tournesol). Les services publics s'éloignent : l'État différencie, il ne disparaît pas encore.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2040 — 2045</p>
+        <h3>On s'adapte, certains partent</h3>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −3 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés à +44 °C ; la Charente en étiage sévère dès l'été. Le gel devient rare — l'hiver doux ne compense pas : c'est l'eau qui manque, pas le froid qui revient.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Quelques familles partent, d'autres se convertissent — sorgho, agrivoltaïsme, irrigation de précision. Les bassines restent un point de friction : l'État arbitre, difficilement. Le bourg s'adapte, <strong>sans saturer ni se vider</strong>.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2050</p>
+        <h3>La conversion s'amorce</h3>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −2 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'eau d'été est contrainte — pas absente. La recharge hivernale se réduit, reste réelle : c'est ce qui sépare le déclin de l'exode. Tout se joue à cet écart de quelques dizaines de millimètres par an.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Déclin démographique lent — pas d'exode brutal. Hivers cléments, bourg qui <strong>s'allège sans se vider</strong>. Derrière les partants, dans une France en contraction démographique, peu de repreneurs : les terres converties ne se repeuplent pas, mais ne sont pas délaissées.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2050 — 2070</p>
+        <h3>Le déclin habité</h3>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver doux</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Hivers doux ; étés à +44 °C — eau rare mais <strong>gérée</strong> : quota, irrigation de précision, agrivoltaïsme. La chaleur n'est pas l'habitabilité en soi — c'est le couple eau/chaleur qui décide.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Une commune qui <strong>rétrécit sans se vider</strong> : fermes converties ou regroupées, services réduits mais présents. Le miroir de Folligny — même pays, destins divergents, aucun ne bascule. Ce que La Faye perd en population, elle le gagne en spécialisation.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Le numérique se raréfie dans le rural profond, plus vite que l'État — mais une desserte minimale est maintenue : fibre réduite, pas fibre coupée.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>Allégée, pas désertée</h3>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Pointes estivales ~+44 °C ; sécheresse structurelle — sans rupture hydrique. La recharge hivernale réduite mais réelle (~190 mm) fait tenir une agriculture spécialisée.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>La Faye nettement moins peuplée ; eau sous quota, agriculture spécialisée en sec et en irrigué de précision. Un lieu plus pauvre et clairsemé — mais <strong>habité à l'année</strong>, pas en simple occupation saisonnière.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Hivers cléments, étés gérés</h3>
+        <div class="chips"><span class="chip heat">été +44 °C ↘</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver +4 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>En 2100 : étés ~+44 °C, hiver moyen remonté vers +4 °C, gel devenu rare. Pas de +50 °C — pas d'inhabitabilité estivale généralisée. La redescente du forçage amorcée en fin de siècle est ici aussi une limite au pire.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Un habitat clairsemé, chaud l'été, sous contrainte d'eau — mais <strong>viable et gouverné</strong> : celle qui s'allège davantage — non la terre morte. Ce que la modération du forçage et le maintien de la recharge hivernale ont empêché, c'est le passage du déclin à l'exode. Et l'eau décide encore.</p></div>
+      </div>
+
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>La Faye perd du terrain, non par rupture, mais parce que <em>l'eau et la chaleur la forcent à se réinventer plus pauvre</em> — sans la rendre invivable.</p>
+    </div>
+  </section>
+
+  <!-- ============ SYNTHÈSE TRANSVERSALE ============ -->
+  <section class="scope" id="bo-synthese" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Lecture transversale</p>
+      <h2>Trois axes, six échelles — la bifurcation</h2>
+      <p class="lede">Le même arc, relu par <em>force</em> et non par lieu. Trois variables — l'eau, les migrations, l'État — traversent la bifurcation ; elles se referment, mais sans se verrouiller.</p>
+    </div>
+    <div class="axes">
+      <div class="axis eau">
+        <h4>① L'eau</h4>
+        <p>De la restriction estivale au quota négocié. L'eau reste <strong>la variable maîtresse</strong> — elle décide qui s'adapte et qui s'allège — mais la guerre ouverte cède la place à l'arbitrage sous stress : traités difficiles, quotas contestés, injustice hydrique persistante.</p>
+      </div>
+      <div class="axis mig">
+        <h4>② Les migrations</h4>
+        <p>Glissement graduel vers les pôles et les littoraux frais ; Sud/Centre français → <strong>Nord-Ouest atlantique</strong>. Dans une France qui se contracte (−29 % de naissances dès 2025), ces flux <strong>redistribuent</strong> plus qu'ils n'ajoutent — en douceur, sans saturation ni exode brutal. Les uns s'étoffent, les autres s'allègent : aucun ne bascule.</p>
+      </div>
+      <div class="axis etat">
+        <h4>③ L'État</h4>
+        <p>De la planification assumée. L'État réinvestit, hiérarchise et redirige — métropoles d'abord, rural <strong>maintenu et financé</strong> — au lieu de se replier. L'auto-organisation locale complète l'État plutôt qu'elle ne le remplace ; la survie n'est pas reléguée au seul local.</p>
+      </div>
+    </div>
+
+    <p class="synth-lede">Lis une <b>colonne</b> pour suivre un axe qui cascade du monde à la commune ; une <b>ligne</b> pour voir les trois forces converger sur un même lieu en 2100.</p>
+
+    <div class="matrix">
+      <div class="mhead">
+        <div class="mcorner">Échelle ↓<br>Axe →</div>
+        <div class="mcol eau">Eau</div>
+        <div class="mcol mig">Migrations</div>
+        <div class="mcol etat">État</div>
+      </div>
+
+      <div class="mrow">
+        <div class="mscale"><b>Monde</b><span>global</span></div>
+        <div class="mcell eau"><span class="al">Eau</span>Crises hydriques (Nil, Indus, Euphrate) gérées par <strong>traités sous stress</strong> ; tensions réelles, guerre généralisée évitée. L'eau contraint, elle n'arme pas.</div>
+        <div class="mcell mig"><span class="al">Migrations</span>Dizaines de millions de déplacés ; glissement graduel vers les pôles — <strong>réel, absorbable</strong>, non en vague.</div>
+        <div class="mcell etat"><span class="al">État</span>États fragiles nombreux, ruptures complètes rares ; institutions internationales affaiblies, <strong>régionalisées</strong>, non dissoutes.</div>
+      </div>
+
+      <div class="mrow">
+        <div class="mscale"><b>Europe</b><span>continent</span></div>
+        <div class="mcell eau"><span class="al">Eau</span>Disputes inter-États (fleuves ibériques, eau alpine) <strong>désamorcées par compromis</strong> ; quotas transfrontaliers arrachés. Le Sud s'assèche, lentement.</div>
+        <div class="mcell mig"><span class="al">Migrations</span>Migration interne Sud→Nord <strong>importante mais maîtrisée</strong> ; l'UE recomposée absorbe sans se fracturer.</div>
+        <div class="mcell etat"><span class="al">État</span>L'UE se resserre autour de l'eau et de l'énergie — plus petite, plus septentrionale — <strong>espace politique maintenu</strong>, pas d'archipel d'enclaves fermées.</div>
+      </div>
+
+      <div class="mrow">
+        <div class="mscale"><b>France</b><span>national</span></div>
+        <div class="mcell eau"><span class="al">Eau</span>Variable maîtresse ; tensions bassines arbitrées ; nucléaire contre débit des fleuves — <strong>quota négocié</strong>, pas guerre ouverte.</div>
+        <div class="mcell mig"><span class="al">Migrations</span>Glissement intérieur Sud / Centre → <strong>Nord-Ouest atlantique</strong> : graduel, absorbé dans une France en décroissance démographique.</div>
+        <div class="mcell etat"><span class="al">État</span>Planification différenciée (métropoles prioritaires, rural <strong>maintenu et financé</strong>) → État frugal et réarmé pour la transition — présent aux verrous, allégé ailleurs.</div>
+      </div>
+
+      <div class="mrow">
+        <div class="mscale"><b>Manche</b><span>dépt 50</span></div>
+        <div class="mcell eau"><span class="al">Eau</span>Tendue l'été, <strong>tenue par interconnexion et sobriété</strong> — recharge hivernale intacte. Un atout structurant qui attire.</div>
+        <div class="mcell mig"><span class="al">Migrations</span><strong>Zone de réception</strong> sous pression mais gérable ; tensions anciens/arrivants administrées, pas de fermeture.</div>
+        <div class="mcell etat"><span class="al">État</span>Services nationaux amincis et différenciés ; réorganisation locale <strong>qui complète l'État</strong> autour de l'eau et de l'alimentation.</div>
+      </div>
+
+      <div class="mrow">
+        <div class="mscale"><b>Folligny</b><span>50320</span></div>
+        <div class="mcell eau"><span class="al">Eau</span>Sources sous pression → régie communale, citernes, sobriété — <strong>tendue mais tenue</strong> : la recharge hivernale fait la différence.</div>
+        <div class="mcell mig"><span class="al">Migrations</span>Population +25–35 % vs 2026 : de bourg tranquille à <strong>commune qui s'étoffe</strong>, sans saturer.</div>
+        <div class="mcell etat"><span class="al">État</span>État frugal mais <strong>présent</strong> ; auto-gouvernance qui complète — robustesse mutualiste (Hamant), pas fracture.</div>
+      </div>
+
+      <div class="mrow">
+        <div class="mscale"><b>La Faye</b><span>Charente</span></div>
+        <div class="mcell eau"><span class="al">Eau</span>Sous quota, rare l'été — recharge hivernale réduite mais réelle : la différence entre <strong>déclin et exode</strong>.</div>
+        <div class="mcell mig"><span class="al">Migrations</span><strong>Terre de départ lente</strong> : dépopulation graduelle, fermes converties, bourg allégé — habité à l'année.</div>
+        <div class="mcell etat"><span class="al">État</span>Services réduits mais maintenus a minima ; <strong>celle qui s'allège davantage</strong>, non la terre délaissée.</div>
+      </div>
+
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>Les trois colonnes racontent une histoire moins noire : <em>l'eau contraint, la migration redistribue, l'État se reconfigure</em> — et la même physique fabrique un gradient, non une rupture : Folligny s'étoffe, La Faye s'allège, aucune ne bascule.</p>
+    </div>
+
+    <div class="verdict keller">
+      <h4>Fil rouge systémique (Keller)</h4>
+      <p>La bifurcation traite la fragilité à sa racine : non la robustesse de chaque secteur, mais la <strong>déconnexion organisée</strong> des systèmes critiques — redondance, relocalisation, désindexation des chaînes vitales. Les couplages eau↔énergie↔alimentation sont desserrés <strong>avant</strong> la crise, si bien que les cascades sont <strong>largement prévenues</strong>. Ce choix s'est doublé d'un travail des <strong>récits</strong> : démanteler le récit de l'abondance, porter tôt une redirection désirable, anticiper les points de bascule <em>sociaux</em> autant que biophysiques (Arthur Keller).</p>
+    </div>
+  </section>
+
+  <!-- ============ CHRONOLOGIE DES RUPTURES ============ -->
+  <section class="scope" id="bo-chrono" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">La bifurcation · couche événementielle</p>
+      <h2>Chronologie des inflexions</h2>
+      <p class="lede">Une trame possible de jalons qui <em>incarnent</em> la bifurcation. Des inflexions, pas des ruptures ; des crises traversées, pas des basculements.</p>
+    </div>
+    <div class="chrono-warn">
+      <b>⚠ Événements illustratifs, non prédictifs.</b> Une instanciation parmi des milliers. Trait de fond du scénario : le <b>pattern coopératif tient</b> majoritairement — les tensions hydriques se règlent plus souvent par traités sous stress que par les armes ; pas d'échange nucléaire, pas de rupture systémique généralisée. Les conflits nommés s'appuient sur des tensions réelles et existantes, simplement extrapolées dans un registre de crise gérée plutôt que de rupture. Le fil <span class="ici-key">ICI</span> suit la France, la Manche, Folligny et La Faye.
+    </div>
+
+    <div class="chrono">
+
+      <div class="chrono-phase">
+        <h3 class="cp-title"><span class="cp-years">2026 — 2035</span>Les premiers chocs</h3>
+        <div class="evt ici">
+          <span class="evt-year">2026</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−29 % de naissances</strong> vs 2010. Le vocabulaire des arbitrages se lit ici en négatif — ce sont les signaux d'une planification qui s'amorce.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2027</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><span class="cat eau">Eau</span><p>Mousson défaillante en Asie du Sud : crise alimentaire, premières émeutes du pain en <strong>Inde et au Pakistan</strong>.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2029</span>
+          <div class="evt-body"><span class="cat eau">Eau</span><span class="cat etat">État</span><p><strong>Égypte–Éthiopie</strong> au bord de l'affrontement sur le barrage de la Renaissance (Nil) ; une médiation arrache un sursis fragile.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2030</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat tech">Technique</span><p>France : fin du <strong>réseau téléphonique cuivré</strong> (RTC) ; le métal est récupéré et fondu. Ici, le démontage d'une infrastructure réparable n'est pas un gâchis subi : le cuivre alimente une transition qui aboutit en partie, la connectivité passe à la fibre et à des relais hybrides, et le low-tech est <strong>choisi et organisé</strong> (Hamant, Bihouix). Le paradoxe de Bihouix est posé — mais résolu, non tragique.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2031</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p>France : première <strong>canicule à 48 °C</strong> dans le Sud-Ouest ; restrictions d'eau générales d'avril à octobre. Le record devient le plafond du siècle — il ne sera dépassé que lentement.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2033</span>
+          <div class="evt-body"><span class="cat mig">Migr.</span><span class="cat etat">État</span><p>Mouvements migratoires structurels du <strong>Sahel</strong> vers le Maghreb puis l'Europe ; l'UE durcit ses frontières tout en négociant la répartition interne.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2035</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><p>Le <strong>non-événement de 2035</strong> : l'AMOC s'affaiblit nettement, vers un creux de mi-siècle — déclin sans bascule (~−20 %), sans franchissement du seuil. Un tournant sans bruit : le seuil est frôlé, jamais franchi.</p></div>
+        </div>
+      </div>
+
+      <div class="chrono-phase">
+        <h3 class="cp-title"><span class="cp-years">2035 — 2050</span>Les tensions gérées</h3>
+        <div class="evt">
+          <span class="evt-year">2037</span>
+          <div class="evt-body"><span class="cat eau">Eau</span><p>Crise de l'<strong>Indus</strong> : barrages amont + hiver himalayen faible. Tensions réelles — désamorçage diplomatique sous pression, accord partiel arraché.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2039</span>
+          <div class="evt-body"><span class="cat eau">Eau</span><span class="cat etat">État</span><p>La <strong>Turquie</strong> réduit le débit de l'Euphrate (barrages GAP) : crise ouverte avec l'Irak et la Syrie — négociée sous médiation internationale, non résolue.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2041</span>
+          <div class="evt-body"><span class="cat mig">Migr.</span><span class="cat etat">État</span><p>Recul agricole sévère en <strong>Espagne et Italie du Sud</strong> ; exode vers le Nord ; l'UE tient sur la répartition au prix d'un compromis douloureux.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2043</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat eau">Eau</span><span class="cat etat">État</span><p>France : tensions <strong>bassines</strong> récurrentes et localement violentes — l'État arbitre entre eau agricole et eau potable, au cas par cas, sans doctrine tranchée.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2044</span>
+          <div class="evt-body"><span class="cat tech">Technique</span><span class="cat etat">État</span><p>Les <strong>puces de pointe</strong> passent sous contrôle stratégique : exports par blocs. L'IA mondiale se dissocie en vitesses — l'Europe, sans fonderie avancée, fait de la frugalité une doctrine.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2045</span>
+          <div class="evt-body"><span class="cat etat">État</span><p>Tensions énergétiques européennes : rationnement hivernal <strong>épisodique</strong> — EROI en baisse, renouvelable freiné par les métaux (Bihouix) — sans grande panne en cascade.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2047</span>
+          <div class="evt-body"><span class="cat eau">Eau</span><p>Crise du <strong>Nil</strong> aiguë : sécheresse majeure, pressions militaires égyptiennes — désamorcée par un traité de partage inégal et une aide internationale coûteuse.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2049</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : la planification devient une <strong>politique assumée de services différenciés</strong> — priorité aux métropoles et nœuds vitaux, maintien financé dans le rural. Là où l'assurance privée se retire, la réassurance publique prend le relais.</p></div>
+        </div>
+      </div>
+
+      <div class="chrono-phase">
+        <h3 class="cp-title"><span class="cp-years">2050 — 2070</span>L'adaptation différenciée</h3>
+        <div class="evt">
+          <span class="evt-year">2056</span>
+          <div class="evt-body"><span class="cat mig">Migr.</span><span class="cat etat">État</span><p>L'<strong>Europe se resserre</strong> autour du Nord — frontières filtrantes, non des enclaves fermées ; l'UE recomposée survit comme cadre politique.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2058</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : services publics <strong>sobres mais maintenus</strong> dans le rural — administration hybride papier/numérique, ferroviaire préservé. L'auto-organisation locale complète l'État.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2060</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat eau">Eau</span><p>La <strong>Charente sous quota</strong> : la céréaliculture pluviale décroche — La Faye amorce sa conversion (sorgho, agrivoltaïsme) plutôt que son exode.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2063</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat mig">Migr.</span><p><strong>Manche et Bretagne</strong> en réception graduelle de la migration intérieure — Folligny commence à s'étoffer, sans saturer.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2064</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat tech">Technique</span><span class="cat mig">Migr.</span><p>Ligne <strong>Paris–Granville</strong> classée axe vital : par le rail arrivent les déplacés, repart le lait — la gare de Folligny redevient la porte du bourg.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2066</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p>Pêche atlantique <strong>au plus bas</strong> (creux AMOC, sans coups de froid) ; tempêtes, repli de quelques communes côtières de la Manche vers l'intérieur.</p></div>
+        </div>
+      </div>
+
+      <div class="chrono-phase">
+        <h3 class="cp-title"><span class="cp-years">2070 — 2085</span>La recomposition gérée</h3>
+        <div class="evt">
+          <span class="evt-year">2071</span>
+          <div class="evt-body"><span class="cat etat">État</span><p>Monde inégal mais <strong>largement gouverné</strong> : régionalisation, blocs ressources — pas d'archipel d'enclaves fermées. La coopération hydrique survit par endroits.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2074</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : l'État central <strong>recentré sur ses fonctions vitales</strong>, encore présent ailleurs à dose réduite — ni gardien de verrous seul, ni absent.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2075</span>
+          <div class="evt-body"><span class="cat tech">Technique</span><span class="cat climat">Climat</span><p>Satellites <strong>raréfiés mais maintenus a minima</strong> : après une décennie de dégradation, le réinvestissement public rouvre les yeux — la prévision fine se rétablit.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2077</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat eau">Eau</span><p><strong>La Faye allégée</strong> — moins peuplée, sous quota — mais habitée à l'année : agriculture spécialisée, services réduits maintenus — non reléguée.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2080</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat mig">Migr.</span><p><strong>Folligny ≈ +25–35 %</strong> vs 2026 — dans une France qui s'est contractée : régie d'eau communale, sobriété, autogouvernance partielle sous État frugal.</p></div>
+        </div>
+      </div>
+
+      <div class="chrono-phase">
+        <h3 class="cp-title"><span class="cp-years">2085 — 2100</span>Le monde légué</h3>
+        <div class="evt">
+          <span class="evt-year">2088</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><span class="cat mig">Migr.</span><p>Recul des grands <strong>deltas</strong> (Bengale, Mékong, Nil) sous la mer qui monte : déplacements importants, étalés sur des décennies — absorbés progressivement.</p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2092</span>
+          <div class="evt-body"><span class="cat etat">État</span><p>Ordre international <strong>affaibli et régionalisé</strong> — pas dissous. Les institutions survivent, diminuées ; la survie reste collective quelque part.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2095</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p><strong>Folligny</strong> : étés à +38 °C, hivers doux (−4 °C) ; bourg dense, géré à l'eau près, vivable — un refuge qui a tenu sans basculer dans la survie.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2100</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat eau">Eau</span><p><strong>La Faye</strong> : étés ~+44 °C, hiver +4 °C, habitat clairsemé sous quota — celle qui s'allège davantage. Et le forçage <strong>redescend</strong> : le siècle suivant s'annonce meilleur.</p></div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>Aucune date n'arrivera telle quelle. Mais leur logique — <em>l'eau qui contraint, les peuples qui glissent, l'État qui se reconfigure</em> — dessine une descente gérée, non une chute.</p>
+    </div>
+  </section>
+
+  <!-- ============ CULTURES ============ -->
+  <section class="scope" id="bo-cultures" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">À Folligny · agronomie d'un climat chaud mais lisible</p>
+      <h2>Cultures &amp; plantation</h2>
+      <p class="lede">Que cultiver sous des étés à +38 °C mais des hivers doux (≈ −4 °C) ? La chaleur d'été combinée à des hivers doux <em>ouvre un peu la porte aux espèces méridionales</em>. Guide pratique fondé sur les contraintes physiques de cette branche.</p>
+    </div>
+
+    <div class="cult-toggle" id="bo-culttoggle">
+      <button data-p="2050" class="on">2050 — la chaleur s'installe</button>
+      <button data-p="2100">2100 — climat stabilisé</button>
+    </div>
+
+    <div id="bo-cultpanel"></div>
+
+    <div class="frise-section">
+      <h3 class="frise-head">Planter en relais</h3>
+      <p class="frise-intro">Chaque barre = durée de vie productive d'un sujet planté en 2026. Les traits orange marquent les replantations à prévoir. Les hivers doux (−4 °C au pire) ouvrent une fenêtre : l'<strong>olivier abrité entre dans les plantations possibles</strong>.</p>
+      <div class="frise-legend">
+        <span><i class="long"></i>longue vie</span>
+        <span><i class="med"></i>vie moyenne</span>
+        <span><i class="short"></i>vie courte</span>
+        <span><i class="rp"></i>replanter</span>
+      </div>
+      <div class="frise" id="bo-frise"></div>
+    </div>
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>Hivers doux, étés chauds : cette combinaison rend l'<em>olivier et l'agrume abrités marginalement possibles</em>. Les piliers restent les caducs à besoin de froid (pommier, poirier, vigne, noyer) et les annuelles thermophiles — mais le vrai levier demeure l'<em>eau</em>, donc l'énergie pour irriguer.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="frame">Cadre · CMIP7 trajectoire basse / Accord de Paris tenu (van Vuuren et al. 2026 ; pic ~+2,04 °C vers 2060, puis décrue pilotée à ~+1,90 °C en 2100) · ralentissement de l'AMOC ~−20 % d'ici 2100, seuil de bascule frôlé SANS être franchi (système bistable, fourchette Portmann et al. 2026) · ancrage observationnel : IGCC 2025 (Forster et al. 2026) · niveaux marins vs réf. 1995-2014, ~+0,40 m en 2100 · fil directeur : sobriété organisée et redirection écologique · variante « La bifurcation »</span>
+    Outil de réflexion prospective, non de prévision. Lectures : Jancovici (descente énergétique / EROI), Bihouix (limites des métaux / low-tech), Hamant (robustesse &gt; performance), Keller (vulnérabilité systémique / résilience par déconnexion / récits). Branche médiane assumée ; les projections communales sont des récits illustratifs ancrés dans la géographie réelle.
+  </footer>
+
+</div>
+
+<div class="fab-stack">
+  <button class="fab pdf" id="bo-fabPresent" title="Mode présentation"><span class="lbl">Présentation</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="14" height="10" rx="1"/><line x1="6.5" y1="16" x2="11.5" y2="16"/><line x1="9" y1="13" x2="9" y2="16"/></svg></button>
+  <button class="fab pdf" id="bo-fabPdf" title="Télécharger en PDF / imprimer"><span class="lbl">PDF / imprimer</span>⤓</button>
+  <button class="fab" id="bo-fabTop" title="Retour en haut"><span class="lbl">Haut</span>↑</button>
+</div>
+<div class="present-bar" id="bo-presentBar">
+  <button id="bo-pPrev" title="Précédent (flèche gauche)">‹ Précédent</button>
+  <span class="pos" id="bo-pPos">—</span>
+  <button id="bo-pNext" title="Suivant (flèche droite)">Suivant ›</button>
+  <button class="quit" id="bo-pQuit" title="Quitter (Échap)">✕ Quitter</button>
+</div>
+<div class="ftip" id="bo-ftip"></div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const scopes = document.querySelectorAll('.scope');
+  function activate(id){
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scope === id)));
+    scopes.forEach(s => s.classList.toggle('active', s.id === id));
+    const active = document.getElementById(id);
+    if(active){
+      const phases = active.querySelectorAll('.phase, .verdict, .axis, .synth-lede, .matrix, .chrono-warn, .chrono-phase');
+      phases.forEach((p,i)=>{ p.style.animation='none'; void p.offsetWidth;
+        p.style.animation=`fade .5s ease both`; p.style.animationDelay=(i*60)+'ms'; });
+    }
+  }
+  tabs.forEach(t => t.addEventListener('click', ()=> activate(t.dataset.scope)));
+  // keyboard arrows
+  document.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
+    const list=[...tabs]; const cur=list.findIndex(t=>t.getAttribute('aria-selected')==='true');
+    if(e.key==='ArrowRight'){e.preventDefault();const n=list[(cur+1)%list.length];n.focus();activate(n.dataset.scope);}
+    if(e.key==='ArrowLeft'){e.preventDefault();const n=list[(cur-1+list.length)%list.length];n.focus();activate(n.dataset.scope);}
+  });
+
+  /* ---------- CULTURES ---------- */
+  const cultData = {
+    "2050": {
+      label: "2050 — la chaleur s'installe",
+      items: [
+        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> est échaudé sous +38 °C mais tenable — moissons avancées à juin, non sacrifiées. Les hivers doux sécurisent la levée en sortie d'hiver. Montée du <strong>tournesol, sorgho en appoint, orge précoce</strong>. Pas de bascule C4 obligatoire : la contrainte hydrique est réelle, mais la recharge hivernale laisse de la marge." },
+        { title: "Potager", txt: "Schéma à <strong>deux saisons</strong> (printemps / automne). Juillet-août : thermophiles paillés (tomate, poivron, aubergine, courgette). Hivers plus doux (−4 à −7 °C) → légumes d'hiver peu menacés, châssis allégé ou superflu. L'hiver doux est un gain net sur la saison froide." },
+        { title: "Fruitiers", txt: "<strong>Pommier cidre</strong> glisse vers variétés chaleur-tolérantes, récolte avancée. <strong>Vigne</strong> s'installe (dormance rustique, avide de chaleur). Cerisier, prunier : OK. <strong>Figuier</strong> facile. Les hivers doux (−4 °C) rendent l'<strong>olivier marginalement envisageable en situation abritée</strong> (mur exposé sud, microterrain), à tester prudemment." },
+        { title: "Haies", txt: "Renforcer le bocage existant : <strong>érable champêtre, charme, aubépine, noisetier, cornouiller mâle</strong>. Introduire dès maintenant <strong>chêne pubescent et cormier</strong> — 20 à 30 ans pour maturité, ce sont les plantations pour 2100. Pression sécheresse estivale réelle — le stress principal est hydrique, pas thermique." }
+      ]
+    },
+    "2100": {
+      label: "2100 — climat stabilisé",
+      items: [
+        { title: "Céréales", txt: "<strong>Sorgho et millet</strong> en sec là où l'eau manque — mais blé et orge restent possibles avec sobriété hydrique (étés ~+38 °C). <strong>Seigle</strong> sur sols pauvres et secs. Couverture permanente du sol obligatoire : le sol nu sous +38 °C ne pardonne pas. Semis décalés, moissons au plus tôt." },
+        { title: "Potager", txt: "Modèle <strong>paillage + ombrière + goutte-à-goutte économe</strong>. L'eau reste la contrainte n°1 — chaque litre compte. Été sous ombrage : gombo, patate douce, courge, niébé, aubergine. L'hiver doux (−4 °C) élargit la saison fraîche vers l'automne et le printemps sans protection lourde." },
+        { title: "Fruitiers", txt: "<strong>Vigne, pommier/poirier</strong> (porte-greffes vigoureux + ombrage partiel), <strong>figuier</strong> (repart de souche), <strong>kaki, grenadier</strong>. <strong>Olivier et agrume abrités envisageables</strong> (hiver mini ~−4 °C) — agroforesterie recommandée, situation protégée exigée. Contrainte principale : l'eau." },
+        { title: "Haies", txt: "Infrastructure vitale : ombre, brise-vent, fourrage, bois d'œuvre, biodiversité. Charpente résistante : <strong>chêne pubescent, érable champêtre, cormier, alisier, mûrier</strong>. Fixateurs d'azote : <strong>argousier, robinier</strong> (bois imputrescible, drageonnant). À surveiller : hêtre et frêne, fragiles sous sécheresse et sous pression hydrique croissante." }
+      ]
+    }
+  };
+
+  const relaisData = [
+    { tier: "Plantés une fois — vivent jusqu'à/au-delà de 2100", cls: "long", rows: [
+      { name: "Poirier (haute-tige)", meta: "60–100 ans", c: [[2026,2110]] },
+      { name: "Pommier cidre", meta: "60–100 ans · apogée ~2070", c: [[2026,2106]] },
+      { name: "Noyer", meta: "100–150 ans · récolte ~2040", c: [[2026,2110]] },
+      { name: "Châtaignier / cormier", meta: "séculaires", c: [[2026,2110]] },
+      { name: "Olivier (abrité)", meta: "séculaire · possible en situation abritée", c: [[2026,2110]] },
+      { name: "Figuier", meta: "rabattu/repart de souche", c: [[2026,2110]] },
+      { name: "Vigne", meta: "40–80 ans · 1 renouvellement", c: [[2026,2078],[2078,2110]] }
+    ]},
+    { tier: "Vie moyenne — 2 à 3 plantations", cls: "med", rows: [
+      { name: "Cerisier", meta: "25–40 ans", c: [[2026,2063],[2063,2100]] },
+      { name: "Amandier", meta: "30–50 ans · peu sensible au gel tardif", c: [[2026,2068],[2068,2110]] },
+      { name: "Prunier", meta: "20–30 ans", c: [[2026,2051],[2051,2076],[2076,2101]] }
+    ]},
+    { tier: "Relais serré — quasi une culture", cls: "short", rows: [
+      { name: "Abricotier", meta: "15–25 ans · gel tardif raréfié", c: [[2026,2046],[2046,2066],[2066,2086],[2086,2106]] },
+      { name: "Pêcher", meta: "8–15 ans · ~6 générations", c: [[2026,2038],[2038,2050],[2050,2062],[2062,2074],[2074,2086],[2086,2098],[2098,2110]] }
+    ]}
+  ];
+
+  function renderCult(p){
+    const d = cultData[p];
+    let cards = d.items.map(it => `<div class="cult-card"><h3>${it.title}</h3><p>${it.txt}</p></div>`).join("");
+    document.getElementById("cultpanel").innerHTML = `<div class="cult-label">${d.label}</div>${cards}`;
+  }
+
+  const AX0=2026, AX1=2110;
+  const pct = y => (y-AX0)/(AX1-AX0)*100;
+
+  function escapeXml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function renderFrise(){
+    const tMin=2026, tMax=2110;
+    const W=680, labelW=152, mr=12;
+    const plotW = W - labelW - mr;
+    const tx = yr => labelW + (yr-tMin)/(tMax-tMin)*plotW;
+    const axisH=24, tierH=22, rowH=24, barH=11, topPad=6, botPad=10;
+
+    let totalH = topPad + axisH;
+    relaisData.forEach(g => { totalH += tierH + g.rows.length*rowH; });
+    totalH += botPad;
+
+    const ticks=[2026,2050,2075,2100];
+    const decades=[2036,2046,2056,2066,2076,2086,2096,2106];
+    const plotTop = topPad + axisH;
+    const plotBot = totalH - botPad;
+
+    let s = `<svg viewBox="0 0 ${W} ${totalH.toFixed(0)}" role="img" aria-label="Frise des durées de vie productive des plantations de 2026 à 2110">`;
+    s += `<defs>`
+      + `<linearGradient id="bo-gLong" x1="0" x2="1"><stop offset="0" stop-color="#5b8aa6"/><stop offset="1" stop-color="#7db0c9"/></linearGradient>`
+      + `<linearGradient id="bo-gMed" x1="0" x2="1"><stop offset="0" stop-color="#d98a4e"/><stop offset="1" stop-color="#e8a368"/></linearGradient>`
+      + `<linearGradient id="bo-gShort" x1="0" x2="1"><stop offset="0" stop-color="#c45c3c"/><stop offset="1" stop-color="#dd7b54"/></linearGradient>`
+      + `</defs>`;
+
+    decades.forEach(yr=>{
+      const x=tx(yr).toFixed(1);
+      s += `<line x1="${x}" y1="${(plotTop-4).toFixed(1)}" x2="${x}" y2="${plotBot.toFixed(1)}" stroke="rgba(236,229,216,.05)" stroke-width="1"/>`;
+    });
+    ticks.forEach(yr=>{
+      const x=tx(yr), now=yr===2026;
+      s += `<line x1="${x.toFixed(1)}" y1="${(plotTop-4).toFixed(1)}" x2="${x.toFixed(1)}" y2="${plotBot.toFixed(1)}" stroke="${now?'rgba(232,116,59,.34)':'rgba(236,229,216,.11)'}" stroke-width="${now?1.4:1}"/>`;
+      s += `<text x="${x.toFixed(1)}" y="${(topPad+11).toFixed(0)}" text-anchor="${now?'start':'middle'}" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="${now?'#e8743b':'#7fa6bd'}">${yr}</text>`;
+    });
+
+    let y = plotTop;
+    relaisData.forEach(g=>{
+      s += `<text x="2" y="${(y+13).toFixed(1)}" font-family="'JetBrains Mono',monospace" font-size="8.5" letter-spacing="1.3" fill="#6f675b">${escapeXml(g.tier.toUpperCase())}</text>`;
+      y += tierH;
+      g.rows.forEach(r=>{
+        const barY = y + (rowH-barH)/2;
+        s += `<text x="${labelW-10}" y="${(barY+8.8).toFixed(1)}" text-anchor="end" font-family="Spectral,serif" font-size="12.5" fill="#ece3d3">${escapeXml(r.name)}</text>`;
+        const n=r.c.length;
+        r.c.forEach((seg,i)=>{
+          const x1=tx(seg[0]), w=tx(seg[1])-x1;
+          const grad = g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort';
+          const cohort = n>1?`cohorte ${i+1} sur ${n}`:'plantation unique';
+          const end = seg[1]>2100?'au-delà de 2100':seg[1];
+          s += `<rect class="bar ${g.cls}" x="${x1.toFixed(1)}" y="${barY.toFixed(1)}" width="${Math.max(w,2).toFixed(1)}" height="${barH}" rx="2" fill="url(#${grad})" `
+            + `data-name="${escapeXml(r.name)}" data-meta="${escapeXml(r.meta)}" data-period="${seg[0]} → ${end}" data-cohort="${cohort}"/>`;
+          if(i>0) s += `<rect x="${(x1-0.75).toFixed(1)}" y="${(barY-2).toFixed(1)}" width="1.5" height="${barH+4}" rx="0.5" fill="#d97a35"/>`;
+        });
+        y += rowH;
+      });
+    });
+
+    s += `</svg>`;
+    document.getElementById("frise").innerHTML = s;
+  }
+
+  document.querySelectorAll("#culttoggle button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("#culttoggle button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      renderCult(b.dataset.p);
+    });
+  });
+
+  renderCult("2050");
+  renderFrise();
+
+  /* ---- V2 : tooltip frise ---- */
+  const ftip = document.getElementById("ftip");
+  const friseEl = document.getElementById("frise");
+  friseEl.addEventListener("mouseover", e => {
+    const bar = e.target.closest(".bar");
+    if(!bar) return;
+    ftip.innerHTML = `<b>${bar.dataset.name}</b>`
+      + `<div class="meta">${bar.dataset.meta}</div>`
+      + `<div class="seg">${bar.dataset.cohort} · <em>${bar.dataset.period}</em></div>`;
+    ftip.classList.add("show");
+  });
+  friseEl.addEventListener("mousemove", e => {
+    if(!ftip.classList.contains("show")) return;
+    let x = e.clientX + 14, y = e.clientY + 14;
+    const r = ftip.getBoundingClientRect();
+    if(x + r.width > window.innerWidth - 10) x = e.clientX - r.width - 14;
+    if(y + r.height > window.innerHeight - 10) y = e.clientY - r.height - 14;
+    ftip.style.left = x + "px"; ftip.style.top = y + "px";
+  });
+  friseEl.addEventListener("mouseout", e => {
+    if(e.target.closest(".bar")) ftip.classList.remove("show");
+  });
+
+  /* ---- V2 : barre de progression ---- */
+  const progressEl = document.getElementById("progress");
+  function updateProgress(){
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progressEl.style.width = h>0 ? (window.scrollY/h*100)+"%" : "0%";
+  }
+  window.addEventListener("scroll", updateProgress, {passive:true});
+  window.addEventListener("resize", updateProgress);
+  updateProgress();
+
+  /* ---- V2 : retour en haut ---- */
+  const fabTop = document.getElementById("fabTop");
+  window.addEventListener("scroll", () => {
+    fabTop.classList.toggle("show", window.scrollY > 600);
+  }, {passive:true});
+  fabTop.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+
+  /* ---- V2 : impression / PDF (révèle tous les onglets + les 2 paliers) ---- */
+  function expandForPrint(){
+    document.body.classList.add("printing");
+    const panel = document.getElementById("cultpanel");
+    if(panel && !panel.dataset.expanded){
+      panel.dataset.saved = panel.innerHTML;
+      let both = "";
+      ["2050","2100"].forEach(p => {
+        const d = cultData[p];
+        both += `<div class="cult-label">${d.label}</div>`
+          + d.items.map(it => `<div class="cult-card"><h3>${it.title}</h3><p>${it.txt}</p></div>`).join("");
+      });
+      panel.innerHTML = both;
+      panel.dataset.expanded = "1";
+    }
+  }
+  function restoreAfterPrint(){
+    document.body.classList.remove("printing");
+    const panel = document.getElementById("cultpanel");
+    if(panel && panel.dataset.expanded){
+      panel.innerHTML = panel.dataset.saved;
+      delete panel.dataset.expanded; delete panel.dataset.saved;
+    }
+  }
+  document.getElementById("fabPdf").addEventListener("click", () => {
+    expandForPrint();
+    setTimeout(() => window.print(), 80);
+  });
+  window.addEventListener("beforeprint", expandForPrint);
+  window.addEventListener("afterprint", restoreAfterPrint);
+
+  /* ---- V3 : graphique climatique SVG ---- */
+  (function(){
+    const years = [2030,2042,2060,2077,2095];
+    const data = {
+      folligny: { label:"Folligny",      summer:[36,37,38,38,38], winter:[-7,-6,-5,-5,-4] },
+      lafaye:   { label:"La Faye",        summer:[43,44,44,44,44], winter:[-7,-5,-2,2,4] },
+      manche:   { label:"Manche (côte)",  summer:[31,32,33,34,35], winter:[-4,-4,-3,-3,-2] }
+    };
+    const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
+    const plotW=W-ml-mr, plotH=H-mt-mb;
+    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
+    const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
+    const ys = t => mt + (yMax-t)/(yMax-yMin)*plotH;
+
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour Folligny, La Faye et la Manche">`;
+
+    for(let t=-20;t<=50;t+=10){
+      const y=ys(t), isZero=t===0;
+      svg += `<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
+      svg += `<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${t>0?'+':''}${t}</text>`;
+    }
+    svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
+
+    [2030,2050,2070,2090].forEach(yr=>{
+      const x=xs(yr);
+      svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
+      svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
+    });
+
+    svg += `<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
+    svg += `<line class="cg-axis" x1="${ml}" y1="${mt+plotH}" x2="${W-mr}" y2="${mt+plotH}"/>`;
+
+    const order=["manche","lafaye","folligny"];
+    order.forEach(key=>{
+      ["summer","winter"].forEach(season=>{
+        const pts = years.map((yr,i)=>`${xs(yr).toFixed(1)},${ys(data[key][season][i]).toFixed(1)}`).join(" ");
+        svg += `<polyline class="cg-line ${season} ${key}" points="${pts}"/>`;
+      });
+    });
+
+    order.forEach(key=>{
+      ["summer","winter"].forEach(season=>{
+        years.forEach((yr,i)=>{
+          const t=data[key][season][i];
+          svg += `<circle class="cg-dot ${key}" cx="${xs(yr).toFixed(1)}" cy="${ys(t).toFixed(1)}" r="3.4" `
+            + `data-place="${data[key].label}" data-year="${yr}" data-season="${season==='summer'?'été (max)':'hiver (min)'}" data-temp="${t>0?'+':''}${t} °C"/>`;
+        });
+      });
+    });
+
+    svg += `</svg>`;
+    document.getElementById("climSvg").innerHTML = svg;
+
+    document.getElementById("climLegend").innerHTML =
+      `<div class="lg"><span class="sw folligny"></span>Folligny</div>`
+     +`<div class="lg"><span class="sw lafaye"></span>La Faye</div>`
+     +`<div class="lg"><span class="sw manche"></span>Manche côte</div>`
+     +`<span class="sep">·</span>`
+     +`<span class="note">trait plein = été · tireté = hiver</span>`;
+
+    const tip = document.getElementById("ftip");
+    const svgEl = document.getElementById("climSvg");
+    svgEl.addEventListener("mouseover", e=>{
+      const d = e.target.closest(".cg-dot");
+      if(!d) return;
+      tip.innerHTML = `<b>${d.dataset.place}</b>`
+        + `<div class="meta">${d.dataset.year} · ${d.dataset.season}</div>`
+        + `<div class="seg"><em>${d.dataset.temp}</em></div>`;
+      tip.classList.add("show");
+    });
+    svgEl.addEventListener("mousemove", e=>{
+      if(!tip.classList.contains("show")) return;
+      let x=e.clientX+14, y=e.clientY+14;
+      const r=tip.getBoundingClientRect();
+      if(x+r.width>window.innerWidth-10) x=e.clientX-r.width-14;
+      if(y+r.height>window.innerHeight-10) y=e.clientY-r.height-14;
+      tip.style.left=x+"px"; tip.style.top=y+"px";
+    });
+    svgEl.addEventListener("mouseout", e=>{
+      if(e.target.closest(".cg-dot")) tip.classList.remove("show");
+    });
+  })();
+
+  /* ---- V4 : graphique hydrique SVG ---- */
+  (function(){
+    const years = [2030,2042,2060,2077,2095];
+    const data = {
+      folligny: { label:"Folligny",       ete:[-140,-160,-190,-205,-205], hiver:[405,408,405,402,400] },
+      lafaye:   { label:"La Faye",        ete:[-260,-290,-320,-340,-340], hiver:[280,255,230,205,190] },
+      manche:   { label:"Manche (côte)",  ete:[-110,-130,-150,-165,-170], hiver:[382,385,383,381,380] }
+    };
+    const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
+    const plotW=W-ml-mr, plotH=H-mt-mb;
+    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
+    const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
+    const ys = v => mt + (yMax-v)/(yMax-yMin)*plotH;
+
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour Folligny, La Faye et la Manche">`;
+
+    for(let v=-500;v<=400;v+=100){
+      const y=ys(v), isZero=v===0;
+      svg += `<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
+      svg += `<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${v>0?'+':''}${v}</text>`;
+    }
+    svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
+
+    [2030,2050,2070,2090].forEach(yr=>{
+      const x=xs(yr);
+      svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
+      svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
+    });
+
+    svg += `<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
+    svg += `<line class="cg-axis" x1="${ml}" y1="${mt+plotH}" x2="${W-mr}" y2="${mt+plotH}"/>`;
+
+    const order=["manche","lafaye","folligny"];
+    const cls={ete:"summer",hiver:"winter"};
+    order.forEach(key=>{
+      ["ete","hiver"].forEach(season=>{
+        const pts = years.map((yr,i)=>`${xs(yr).toFixed(1)},${ys(data[key][season][i]).toFixed(1)}`).join(" ");
+        svg += `<polyline class="cg-line ${cls[season]} ${key}" points="${pts}"/>`;
+      });
+    });
+
+    order.forEach(key=>{
+      ["ete","hiver"].forEach(season=>{
+        years.forEach((yr,i)=>{
+          const v=data[key][season][i];
+          svg += `<circle class="cg-dot ${key}" cx="${xs(yr).toFixed(1)}" cy="${ys(v).toFixed(1)}" r="3.4" `
+            + `data-place="${data[key].label}" data-year="${yr}" data-season="${season==='ete'?'été · bilan P−ETP':'hiver · recharge nappes'}" data-val="${v>0?'+':''}${v} mm"/>`;
+        });
+      });
+    });
+
+    svg += `</svg>`;
+    document.getElementById("hydroSvg").innerHTML = svg;
+
+    document.getElementById("hydroLegend").innerHTML =
+      `<div class="lg"><span class="sw folligny"></span>Folligny</div>`
+     +`<div class="lg"><span class="sw lafaye"></span>La Faye</div>`
+     +`<div class="lg"><span class="sw manche"></span>Manche côte</div>`
+     +`<span class="sep">·</span>`
+     +`<span class="note">trait plein = bilan estival (P−ETP) · tireté = recharge hivernale</span>`;
+
+    const tip = document.getElementById("ftip");
+    const svgEl = document.getElementById("hydroSvg");
+    svgEl.addEventListener("mouseover", e=>{
+      const d = e.target.closest(".cg-dot");
+      if(!d) return;
+      tip.innerHTML = `<b>${d.dataset.place}</b>`
+        + `<div class="meta">${d.dataset.year} · ${d.dataset.season}</div>`
+        + `<div class="seg"><em>${d.dataset.val}</em></div>`;
+      tip.classList.add("show");
+    });
+    svgEl.addEventListener("mousemove", e=>{
+      if(!tip.classList.contains("show")) return;
+      let x=e.clientX+14, y=e.clientY+14;
+      const r=tip.getBoundingClientRect();
+      if(x+r.width>window.innerWidth-10) x=e.clientX-r.width-14;
+      if(y+r.height>window.innerHeight-10) y=e.clientY-r.height-14;
+      tip.style.left=x+"px"; tip.style.top=y+"px";
+    });
+    svgEl.addEventListener("mouseout", e=>{
+      if(e.target.closest(".cg-dot")) tip.classList.remove("show");
+    });
+  })();
+
+  /* ---- V3 : mode présentation plein écran ---- */
+  (function(){
+    const tabEls = [...document.querySelectorAll('.tab')];
+    const ids = tabEls.map(t=>t.dataset.scope);
+    const names = tabEls.map(t=>(t.childNodes[0].textContent||'').trim());
+    let idx = 0;
+    const wrap = document.querySelector('.wrap');
+
+    function show(i){
+      idx = (i + ids.length) % ids.length;
+      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      document.getElementById(ids[idx]).classList.add('pslide');
+      if(wrap) wrap.scrollTop = 0;
+      document.getElementById('pPos').textContent = `${names[idx]} · ${idx+1} / ${ids.length}`;
+    }
+    function enter(){
+      document.body.classList.add('presenting');
+      const cur = tabEls.findIndex(t=>t.getAttribute('aria-selected')==='true');
+      show(cur<0?0:cur);
+      const el = document.documentElement;
+      const rq = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+      if(rq) rq.call(el).catch(()=>{ /* mode fenêtre accepté */ });
+    }
+    function exit(){
+      if(!document.body.classList.contains('presenting')) return;
+      document.body.classList.remove('presenting');
+      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      activate(ids[idx]);
+      const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+      if(exitFn && document.fullscreenElement) exitFn.call(document).catch(()=>{});
+    }
+
+    document.getElementById('fabPresent').addEventListener('click', enter);
+    document.getElementById('pPrev').addEventListener('click', ()=>show(idx-1));
+    document.getElementById('pNext').addEventListener('click', ()=>show(idx+1));
+    document.getElementById('pQuit').addEventListener('click', exit);
+    document.addEventListener('keydown', e=>{
+      if(!document.body.classList.contains('presenting')) return;
+      if(e.key==='ArrowRight'){e.preventDefault();show(idx+1);}
+      else if(e.key==='ArrowLeft'){e.preventDefault();show(idx-1);}
+      else if(e.key==='Escape'){exit();}
+    });
+    ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange'].forEach(ev=>{
+      document.addEventListener(ev, ()=>{
+        const active = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+        if(!active) exit();
+      });
+    });
+  })();
+
+</script>
+
+
+
+  </div>
+</div>
 <!-- ═══ SCRIPTS DE BRANCHES (inactifs jusqu'à l'ouverture) ═══════════════ -->
 <script type="text/plain" id="script-tpl-sombre">
 
@@ -4070,6 +5398,442 @@ _safe("initBranch", function(){
 
 </script>
 
+<script type="text/plain" id="script-tpl-optimiste">
+
+  const tabs = document.querySelectorAll('.tab');
+  const scopes = document.querySelectorAll('.scope');
+  function activate(id){
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scope === id)));
+    scopes.forEach(s => s.classList.toggle('active', s.id === id));
+    const active = document.getElementById(id);
+    if(active){
+      const phases = active.querySelectorAll('.phase, .verdict, .axis, .synth-lede, .matrix, .chrono-warn, .chrono-phase');
+      phases.forEach((p,i)=>{ p.style.animation='none'; void p.offsetWidth;
+        p.style.animation=`fade .5s ease both`; p.style.animationDelay=(i*60)+'ms'; });
+    }
+  }
+  tabs.forEach(t => t.addEventListener('click', ()=> activate(t.dataset.scope)));
+  // keyboard arrows
+  document.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
+    const list=[...tabs]; const cur=list.findIndex(t=>t.getAttribute('aria-selected')==='true');
+    if(e.key==='ArrowRight'){e.preventDefault();const n=list[(cur+1)%list.length];n.focus();activate(n.dataset.scope);}
+    if(e.key==='ArrowLeft'){e.preventDefault();const n=list[(cur-1+list.length)%list.length];n.focus();activate(n.dataset.scope);}
+  });
+
+  /* ---------- CULTURES ---------- */
+  const cultData = {
+    "2050": {
+      label: "2050 — la chaleur s'installe",
+      items: [
+        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> est échaudé sous +38 °C mais tenable — moissons avancées à juin, non sacrifiées. Les hivers doux sécurisent la levée en sortie d'hiver. Montée du <strong>tournesol, sorgho en appoint, orge précoce</strong>. Pas de bascule C4 obligatoire : la contrainte hydrique est réelle, mais la recharge hivernale laisse de la marge." },
+        { title: "Potager", txt: "Schéma à <strong>deux saisons</strong> (printemps / automne). Juillet-août : thermophiles paillés (tomate, poivron, aubergine, courgette). Hivers plus doux (−4 à −7 °C) → légumes d'hiver peu menacés, châssis allégé ou superflu. L'hiver doux est un gain net sur la saison froide." },
+        { title: "Fruitiers", txt: "<strong>Pommier cidre</strong> glisse vers variétés chaleur-tolérantes, récolte avancée. <strong>Vigne</strong> s'installe (dormance rustique, avide de chaleur). Cerisier, prunier : OK. <strong>Figuier</strong> facile. Les hivers doux (−4 °C) rendent l'<strong>olivier marginalement envisageable en situation abritée</strong> (mur exposé sud, microterrain), à tester prudemment." },
+        { title: "Haies", txt: "Renforcer le bocage existant : <strong>érable champêtre, charme, aubépine, noisetier, cornouiller mâle</strong>. Introduire dès maintenant <strong>chêne pubescent et cormier</strong> — 20 à 30 ans pour maturité, ce sont les plantations pour 2100. Pression sécheresse estivale réelle — le stress principal est hydrique, pas thermique." }
+      ]
+    },
+    "2100": {
+      label: "2100 — climat stabilisé",
+      items: [
+        { title: "Céréales", txt: "<strong>Sorgho et millet</strong> en sec là où l'eau manque — mais blé et orge restent possibles avec sobriété hydrique (étés ~+38 °C). <strong>Seigle</strong> sur sols pauvres et secs. Couverture permanente du sol obligatoire : le sol nu sous +38 °C ne pardonne pas. Semis décalés, moissons au plus tôt." },
+        { title: "Potager", txt: "Modèle <strong>paillage + ombrière + goutte-à-goutte économe</strong>. L'eau reste la contrainte n°1 — chaque litre compte. Été sous ombrage : gombo, patate douce, courge, niébé, aubergine. L'hiver doux (−4 °C) élargit la saison fraîche vers l'automne et le printemps sans protection lourde." },
+        { title: "Fruitiers", txt: "<strong>Vigne, pommier/poirier</strong> (porte-greffes vigoureux + ombrage partiel), <strong>figuier</strong> (repart de souche), <strong>kaki, grenadier</strong>. <strong>Olivier et agrume abrités envisageables</strong> (hiver mini ~−4 °C) — agroforesterie recommandée, situation protégée exigée. Contrainte principale : l'eau." },
+        { title: "Haies", txt: "Infrastructure vitale : ombre, brise-vent, fourrage, bois d'œuvre, biodiversité. Charpente résistante : <strong>chêne pubescent, érable champêtre, cormier, alisier, mûrier</strong>. Fixateurs d'azote : <strong>argousier, robinier</strong> (bois imputrescible, drageonnant). À surveiller : hêtre et frêne, fragiles sous sécheresse et sous pression hydrique croissante." }
+      ]
+    }
+  };
+
+  const relaisData = [
+    { tier: "Plantés une fois — vivent jusqu'à/au-delà de 2100", cls: "long", rows: [
+      { name: "Poirier (haute-tige)", meta: "60–100 ans", c: [[2026,2110]] },
+      { name: "Pommier cidre", meta: "60–100 ans · apogée ~2070", c: [[2026,2106]] },
+      { name: "Noyer", meta: "100–150 ans · récolte ~2040", c: [[2026,2110]] },
+      { name: "Châtaignier / cormier", meta: "séculaires", c: [[2026,2110]] },
+      { name: "Olivier (abrité)", meta: "séculaire · possible en situation abritée", c: [[2026,2110]] },
+      { name: "Figuier", meta: "rabattu/repart de souche", c: [[2026,2110]] },
+      { name: "Vigne", meta: "40–80 ans · 1 renouvellement", c: [[2026,2078],[2078,2110]] }
+    ]},
+    { tier: "Vie moyenne — 2 à 3 plantations", cls: "med", rows: [
+      { name: "Cerisier", meta: "25–40 ans", c: [[2026,2063],[2063,2100]] },
+      { name: "Amandier", meta: "30–50 ans · peu sensible au gel tardif", c: [[2026,2068],[2068,2110]] },
+      { name: "Prunier", meta: "20–30 ans", c: [[2026,2051],[2051,2076],[2076,2101]] }
+    ]},
+    { tier: "Relais serré — quasi une culture", cls: "short", rows: [
+      { name: "Abricotier", meta: "15–25 ans · gel tardif raréfié", c: [[2026,2046],[2046,2066],[2066,2086],[2086,2106]] },
+      { name: "Pêcher", meta: "8–15 ans · ~6 générations", c: [[2026,2038],[2038,2050],[2050,2062],[2062,2074],[2074,2086],[2086,2098],[2098,2110]] }
+    ]}
+  ];
+
+  function renderCult(p){
+    const d = cultData[p];
+    let cards = d.items.map(it => `<div class="cult-card"><h3>${it.title}</h3><p>${it.txt}</p></div>`).join("");
+    document.getElementById("bo-cultpanel").innerHTML = `<div class="cult-label">${d.label}</div>${cards}`;
+  }
+
+  const AX0=2026, AX1=2110;
+  const pct = y => (y-AX0)/(AX1-AX0)*100;
+
+  function escapeXml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function renderFrise(){
+    const tMin=2026, tMax=2110;
+    const W=680, labelW=152, mr=12;
+    const plotW = W - labelW - mr;
+    const tx = yr => labelW + (yr-tMin)/(tMax-tMin)*plotW;
+    const axisH=24, tierH=22, rowH=24, barH=11, topPad=6, botPad=10;
+
+    let totalH = topPad + axisH;
+    relaisData.forEach(g => { totalH += tierH + g.rows.length*rowH; });
+    totalH += botPad;
+
+    const ticks=[2026,2050,2075,2100];
+    const decades=[2036,2046,2056,2066,2076,2086,2096,2106];
+    const plotTop = topPad + axisH;
+    const plotBot = totalH - botPad;
+
+    let s = `<svg viewBox="0 0 ${W} ${totalH.toFixed(0)}" role="img" aria-label="Frise des durées de vie productive des plantations de 2026 à 2110">`;
+    s += `<defs>`
+      + `<linearGradient id="bo-gLong" x1="0" x2="1"><stop offset="0" stop-color="#5b8aa6"/><stop offset="1" stop-color="#7db0c9"/></linearGradient>`
+      + `<linearGradient id="bo-gMed" x1="0" x2="1"><stop offset="0" stop-color="#d98a4e"/><stop offset="1" stop-color="#e8a368"/></linearGradient>`
+      + `<linearGradient id="bo-gShort" x1="0" x2="1"><stop offset="0" stop-color="#c45c3c"/><stop offset="1" stop-color="#dd7b54"/></linearGradient>`
+      + `</defs>`;
+
+    decades.forEach(yr=>{
+      const x=tx(yr).toFixed(1);
+      s += `<line x1="${x}" y1="${(plotTop-4).toFixed(1)}" x2="${x}" y2="${plotBot.toFixed(1)}" stroke="rgba(236,229,216,.05)" stroke-width="1"/>`;
+    });
+    ticks.forEach(yr=>{
+      const x=tx(yr), now=yr===2026;
+      s += `<line x1="${x.toFixed(1)}" y1="${(plotTop-4).toFixed(1)}" x2="${x.toFixed(1)}" y2="${plotBot.toFixed(1)}" stroke="${now?'rgba(232,116,59,.34)':'rgba(236,229,216,.11)'}" stroke-width="${now?1.4:1}"/>`;
+      s += `<text x="${x.toFixed(1)}" y="${(topPad+11).toFixed(0)}" text-anchor="${now?'start':'middle'}" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="${now?'#e8743b':'#7fa6bd'}">${yr}</text>`;
+    });
+
+    let y = plotTop;
+    relaisData.forEach(g=>{
+      s += `<text x="2" y="${(y+13).toFixed(1)}" font-family="'JetBrains Mono',monospace" font-size="8.5" letter-spacing="1.3" fill="#6f675b">${escapeXml(g.tier.toUpperCase())}</text>`;
+      y += tierH;
+      g.rows.forEach(r=>{
+        const barY = y + (rowH-barH)/2;
+        s += `<text x="${labelW-10}" y="${(barY+8.8).toFixed(1)}" text-anchor="end" font-family="Spectral,serif" font-size="12.5" fill="#ece3d3">${escapeXml(r.name)}</text>`;
+        const n=r.c.length;
+        r.c.forEach((seg,i)=>{
+          const x1=tx(seg[0]), w=tx(seg[1])-x1;
+          const grad = g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort';
+          const cohort = n>1?`cohorte ${i+1} sur ${n}`:'plantation unique';
+          const end = seg[1]>2100?'au-delà de 2100':seg[1];
+          s += `<rect class="bar ${g.cls}" x="${x1.toFixed(1)}" y="${barY.toFixed(1)}" width="${Math.max(w,2).toFixed(1)}" height="${barH}" rx="2" fill="url(#${grad})" `
+            + `data-name="${escapeXml(r.name)}" data-meta="${escapeXml(r.meta)}" data-period="${seg[0]} → ${end}" data-cohort="${cohort}"/>`;
+          if(i>0) s += `<rect x="${(x1-0.75).toFixed(1)}" y="${(barY-2).toFixed(1)}" width="1.5" height="${barH+4}" rx="0.5" fill="#d97a35"/>`;
+        });
+        y += rowH;
+      });
+    });
+
+    s += `</svg>`;
+    document.getElementById("bo-frise").innerHTML = s;
+  }
+
+  document.querySelectorAll("#bo-culttoggle button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("#bo-culttoggle button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      renderCult(b.dataset.p);
+    });
+  });
+
+  renderCult("2050");
+  renderFrise();
+
+  /* ---- V2 : tooltip frise ---- */
+  const ftip = document.getElementById("bo-ftip");
+  const friseEl = document.getElementById("bo-frise");
+  friseEl.addEventListener("mouseover", e => {
+    const bar = e.target.closest(".bar");
+    if(!bar) return;
+    ftip.innerHTML = `<b>${bar.dataset.name}</b>`
+      + `<div class="meta">${bar.dataset.meta}</div>`
+      + `<div class="seg">${bar.dataset.cohort} · <em>${bar.dataset.period}</em></div>`;
+    ftip.classList.add("show");
+  });
+  friseEl.addEventListener("mousemove", e => {
+    if(!ftip.classList.contains("show")) return;
+    let x = e.clientX + 14, y = e.clientY + 14;
+    const r = ftip.getBoundingClientRect();
+    if(x + r.width > window.innerWidth - 10) x = e.clientX - r.width - 14;
+    if(y + r.height > window.innerHeight - 10) y = e.clientY - r.height - 14;
+    ftip.style.left = x + "px"; ftip.style.top = y + "px";
+  });
+  friseEl.addEventListener("mouseout", e => {
+    if(e.target.closest(".bar")) ftip.classList.remove("show");
+  });
+
+  /* ---- V2 : barre de progression ---- */
+  const progressEl = document.getElementById("bo-progress");
+  function updateProgress(){
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progressEl.style.width = h>0 ? (window.scrollY/h*100)+"%" : "0%";
+  }
+  window.addEventListener("scroll", updateProgress, {passive:true});
+  window.addEventListener("resize", updateProgress);
+  updateProgress();
+
+  /* ---- V2 : retour en haut ---- */
+  const fabTop = document.getElementById("bo-fabTop");
+  window.addEventListener("scroll", () => {
+    fabTop.classList.toggle("show", window.scrollY > 600);
+  }, {passive:true});
+  fabTop.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+
+  /* ---- V2 : impression / PDF (révèle tous les onglets + les 2 paliers) ---- */
+  function expandForPrint(){
+    document.body.classList.add("printing");
+    const panel = document.getElementById("bo-cultpanel");
+    if(panel && !panel.dataset.expanded){
+      panel.dataset.saved = panel.innerHTML;
+      let both = "";
+      ["2050","2100"].forEach(p => {
+        const d = cultData[p];
+        both += `<div class="cult-label">${d.label}</div>`
+          + d.items.map(it => `<div class="cult-card"><h3>${it.title}</h3><p>${it.txt}</p></div>`).join("");
+      });
+      panel.innerHTML = both;
+      panel.dataset.expanded = "1";
+    }
+  }
+  function restoreAfterPrint(){
+    document.body.classList.remove("printing");
+    const panel = document.getElementById("bo-cultpanel");
+    if(panel && panel.dataset.expanded){
+      panel.innerHTML = panel.dataset.saved;
+      delete panel.dataset.expanded; delete panel.dataset.saved;
+    }
+  }
+  document.getElementById("bo-fabPdf").addEventListener("click", () => {
+    expandForPrint();
+    setTimeout(() => window.print(), 80);
+  });
+  window.addEventListener("beforeprint", expandForPrint);
+  window.addEventListener("afterprint", restoreAfterPrint);
+
+  /* ---- V3 : graphique climatique SVG ---- */
+  (function(){
+    const years = [2030,2042,2060,2077,2095];
+    const data = {
+      folligny: { label:"Folligny",      summer:[36,37,38,38,38], winter:[-7,-6,-5,-5,-4] },
+      lafaye:   { label:"La Faye",        summer:[43,44,44,44,44], winter:[-7,-5,-2,2,4] },
+      manche:   { label:"Manche (côte)",  summer:[31,32,33,34,35], winter:[-4,-4,-3,-3,-2] }
+    };
+    const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
+    const plotW=W-ml-mr, plotH=H-mt-mb;
+    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
+    const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
+    const ys = t => mt + (yMax-t)/(yMax-yMin)*plotH;
+
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour Folligny, La Faye et la Manche">`;
+
+    for(let t=-20;t<=50;t+=10){
+      const y=ys(t), isZero=t===0;
+      svg += `<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
+      svg += `<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${t>0?'+':''}${t}</text>`;
+    }
+    svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
+
+    [2030,2050,2070,2090].forEach(yr=>{
+      const x=xs(yr);
+      svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
+      svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
+    });
+
+    svg += `<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
+    svg += `<line class="cg-axis" x1="${ml}" y1="${mt+plotH}" x2="${W-mr}" y2="${mt+plotH}"/>`;
+
+    const order=["manche","lafaye","folligny"];
+    order.forEach(key=>{
+      ["summer","winter"].forEach(season=>{
+        const pts = years.map((yr,i)=>`${xs(yr).toFixed(1)},${ys(data[key][season][i]).toFixed(1)}`).join(" ");
+        svg += `<polyline class="cg-line ${season} ${key}" points="${pts}"/>`;
+      });
+    });
+
+    order.forEach(key=>{
+      ["summer","winter"].forEach(season=>{
+        years.forEach((yr,i)=>{
+          const t=data[key][season][i];
+          svg += `<circle class="cg-dot ${key}" cx="${xs(yr).toFixed(1)}" cy="${ys(t).toFixed(1)}" r="3.4" `
+            + `data-place="${data[key].label}" data-year="${yr}" data-season="${season==='summer'?'été (max)':'hiver (min)'}" data-temp="${t>0?'+':''}${t} °C"/>`;
+        });
+      });
+    });
+
+    svg += `</svg>`;
+    document.getElementById("bo-climSvg").innerHTML = svg;
+
+    document.getElementById("bo-climLegend").innerHTML =
+      `<div class="lg"><span class="sw folligny"></span>Folligny</div>`
+     +`<div class="lg"><span class="sw lafaye"></span>La Faye</div>`
+     +`<div class="lg"><span class="sw manche"></span>Manche côte</div>`
+     +`<span class="sep">·</span>`
+     +`<span class="note">trait plein = été · tireté = hiver</span>`;
+
+    const tip = document.getElementById("bo-ftip");
+    const svgEl = document.getElementById("bo-climSvg");
+    svgEl.addEventListener("mouseover", e=>{
+      const d = e.target.closest(".cg-dot");
+      if(!d) return;
+      tip.innerHTML = `<b>${d.dataset.place}</b>`
+        + `<div class="meta">${d.dataset.year} · ${d.dataset.season}</div>`
+        + `<div class="seg"><em>${d.dataset.temp}</em></div>`;
+      tip.classList.add("show");
+    });
+    svgEl.addEventListener("mousemove", e=>{
+      if(!tip.classList.contains("show")) return;
+      let x=e.clientX+14, y=e.clientY+14;
+      const r=tip.getBoundingClientRect();
+      if(x+r.width>window.innerWidth-10) x=e.clientX-r.width-14;
+      if(y+r.height>window.innerHeight-10) y=e.clientY-r.height-14;
+      tip.style.left=x+"px"; tip.style.top=y+"px";
+    });
+    svgEl.addEventListener("mouseout", e=>{
+      if(e.target.closest(".cg-dot")) tip.classList.remove("show");
+    });
+  })();
+
+  /* ---- V4 : graphique hydrique SVG ---- */
+  (function(){
+    const years = [2030,2042,2060,2077,2095];
+    const data = {
+      folligny: { label:"Folligny",       ete:[-140,-160,-190,-205,-205], hiver:[405,408,405,402,400] },
+      lafaye:   { label:"La Faye",        ete:[-260,-290,-320,-340,-340], hiver:[280,255,230,205,190] },
+      manche:   { label:"Manche (côte)",  ete:[-110,-130,-150,-165,-170], hiver:[382,385,383,381,380] }
+    };
+    const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
+    const plotW=W-ml-mr, plotH=H-mt-mb;
+    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
+    const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
+    const ys = v => mt + (yMax-v)/(yMax-yMin)*plotH;
+
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour Folligny, La Faye et la Manche">`;
+
+    for(let v=-500;v<=400;v+=100){
+      const y=ys(v), isZero=v===0;
+      svg += `<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
+      svg += `<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${v>0?'+':''}${v}</text>`;
+    }
+    svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
+
+    [2030,2050,2070,2090].forEach(yr=>{
+      const x=xs(yr);
+      svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
+      svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
+    });
+
+    svg += `<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
+    svg += `<line class="cg-axis" x1="${ml}" y1="${mt+plotH}" x2="${W-mr}" y2="${mt+plotH}"/>`;
+
+    const order=["manche","lafaye","folligny"];
+    const cls={ete:"summer",hiver:"winter"};
+    order.forEach(key=>{
+      ["ete","hiver"].forEach(season=>{
+        const pts = years.map((yr,i)=>`${xs(yr).toFixed(1)},${ys(data[key][season][i]).toFixed(1)}`).join(" ");
+        svg += `<polyline class="cg-line ${cls[season]} ${key}" points="${pts}"/>`;
+      });
+    });
+
+    order.forEach(key=>{
+      ["ete","hiver"].forEach(season=>{
+        years.forEach((yr,i)=>{
+          const v=data[key][season][i];
+          svg += `<circle class="cg-dot ${key}" cx="${xs(yr).toFixed(1)}" cy="${ys(v).toFixed(1)}" r="3.4" `
+            + `data-place="${data[key].label}" data-year="${yr}" data-season="${season==='ete'?'été · bilan P−ETP':'hiver · recharge nappes'}" data-val="${v>0?'+':''}${v} mm"/>`;
+        });
+      });
+    });
+
+    svg += `</svg>`;
+    document.getElementById("bo-hydroSvg").innerHTML = svg;
+
+    document.getElementById("bo-hydroLegend").innerHTML =
+      `<div class="lg"><span class="sw folligny"></span>Folligny</div>`
+     +`<div class="lg"><span class="sw lafaye"></span>La Faye</div>`
+     +`<div class="lg"><span class="sw manche"></span>Manche côte</div>`
+     +`<span class="sep">·</span>`
+     +`<span class="note">trait plein = bilan estival (P−ETP) · tireté = recharge hivernale</span>`;
+
+    const tip = document.getElementById("bo-ftip");
+    const svgEl = document.getElementById("bo-hydroSvg");
+    svgEl.addEventListener("mouseover", e=>{
+      const d = e.target.closest(".cg-dot");
+      if(!d) return;
+      tip.innerHTML = `<b>${d.dataset.place}</b>`
+        + `<div class="meta">${d.dataset.year} · ${d.dataset.season}</div>`
+        + `<div class="seg"><em>${d.dataset.val}</em></div>`;
+      tip.classList.add("show");
+    });
+    svgEl.addEventListener("mousemove", e=>{
+      if(!tip.classList.contains("show")) return;
+      let x=e.clientX+14, y=e.clientY+14;
+      const r=tip.getBoundingClientRect();
+      if(x+r.width>window.innerWidth-10) x=e.clientX-r.width-14;
+      if(y+r.height>window.innerHeight-10) y=e.clientY-r.height-14;
+      tip.style.left=x+"px"; tip.style.top=y+"px";
+    });
+    svgEl.addEventListener("mouseout", e=>{
+      if(e.target.closest(".cg-dot")) tip.classList.remove("show");
+    });
+  })();
+
+  /* ---- V3 : mode présentation plein écran ---- */
+  (function(){
+    const tabEls = [...document.querySelectorAll('.tab')];
+    const ids = tabEls.map(t=>t.dataset.scope);
+    const names = tabEls.map(t=>(t.childNodes[0].textContent||'').trim());
+    let idx = 0;
+    const wrap = document.querySelector('.wrap');
+
+    function show(i){
+      idx = (i + ids.length) % ids.length;
+      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      document.getElementById(ids[idx]).classList.add('pslide');
+      if(wrap) wrap.scrollTop = 0;
+      document.getElementById('bo-pPos').textContent = `${names[idx]} · ${idx+1} / ${ids.length}`;
+    }
+    function enter(){
+      document.body.classList.add('presenting');
+      const cur = tabEls.findIndex(t=>t.getAttribute('aria-selected')==='true');
+      show(cur<0?0:cur);
+      const el = document.documentElement;
+      const rq = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+      if(rq) rq.call(el).catch(()=>{ /* mode fenêtre accepté */ });
+    }
+    function exit(){
+      if(!document.body.classList.contains('presenting')) return;
+      document.body.classList.remove('presenting');
+      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      activate(ids[idx]);
+      const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+      if(exitFn && document.fullscreenElement) exitFn.call(document).catch(()=>{});
+    }
+
+    document.getElementById('bo-fabPresent').addEventListener('click', enter);
+    document.getElementById('bo-pPrev').addEventListener('click', ()=>show(idx-1));
+    document.getElementById('bo-pNext').addEventListener('click', ()=>show(idx+1));
+    document.getElementById('bo-pQuit').addEventListener('click', exit);
+    document.addEventListener('keydown', e=>{
+      if(!document.body.classList.contains('presenting')) return;
+      if(e.key==='ArrowRight'){e.preventDefault();show(idx+1);}
+      else if(e.key==='ArrowLeft'){e.preventDefault();show(idx-1);}
+      else if(e.key==='Escape'){exit();}
+    });
+    ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange'].forEach(ev=>{
+      document.addEventListener(ev, ()=>{
+        const active = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+        if(!active) exit();
+      });
+    });
+  })();
+
+
+</script>
+
 <!-- ═══ ORCHESTRATEUR ═════════════════════════════════════════════════════ -->
 <script>
 
@@ -4077,10 +5841,13 @@ _safe("initBranch", function(){
 (function(){
   var STORE = 'prospective.branch';
   var executed = {};
+  function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
 
   var screenHub    = document.getElementById('screen-hub');
   var screenSombre = document.getElementById('screen-sombre');
   var screenMedian = document.getElementById('screen-median');
+  var screenOptimiste = document.getElementById('screen-optimiste');
 
   function execBranchScript(branchId) {
     if (executed[branchId]) return;
@@ -4089,18 +5856,19 @@ _safe("initBranch", function(){
     var tpl = document.getElementById(tplId);
     if (!tpl) return;
     var s = document.createElement('script');
-    s.textContent = tpl.textContent;
+    s.textContent = '(function(){\n' + tpl.textContent + '\n})();';
     document.body.appendChild(s);
   }
 
   function showHub() {
     screenSombre.classList.remove('active');
     screenMedian.classList.remove('active');
+    screenOptimiste.classList.remove('active');
     screenHub.classList.add('active');
     document.body.classList.remove('branch-open');
     document.title = 'Prospective 2025\u20132100 \u2014 Trois trajectoires';
     window.scrollTo(0,0);
-    var stored = localStorage.getItem(STORE);
+    var stored = lsGet(STORE);
     document.querySelectorAll('.card').forEach(function(c){
       c.classList.toggle('selected', !!stored && c.dataset.id === stored);
     });
@@ -4108,15 +5876,16 @@ _safe("initBranch", function(){
   }
 
   function showBranch(id) {
-    var screen = id === 'sombre' ? screenSombre : screenMedian;
+    var screen = id === 'sombre' ? screenSombre : (id === 'optimiste' ? screenOptimiste : screenMedian);
     screenHub.classList.remove('active');
     screenSombre.classList.remove('active');
     screenMedian.classList.remove('active');
+    screenOptimiste.classList.remove('active');
     screen.classList.add('active');
     document.body.classList.add('branch-open');
-    var names = {sombre:"L\u2019arc sombre", median:"La ligne de cr\u00eate"};
+    var names = {sombre:"L\u2019arc sombre", median:"La ligne de cr\u00eate", optimiste:"La bifurcation"};
     document.title = (names[id]||id) + ' \u2014 Prospective 2025\u20132100';
-    localStorage.setItem(STORE, id);
+    lsSet(STORE, id);
     window.scrollTo(0,0);
     document.documentElement.dataset.branch = id;
     document.querySelectorAll('.card').forEach(function(c){
@@ -4136,7 +5905,7 @@ _safe("initBranch", function(){
       if(pBtn){
         showBranch(pBtn.dataset.branch);
         requestAnimationFrame(function(){
-          var fabId = pBtn.dataset.branch==='sombre' ? 'bs-fabPresent' : 'bm-fabPresent';
+          var fabId = pBtn.dataset.branch==='sombre' ? 'bs-fabPresent' : (pBtn.dataset.branch==='optimiste' ? 'bo-fabPresent' : 'bm-fabPresent');
           var fab = document.getElementById(fabId);
           if(fab) setTimeout(function(){ fab.click(); }, 120);
         });
@@ -4144,7 +5913,7 @@ _safe("initBranch", function(){
       }
       var card = e.target.closest('.card.live');
       if(card && !e.target.closest('button')){
-        localStorage.setItem(STORE, card.dataset.id);
+        lsSet(STORE, card.dataset.id);
         document.querySelectorAll('.card').forEach(function(c){
           c.classList.toggle('selected', c.dataset.id === card.dataset.id);
         });
@@ -4182,9 +5951,9 @@ _safe("initBranch", function(){
 
   /* État initial */
   var urlBranch = new URLSearchParams(location.search).get('branch');
-  var stored    = localStorage.getItem(STORE);
+  var stored    = lsGet(STORE);
   var init      = urlBranch || stored;
-  if(init === 'sombre' || init === 'median'){
+  if(init === 'sombre' || init === 'median' || init === 'optimiste'){
     showBranch(init);
   } else {
     showHub();
