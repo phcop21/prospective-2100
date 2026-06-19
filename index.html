@@ -999,7 +999,7 @@ body.branch-open .hub-screen{display:none !important;}
     <div class="view-head">
       <p class="where">Trois branches</p>
       <h3>Quel siècle voulez-vous lire ?</h3>
-      <p class="lede">Survolez et <em>sélectionnez</em> une branche pour teinter le hub à sa couleur ; ouvrez-la en pleine lecture quand vous êtes prêt. Deux branches sont opérationnelles ; la troisième s'écrit.</p>
+      <p class="lede">Survolez et <em>sélectionnez</em> une branche pour teinter le hub à sa couleur ; ouvrez-la en pleine lecture quand vous êtes prêt. Les trois branches sont opérationnelles.</p>
     </div>
     <div class="cards" id="cards"><!-- généré par JS depuis BRANCHES --></div>
   </section>
@@ -1014,7 +1014,7 @@ body.branch-open .hub-screen{display:none !important;}
     <div class="ctable-wrap">
       <table class="ctable" id="ctable"><!-- généré par JS depuis COMPARISON --></table>
     </div>
-    <p class="ctable-note">Élévations marines en référence à la moyenne 1995-2014 ; températures estivales = pointes record, non moyennes. La branche optimiste étant <b>en cours d'écriture</b>, ses valeurs mondiales et marines sont des estimations provisoires (Accord de Paris) et ses lignes communales restent à venir — l'honnêteté du dispositif : prospective, non prévision.</p>
+    <p class="ctable-note">Élévations marines en référence à la moyenne 1995-2014 ; températures estivales = pointes record, non moyennes. La branche optimiste suit les cibles de l'Accord de Paris ; comme pour les autres branches, ses lignes communales relèvent de l'illustration ancrée dans la géographie réelle — l'honnêteté du dispositif : prospective, non prévision.</p>
   </section>
 
   <!-- ================= FOOTER ================= -->
@@ -1114,16 +1114,16 @@ const COMPARISON = [
     optimiste:'<span class="num">~+0,40 m</span>' },
   { lab:"AMOC",
     sombre:'<strong>Franchit son seuil</strong> ~2035-45 — climat à deux visages, hivers brutaux',
-    median:"S'affaiblit <strong>35–50 %</strong> sans franchir — un seul visage, l'été",
+    median:"S'affaiblit <strong>~50 %</strong> sans franchir — un seul visage, l'été",
     optimiste:'Affaiblissement modéré, <strong>pas de seuil</strong>' },
   { lab:"Folligny (Manche, 50) · été / hiver 2100",
     sombre:'été <span class="num">+43 °C</span> / hiver <span class="num">−15 °C</span> — la côte se vide',
     median:'été <span class="num">+40 °C</span> / hiver <span class="num">−4 °C</span> — commune de réception',
     optimiste:'été <span class="num">+38 °C</span> / hiver <span class="num">−4 °C</span> — refuge respirable, accueil organisé' },
   { lab:"La Faye (Charente, 16) · été / hiver 2100",
-    sombre:'été <span class="num">+50 °C</span> / hiver <span class="num">+8,6 °C</span> — désertion estivale',
-    median:'été <span class="num">+47 °C</span> / hiver <span class="num">+5 °C</span> — conversion, déclin lent',
-    optimiste:'été <span class="num">+44 °C</span> / hiver <span class="num">+4 °C</span> — terroir transformé, déclin sans exode' },
+    sombre:'été <span class="num">+50 °C</span> / hiver gel exceptionnel — désertion estivale',
+    median:'été <span class="num">+47 °C</span> / hiver gel rare — conversion, déclin lent',
+    optimiste:'été <span class="num">+44 °C</span> / hiver gel rare — terroir transformé, déclin sans exode' },
   { lab:"L'État & la société",
     sombre:'Se défait aux marges : <strong>triage sec</strong>, désertion, zones abandonnées',
     median:"<strong>Tri négocié</strong>, services différenciés ; l'assurance se retire avant l'État",
@@ -1625,7 +1625,7 @@ _safe("initBranch", function(){
         <h3>Étés hostiles au Sud</h3>
         <div class="chips"><span class="chip heat">Sud +1,5 °C l'été</span><span class="chip water">eau ▮▮▯▯</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Canicules et sécheresses récurrentes en Méditerranée ; mégafeux ibériques et grecs chaque été.</p></div>
-        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient, mais la politique se durcit élection après élection. Fin 2025, l'<strong>Islande classe le risque AMOC menace de sécurité nationale</strong> — premier État à inscrire le basculement océanique dans une doctrine de défense.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient, mais la politique se durcit élection après élection. Fin 2025, l'<strong>Islande classe le risque AMOC comme menace de sécurité nationale</strong> — premier État à inscrire le basculement océanique dans une doctrine de défense.</p></div>
       </div>
 
       <div class="phase">
@@ -1700,7 +1700,7 @@ _safe("initBranch", function(){
       <p class="lede">L'eau devient la variable maîtresse. Épuisé par les catastrophes, l'État fait du <em>tri</em> : il protège métropoles et infrastructures stratégiques, et lâche la périphérie. La France se recompose vers le Nord-Ouest atlantique.</p>
     </div>
     <div class="chrono-warn">
-  <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices de l'arc : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−29 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : le vocabulaire du triage de 2049 s'écrit déjà, en creux. Au même moment, la science mesure sa propre fragilisation : l'IGCC 2025 (Forster et al., publié le 11 juin 2026) documente un système mondial d'observation du climat sous-financé — missions satellitaires menacées, mission ESA TRUTHS annulée, réseaux in situ amaigris, programme GCOS sans pérennité garantie. <b>Les yeux se ferment au moment où tout s'accélère.</b>
+  <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices de l'arc : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−24 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : le vocabulaire du triage de 2049 s'écrit déjà, en creux. Au même moment, la science mesure sa propre fragilisation : l'IGCC 2025 (Forster et al., publié le 11 juin 2026) documente un système mondial d'observation du climat sous-financé — missions satellitaires menacées, mission ESA TRUTHS annulée, réseaux in situ amaigris, programme GCOS sans pérennité garantie. <b>Les yeux se ferment au moment où tout s'accélère.</b>
 </div>
     <div class="timeline">
 
@@ -1796,7 +1796,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2030 — 2035</p>
         <h3>Les premiers regards</h3>
-        <div class="chips"><span class="chip heat">côte +32 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="chips"><span class="chip heat">côte +32 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −4 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés secs en série ; premières tensions sur les forages laitiers. Tempêtes hivernales en hausse.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Arrivée discrète de néo-ruraux et de retraités « réfugiés thermiques » du Sud. L'immobilier côtier monte — premier signal.</p></div>
       </div>
@@ -1890,15 +1890,15 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2025 — 2030</p>
         <h3>La vie d'avant</h3>
-        <div class="chips"><span class="chip heat">été +37 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −8 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. La Hague reste à 116 km — hors de vue.</p></div>
+        <div class="chips"><span class="chip heat">été +36 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −7 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. Flamanville reste à ~90 km — hors de vue.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>~1 116 habitants, prés, fermes laitières, école, commerces. Communauté intacte. Le monde craque au loin ; ici, tout paraît normal.</p></div>
       </div>
 
       <div class="phase">
         <p class="phase-years">2030 — 2035</p>
         <h3>Les étés secs</h3>
-        <div class="chips"><span class="chip heat">été +37 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −8 °C</span></div>
+        <div class="chips"><span class="chip heat">été +37 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés secs en série ; les sources donnent moins en août. Premiers arrêtés de restriction durables sur la commune.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>L'école tient, les commerces aussi. Quelques maisons achetées par des familles venues du Sud — anecdotique, croit-on.</p></div>
       </div>
@@ -1971,7 +1971,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2025 — 2030</p>
         <h3>L'illusion de la normalité</h3>
-        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −8 °C</span></div>
+        <div class="chips"><span class="chip heat">été +43 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −7 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Sud-Ouest continental, étés déjà rudes (Angoulême 37,8 °C en mai 2026). Les hivers se réchauffent <strong>normalement</strong> (témoin : pas de froid AMOC). Cela rassure à tort.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Céréales et terroir sous stress ; l'eau est déjà un sujet. Le bourg semble tenir — mais la trajectoire estivale est implacable.</p></div>
       </div>
@@ -1979,7 +1979,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2030 — 2035</p>
         <h3>Le 48 °C régional</h3>
-        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −7 °C</span></div>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p><strong>La canicule à 48 °C du Sud-Ouest (~2031)</strong> frappe à quelques dizaines de kilomètres. Les nappes ne se rechargent plus complètement l'hiver.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Premiers départs d'agriculteurs ; les jeunes ne reprennent pas. L'eau devient politiquement explosive dans la région.</p></div>
       </div>
@@ -1987,7 +1987,7 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2035 — 2040</p>
         <h3>Les nappes décrochent</h3>
-        <div class="chips"><span class="chip heat">été +45 °C</span><span class="chip crit">eau ▮▮▮▮</span><span class="chip">hiver −6 °C</span></div>
+        <div class="chips"><span class="chip heat">été +45 °C</span><span class="chip crit">eau ▮▮▮▮</span><span class="chip">hiver −5 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés vers +45 °C ; gel en net recul (exceptionnel après ~2075). Nappes et rivières amorcent leur effondrement — <strong>c'est le pays des mégabassines</strong>, épicentre régional des conflits de l'eau.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>La céréaliculture décroche — l'arrêt complet viendra vers 2060. <strong>L'eau et la chaleur deviennent la contrainte vitale.</strong> Les services publics s'éloignent.</p></div>
       </div>
@@ -1995,7 +1995,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2040 — 2045</p>
         <h3>On commence à partir</h3>
-        <div class="chips"><span class="chip heat">été +46 °C</span><span class="chip crit">eau ▮▮▮▮</span><span class="chip">hiver −5 °C</span></div>
+        <div class="chips"><span class="chip heat">été +46 °C</span><span class="chip crit">eau ▮▮▮▮</span><span class="chip">hiver −3 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés à +46 °C ; la Charente en étiage sévère dès juin. Le gel devient rare.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Familles, puis exploitations entières : <strong>on commence à partir</strong>. La guerre des bassines (~2043) se joue ici aussi. L'État retire ses services.</p></div>
       </div>
@@ -2003,7 +2003,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2045 — 2050</p>
         <h3>La terre qu'on quitte</h3>
-        <div class="chips"><span class="chip heat">été +47 °C</span><span class="chip crit">eau ▮▮▮▮</span><span class="chip">hiver −3 °C</span></div>
+        <div class="chips"><span class="chip heat">été +47 °C</span><span class="chip crit">eau ▮▮▮▮</span><span class="chip">hiver −2 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>L'eau d'été n'est plus garantie ; premiers mois avec livraisons par camion.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>La <strong>dépopulation est amorcée</strong> — la grande bascule (céréaliculture à l'arrêt, exode) viendra vers 2060. Le paradoxe se dessine : hivers « chanceux », bourg qui se vide quand même. <strong>La douceur hivernale ne retient personne sans eau.</strong> Le miroir inverse de Folligny s'installe. Et derrière les partants, personne : dans une France en contraction démographique, les terres quittées ne se repeuplent pas.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>Le numérique se retire <strong>plus vite encore que l'État</strong> : la fibre coupée n'est plus réparée, l'antenne en panne le reste. Être loin redevient être seul — cela aussi pousse au départ.</p></div>
@@ -2028,7 +2028,7 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2085 — 2100</p>
         <h3>Hivers cléments, étés mortels</h3>
-        <div class="chips"><span class="chip crit">été +50 °C</span><span class="chip crit">eau ▮▮▮▮</span><span class="chip">hiver +8,6 °C</span></div>
+        <div class="chips"><span class="chip crit">été +50 °C</span><span class="chip crit">eau ▮▮▮▮</span><span class="chip">gel exceptionnel</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>En 2100 : étés à <strong>+50 °C</strong>, hiver moyen monté à +8,6 °C (le gel devenu exceptionnel) — la « normalité » hivernale absolue, sans valeur.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un habitat clairsemé, hostile l'été, sans eau et sans État — <strong>la perdante de la divergence</strong>. Le cas-témoin dit la vérité noire de cette branche : <strong>la douceur de l'hiver ne vaut rien sans eau, et ne tient pas face à +50 °C.</strong></p></div>
       </div>
@@ -2055,7 +2055,7 @@ _safe("initBranch", function(){
       </div>
       <div class="axis mig">
         <h4>② Les migrations</h4>
-        <p>Un basculement vers les pôles et les littoraux frais — Sud global vers le Nord, Sud et Centre français vers le <strong>Nord-Ouest atlantique</strong>. Les uns accueillent et saturent, les autres se vident. Et dans une France qui se contracte (−29 % de naissances dès 2025), ces flux n'ajoutent pas : ils <strong>redistribuent</strong> — vidant d'autant plus vite les terres de départ.</p>
+        <p>Un basculement vers les pôles et les littoraux frais — Sud global vers le Nord, Sud et Centre français vers le <strong>Nord-Ouest atlantique</strong>. Les uns accueillent et saturent, les autres se vident. Et dans une France qui se contracte (−24 % de naissances dès 2025), ces flux n'ajoutent pas : ils <strong>redistribuent</strong> — vidant d'autant plus vite les terres de départ.</p>
       </div>
       <div class="axis etat">
         <h4>③ L'État</h4>
@@ -2130,7 +2130,7 @@ _safe("initBranch", function(){
   <!-- ============ CHRONOLOGIE DES RUPTURES ============ -->
   <section class="scope" id="bs-chrono" role="tabpanel">
     <div class="scope-head">
-      <p class="where">Voie du milieu · couche événementielle</p>
+      <p class="where">L'arc sombre · couche événementielle</p>
       <h2>Chronologie des ruptures</h2>
       <p class="lede">Une trame possible d'événements nommés qui pourraient <em>incarner</em> les dynamiques des autres onglets. Des jalons, pas un destin.</p>
     </div>
@@ -2145,7 +2145,7 @@ _safe("initBranch", function(){
         <h3 class="cp-title"><span class="cp-years">2026 — 2035</span>Le seuil franchi</h3>
         <div class="evt ici">
   <span class="evt-year">2026</span>
-  <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−29 % de naissances</strong> vs 2010. Le triage de 2049 s'écrit en creux.</p></div>
+  <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−24 % de naissances</strong> vs 2010. Le triage de 2049 s'écrit en creux.</p></div>
 </div>
         <div class="evt">
           <span class="evt-year">2026</span>
@@ -2318,7 +2318,7 @@ _safe("initBranch", function(){
     <div class="scope-head">
       <p class="where">À Folligny · agronomie du climat d'amplitude</p>
       <h2>Cultures & plantation</h2>
-      <p class="lede">Que cultiver sous −15 °C l'hiver et +43 °C l'été ? Quel arbre planter en 2026 pour 2050 et 2100 ? Un guide pratique fondé sur les contraintes physiques du Greenland cursor.</p>
+      <p class="lede">Que cultiver sous −15 °C l'hiver et +43 °C l'été ? Quel arbre planter en 2026 pour 2050 et 2100 ? Un guide pratique fondé sur les contraintes physiques du scénario à forçage Groenland.</p>
     </div>
 
     <div class="cult-toggle" id="bs-culttoggle">
@@ -2399,7 +2399,7 @@ _safe("initBranch", function(){
         <p><strong>La Faye</strong> ne se vide pas, elle <strong>se convertit</strong> (sorgho, agrivoltaïsme, irrigation sous quota) et décline lentement ; <strong>Folligny</strong> grossit sans saturer — l'eau d'été est tendue mais tenue par interconnexion et sobriété. La divergence entre les deux communes est <strong>économique et hydrique</strong>, non existentielle.</p>
       </div>
 
-    <p class="disclaimer">Exercice de prospective, non de prévision. Branche médiane assumée : valeur centrale du scénario « Médian » de CMIP7 (van Vuuren et al. 2026), ~+2,7 °C global en 2100 avec inflexion vers un plateau en fin de siècle — la trajectoire que la politique climatique actuelle rend la plus plausible, entre un haut plausible (~+3,5 °C) et les cibles de l'Accord de Paris. L'AMOC s'affaiblit fortement (~35–50 % d'ici 2100, contraintes observationnelles Portmann et al. 2026) <strong>mais ne franchit pas son seuil</strong> : pas de coups de froid hivernaux, pas de « climat à deux visages ». Les hivers restent doux (−4 °C au plus froid) : l'été est la saison difficile, l'hiver reste une saison de recharge. Aux échelles fines (commune), tout récit relève de l'illustration ancrée dans la géographie réelle. Sauf mention contraire, les températures estivales citées sont des pointes, non des moyennes ; élévations marines vs réf. 1995-2014.</p>
+    <p class="disclaimer">Exercice de prospective, non de prévision. Branche médiane assumée : valeur centrale du scénario « Médian » de CMIP7 (van Vuuren et al. 2026), ~+2,7 °C global en 2100 avec inflexion vers un plateau en fin de siècle — la trajectoire que la politique climatique actuelle rend la plus plausible, entre un haut plausible (~+3,5 °C) et les cibles de l'Accord de Paris. L'AMOC s'affaiblit fortement (~50 % d'ici 2100, contraintes observationnelles Portmann et al. 2026) <strong>mais ne franchit pas son seuil</strong> : pas de coups de froid hivernaux, pas de « climat à deux visages ». Les hivers restent doux (−4 °C au plus froid) : l'été est la saison difficile, l'hiver reste une saison de recharge. Aux échelles fines (commune), tout récit relève de l'illustration ancrée dans la géographie réelle. Sauf mention contraire, les températures estivales citées sont des pointes, non des moyennes ; élévations marines vs réf. 1995-2014.</p>
   </header>
 
   <nav class="tabs" aria-label="Échelles">
@@ -2588,7 +2588,7 @@ _safe("initBranch", function(){
       <p class="lede">L'eau reste la variable maîtresse. Éprouvé, l'État fait du <em>tri négocié</em> : il hiérarchise et différencie ses services plutôt qu'il n'abandonne. La France se recompose vers le Nord-Ouest, sans se fracturer en deux mondes.</p>
     </div>
     <div class="chrono-warn">
-  <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices déjà visibles : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−29 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : ici, ce vocabulaire glisse non vers le triage sec, mais vers la <strong>gestion différenciée</strong> et l'<strong>arbitrage négocié</strong>. L'IGCC 2025 (Forster et al.) documente aussi un système mondial d'observation du climat sous-financé — missions satellitaires menacées, programme GCOS sans pérennité. <b>Les yeux se ferment en partie ; ce scénario suppose qu'un réinvestissement partiel les rouvre avant qu'il soit trop tard.</b>
+  <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices déjà visibles : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−24 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : ici, ce vocabulaire glisse non vers le triage sec, mais vers la <strong>gestion différenciée</strong> et l'<strong>arbitrage négocié</strong>. L'IGCC 2025 (Forster et al.) documente aussi un système mondial d'observation du climat sous-financé — missions satellitaires menacées, programme GCOS sans pérennité. <b>Les yeux se ferment en partie ; ce scénario suppose qu'un réinvestissement partiel les rouvre avant qu'il soit trop tard.</b>
 </div>
     <div class="timeline">
 
@@ -2711,7 +2711,7 @@ _safe("initBranch", function(){
         <div class="chips"><span class="chip heat">côte +35 °C</span><span class="chip sea">mer +0,33 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −3 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Un seul visage climatique : étés qui chauffent, hivers doux et arrosés — pas de ciseau chaud/froid. La Manche reste lisible, prévisible : atout pour planifier, pour semer, pour rester.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Flux migratoire intérieur continu — la grande vague viendra plus tard (~2065), graduelle plutôt que brutale. Services nationaux qui s'amincissent ; premières mutualisations autour de l'eau : régies intercommunales, gestion partagée des forages.</p></div>
-        <div class="line-tech"><span class="tag">Technique</span><p><strong>Flamanville et La Hague</strong> concentrent l'État technique dans le département : réseau électrique prioritaire, compétences retenues — une rente de position et une servitude de très long terme que le bourg voisin négocie comme il peut.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p><strong>Flamanville et La Hague</strong> concentrent l'État technique dans le département : réseau électrique prioritaire, compétences retenues — une rente de position et une servitude de très long terme que les communes du département négocient comme elles peuvent.</p></div>
       </div>
 
       <div class="phase">
@@ -2778,7 +2778,7 @@ _safe("initBranch", function(){
         <p class="phase-years">2025 — 2030</p>
         <h3>La vie d'avant</h3>
         <div class="chips"><span class="chip heat">été +36 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −7 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. La Hague reste à 116 km — hors de vue.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. Flamanville reste à ~90 km — hors de vue.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>~1 116 habitants, prés, fermes laitières, école, commerces. Communauté intacte. Le monde craque au loin ; ici, tout paraît normal.</p></div>
       </div>
 
@@ -2915,7 +2915,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2085 — 2100</p>
         <h3>Hivers cléments, étés gérés</h3>
-        <div class="chips"><span class="chip heat">été +47 °C →</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver +5 °C</span></div>
+        <div class="chips"><span class="chip heat">été +47 °C →</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">gel rare</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>En 2100 : étés ~+47 °C, hiver moyen remonté vers +5 °C, gel devenu rare. Pas de +50 °C — pas d'inhabitabilité estivale généralisée. Le plateau climatique qui s'amorce en fin de siècle est ici aussi une limite au pire.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un habitat clairsemé, chaud l'été, sous contrainte d'eau — mais <strong>viable et gouverné</strong> : celle qui s'allège davantage — non la terre morte. Ce que la modération du forçage et le maintien de la recharge hivernale ont empêché, c'est le passage du déclin à la désertion. Et l'eau décide encore.</p></div>
       </div>
@@ -2941,7 +2941,7 @@ _safe("initBranch", function(){
       </div>
       <div class="axis mig">
         <h4>② Les migrations</h4>
-        <p>Glissement graduel vers les pôles et les littoraux frais ; Sud/Centre français → <strong>Nord-Ouest atlantique</strong>. Dans une France qui se contracte (−29 % de naissances dès 2025), ces flux <strong>redistribuent</strong> plus qu'ils n'ajoutent — en douceur, sans saturation ni désertion. Les uns s'étoffent, les autres s'allègent : aucun ne bascule.</p>
+        <p>Glissement graduel vers les pôles et les littoraux frais ; Sud/Centre français → <strong>Nord-Ouest atlantique</strong>. Dans une France qui se contracte (−24 % de naissances dès 2025), ces flux <strong>redistribuent</strong> plus qu'ils n'ajoutent — en douceur, sans saturation ni désertion. Les uns s'étoffent, les autres s'allègent : aucun ne bascule.</p>
       </div>
       <div class="axis etat">
         <h4>③ L'État</h4>
@@ -3030,7 +3030,7 @@ _safe("initBranch", function(){
         <h3 class="cp-title"><span class="cp-years">2026 — 2035</span>Les premiers chocs</h3>
         <div class="evt ici">
           <span class="evt-year">2026</span>
-          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−29 % de naissances</strong> vs 2010. Le vocabulaire du triage se lit ici en négatif — ce sont les signaux d'un tri négocié qui s'annonce.</p></div>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−24 % de naissances</strong> vs 2010. Le vocabulaire du triage se lit ici en négatif — ce sont les signaux d'un tri négocié qui s'annonce.</p></div>
         </div>
         <div class="evt">
           <span class="evt-year">2027</span>
@@ -3207,7 +3207,7 @@ _safe("initBranch", function(){
   </section>
 
   <footer>
-    <span class="frame">Cadre · CMIP7 « Médian » (van Vuuren et al. 2026 ; ~+2,7 °C en 2100, plateau amorcé en fin de siècle) · ralentissement de l'AMOC SANS franchissement de seuil (affaiblissement ~35–50 % d'ici 2100, fourchette Portmann et al. 2026) — pas de bascule en mode froid · ancrage observationnel : IGCC 2025 (Forster et al. 2026) · niveaux marins vs réf. 1995-2014 · fil technique : modernité contrainte mais gérée · variante « ligne de crête »</span>
+    <span class="frame">Cadre · CMIP7 « Médian » (van Vuuren et al. 2026 ; ~+2,7 °C en 2100, plateau amorcé en fin de siècle) · ralentissement de l'AMOC SANS franchissement de seuil (affaiblissement ~50 % d'ici 2100, fourchette Portmann et al. 2026) — pas de bascule en mode froid · ancrage observationnel : IGCC 2025 (Forster et al. 2026) · niveaux marins vs réf. 1995-2014 · fil technique : modernité contrainte mais gérée · variante « ligne de crête »</span>
     Outil de réflexion prospective, non de prévision. Lectures : Jancovici (descente énergétique / EROI), Bihouix (limites des métaux / low-tech), Hamant (robustesse &gt; performance), Keller (vulnérabilité systémique / résilience par déconnexion / récits). Branche médiane assumée ; les projections communales sont des récits illustratifs ancrés dans la géographie réelle.
   </footer>
 
@@ -3259,10 +3259,10 @@ _safe("initBranch", function(){
     <div class="panel thesis">
         <h4>Le fil rouge</h4>
         <p>Descente énergétique <strong>pilotée et anticipée</strong> (Jancovici) + métaux <strong>ménagés par le low-tech choisi</strong> (Bihouix) → l'État <strong>réinvestit et planifie</strong> (redirection écologique). Le diagnostic est entendu tôt — mais le prix fut une <strong>mobilisation de guerre</strong> : fiscalité lourde, actifs fossiles échoués, rationnement équitable mais réel. La robustesse (Hamant) devient le critère des politiques <strong>avant</strong> la crise, non son autopsie.</p>
-        <p><strong>La Faye</strong> ne survit pas seulement, elle <strong>convertit</strong> (sorgho, agrivoltaïsme, irrigation sous quota) — mais l'ancien monde du vin et des paysages est <strong>perdu</strong>, sans retour. <strong>Folligny</strong> accueille <strong>sans la tension hydrique</strong> de la médiane, au prix d'une densification et d'une quiétude effacée. Destins divergents : aucun ne bascule, tous deux tiennent.</p>
+        <p><strong>La Faye</strong> ne survit pas seulement, elle <strong>convertit</strong> (sorgho, agrivoltaïsme, irrigation sous quota) — mais l'ancien monde du vin et des paysages est <strong>perdu</strong>, sans retour. <strong>Folligny</strong> accueille avec une <strong>recharge hivernale préservée</strong> qui contient la tension estivale, au prix d'une densification et d'une quiétude effacée. Destins divergents : aucun ne bascule, tous deux tiennent.</p>
       </div>
 
-    <p class="disclaimer">Exercice de prospective, non de prévision. Branche optimiste assumée : borne basse compatible avec l'Accord de Paris (van Vuuren et al. 2026), <strong>pic ~+2,04 °C vers 2060 puis redescente à ~+1,90 °C en 2100</strong> — la trajectoire qu'une atténuation agressive et soutenue rend atteignable, entre une médiane plausible (~+2,7 °C) et un haut (~+3,5 °C). L'AMOC ne perd que ~20 % d'ici 2100 (branche d'atténuation soutenue, Portmann et al. 2026) <strong>en frôlant son seuil sans le franchir</strong> : système bistable au seuil de localisation inconnue, un risque écarté de justesse — pas un acquis. Un seul visage estival, modéré ; hivers doux (−4 °C au plus froid) et arrosés, sans coups de froid. Le seul à-coup est le <strong>creux AMOC de mi-siècle (~2045-2065)</strong> : hivers plus tempétueux, pêcheries déplacées, érosion — encaissé avant la stabilisation. Ancrage observationnel IGCC 2025 (Forster et al. 2026). Aux échelles fines (commune), tout récit relève de l'illustration ancrée dans la géographie réelle. Sauf mention contraire, les températures estivales citées sont des pointes, non des moyennes ; élévations marines vs réf. 1995-2014.</p>
+    <p class="disclaimer">Exercice de prospective, non de prévision. Branche optimiste assumée : borne basse compatible avec l'Accord de Paris (van Vuuren et al. 2026), <strong>pic ~+2,04 °C vers 2060 puis redescente à ~+1,90 °C en 2100</strong> — la trajectoire qu'une atténuation agressive et soutenue rend atteignable. L'AMOC ne perd que ~20 % d'ici 2100 (branche d'atténuation soutenue, extrapolation cohérente avec Portmann et al. 2026) <strong>en frôlant son seuil sans le franchir</strong> : système bistable au seuil de localisation inconnue, un risque écarté de justesse — pas un acquis. Un seul visage estival, modéré ; hivers doux (−4 °C au plus froid) et arrosés, sans coups de froid. Le seul à-coup est le <strong>creux AMOC de mi-siècle (~2045-2065)</strong> : hivers plus tempétueux, pêcheries déplacées, érosion — encaissé avant la stabilisation. Ancrage observationnel IGCC 2025 (Forster et al. 2026). Aux échelles fines (commune), tout récit relève de l'illustration ancrée dans la géographie réelle. Sauf mention contraire, les températures estivales citées sont des pointes, non des moyennes ; élévations marines vs réf. 1995-2014.</p>
   </header>
 
   <nav class="tabs" aria-label="Échelles">
@@ -3451,7 +3451,7 @@ _safe("initBranch", function(){
       <p class="lede">L'eau reste la variable maîtresse. Plutôt que de rationner en silence, l'État <em>réinvestit et planifie</em> : il redirige, mutualise, protège l'essentiel. La France se recompose vers le Nord-Ouest — au prix d'une fiscalité lourde et de deux générations d'effort.</p>
     </div>
     <div class="chrono-warn">
-  <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices déjà visibles : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−29 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : ici, ce basculement « de l'investissement aux arbitrages » est précisément ce que la bifurcation <strong>inverse</strong> : l'État réinvestit, <strong>planifie et redirige</strong> au lieu de rationner en silence. L'IGCC 2025 (Forster et al.) documente aussi un système mondial d'observation du climat sous-financé — missions satellitaires menacées, programme GCOS sans pérennité. <b>Les yeux commençaient à se fermer ; le pari — ici tenu — de cette branche est qu'un réinvestissement public les rouvre à temps.</b>
+  <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices déjà visibles : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−24 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : ici, ce basculement « de l'investissement aux arbitrages » est précisément ce que la bifurcation <strong>inverse</strong> : l'État réinvestit, <strong>planifie et redirige</strong> au lieu de rationner en silence. L'IGCC 2025 (Forster et al.) documente aussi un système mondial d'observation du climat sous-financé — missions satellitaires menacées, programme GCOS sans pérennité. <b>Les yeux commençaient à se fermer ; le pari — ici tenu — de cette branche est qu'un réinvestissement public les rouvre à temps.</b>
 </div>
     <div class="timeline">
 
@@ -3574,7 +3574,7 @@ _safe("initBranch", function(){
         <div class="chips"><span class="chip heat">côte +34 °C</span><span class="chip sea">mer +0,22 m</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −3 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>On entre dans le <strong>cœur du creux AMOC</strong> : ce sont les années les plus tempétueuses, pêcheries déplacées, érosion à son comble. Et pourtant aucun ciseau chaud/froid — la Manche reste thermiquement lisible, ce qui permet de planifier à travers la rude décennie.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Flux migratoire intérieur continu — la grande vague viendra plus tard (~2065), graduelle plutôt que brutale. Services nationaux sobres mais maintenus ; <strong>mutualisation de l'eau</strong> organisée tôt : régies intercommunales, gestion partagée des forages.</p></div>
-        <div class="line-tech"><span class="tag">Technique</span><p><strong>Flamanville et La Hague</strong> concentrent l'État technique dans le département : réseau électrique prioritaire, compétences retenues — une rente de position et une servitude de très long terme que le bourg voisin négocie comme il peut.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p><strong>Flamanville et La Hague</strong> concentrent l'État technique dans le département : réseau électrique prioritaire, compétences retenues — une rente de position et une servitude de très long terme que les communes du département négocient comme elles peuvent.</p></div>
       </div>
 
       <div class="phase">
@@ -3641,7 +3641,7 @@ _safe("initBranch", function(){
         <p class="phase-years">2025 — 2030</p>
         <h3>La vie d'avant</h3>
         <div class="chips"><span class="chip heat">été +36 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −7 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. La Hague reste à 116 km — hors de vue.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. Flamanville reste à ~90 km — hors de vue.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>~1 116 habitants, prés, fermes laitières, école, commerces. Communauté intacte. Le monde craque au loin ; ici, tout paraît normal.</p></div>
       </div>
 
@@ -3778,7 +3778,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2085 — 2100</p>
         <h3>Hivers cléments, étés gérés</h3>
-        <div class="chips"><span class="chip heat">été +44 °C ↘</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver +4 °C</span></div>
+        <div class="chips"><span class="chip heat">été +44 °C ↘</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">gel rare</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>En 2100 : étés ~+44 °C, hiver moyen remonté vers +4 °C, gel devenu rare. Pas de +50 °C — pas d'inhabitabilité estivale généralisée. La redescente du forçage amorcée en fin de siècle est ici aussi une limite au pire.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un habitat clairsemé, chaud l'été, sous contrainte d'eau — mais <strong>viable et gouverné</strong> : celle qui s'allège davantage — non la terre morte. Ce que la modération du forçage et le maintien de la recharge hivernale ont empêché, c'est le passage du déclin à l'exode. Et l'eau décide encore.</p></div>
       </div>
@@ -3804,7 +3804,7 @@ _safe("initBranch", function(){
       </div>
       <div class="axis mig">
         <h4>② Les migrations</h4>
-        <p>Glissement graduel vers les pôles et les littoraux frais ; Sud/Centre français → <strong>Nord-Ouest atlantique</strong>. Dans une France qui se contracte (−29 % de naissances dès 2025), ces flux <strong>redistribuent</strong> plus qu'ils n'ajoutent — en douceur, sans saturation ni exode brutal. Les uns s'étoffent, les autres s'allègent : aucun ne bascule.</p>
+        <p>Glissement graduel vers les pôles et les littoraux frais ; Sud/Centre français → <strong>Nord-Ouest atlantique</strong>. Dans une France qui se contracte (−24 % de naissances dès 2025), ces flux <strong>redistribuent</strong> plus qu'ils n'ajoutent — en douceur, sans saturation ni exode brutal. Les uns s'étoffent, les autres s'allègent : aucun ne bascule.</p>
       </div>
       <div class="axis etat">
         <h4>③ L'État</h4>
@@ -3893,7 +3893,7 @@ _safe("initBranch", function(){
         <h3 class="cp-title"><span class="cp-years">2026 — 2035</span>Les premiers chocs</h3>
         <div class="evt ici">
           <span class="evt-year">2026</span>
-          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−29 % de naissances</strong> vs 2010. Le vocabulaire des arbitrages se lit ici en négatif — ce sont les signaux d'une planification qui s'amorce.</p></div>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−24 % de naissances</strong> vs 2010. Le vocabulaire des arbitrages se lit ici en négatif — ce sont les signaux d'une planification qui s'amorce.</p></div>
         </div>
         <div class="evt">
           <span class="evt-year">2027</span>
@@ -4033,7 +4033,7 @@ _safe("initBranch", function(){
     </div>
     <div class="verdict">
       <h4>En une phrase</h4>
-      <p>Aucune date n'arrivera telle quelle. Mais leur logique — <em>l'eau qui contraint, les peuples qui glissent, l'État qui se reconfigure</em> — dessine une descente gérée, non une chute.</p>
+      <p>Aucune date n'arrivera telle quelle. Mais leur logique — <em>l'eau qui contraint, les peuples qui glissent, l'État qui se reconfigure</em> — dessine une bifurcation tenue, non un simple sursis.</p>
     </div>
   </section>
 
@@ -4070,8 +4070,8 @@ _safe("initBranch", function(){
   </section>
 
   <footer>
-    <span class="frame">Cadre · CMIP7 trajectoire basse / Accord de Paris tenu (van Vuuren et al. 2026 ; pic ~+2,04 °C vers 2060, puis décrue pilotée à ~+1,90 °C en 2100) · ralentissement de l'AMOC ~−20 % d'ici 2100, seuil de bascule frôlé SANS être franchi (système bistable, fourchette Portmann et al. 2026) · ancrage observationnel : IGCC 2025 (Forster et al. 2026) · niveaux marins vs réf. 1995-2014, ~+0,40 m en 2100 · fil directeur : sobriété organisée et redirection écologique · variante « La bifurcation »</span>
-    Outil de réflexion prospective, non de prévision. Lectures : Jancovici (descente énergétique / EROI), Bihouix (limites des métaux / low-tech), Hamant (robustesse &gt; performance), Keller (vulnérabilité systémique / résilience par déconnexion / récits). Branche médiane assumée ; les projections communales sont des récits illustratifs ancrés dans la géographie réelle.
+    <span class="frame">Cadre · CMIP7 trajectoire basse / Accord de Paris tenu (van Vuuren et al. 2026 ; pic ~+2,04 °C vers 2060, puis décrue pilotée à ~+1,90 °C en 2100) · ralentissement de l'AMOC ~−20 % d'ici 2100, seuil de bascule frôlé SANS être franchi (système bistable, extrapolation cohérente avec Portmann et al. 2026) · ancrage observationnel : IGCC 2025 (Forster et al. 2026) · niveaux marins vs réf. 1995-2014, ~+0,40 m en 2100 · fil directeur : sobriété organisée et redirection écologique · variante « La bifurcation »</span>
+    Outil de réflexion prospective, non de prévision. Lectures : Jancovici (descente énergétique / EROI), Bihouix (limites des métaux / low-tech), Hamant (robustesse &gt; performance), Keller (vulnérabilité systémique / résilience par déconnexion / récits). Branche basse (Accord de Paris) assumée ; les projections communales sont des récits illustratifs ancrés dans la géographie réelle.
   </footer>
 
 </div>
@@ -4747,9 +4747,9 @@ _safe("initBranch", function(){
   (function(){
     const years = [2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",      summer:[37,39,41,42,43], winter:[-8,-10,-12,-14,-15] },
-      lafaye:   { label:"La Faye",        summer:[44,46,48,49,50], winter:[-8,-5,0,4,8.6] },
-      manche:   { label:"Manche (côte)",  summer:[32,34,36,37,38], winter:[-5,-7,-9,-10,-12] }
+      folligny: { label:"Folligny",      summer:[36,39,41,42,43], winter:[-7,-10,-12,-14,-15] },
+      lafaye:   { label:"La Faye",        summer:[43,46,48,49,50], winter:[-7,-5,0,4,8.6] },
+      manche:   { label:"Manche (côte)",  summer:[31,34,36,37,38], winter:[-4,-7,-9,-10,-12] }
     };
     const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
