@@ -1114,7 +1114,7 @@ const TEMP = {
   sombre:   [1.45, 1.60, 1.85, 2.10, 2.40, 2.60, 2.85, 3.00, 3.18, 3.35, 3.50],
   median:   [1.45, 1.58, 1.82, 2.02, 2.20, 2.34, 2.50, 2.60, 2.66, 2.69, 2.70],
   optimiste:[1.45, 1.52, 1.70, 1.84, 1.94, 2.00, 2.04, 2.02, 1.99, 1.95, 1.90],
-  end:{ sombre:"+3,5 °C", median:"+2,7 °C", optimiste:"~+2,0 °C" }
+  end:{ sombre:"+3,5 °C", median:"+2,7 °C", optimiste:"+1,9 °C" }
 };
 
 /* --- Tableau comparatif. Une ligne = {lab, sombre, median, optimiste}.
@@ -1129,7 +1129,7 @@ const COMPARISON = [
   { lab:"Réchauffement mondial 2100",
     sombre:'<span class="num">+3,5 °C</span> — sans plateau, course encore ouverte',
     median:'<span class="num">+2,7 °C</span> — inflexion vers un plateau',
-    optimiste:'<span class="num">~+2,0 °C</span> — pic franchi, stabilisation' },
+    optimiste:'<span class="num">+1,9 °C</span> en 2100 — après un pic à ~+2,04 °C vers 2060' },
   { lab:"Élévation marine 2100",
     sombre:'<span class="num">+0,70 m</span> et accélération',
     median:'<span class="num">+0,57 m</span>',
@@ -1374,7 +1374,7 @@ function showView(name){
   Object.entries(views).forEach(([k,el]) => el.classList.toggle("active", k===name));
 }
 vtabs.forEach(t => t.addEventListener("click", ()=> showView(t.dataset.view)));
-document.querySelector('[role="tablist"]').addEventListener("keydown", e=>{
+document.querySelector('#screen-hub [role="tablist"]').addEventListener("keydown", e=>{
   const list=[...vtabs]; const cur=list.findIndex(t=>t.getAttribute("aria-selected")==="true");
   if(e.key==="ArrowRight"){e.preventDefault();const n=list[(cur+1)%list.length];n.focus();showView(n.dataset.view);}
   if(e.key==="ArrowLeft"){e.preventDefault();const n=list[(cur-1+list.length)%list.length];n.focus();showView(n.dataset.view);}
@@ -1533,7 +1533,7 @@ _safe("initBranch", function(){
         <p>Et un retournement : <strong>La Faye</strong>, aux hivers « normaux », devient une terre qu'on fuit ; <strong>Folligny</strong>, plus fraîche et dont l'hiver recharge encore les nappes, un refuge sous pression. La normalité climatique ne sauve pas sans eau.</p>
       </div>
 
-    <p class="disclaimer">Exercice de prospective, non de prévision. Les chiffres physiques reprennent la variante « forçage Groenland » déjà construite ; aux échelles fines (commune), tout récit relève de l'illustration ancrée dans la géographie réelle, pas de la donnée. La variante explore délibérément une branche pessimiste, pas la plus probable. Le cadre thermique retenu (+3,5 °C en 2100, sans plateau) correspond à la valeur centrale du scénario « Haut » de CMIP7 publié en avril 2026 (van Vuuren et al.), qui écarte désormais SSP5-8.5 comme implausible : la branche occupe le plafond plausible de la science actuelle, non l'ancienne queue extrême. Les indicateurs annuels publiés en juin 2026 (IGCC, Forster et al.) confirment l'élan : réchauffement d'origine humaine de +1,37 °C en 2025, au rythme record de +0,27 °C par décennie ; déséquilibre énergétique de la Terre supérieur d'environ 40 % à l'estimation de l'AR6 ; budget carbone du 1,5 °C (50 %) ramené à ~130 GtCO₂ début 2026 — environ trois années d'émissions courantes. Le franchissement du seuil AMOC vers 2035-45 est une hypothèse haute assumée : le centre de la littérature se situe plutôt après 2050 (Ditlevsen &amp; Ditlevsen 2023), et l'AR6 juge un effondrement avant 2100 improbable (confiance moyenne) — van Westen &amp; Rahmstorf soutiennent toutefois que les modèles CMIP sous-estiment le forçage d'eau douce, et les contraintes observationnelles publiées en 2026 vont dans le même sens (Portmann et al., Science Advances : affaiblissement ~51 % d'ici 2100 sous scénario médian même, une fois les biais de salinité corrigés ; blob froid nord-atlantique confirmé comme signature du ralentissement) — la fenêtre 2035-45 retenue ici reste la borne basse de la fourchette plausible, qui s'étend jusqu'à ~2050. Sauf mention contraire, les températures estivales citées sont des pointes record, non des moyennes saisonnières, et les élévations marines s'entendent par rapport à la référence 1995-2014.</p>
+    <p class="disclaimer">Exercice de prospective, non de prévision. Les chiffres physiques reprennent la variante « forçage Groenland » déjà construite ; aux échelles fines (commune), tout récit relève de l'illustration ancrée dans la géographie réelle, pas de la donnée. La variante explore délibérément une branche pessimiste, pas la plus probable. Le cadre thermique retenu (+3,5 °C en 2100, sans plateau) correspond à la valeur centrale du scénario « Haut » de CMIP7 publié en avril 2026 (van Vuuren et al.), qui écarte désormais SSP5-8.5 comme implausible : la branche occupe le plafond plausible de la science actuelle, non l'ancienne queue extrême. Les indicateurs annuels publiés en juin 2026 (IGCC, Forster et al.) confirment l'élan : réchauffement d'origine humaine de +1,37 °C en 2025, au rythme record de +0,27 °C par décennie ; déséquilibre énergétique de la Terre supérieur d'environ 40 % à l'estimation de l'AR6 ; budget carbone du 1,5 °C (50 %) ramené à ~130 GtCO₂ début 2026 — environ trois années d'émissions courantes. Cette accélération n'est pas un artefact d'une seule équipe : une ré-analyse indépendante (Foster &amp; Rahmstorf, <em>Geophysical Research Letters</em>, 2026) chiffre une accélération de +75 % depuis 2015 (confiance &gt;98 %) une fois les données <strong>corrigées de l'effet El Niño</strong> — renforçant, non contournant, la règle de ce document selon laquelle une anomalie interannuelle ne fait pas une trajectoire. Le franchissement du seuil AMOC vers 2035-45 est une hypothèse haute assumée : le centre de la littérature se situe plutôt après 2050 (Ditlevsen &amp; Ditlevsen 2023), et l'AR6 juge un effondrement avant 2100 improbable (confiance moyenne) — van Westen &amp; Rahmstorf soutiennent toutefois que les modèles CMIP sous-estiment le forçage d'eau douce, et les contraintes observationnelles publiées en 2026 vont dans le même sens (Portmann et al., Science Advances : affaiblissement ~51 % d'ici 2100 sous scénario médian même, une fois les biais de salinité corrigés ; blob froid nord-atlantique confirmé comme signature du ralentissement) — la fenêtre 2035-45 retenue ici reste la borne basse de la fourchette plausible, qui s'étend jusqu'à ~2050. Sauf mention contraire, les températures estivales citées sont des pointes record, non des moyennes saisonnières, et les élévations marines s'entendent par rapport à la référence 1995-2014.</p>
   </header>
 
   <nav class="tabs" aria-label="Échelles">
@@ -1645,8 +1645,8 @@ _safe("initBranch", function(){
       <p class="lede">Le Sud se vide et s'embrase ; le Nord atlantique devient un <em>refuge-forteresse</em> débordé. L'Union, telle qu'on la connaissait, ne survit pas à la conjonction migrations + énergie + finances.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Deux vagues de chaleur très précoces sur l'Ouest européen en quatre semaines.</b> Fin mai puis fin juin 2026, l'Europe de l'Ouest — France en tête — encaisse deux épisodes hors-normes. Le 24 juin, la France signe le jour le plus chaud jamais mesuré sur son sol et concentre la plus forte anomalie thermique de la planète (jusqu'à +20 °C par rapport aux normales sur sa façade atlantique) ; pointes de 42-44 °C, 72 départements en vigilance rouge. Météo-France : ces épisodes deviennent de plus en plus précoces et intenses.
-      <span class="obs-note">Garde-fou — un printemps chaud ne prédit pas l'été ni le siècle (cf. 1953, 2001 ; des parenthèses fraîches restent possibles, ex. 2023). Fait constaté qui recale le court terme, non une preuve de trajectoire 2100.</span>
+      <span class="obs-key">Observé — 2026</span><b>Deux vagues de chaleur très précoces sur l'Ouest européen en quatre semaines.</b> Fin mai puis fin juin 2026, l'Europe de l'Ouest — France en tête — encaisse deux épisodes hors-normes. Le 24 juin, la France signe le jour le plus chaud jamais mesuré sur son sol et concentre la plus forte anomalie thermique de la planète (jusqu'à +20 °C par rapport aux normales sur sa façade atlantique) ; pointes de 42-44 °C, 72 départements en vigilance rouge. Météo-France : ces épisodes deviennent de plus en plus précoces et intenses. <b>Été 2026 — la saison de feu se synchronise.</b> Au 1<sup>er</sup> août, EFFIS recense, au 29 juillet, ~<b>1 200 foyers</b> dans l'Union contre 569 en moyenne de longue période — plus du double —, pour une surface d'au moins <b>250 000 ha</b> (les lectures publiées divergent, jusqu'à 457 000 ha). Rappel : 2025 avait déjà été la pire saison de l'Union depuis le début des mesures EFFIS en 2006, avec plus de 1,08 million d'hectares et des records nationaux en Allemagne, en Espagne, à Chypre et en Slovaquie ; la France y contribue pour plus de 119 000 ha, dont les 42 000 ha de Gironde (~220 000 personnes évacuées, feu fixé le 1<sup>er</sup> août). Le fait nouveau n'est pas l'incendie, c'est la <strong>synchronisation des conditions de feu</strong> à l'échelle du continent : quand tout devient combustible au même moment, l'entraide devient la ressource rare — le mécanisme <b>rescEU</b> mutualise 777 pompiers venus de 14 pays.
+      <span class="obs-note">Garde-fou — un printemps chaud ne prédit pas l'été ni le siècle (cf. 1953, 2001 ; des parenthèses fraîches restent possibles, ex. 2023). La NOAA a par ailleurs fait passer le <b>11 juin 2026</b> son statut de <em>El Niño Watch</em> à <b><em>El Niño Advisory</em></b> (l'OMM avait annoncé l'événement le 2 juin), avec possibilité d'un « Super El Niño » — probabilité désormais de l'ordre de 63 % d'atteindre le niveau « très fort », avec un pic attendu entre novembre 2026 et janvier 2027 et une persistance quasi certaine jusqu'à l'hiver. Autrement dit : les records des douze prochains mois seront en partie d'origine ENSO, et devront être lus comme tels — cette règle est posée avant les faits, pas une fois qu'ils seront connus : une part de l'anomalie de l'année relève donc d'une variabilité interannuelle connue et documentée — raison de plus pour ne pas lire ces records comme une preuve de trajectoire. Faits constatés qui recalent le court terme, non une preuve de trajectoire 2100.</span>
     </div>
 <div class="timeline">
 
@@ -1654,8 +1654,8 @@ _safe("initBranch", function(){
         <p class="phase-years">2025 — 2030</p>
         <h3>Étés hostiles au Sud</h3>
         <div class="chips"><span class="chip heat">Sud +1,5 °C l'été</span><span class="chip water">eau ▮▮▯▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Canicules et sécheresses récurrentes en Méditerranée ; mégafeux ibériques et grecs chaque été.</p></div>
-        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient, mais la politique se durcit élection après élection. Fin 2025, l'<strong>Islande classe le risque AMOC comme menace de sécurité nationale</strong> — premier État à inscrire le basculement océanique dans une doctrine de défense.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Canicules et sécheresses récurrentes en Méditerranée ; mégafeux ibériques et grecs chaque été — mais le feu cesse d'être une affaire méridionale. Dès l'été 2026 (observé), la Gironde brûle sur <b>42 000 ha</b> avant stabilisation, ~220 000 personnes évacuées, feu fixé le 1<sup>er</sup> août ; la Manche est placée le 10 juillet en vigilance orange <em>canicule</em>, doublée le même jour d'un arrêté préfectoral restreignant travaux et activités forestières ; la France dépasse <b>115 000 ha</b> brûlés sur l'année au 31 juillet. La façade atlantique entre à son tour dans le régime de feu.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient, mais la politique se durcit élection après élection. Fin 2025, l'<strong>Islande classe le risque AMOC comme menace de sécurité nationale</strong> — premier État à inscrire le basculement océanique dans une doctrine de défense. Un an plus tôt, l'<strong>Observatoire Défense et climat</strong> avait publié un rapport dédié aux <em>implications sécuritaires et de défense des points de bascule climatique</em> (juin 2025), l'AMOC au premier rang : le risque océanique entre dans la littérature stratégique avant d'entrer dans les budgets.</p></div>
       </div>
 
       <div class="phase">
@@ -1733,7 +1733,7 @@ _safe("initBranch", function(){
   <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices de l'arc : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−24 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : le vocabulaire du triage de 2049 s'écrit déjà, en creux. Au même moment, la science mesure sa propre fragilisation : l'IGCC 2025 (Forster et al., publié le 11 juin 2026) documente un système mondial d'observation du climat sous-financé — missions satellitaires menacées, mission ESA TRUTHS annulée, réseaux in situ amaigris, programme GCOS sans pérennité garantie. <b>Les yeux se ferment au moment où tout s'accélère.</b>
 </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Deux canicules exceptionnelles en quatre semaines — toutes deux très précoces.</b> <b>Mai (21-30)</b> : le 26 mai, journée de mai la plus chaude jamais mesurée en France (24,8 °C de moyenne nationale) ; 37,8 °C à Angoulême-La Couronne, record absolu de mai en métropole ; première vigilance canicule de mai de l'histoire — mais ce sont des records <em>mensuels</em>, pas absolus (Météo-France). <b>Juin</b> : le 24 juin devient le jour le plus chaud jamais mesuré en France (29,9 °C de moyenne), la nuit du 22 au 23 la plus chaude depuis 1947 (21,6 °C), 72 départements en vigilance rouge (un record), la France affichant la plus forte anomalie de la planète (jusqu'à +20 °C sur l'Ouest). L'agroclimatologue Serge Zaka recense ~470 records, dont 118 records <em>absolus</em>, des pointes de 42-44 °C — « nous ne sommes qu'en juin ». Météo-France : épisodes de plus en plus précoces et intenses, une fréquence qui pourrait être multipliée par dix d'ici 2100.
+      <span class="obs-key">Observé — 2026</span><b>Deux canicules exceptionnelles en quatre semaines — toutes deux très précoces.</b> <b>Mai (21-30)</b> : le 26 mai, journée de mai la plus chaude jamais mesurée en France (24,8 °C de moyenne nationale) ; 37,8 °C à Angoulême-La Couronne, record absolu de mai en métropole ; première vigilance canicule de mai de l'histoire — mais ce sont des records <em>mensuels</em>, pas absolus (Météo-France). <b>Juin</b> : le 24 juin devient le jour le plus chaud jamais mesuré en France (29,9 °C de moyenne), la nuit du 22 au 23 la plus chaude depuis 1947 (21,6 °C), 72 départements en vigilance rouge (un record), la France affichant la plus forte anomalie de la planète (jusqu'à +20 °C sur l'Ouest). L'agroclimatologue Serge Zaka recense ~470 records, dont 118 records <em>absolus</em>, des pointes de 42-44 °C — « nous ne sommes qu'en juin ». Météo-France : épisodes de plus en plus précoces et intenses, une fréquence qui pourrait être multipliée par dix d'ici 2100. <b>Juillet : le volet hydrique.</b> L'ancrage 2026 n'est pas seulement thermique. Le 30 juillet, l'agroclimatologue Serge Zaka documente <b>la sécheresse de juillet la plus intense jamais observée en France</b> — devant 1976, 2003 et 2022 —, la bande <b>Poitou-Bourgogne</b> étant la plus touchée. Au même moment, la Normandie (Manche, Calvados, Orne, Eure) passe en <b>niveau de crise</b> avec des restrictions atteignant l'eau potable : le manque d'eau estival n'épargne plus la façade humide. Chaleur et sécheresse cessent d'être deux récits séparés. Le conflit entre refroidissement du parc nucléaire et débit des fleuves — connu en France depuis 2003, revu en 2018, 2019 et 2022 — change d'échelle ailleurs en Europe : le Danube tombe à <b>−108 cm</b> à l'est de la Croatie, contraignant Hongrie et Roumanie à réduire <b>simultanément</b> leur production nucléaire. Le mécanisme n'est pas nouveau ; sa simultanéité transfrontalière, en 2026, l'est.
       <span class="obs-note">Garde-fou — un printemps et un début d'été brûlants ne prédisent ni l'été ni le siècle : il y a eu 1953, 2001, et des parenthèses fraîches restent possibles (Météo-France rappelle 2023). Ces faits recalent le plancher de court terme et montrent des stress déjà projetés qui arrivent ; ils ne prouvent pas une trajectoire 2100.</span>
     </div>
 <div class="timeline">
@@ -1774,7 +1774,7 @@ _safe("initBranch", function(){
         <p class="phase-years">2045 — 2050</p>
         <h3>Le tri devient officiel</h3>
         <div class="chips"><span class="chip heat">Sud-Ouest ~+44 °C</span><span class="chip crit">eau ▮▮▮▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés extrêmes au Centre et au Sud ; le Nord-Ouest atlantique se singularise — plus frais, encore arrosé l'hiver. Un écart qui devient existentiel.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés extrêmes au Centre et au Sud ; le Nord-Ouest atlantique se singularise — plus frais, encore arrosé l'hiver. Un écart qui devient existentiel : La Faye décroche, Folligny encaisse.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>La panne européenne de 2045 impose le <strong>rationnement énergétique</strong> (Jancovici). <strong>Le triage devient officiel (~2049)</strong> : services concentrés sur les métropoles et nœuds stratégiques, désengagement annoncé du rural. La migration intérieure devient un fait social majeur.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>Le rationnement frappe d'abord le numérique public : data centers délestés, services en ligne à éclipses. Les robots qu'on attendait dans les fermes et les hôpitaux <strong>ne sont jamais arrivés en nombre</strong> — trop de métaux, trop d'énergie, trop de maintenance.</p></div>
       </div>
@@ -1818,7 +1818,7 @@ _safe("initBranch", function(){
       <p class="lede">Relativement épargné — Atlantique frais, aux hivers encore arrosés — le département devient une <em>terre d'accueil débordée</em> pour les déplacés du Sud, tout en encaissant tempêtes, recul du trait de côte et coups de froid hivernaux.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Juin 2026 : « le bouclier normand ne fonctionne plus » (Météo-France).</b> La façade Manche, longtemps tampon thermique, a été rattrapée : Cherbourg 37 °C (record absolu, +4 °C au-dessus du précédent), Bernières-sur-Mer 40,3 °C, Dieppe 37 °C ; à l'intérieur du département, Granville 39 °C et Pontorson ~41 °C (en mai déjà, Gouville-sur-Mer 35,3 °C). L'hypothèse d'une côte durablement épargnée par l'Atlantique frais s'en trouve <b>assouplie</b> : la modération maritime amortit encore, mais ne protège plus. Un record est un plancher — la côte ne redescendra plus durablement sous ~38 °C en pointe estivale, d'où le recalage du départ des projections Folligny/Manche.
+      <span class="obs-key">Observé — 2026</span><b>Juin 2026 : « le bouclier normand ne fonctionne plus » (Météo-France).</b> La façade Manche, longtemps tampon thermique, a été rattrapée : Cherbourg 37 °C (record absolu, +4 °C au-dessus du précédent), Bernières-sur-Mer 40,3 °C, Dieppe 37 °C ; à l'intérieur du département, Granville 39 °C et Pontorson ~41 °C (en mai déjà, Gouville-sur-Mer 35,3 °C). L'hypothèse d'une côte durablement épargnée par l'Atlantique frais s'en trouve <b>assouplie</b> : la modération maritime amortit encore, mais ne protège plus. Un record est un plancher — la côte ne redescendra plus durablement sous ~38 °C en pointe estivale, d'où le recalage du départ des projections Folligny/Manche. <b>Juillet 2026 : l'eau, plus seulement la chaleur.</b> Le 10 juillet, la préfecture place le département en vigilance orange <em>canicule</em> et prend le même jour un arrêté restreignant travaux et activités forestières ; quinze des quarante spectacles pyrotechniques prévus du 11 au 15 juillet sont annulés. Cette combinaison — chaleur, sécheresse, risque d'incendie — était jusqu'ici étrangère à ce littoral. Le 15 juillet, deux secteurs hydrographiques du département — le <b>Nord-Cotentin</b> et le bassin <b>Sienne-Soulles</b> — sont placés au <b>niveau maximal de crise</b> : plus de 110 communes sous interdiction totale d'arrosage, irrigation proscrite jusqu'au goutte-à-goutte. Fin juin déjà, l'autonomie des réservoirs de Saint-Lô Agglo était tombée à <b>douze heures</b> après une hausse de 50 % de la consommation, l'eau potable menacée dans neuf communes. Le bouclier normand ne cède pas seulement sur la température : il cède aussi sur la ressource.
       <span class="obs-note">Fait constaté, daté. Recale le plancher de court terme ; n'altère ni la hiérarchie des branches à 2100 (fixée par CMIP7) ni le raisonnement AMOC.</span>
     </div>
 <div class="timeline">
@@ -1877,7 +1877,7 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2070 — 2085</p>
         <h3>Densément, durement viable</h3>
-        <div class="chips"><span class="chip heat">côte +43 °C</span><span class="chip sea">mer +0,6 m</span><span class="chip crit">hiver -10 °C</span></div>
+        <div class="chips"><span class="chip heat">côte +43 °C</span><span class="chip sea">mer +0,6 m</span><span class="chip crit">hiver −10 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Coups de froid hivernaux brutaux (effet AMOC) par-dessus des étés caniculaires. Communes côtières en repli vers l'intérieur.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Encombrée, tendue, mais l'une des parts les plus <strong>viables</strong> de France. Réorganisation locale autour de l'eau, de l'alimentation, du low-tech (Hamant/Bihouix). Tension entre fermer la porte et mutualiser.</p></div>
         <div class="line-def"><span class="tag">Sécurité</span><p>Le refuge se barricade pour de bon. La zone protégée autour de <strong>La Hague</strong> fige un point dur que les flux contournent ; ailleurs, ce sont des <strong>polices municipales et des gardes des points d'eau</strong> qui tiennent lieu d'ordre. La vraie question n'est plus « fermer la porte ? » mais qui détient la contrainte légitime — et elle se tranche commune par commune.</p></div>
@@ -1886,7 +1886,7 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2085 — 2100</p>
         <h3>Le dernier château d'eau</h3>
-        <div class="chips"><span class="chip heat">côte +44 °C</span><span class="chip sea">mer +0,7 m ↗</span><span class="chip crit">hiver -12 °C</span></div>
+        <div class="chips"><span class="chip heat">côte +44 °C</span><span class="chip sea">mer +0,7 m ↗</span><span class="chip crit">hiver −12 °C</span></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un département dense, à demi fortifié, géré à l'eau près ; un refuge relatif dans une France fracturée. Précaire, mais habité. On y vit le climat « à deux visages » : étés caniculaires, coups de froid hivernaux.</p></div>
       </div>
 
@@ -1922,6 +1922,10 @@ _safe("initBranch", function(){
   <div id="bs-hydroSvg" class="cg-svg"></div>
   <div class="cg-legend" id="bs-hydroLegend"></div>
 </div>
+
+  <div class="cult-src">
+    <span class="src-key">Méthode · lecture des courbes</span><b>Deux conventions de lecture.</b> <b>1 · Un point de départ commun.</b> Les trois branches partent du <b>même état 2030</b> : l'écart entre elles n'est pas un acquis de départ, il se construit après 2030 comme effet de scénario. <b>2 · La courbe tiretée est une recharge <em>nette</em>, pas un cumul de pluie.</b> Elle baisse quand le forçage augmente sans que l'hiver devienne plus sec — les projections donnent plutôt l'inverse sur l'ouest de la France : c'est l'<b>ETP hivernale</b> qui monte, et des pluies plus intenses qui <b>ruissellent au lieu de s'infiltrer</b>. Un hiver plus arrosé peut donc recharger moins. Le fléchissement de l'AMOC rend ici les hivers plus perturbés : cela n'inverse pas le sens de la courbe, cela l'accentue.
+  </div>
 
         <div class="obs-2026">
       <span class="obs-key">Observé — 2026</span><b>Juin 2026 : Folligny encaisse ~40 °C.</b> Entre Granville (39 °C) et Pontorson (~41 °C), la commune se situe autour de 40 °C lors de l'épisode de juin — après un mois de mai déjà record sur la région (Gouville-sur-Mer 35,3 °C). Sur la côte voisine, Cherbourg bat son record absolu à 37 °C (+4 °C). <b>Un record est un plancher</b> : aucune branche ne peut désormais ramener la pointe estivale de Folligny durablement sous ~40 °C — d'où le recalage du <em>départ</em> des courbes (l'écart entre branches à 2100, fixé par CMIP7, reste identique). « Le bouclier normand ne fonctionne plus » (Météo-France).
@@ -1972,7 +1976,7 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2050 — 2070</p>
         <h3>La commune-refuge</h3>
-        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip crit">hiver -12 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip crit">hiver −12 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés brutaux ; hivers de coups de froid soudains (vers les extrêmes à -15 °C en fin de siècle) malgré des moyennes peu froides — l'empreinte de l'AMOC.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Folligny devient une <strong>commune de réception</strong> : la population enfle (peut-être le double de 2026 — redistribution pure, dans une France qui se contracte), et tout sature — l'eau d'été surtout, le logement, le lien social. L'État a largement retiré ses services ; le bourg <strong>s'auto-organise</strong> : régie d'eau communale, alimentation, ateliers de réparation low-tech (Hamant, Bihouix). Tension permanente : accueillir ou fermer la porte. Et la vraie variable est l'<strong>âge des arrivants</strong> : le refuge ne tient que si les bras suivent — régie, champs, ateliers ; le scénario suppose des familles en âge de travailler, fuyant le Sud, plutôt que des retraités.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>La <strong>gare de Folligny</strong>, vieux nœud ferroviaire, redevient la porte du bourg — les familles arrivent, le lait repart. Aux champs, matériel partagé (CUMA) et batteries sodium : une mécanique qu'on peut comprendre, donc garder.</p></div>
@@ -1981,7 +1985,7 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2070 — 2085</p>
         <h3>Gérée à la goutte</h3>
-        <div class="chips"><span class="chip heat">été +45 °C</span><span class="chip crit">hiver -14 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
+        <div class="chips"><span class="chip heat">été +45 °C</span><span class="chip crit">hiver −14 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un bourg dense, quasi autonome, qui gère <strong>sa propre eau et sa propre nourriture</strong> sous un État quasi absent : résilient s'il a choisi la mutualisation, fragile s'il s'est fracturé. La survie estivale tient à l'eau — citernes, récupération, rationnement. L'ordre se maintient localement, ou se dispute.</p></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés à +45 °C, coups de froid hivernaux à -14 °C : le grand écart annuel devient la norme.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>Moins d'écrans, mais la radio, la carte papier, le téléphone filaire de la mairie. Le réseau cuivré, lui, avait été <strong>démantelé dès les années 2030</strong> — le métal récupéré, fondu pour des renouvelables qui ne tournent plus : ce qui reste de filaire est rebricolé localement. La <strong>forge-atelier du bourg est redevenue stratégique</strong> : on y refait les pièces qu'on ne livre plus.</p></div>
@@ -1990,7 +1994,7 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2085 — 2100</p>
         <h3>Refuge, au prix fort</h3>
-        <div class="chips"><span class="chip heat">été +46 °C</span><span class="chip crit">hiver -15 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
+        <div class="chips"><span class="chip heat">été +46 °C</span><span class="chip crit">hiver −15 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
         <div class="line-soc"><span class="tag">Société</span><p>En 2100, Folligny est un <strong>bourg dense, rationné en eau, largement autogéré</strong> dans une France fracturée. Un refuge qui a payé son habitabilité relative par le surpeuplement, la rareté et la perte du vieux monde rural tranquille. Habité, dur, méconnaissable.</p></div>
       </div>
 
@@ -2009,7 +2013,7 @@ _safe("initBranch", function(){
       <p class="lede">Le cas-témoin se retourne. Climatiquement « chanceuse » — hivers qui se réchauffent normalement, sans coups de froid de l'AMOC — La Faye se révèle <em>la grande perdante</em> : ses pointes à +50 °C l'été et la disparition de l'eau la vident.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Charente, mai puis juin 2026.</b> Tout près de La Faye, Angoulême-La Couronne signe 37,8 °C le 26 mai (record absolu de mai en métropole), puis l'épisode de juin pousse Poitiers à 41,4 °C et Bordeaux à 41,8 °C — La Faye dans la même fourchette (~41-42 °C). La Charente a donc, comme une bonne partie du pays, été touchée lors des <b>deux</b> épisodes. Ici, le plancher de 43 °C retenu pour 2100 reste au-dessus des pointes observées : les courbes de La Faye sont <b>inchangées</b>, seul ce repère « observé 2026 » est ajouté.
+      <span class="obs-key">Observé — 2026</span><b>Charente, mai puis juin 2026.</b> Tout près de La Faye, Angoulême-La Couronne signe 37,8 °C le 26 mai (record absolu de mai en métropole), puis l'épisode de juin pousse Poitiers à 41,4 °C et Bordeaux à 41,8 °C — La Faye dans la même fourchette (~41-42 °C). La Charente a donc, comme une bonne partie du pays, été touchée lors des <b>deux</b> épisodes. Ici, le plancher de 43 °C retenu pour 2100 reste au-dessus des pointes observées : les courbes de La Faye sont <b>inchangées</b>, seul ce repère « observé 2026 » est ajouté. <b>Juillet 2026 — confirmation charentaise.</b> Le 12 juillet, la Charente est placée en <b>vigilance rouge canicule</b> et l'Angoumois relève <b>42 °C</b> : la valeur départementale est désormais mesurée, non plus estimée par voisinage — le plancher de 43 °C retenu ici reste 1 °C au-dessus. S'y ajoute le volet hydrique : la bande <b>Poitou-Bourgogne</b>, qui inclut le nord charentais, ressort comme la plus touchée par la sécheresse de juillet la plus intense jamais observée en France (analyse Serge Zaka, 30 juillet 2026, devant 1976, 2003 et 2022). Les courbes restent <b>inchangées</b>.
       <span class="obs-note">Fait constaté, daté. Aucune modification des projections La Faye : le plancher projeté est déjà cohérent avec 2026.</span>
     </div>
     <div class="climgraph">
@@ -2029,6 +2033,10 @@ _safe("initBranch", function(){
       <div id="bs-lafaye-hydroSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bs-lafaye-hydroLegend"></div>
     </div>
+
+      <div class="cult-src">
+        <span class="src-key">Méthode · lecture des courbes</span><b>Deux conventions de lecture.</b> <b>1 · Un point de départ commun.</b> Les trois branches partent du <b>même état 2030</b> : l'écart entre elles n'est pas un acquis de départ, il se construit après 2030 comme effet de scénario. <b>2 · La courbe tiretée est une recharge <em>nette</em>, pas un cumul de pluie.</b> Elle baisse quand le forçage augmente sans que l'hiver devienne plus sec — les projections donnent plutôt l'inverse sur l'ouest de la France : c'est l'<b>ETP hivernale</b> qui monte, et des pluies plus intenses qui <b>ruissellent au lieu de s'infiltrer</b>. Un hiver plus arrosé peut donc recharger moins. Le fléchissement de l'AMOC rend ici les hivers plus perturbés : cela n'inverse pas le sens de la courbe, cela l'accentue.
+      </div>
 
 <div class="timeline">
 
@@ -2217,7 +2225,11 @@ _safe("initBranch", function(){
         </div>
         <div class="evt ici">
           <span class="evt-year">2026</span>
-          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p>France : <strong>deux canicules exceptionnelles et très précoces</strong> (mai puis juin) — des pointes de 42-44 °C, 72 départements en vigilance rouge (record), la plus forte anomalie de la planète sur l'Ouest. <strong>Le plancher de court terme est posé</strong> — la suite n'est plus qu'une question de fréquence et d'intensité.</p></div>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p>France : <strong>deux canicules exceptionnelles et très précoces</strong> (mai puis juin) — des pointes de 42-44 °C, 72 départements en vigilance rouge (record), la plus forte anomalie de la planète sur l'Ouest ; <strong>la séquence se prolonge en juillet</strong>, où la chaleur cesse d'être le seul sujet. <strong>Le plancher de court terme est posé</strong> — la suite n'est plus qu'une question de fréquence et d'intensité.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2026</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat eau">Eau</span><span class="cat climat">Climat</span><p>France : <strong>la sécheresse de juillet la plus intense jamais observée</strong> — devant 1976, 2003 et 2022 (analyse Serge Zaka, 30 juillet) —, la bande <strong>Poitou-Bourgogne</strong> la plus touchée ; la Normandie passe en <strong>niveau de crise</strong>, restrictions atteignant l'eau potable, arrêtés limitant travaux et activités forestières. En Europe, le <strong>Danube à −108 cm</strong> contraint Hongrie et Roumanie à réduire <strong>simultanément</strong> leur production nucléaire. Chaleur et sécheresse cessent d'être deux récits séparés — c'est cette jonction, non le thermomètre seul, qui fera la suite.</p></div>
         </div>
         <div class="evt">
           <span class="evt-year">2027</span>
@@ -2386,11 +2398,21 @@ _safe("initBranch", function(){
     <div class="scope-head">
       <p class="where">À Folligny · agronomie du climat d'amplitude</p>
       <h2>Cultures & plantation</h2>
-      <p class="lede">Que cultiver sous −15 °C l'hiver et +43 °C l'été ? Quel arbre planter en 2026 pour 2050 et 2100 ? Un guide pratique fondé sur les contraintes physiques du scénario à forçage Groenland.</p>
+      <p class="lede">Que cultiver sous des hivers descendant à −15 °C et des étés pointant à +46 °C ? Quel arbre planter en 2026 pour 2050 et 2100 ? Un guide pratique fondé sur les contraintes physiques du scénario à forçage Groenland — où la contrainte n'est pas la chaleur seule, mais les 61 °C qui séparent les deux extrêmes de l'année.</p>
     </div>
 
     <div class="cult-src">
-      <span class="src-key">Source · agroclimatologie</span>La logique de plantation de cet onglet s'appuie sur l'<b>agroclimatologie</b>, en particulier les travaux du Dr <b>Serge Zaka</b> (thèse, Université de Poitiers, 2016). Réponses thermiques des cultures : Zaka et al., <em>AoB PLANTS</em> 2016 (DOI 10.1093/aobpla/plw035) et <em>Agricultural and Forest Meteorology</em> 2016 (DOI 10.1016/j.agrformet.2016.10.004). Sensibilité du blé à la chaleur et à la demande évaporative : Leveau, Parent, Zaka, Martre, <em>Journal of Experimental Botany</em> (DOI 10.1093/jxb/erab431). Cadrage grand public : « Orages sur le climat » (S. Zaka et J. Szpirglas, HarperCollins, 2025), dont l'angle — <em>le manque de froid hivernal est l'un des problèmes les plus urgents pour l'agriculture</em> — recoupe le fil « hivers doux » de ce document (dormance des fruitiers mal levée, ravageurs non détruits). Démarche méthodologiquement proche : le cabinet <b>AgroClimat2050</b> (<a href="https://agroclimatologie.com" target="_blank" rel="noopener">agroclimatologie.com</a>) et sa cartographie prévisionnelle d'impact des événements météo sur l'agriculture. Les épisodes de mai-juin 2026 servent ici d'illustration vivante (échaudage, stress de la faune et de la flore). Zaka est mobilisé comme source du <b>volet agronomique</b>, non de la trajectoire climatique globale.
+      <span class="src-key">Source · agroclimatologie</span>La logique de plantation de cet onglet s'appuie sur l'<b>agroclimatologie</b>, en particulier les travaux du Dr <b>Serge Zaka</b> (thèse, Université de Poitiers, 2016). Réponses thermiques des cultures : Zaka et al., <em>AoB PLANTS</em> 2016 (DOI 10.1093/aobpla/plw035) et <em>Agricultural and Forest Meteorology</em> 2016 (DOI 10.1016/j.agrformet.2016.10.004). Diversité des réponses de la croissance foliaire et de la transpiration à la température et à la demande évaporative chez les <em>apparentés</em> du blé — une piste de sélection variétale, non un seuil : Leveau, Parent, Zaka, Martre, <em>Journal of Experimental Botany</em> 72(21), 2021, p. 7580-7593 (DOI 10.1093/jxb/erab431). Sur l'échaudage proprement dit : Gouache, Le Bris, Bogard, Deudon, Pagé, Gate, <em>European Journal of Agronomy</em> 39, 2012, p. 62-70 (options d'adaptation au stress thermique pendant le remplissage du blé, en France) ; Asseng et al., <em>Nature Climate Change</em> 5, 2015, p. 143-147. Cadrage grand public : « Orages sur le climat » (S. Zaka et J. Szpirglas, HarperCollins, 2025), dont l'angle — <em>le manque de froid hivernal est l'un des problèmes les plus urgents pour l'agriculture</em> — recoupe le fil « hivers doux » de ce document (dormance des fruitiers mal levée, ravageurs non détruits). Démarche méthodologiquement proche : le cabinet <b>AgroClimat2050</b> (<a href="https://agroclimatologie.com" target="_blank" rel="noopener">agroclimatologie.com</a>) et sa cartographie prévisionnelle d'impact des événements météo sur l'agriculture. Les épisodes de mai-juin 2026 servent ici d'illustration vivante (échaudage, stress de la faune et de la flore). Zaka est mobilisé comme source du <b>volet agronomique</b>, non de la trajectoire climatique globale.<br><br><b>Deux familles de chiffres, à ne pas confondre.</b> Les <b>pointes estivales</b> citées dans cet onglet (+43 °C vers 2050, +46 °C vers 2100 dans cette branche) proviennent des courbes du document : ce sont des <em>maxima</em>, non des moyennes. Les <b>seuils physiologiques</b> des espèces, eux, ne dépendent pas de la branche choisie. Le blé ne réagit pas à la pointe annuelle mais au nombre de jours passés au-dessus de son seuil <em>pendant le remplissage du grain</em> : chaque degré au-delà de 18-22 °C durant cette phase coûte de l'ordre de 3 à 4 % de rendement, et une exposition soutenue dans la plage 32-38 °C peut amputer la moitié du potentiel. C'est cette durée, et non le record de l'été, qui décide de la récolte.
+    </div>
+
+    <div class="obs-2026">
+      <span class="obs-key">Observé — 2026 (calendrier)</span><b>Le décalage projeté pour 2050 a eu lieu en 2026.</b> Cet onglet annonce, à l'horizon 2050, des moissons ramenées à juin. La récolte 2026 l'a fait : au 8 juillet, <b>59 % des surfaces</b> de blé tendre étaient déjà rentrées contre <b>16 %</b> en moyenne sur 2021-2025, et la moisson était close à la mi-juillet dans presque tout le pays — du jamais-vu selon la filière. Les conditions disent le reste : moissons de nuit et à l'aube faute de rosée matinale, et, dans plusieurs départements, l'étincelle d'une moissonneuse-batteuse suffisant à déclencher un feu. La plante ne résiste pas à la chaleur : elle lui échappe en finissant plus tôt. L'esquive phénologique n'est plus une stratégie d'adaptation à planifier pour 2050, c'est le régime en cours.
+      <span class="obs-note">Garde-fou — fait constaté et daté. Recale le calendrier agricole de court terme ; n'altère ni les courbes, ni les pointes estivales, ni la hiérarchie des branches à 2100. Une moisson précoce est une réponse de la plante, pas une preuve de trajectoire.</span>
+    </div>
+
+    <div class="obs-2026">
+      <span class="obs-key">Observé — 2026 (économie)</span><b>L'effet ciseau.</b> Le climat n'agit pas seul sur le coût de l'azote. Depuis l'escalade de fin février 2026 au Moyen-Orient, le gaz européen (TTF) a bondi de plus de 50 % en quelques semaines ; l'ammonitrate 33,5 % est passé d'environ 500 €/t à plus de 600 €/t entre mars et avril ; le Trésor rappelle qu'entre 20 et 30 % des exportations mondiales d'engrais transitent par le détroit d'Ormuz. Le mécanisme d'ajustement carbone aux frontières, entré en vigueur au 1<sup>er</sup> janvier 2026, ajoute une pression structurelle indépendante de la conjoncture. Le résultat est tombé : la <b>qualité a tenu</b>, le rendement non. Le blé tendre s'établit à ~<b>32 Mt</b> (Agreste, 15 juillet), <b>−4 %</b> sur un an, avec un rendement moyen de <b>69,3 q/ha</b> contre 74,2 en 2025 — <b>−6,6 %</b> malgré 2,8 % de surfaces en plus. Le ciseau est là, exactement : le coût de l'intrant progresse sous l'effet de la géopolitique et de la fiscalité carbone au moment où le rendement recule sous l'effet de la chaleur et de la sécheresse.
+      <span class="obs-note">Garde-fou — ce stress est conjoncturel et géopolitique, pas une donnée climatique : il n'infléchit ni les courbes ni les branches de ce document. Il illustre, au présent, la même vulnérabilité conjointe que les tensions nucléaire/débit des fleuves de l'onglet France — deux stress d'origines distinctes qui convergent sur l'exploitation.</span>
     </div>
 
     <div class="cult-toggle" id="bs-culttoggle">
@@ -2583,8 +2605,8 @@ _safe("initBranch", function(){
       <p class="lede">Le Sud se tend et se vide partiellement ; le Nord atlantique devient un <em>refuge sous pression mais ouvert</em>. L'UE se transforme et se contracte — elle ne se dissout pas.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Deux vagues de chaleur très précoces sur l'Ouest européen en quatre semaines.</b> Fin mai puis fin juin 2026, l'Europe de l'Ouest — France en tête — encaisse deux épisodes hors-normes. Le 24 juin, la France signe le jour le plus chaud jamais mesuré sur son sol et concentre la plus forte anomalie thermique de la planète (jusqu'à +20 °C par rapport aux normales sur sa façade atlantique) ; pointes de 42-44 °C, 72 départements en vigilance rouge. Météo-France : ces épisodes deviennent de plus en plus précoces et intenses.
-      <span class="obs-note">Garde-fou — un printemps chaud ne prédit pas l'été ni le siècle (cf. 1953, 2001 ; des parenthèses fraîches restent possibles, ex. 2023). Fait constaté qui recale le court terme, non une preuve de trajectoire 2100.</span>
+      <span class="obs-key">Observé — 2026</span><b>Deux vagues de chaleur très précoces sur l'Ouest européen en quatre semaines.</b> Fin mai puis fin juin 2026, l'Europe de l'Ouest — France en tête — encaisse deux épisodes hors-normes. Le 24 juin, la France signe le jour le plus chaud jamais mesuré sur son sol et concentre la plus forte anomalie thermique de la planète (jusqu'à +20 °C par rapport aux normales sur sa façade atlantique) ; pointes de 42-44 °C, 72 départements en vigilance rouge. Météo-France : ces épisodes deviennent de plus en plus précoces et intenses. <b>Été 2026 — la saison de feu se synchronise.</b> Au 1<sup>er</sup> août, EFFIS recense, au 29 juillet, ~<b>1 200 foyers</b> dans l'Union contre 569 en moyenne de longue période — plus du double —, pour une surface d'au moins <b>250 000 ha</b> (les lectures publiées divergent, jusqu'à 457 000 ha). Rappel : 2025 avait déjà été la pire saison de l'Union depuis le début des mesures EFFIS en 2006, avec plus de 1,08 million d'hectares et des records nationaux en Allemagne, en Espagne, à Chypre et en Slovaquie ; la France y contribue pour plus de 119 000 ha, dont les 42 000 ha de Gironde (~220 000 personnes évacuées, feu fixé le 1<sup>er</sup> août). Le fait nouveau n'est pas l'incendie, c'est la <strong>synchronisation des conditions de feu</strong> à l'échelle du continent : quand tout devient combustible au même moment, l'entraide devient la ressource rare — le mécanisme <b>rescEU</b> mutualise 777 pompiers venus de 14 pays.
+      <span class="obs-note">Garde-fou — un printemps chaud ne prédit pas l'été ni le siècle (cf. 1953, 2001 ; des parenthèses fraîches restent possibles, ex. 2023). La NOAA a par ailleurs fait passer le <b>11 juin 2026</b> son statut de <em>El Niño Watch</em> à <b><em>El Niño Advisory</em></b> (l'OMM avait annoncé l'événement le 2 juin), avec possibilité d'un « Super El Niño » — probabilité désormais de l'ordre de 63 % d'atteindre le niveau « très fort », avec un pic attendu entre novembre 2026 et janvier 2027 et une persistance quasi certaine jusqu'à l'hiver. Autrement dit : les records des douze prochains mois seront en partie d'origine ENSO, et devront être lus comme tels — cette règle est posée avant les faits, pas une fois qu'ils seront connus : une part de l'anomalie de l'année relève donc d'une variabilité interannuelle connue et documentée — raison de plus pour ne pas lire ces records comme une preuve de trajectoire. Faits constatés qui recalent le court terme, non une preuve de trajectoire 2100.</span>
     </div>
 <div class="timeline">
 
@@ -2592,8 +2614,8 @@ _safe("initBranch", function(){
         <p class="phase-years">2025 — 2030</p>
         <h3>Étés hostiles au Sud</h3>
         <div class="chips"><span class="chip heat">Sud +1,5 °C l'été</span><span class="chip water">eau ▮▮▯▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Canicules et sécheresses récurrentes en Méditerranée ; mégafeux ibériques et grecs chaque été.</p></div>
-        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient, mais la politique se durcit élection après élection. Fin 2025, l'<strong>Islande classe le risque AMOC comme menace de sécurité nationale</strong> — premier État à inscrire le ralentissement océanique dans une doctrine de défense.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Canicules et sécheresses récurrentes en Méditerranée ; mégafeux ibériques et grecs chaque été — mais le feu cesse d'être une affaire méridionale. Dès l'été 2026 (observé), la Gironde brûle sur <b>42 000 ha</b> avant stabilisation, ~220 000 personnes évacuées, feu fixé le 1<sup>er</sup> août ; la Manche est placée le 10 juillet en vigilance orange <em>canicule</em>, doublée le même jour d'un arrêté préfectoral restreignant travaux et activités forestières ; la France dépasse <b>115 000 ha</b> brûlés sur l'année au 31 juillet. La façade atlantique entre à son tour dans le régime de feu.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient, mais la politique se durcit élection après élection. Fin 2025, l'<strong>Islande classe le risque AMOC comme menace de sécurité nationale</strong> — premier État à inscrire le ralentissement océanique dans une doctrine de défense. Un an plus tôt, l'<strong>Observatoire Défense et climat</strong> avait publié un rapport dédié aux <em>implications sécuritaires et de défense des points de bascule climatique</em> (juin 2025), l'AMOC au premier rang : le risque océanique entre dans la littérature stratégique avant d'entrer dans les budgets.</p></div>
       </div>
 
       <div class="phase">
@@ -2671,7 +2693,7 @@ _safe("initBranch", function(){
   <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices déjà visibles : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−24 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : ici, ce vocabulaire glisse non vers le triage sec, mais vers la <strong>gestion différenciée</strong> et l'<strong>arbitrage négocié</strong>. L'IGCC 2025 (Forster et al.) documente aussi un système mondial d'observation du climat sous-financé — missions satellitaires menacées, programme GCOS sans pérennité. <b>Les yeux se ferment en partie ; ce scénario suppose qu'un réinvestissement partiel les rouvre avant qu'il soit trop tard.</b>
 </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Deux canicules exceptionnelles en quatre semaines — toutes deux très précoces.</b> <b>Mai (21-30)</b> : le 26 mai, journée de mai la plus chaude jamais mesurée en France (24,8 °C de moyenne nationale) ; 37,8 °C à Angoulême-La Couronne, record absolu de mai en métropole ; première vigilance canicule de mai de l'histoire — mais ce sont des records <em>mensuels</em>, pas absolus (Météo-France). <b>Juin</b> : le 24 juin devient le jour le plus chaud jamais mesuré en France (29,9 °C de moyenne), la nuit du 22 au 23 la plus chaude depuis 1947 (21,6 °C), 72 départements en vigilance rouge (un record), la France affichant la plus forte anomalie de la planète (jusqu'à +20 °C sur l'Ouest). L'agroclimatologue Serge Zaka recense ~470 records, dont 118 records <em>absolus</em>, des pointes de 42-44 °C — « nous ne sommes qu'en juin ». Météo-France : épisodes de plus en plus précoces et intenses, une fréquence qui pourrait être multipliée par dix d'ici 2100.
+      <span class="obs-key">Observé — 2026</span><b>Deux canicules exceptionnelles en quatre semaines — toutes deux très précoces.</b> <b>Mai (21-30)</b> : le 26 mai, journée de mai la plus chaude jamais mesurée en France (24,8 °C de moyenne nationale) ; 37,8 °C à Angoulême-La Couronne, record absolu de mai en métropole ; première vigilance canicule de mai de l'histoire — mais ce sont des records <em>mensuels</em>, pas absolus (Météo-France). <b>Juin</b> : le 24 juin devient le jour le plus chaud jamais mesuré en France (29,9 °C de moyenne), la nuit du 22 au 23 la plus chaude depuis 1947 (21,6 °C), 72 départements en vigilance rouge (un record), la France affichant la plus forte anomalie de la planète (jusqu'à +20 °C sur l'Ouest). L'agroclimatologue Serge Zaka recense ~470 records, dont 118 records <em>absolus</em>, des pointes de 42-44 °C — « nous ne sommes qu'en juin ». Météo-France : épisodes de plus en plus précoces et intenses, une fréquence qui pourrait être multipliée par dix d'ici 2100. <b>Juillet : le volet hydrique.</b> L'ancrage 2026 n'est pas seulement thermique. Le 30 juillet, l'agroclimatologue Serge Zaka documente <b>la sécheresse de juillet la plus intense jamais observée en France</b> — devant 1976, 2003 et 2022 —, la bande <b>Poitou-Bourgogne</b> étant la plus touchée. Au même moment, la Normandie (Manche, Calvados, Orne, Eure) passe en <b>niveau de crise</b> avec des restrictions atteignant l'eau potable : le manque d'eau estival n'épargne plus la façade humide. Chaleur et sécheresse cessent d'être deux récits séparés. Le conflit entre refroidissement du parc nucléaire et débit des fleuves — connu en France depuis 2003, revu en 2018, 2019 et 2022 — change d'échelle ailleurs en Europe : le Danube tombe à <b>−108 cm</b> à l'est de la Croatie, contraignant Hongrie et Roumanie à réduire <b>simultanément</b> leur production nucléaire. Le mécanisme n'est pas nouveau ; sa simultanéité transfrontalière, en 2026, l'est.
       <span class="obs-note">Garde-fou — un printemps et un début d'été brûlants ne prédisent ni l'été ni le siècle : il y a eu 1953, 2001, et des parenthèses fraîches restent possibles (Météo-France rappelle 2023). Ces faits recalent le plancher de court terme et montrent des stress déjà projetés qui arrivent ; ils ne prouvent pas une trajectoire 2100.</span>
     </div>
 <div class="timeline">
@@ -2756,7 +2778,7 @@ _safe("initBranch", function(){
       <p class="lede">Épargné par les extrêmes — Atlantique frais, hivers encore arrosés et sans coups de froid — le département devient une <em>terre d'accueil sous pression mais gérable</em> : tempêtes et recul côtier réels, mais sans grand écart thermique.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Juin 2026 : « le bouclier normand ne fonctionne plus » (Météo-France).</b> La façade Manche, longtemps tampon thermique, a été rattrapée : Cherbourg 37 °C (record absolu, +4 °C au-dessus du précédent), Bernières-sur-Mer 40,3 °C, Dieppe 37 °C ; à l'intérieur du département, Granville 39 °C et Pontorson ~41 °C (en mai déjà, Gouville-sur-Mer 35,3 °C). L'hypothèse d'une côte durablement épargnée par l'Atlantique frais s'en trouve <b>assouplie</b> : la modération maritime amortit encore, mais ne protège plus. Un record est un plancher — la côte ne redescendra plus durablement sous ~38 °C en pointe estivale, d'où le recalage du départ des projections Folligny/Manche.
+      <span class="obs-key">Observé — 2026</span><b>Juin 2026 : « le bouclier normand ne fonctionne plus » (Météo-France).</b> La façade Manche, longtemps tampon thermique, a été rattrapée : Cherbourg 37 °C (record absolu, +4 °C au-dessus du précédent), Bernières-sur-Mer 40,3 °C, Dieppe 37 °C ; à l'intérieur du département, Granville 39 °C et Pontorson ~41 °C (en mai déjà, Gouville-sur-Mer 35,3 °C). L'hypothèse d'une côte durablement épargnée par l'Atlantique frais s'en trouve <b>assouplie</b> : la modération maritime amortit encore, mais ne protège plus. Un record est un plancher — la côte ne redescendra plus durablement sous ~38 °C en pointe estivale, d'où le recalage du départ des projections Folligny/Manche. <b>Juillet 2026 : l'eau, plus seulement la chaleur.</b> Le 10 juillet, la préfecture place le département en vigilance orange <em>canicule</em> et prend le même jour un arrêté restreignant travaux et activités forestières ; quinze des quarante spectacles pyrotechniques prévus du 11 au 15 juillet sont annulés. Cette combinaison — chaleur, sécheresse, risque d'incendie — était jusqu'ici étrangère à ce littoral. Le 15 juillet, deux secteurs hydrographiques du département — le <b>Nord-Cotentin</b> et le bassin <b>Sienne-Soulles</b> — sont placés au <b>niveau maximal de crise</b> : plus de 110 communes sous interdiction totale d'arrosage, irrigation proscrite jusqu'au goutte-à-goutte. Fin juin déjà, l'autonomie des réservoirs de Saint-Lô Agglo était tombée à <b>douze heures</b> après une hausse de 50 % de la consommation, l'eau potable menacée dans neuf communes. Le bouclier normand ne cède pas seulement sur la température : il cède aussi sur la ressource.
       <span class="obs-note">Fait constaté, daté. Recale le plancher de court terme ; n'altère ni la hiérarchie des branches à 2100 (fixée par CMIP7) ni le raisonnement AMOC.</span>
     </div>
 <div class="timeline">
@@ -2860,6 +2882,10 @@ _safe("initBranch", function(){
   <div id="bm-hydroSvg" class="cg-svg"></div>
   <div class="cg-legend" id="bm-hydroLegend"></div>
 </div>
+
+  <div class="cult-src">
+    <span class="src-key">Méthode · lecture des courbes</span><b>Deux conventions de lecture.</b> <b>1 · Un point de départ commun.</b> Les trois branches partent du <b>même état 2030</b> : l'écart entre elles n'est pas un acquis de départ, il se construit après 2030 comme effet de scénario. <b>2 · La courbe tiretée est une recharge <em>nette</em>, pas un cumul de pluie.</b> Elle baisse quand le forçage augmente sans que l'hiver devienne plus sec — les projections donnent plutôt l'inverse sur l'ouest de la France : c'est l'<b>ETP hivernale</b> qui monte, et des pluies plus intenses qui <b>ruissellent au lieu de s'infiltrer</b>. Un hiver plus arrosé peut donc recharger moins.
+  </div>
         <div class="obs-2026">
       <span class="obs-key">Observé — 2026</span><b>Juin 2026 : Folligny encaisse ~40 °C.</b> Entre Granville (39 °C) et Pontorson (~41 °C), la commune se situe autour de 40 °C lors de l'épisode de juin — après un mois de mai déjà record sur la région (Gouville-sur-Mer 35,3 °C). Sur la côte voisine, Cherbourg bat son record absolu à 37 °C (+4 °C). <b>Un record est un plancher</b> : aucune branche ne peut désormais ramener la pointe estivale de Folligny durablement sous ~40 °C — d'où le recalage du <em>départ</em> des courbes (l'écart entre branches à 2100, fixé par CMIP7, reste identique). « Le bouclier normand ne fonctionne plus » (Météo-France).
       <span class="obs-note">Fait constaté, daté — pas une réévaluation de la trajectoire 2100. Le plancher 2026 remonte ; la divergence des branches vers 2100 reste celle des scénarios CMIP7.</span>
@@ -2946,7 +2972,7 @@ _safe("initBranch", function(){
       <p class="lede">Le cas-témoin. Climatiquement éprouvée — étés vers +47 °C, eau qui se raréfie — mais sans coup de grâce : ses hivers se réchauffent normalement et sa recharge ne s'effondre pas. La Faye <em>décline et se convertit, sans se vider</em>.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Charente, mai puis juin 2026.</b> Tout près de La Faye, Angoulême-La Couronne signe 37,8 °C le 26 mai (record absolu de mai en métropole), puis l'épisode de juin pousse Poitiers à 41,4 °C et Bordeaux à 41,8 °C — La Faye dans la même fourchette (~41-42 °C). La Charente a donc, comme une bonne partie du pays, été touchée lors des <b>deux</b> épisodes. Ici, le plancher de 43 °C retenu pour 2100 reste au-dessus des pointes observées : les courbes de La Faye sont <b>inchangées</b>, seul ce repère « observé 2026 » est ajouté.
+      <span class="obs-key">Observé — 2026</span><b>Charente, mai puis juin 2026.</b> Tout près de La Faye, Angoulême-La Couronne signe 37,8 °C le 26 mai (record absolu de mai en métropole), puis l'épisode de juin pousse Poitiers à 41,4 °C et Bordeaux à 41,8 °C — La Faye dans la même fourchette (~41-42 °C). La Charente a donc, comme une bonne partie du pays, été touchée lors des <b>deux</b> épisodes. Ici, le plancher de 43 °C retenu pour 2100 reste au-dessus des pointes observées : les courbes de La Faye sont <b>inchangées</b>, seul ce repère « observé 2026 » est ajouté. <b>Juillet 2026 — confirmation charentaise.</b> Le 12 juillet, la Charente est placée en <b>vigilance rouge canicule</b> et l'Angoumois relève <b>42 °C</b> : la valeur départementale est désormais mesurée, non plus estimée par voisinage — le plancher de 43 °C retenu ici reste 1 °C au-dessus. S'y ajoute le volet hydrique : la bande <b>Poitou-Bourgogne</b>, qui inclut le nord charentais, ressort comme la plus touchée par la sécheresse de juillet la plus intense jamais observée en France (analyse Serge Zaka, 30 juillet 2026, devant 1976, 2003 et 2022). Les courbes restent <b>inchangées</b>.
       <span class="obs-note">Fait constaté, daté. Aucune modification des projections La Faye : le plancher projeté est déjà cohérent avec 2026.</span>
     </div>
     <div class="climgraph">
@@ -2966,6 +2992,10 @@ _safe("initBranch", function(){
       <div id="bm-lafaye-hydroSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bm-lafaye-hydroLegend"></div>
     </div>
+
+      <div class="cult-src">
+        <span class="src-key">Méthode · lecture des courbes</span><b>Deux conventions de lecture.</b> <b>1 · Un point de départ commun.</b> Les trois branches partent du <b>même état 2030</b> : l'écart entre elles n'est pas un acquis de départ, il se construit après 2030 comme effet de scénario. <b>2 · La courbe tiretée est une recharge <em>nette</em>, pas un cumul de pluie.</b> Elle baisse quand le forçage augmente sans que l'hiver devienne plus sec — les projections donnent plutôt l'inverse sur l'ouest de la France : c'est l'<b>ETP hivernale</b> qui monte, et des pluies plus intenses qui <b>ruissellent au lieu de s'infiltrer</b>. Un hiver plus arrosé peut donc recharger moins.
+      </div>
 
 <div class="timeline">
 
@@ -3148,7 +3178,11 @@ _safe("initBranch", function(){
         </div>
         <div class="evt ici">
           <span class="evt-year">2026</span>
-          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p>France : <strong>deux canicules exceptionnelles et très précoces</strong> (mai puis juin) — des pointes de 42-44 °C, 72 départements en vigilance rouge (record), la plus forte anomalie de la planète sur l'Ouest. <strong>Le plancher de court terme est posé</strong> — reste à savoir à quelle vitesse la fréquence monte.</p></div>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p>France : <strong>deux canicules exceptionnelles et très précoces</strong> (mai puis juin) — des pointes de 42-44 °C, 72 départements en vigilance rouge (record), la plus forte anomalie de la planète sur l'Ouest ; <strong>la séquence se prolonge en juillet</strong>, où la chaleur cesse d'être le seul sujet. <strong>Le plancher de court terme est posé</strong> — reste à savoir à quelle vitesse la fréquence monte.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2026</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat eau">Eau</span><span class="cat climat">Climat</span><p>France : <strong>la sécheresse de juillet la plus intense jamais observée</strong> — devant 1976, 2003 et 2022 (analyse Serge Zaka, 30 juillet) —, la bande <strong>Poitou-Bourgogne</strong> la plus touchée ; la Normandie passe en <strong>niveau de crise</strong>, restrictions atteignant l'eau potable, arrêtés limitant travaux et activités forestières. En Europe, le <strong>Danube à −108 cm</strong> contraint Hongrie et Roumanie à réduire <strong>simultanément</strong> leur production nucléaire. Chaleur et sécheresse cessent d'être deux récits séparés ; reste à savoir si la recharge d'hiver, elle, tiendra.</p></div>
         </div>
         <div class="evt">
           <span class="evt-year">2027</span>
@@ -3297,11 +3331,21 @@ _safe("initBranch", function(){
     <div class="scope-head">
       <p class="where">À Folligny · agronomie d'un climat chaud mais lisible</p>
       <h2>Cultures & plantation</h2>
-      <p class="lede">Que cultiver sous des étés à +40 °C mais des hivers doux (≈ −4 °C) ? La chaleur d'été combinée à des hivers doux <em>ouvre un peu la porte aux espèces méridionales</em>. Guide pratique fondé sur les contraintes physiques du scénario médian.</p>
+      <p class="lede">Que cultiver sous des étés pointant à +44 °C mais des hivers doux (≈ −4 °C) ? La chaleur d'été combinée à des hivers sans gel profond <em>ouvre un peu la porte aux espèces méridionales</em> — et c'est l'hiver, bien plus que l'été, qui sépare cette branche de la plus sombre. Guide pratique fondé sur les contraintes physiques du scénario médian.</p>
     </div>
 
     <div class="cult-src">
-      <span class="src-key">Source · agroclimatologie</span>La logique de plantation de cet onglet s'appuie sur l'<b>agroclimatologie</b>, en particulier les travaux du Dr <b>Serge Zaka</b> (thèse, Université de Poitiers, 2016). Réponses thermiques des cultures : Zaka et al., <em>AoB PLANTS</em> 2016 (DOI 10.1093/aobpla/plw035) et <em>Agricultural and Forest Meteorology</em> 2016 (DOI 10.1016/j.agrformet.2016.10.004). Sensibilité du blé à la chaleur et à la demande évaporative : Leveau, Parent, Zaka, Martre, <em>Journal of Experimental Botany</em> (DOI 10.1093/jxb/erab431). Cadrage grand public : « Orages sur le climat » (S. Zaka et J. Szpirglas, HarperCollins, 2025), dont l'angle — <em>le manque de froid hivernal est l'un des problèmes les plus urgents pour l'agriculture</em> — recoupe le fil « hivers doux » de ce document (dormance des fruitiers mal levée, ravageurs non détruits). Démarche méthodologiquement proche : le cabinet <b>AgroClimat2050</b> (<a href="https://agroclimatologie.com" target="_blank" rel="noopener">agroclimatologie.com</a>) et sa cartographie prévisionnelle d'impact des événements météo sur l'agriculture. Les épisodes de mai-juin 2026 servent ici d'illustration vivante (échaudage, stress de la faune et de la flore). Zaka est mobilisé comme source du <b>volet agronomique</b>, non de la trajectoire climatique globale.
+      <span class="src-key">Source · agroclimatologie</span>La logique de plantation de cet onglet s'appuie sur l'<b>agroclimatologie</b>, en particulier les travaux du Dr <b>Serge Zaka</b> (thèse, Université de Poitiers, 2016). Réponses thermiques des cultures : Zaka et al., <em>AoB PLANTS</em> 2016 (DOI 10.1093/aobpla/plw035) et <em>Agricultural and Forest Meteorology</em> 2016 (DOI 10.1016/j.agrformet.2016.10.004). Diversité des réponses de la croissance foliaire et de la transpiration à la température et à la demande évaporative chez les <em>apparentés</em> du blé — une piste de sélection variétale, non un seuil : Leveau, Parent, Zaka, Martre, <em>Journal of Experimental Botany</em> 72(21), 2021, p. 7580-7593 (DOI 10.1093/jxb/erab431). Sur l'échaudage proprement dit : Gouache, Le Bris, Bogard, Deudon, Pagé, Gate, <em>European Journal of Agronomy</em> 39, 2012, p. 62-70 (options d'adaptation au stress thermique pendant le remplissage du blé, en France) ; Asseng et al., <em>Nature Climate Change</em> 5, 2015, p. 143-147. Cadrage grand public : « Orages sur le climat » (S. Zaka et J. Szpirglas, HarperCollins, 2025), dont l'angle — <em>le manque de froid hivernal est l'un des problèmes les plus urgents pour l'agriculture</em> — recoupe le fil « hivers doux » de ce document (dormance des fruitiers mal levée, ravageurs non détruits). Démarche méthodologiquement proche : le cabinet <b>AgroClimat2050</b> (<a href="https://agroclimatologie.com" target="_blank" rel="noopener">agroclimatologie.com</a>) et sa cartographie prévisionnelle d'impact des événements météo sur l'agriculture. Les épisodes de mai-juin 2026 servent ici d'illustration vivante (échaudage, stress de la faune et de la flore). Zaka est mobilisé comme source du <b>volet agronomique</b>, non de la trajectoire climatique globale.<br><br><b>Deux familles de chiffres, à ne pas confondre.</b> Les <b>pointes estivales</b> citées dans cet onglet (+41 °C vers 2050, +44 °C vers 2100 dans cette branche) proviennent des courbes du document : ce sont des <em>maxima</em>, non des moyennes. Les <b>seuils physiologiques</b> des espèces, eux, ne dépendent pas de la branche choisie. Le blé ne réagit pas à la pointe annuelle mais au nombre de jours passés au-dessus de son seuil <em>pendant le remplissage du grain</em> : chaque degré au-delà de 18-22 °C durant cette phase coûte de l'ordre de 3 à 4 % de rendement, et une exposition soutenue dans la plage 32-38 °C peut amputer la moitié du potentiel. C'est cette durée, et non le record de l'été, qui décide de la récolte.
+    </div>
+
+    <div class="obs-2026">
+      <span class="obs-key">Observé — 2026 (calendrier)</span><b>Le décalage projeté pour 2050 a eu lieu en 2026.</b> Cet onglet annonce, à l'horizon 2050, des moissons ramenées à juin. La récolte 2026 l'a fait : au 8 juillet, <b>59 % des surfaces</b> de blé tendre étaient déjà rentrées contre <b>16 %</b> en moyenne sur 2021-2025, et la moisson était close à la mi-juillet dans presque tout le pays — du jamais-vu selon la filière. Les conditions disent le reste : moissons de nuit et à l'aube faute de rosée matinale, et, dans plusieurs départements, l'étincelle d'une moissonneuse-batteuse suffisant à déclencher un feu. La plante ne résiste pas à la chaleur : elle lui échappe en finissant plus tôt. L'esquive phénologique n'est plus une stratégie d'adaptation à planifier pour 2050, c'est le régime en cours.
+      <span class="obs-note">Garde-fou — fait constaté et daté. Recale le calendrier agricole de court terme ; n'altère ni les courbes, ni les pointes estivales, ni la hiérarchie des branches à 2100. Une moisson précoce est une réponse de la plante, pas une preuve de trajectoire.</span>
+    </div>
+
+    <div class="obs-2026">
+      <span class="obs-key">Observé — 2026 (économie)</span><b>L'effet ciseau.</b> Le climat n'agit pas seul sur le coût de l'azote. Depuis l'escalade de fin février 2026 au Moyen-Orient, le gaz européen (TTF) a bondi de plus de 50 % en quelques semaines ; l'ammonitrate 33,5 % est passé d'environ 500 €/t à plus de 600 €/t entre mars et avril ; le Trésor rappelle qu'entre 20 et 30 % des exportations mondiales d'engrais transitent par le détroit d'Ormuz. Le mécanisme d'ajustement carbone aux frontières, entré en vigueur au 1<sup>er</sup> janvier 2026, ajoute une pression structurelle indépendante de la conjoncture. Le résultat est tombé : la <b>qualité a tenu</b>, le rendement non. Le blé tendre s'établit à ~<b>32 Mt</b> (Agreste, 15 juillet), <b>−4 %</b> sur un an, avec un rendement moyen de <b>69,3 q/ha</b> contre 74,2 en 2025 — <b>−6,6 %</b> malgré 2,8 % de surfaces en plus. Le ciseau est là, exactement : le coût de l'intrant progresse sous l'effet de la géopolitique et de la fiscalité carbone au moment où le rendement recule sous l'effet de la chaleur et de la sécheresse.
+      <span class="obs-note">Garde-fou — ce stress est conjoncturel et géopolitique, pas une donnée climatique : il n'infléchit ni les courbes ni les branches de ce document. Il illustre, au présent, la même vulnérabilité conjointe que les tensions nucléaire/débit des fleuves de l'onglet France — deux stress d'origines distinctes qui convergent sur l'exploitation.</span>
     </div>
 
     <div class="cult-toggle" id="bm-culttoggle">
@@ -3459,7 +3503,7 @@ _safe("initBranch", function(){
         <p class="phase-years">2050 — 2070</p>
         <h3>Le pic franchi</h3>
         <div class="chips"><span class="chip heat">monde ≈ +2,0 °C</span><span class="chip sea">mer +0,30 m</span><span class="chip water">eau ▮▮▮▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Le forçage <strong>passe son maximum vers 2060</strong> (~+2,04 °C) puis entame sa décrue — l'atténuation soutenue inverse la pente. Bandes arides élargies, récifs très dégradés mais quelques-uns sauvés par refuges gérés ; le gradient Nord/Sud s'installe comme fait géopolitique permanent.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le forçage <strong>passe son maximum vers 2060</strong> (~+2,04 °C) puis entame sa décrue — l'atténuation soutenue inverse la pente. Il faut le dire nettement : cette branche n'est pas celle d'un plafond atteint sans dépassement, mais celle d'un <strong>dépassement assumé puis résorbé</strong> (<em>overshoot</em>) — pic ~+2,04 °C vers 2060, puis décrue pilotée à ~+1,90 °C en 2100, obtenue par des <strong>émissions nettes négatives</strong> maintenues quatre décennies durant. L'optimisme porte ici sur la capacité à <em>refluer après le pic</em>, non sur celle d'éviter le pic. Bandes arides élargies, récifs très dégradés mais quelques-uns sauvés par refuges gérés ; le gradient Nord/Sud s'installe comme fait géopolitique permanent.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Le système mondial, <strong>réorganisé autour de la robustesse</strong> (Hamant entendu tôt, pas en autopsie), tient sans cascade. Les couplages critiques ont été <strong>desserrés par anticipation</strong> — redondance, relocalisation, récits de redirection portés tôt dans les institutions — si bien que les défaillances ne se propagent plus en chaîne (Keller). États fragiles encore nombreux, mais aucune rupture majeure : les crises ont été désamorcées en amont. Migrations vers les pôles graduelles — pesantes pour les sociétés d'accueil, soutenues par une solidarité qui a, elle aussi, son prix.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p><strong>L'âge du stock</strong> remplace l'âge du flux (Bihouix), mais partout choisi et organisé : on entretient, on répare, on mutualise. La sobriété matérielle, d'abord imposée, est désormais <strong>intériorisée</strong> — la fin de l'abondance énergétique facile, acceptée.</p></div>
       </div>
@@ -3496,8 +3540,8 @@ _safe("initBranch", function(){
       <p class="lede">Le Sud se transforme à grand prix, le Nord atlantique devient un refuge organisé ; l'UE se resserre autour de l'eau et de l'énergie, mais <em>se redirige plus qu'elle ne rétrécit</em>.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Deux vagues de chaleur très précoces sur l'Ouest européen en quatre semaines.</b> Fin mai puis fin juin 2026, l'Europe de l'Ouest — France en tête — encaisse deux épisodes hors-normes. Le 24 juin, la France signe le jour le plus chaud jamais mesuré sur son sol et concentre la plus forte anomalie thermique de la planète (jusqu'à +20 °C par rapport aux normales sur sa façade atlantique) ; pointes de 42-44 °C, 72 départements en vigilance rouge. Météo-France : ces épisodes deviennent de plus en plus précoces et intenses.
-      <span class="obs-note">Garde-fou — un printemps chaud ne prédit pas l'été ni le siècle (cf. 1953, 2001 ; des parenthèses fraîches restent possibles, ex. 2023). Fait constaté qui recale le court terme, non une preuve de trajectoire 2100.</span>
+      <span class="obs-key">Observé — 2026</span><b>Deux vagues de chaleur très précoces sur l'Ouest européen en quatre semaines.</b> Fin mai puis fin juin 2026, l'Europe de l'Ouest — France en tête — encaisse deux épisodes hors-normes. Le 24 juin, la France signe le jour le plus chaud jamais mesuré sur son sol et concentre la plus forte anomalie thermique de la planète (jusqu'à +20 °C par rapport aux normales sur sa façade atlantique) ; pointes de 42-44 °C, 72 départements en vigilance rouge. Météo-France : ces épisodes deviennent de plus en plus précoces et intenses. <b>Été 2026 — la saison de feu se synchronise.</b> Au 1<sup>er</sup> août, EFFIS recense, au 29 juillet, ~<b>1 200 foyers</b> dans l'Union contre 569 en moyenne de longue période — plus du double —, pour une surface d'au moins <b>250 000 ha</b> (les lectures publiées divergent, jusqu'à 457 000 ha). Rappel : 2025 avait déjà été la pire saison de l'Union depuis le début des mesures EFFIS en 2006, avec plus de 1,08 million d'hectares et des records nationaux en Allemagne, en Espagne, à Chypre et en Slovaquie ; la France y contribue pour plus de 119 000 ha, dont les 42 000 ha de Gironde (~220 000 personnes évacuées, feu fixé le 1<sup>er</sup> août). Le fait nouveau n'est pas l'incendie, c'est la <strong>synchronisation des conditions de feu</strong> à l'échelle du continent : quand tout devient combustible au même moment, l'entraide devient la ressource rare — le mécanisme <b>rescEU</b> mutualise 777 pompiers venus de 14 pays.
+      <span class="obs-note">Garde-fou — un printemps chaud ne prédit pas l'été ni le siècle (cf. 1953, 2001 ; des parenthèses fraîches restent possibles, ex. 2023). La NOAA a par ailleurs fait passer le <b>11 juin 2026</b> son statut de <em>El Niño Watch</em> à <b><em>El Niño Advisory</em></b> (l'OMM avait annoncé l'événement le 2 juin), avec possibilité d'un « Super El Niño » — probabilité désormais de l'ordre de 63 % d'atteindre le niveau « très fort », avec un pic attendu entre novembre 2026 et janvier 2027 et une persistance quasi certaine jusqu'à l'hiver. Autrement dit : les records des douze prochains mois seront en partie d'origine ENSO, et devront être lus comme tels — cette règle est posée avant les faits, pas une fois qu'ils seront connus : une part de l'anomalie de l'année relève donc d'une variabilité interannuelle connue et documentée — raison de plus pour ne pas lire ces records comme une preuve de trajectoire. Faits constatés qui recalent le court terme, non une preuve de trajectoire 2100.</span>
     </div>
 <div class="timeline">
 
@@ -3505,8 +3549,8 @@ _safe("initBranch", function(){
         <p class="phase-years">2025 — 2030</p>
         <h3>Étés hostiles au Sud</h3>
         <div class="chips"><span class="chip heat">Sud +1,5 °C l'été</span><span class="chip water">eau ▮▮▯▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Canicules et sécheresses récurrentes en Méditerranée ; mégafeux ibériques et grecs chaque été.</p></div>
-        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient — et, dès 2026, <strong>contre tôt la vague de désinformation climatique</strong> : régulation appliquée, éducation aux médias, le combat informationnel engagé et, ici, gagné. Fin 2025, l'<strong>Islande classe le risque AMOC comme enjeu de sécurité nationale</strong> — le signal est entendu, pas raillé.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Canicules et sécheresses récurrentes en Méditerranée ; mégafeux ibériques et grecs chaque été — mais le feu cesse d'être une affaire méridionale. Dès l'été 2026 (observé), la Gironde brûle sur <b>42 000 ha</b> avant stabilisation, ~220 000 personnes évacuées, feu fixé le 1<sup>er</sup> août ; la Manche est placée le 10 juillet en vigilance orange <em>canicule</em>, doublée le même jour d'un arrêté préfectoral restreignant travaux et activités forestières ; la France dépasse <b>115 000 ha</b> brûlés sur l'année au 31 juillet. La façade atlantique entre à son tour dans le régime de feu.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Pressions migratoires Sahel/Machrek en hausse régulière. L'UE tient — et, dès 2026, <strong>contre tôt la vague de désinformation climatique</strong> : régulation appliquée, éducation aux médias, le combat informationnel engagé et, ici, gagné. Fin 2025, l'<strong>Islande classe le risque AMOC comme enjeu de sécurité nationale</strong> — le signal est entendu, pas raillé. Il s'appuie sur un travail déjà disponible : le rapport de l'<strong>Observatoire Défense et climat</strong> sur les <em>implications sécuritaires et de défense des points de bascule climatique</em> (juin 2025), AMOC en tête.</p></div>
       </div>
 
       <div class="phase">
@@ -3584,7 +3628,7 @@ _safe("initBranch", function(){
   <b>Signaux faibles — juin 2026.</b> L'étude PwC « Piloter dans l'incertitude » (70+ entretiens de DGS) documente, au présent, les prémices déjà visibles : déficit public à <b>5,1 %</b> (2025), dette &gt; 3 400 Md€ ; adaptation climatique des collectivités chiffrée à <b>21 Md€ d'ici 2030</b> (IGF), largement non financée ; la France déjà <b>premier pays européen exposé aux catastrophes naturelles</b> — 4 événements très graves par an depuis 2001, contre 1 par an entre 1950 et 2000 ; difficultés d'assurabilité des équipements publics ; 1 intercommunalité sur 2 en saturation foncière ; <b>−24 % de naissances en 2025</b> par rapport à 2010. Les DGS parlent de « gestion de crise permanente » et d'un mandat passé « de l'investissement aux arbitrages » : ici, ce basculement « de l'investissement aux arbitrages » est précisément ce que la bifurcation <strong>inverse</strong> : l'État réinvestit, <strong>planifie et redirige</strong> au lieu de rationner en silence. L'IGCC 2025 (Forster et al.) documente aussi un système mondial d'observation du climat sous-financé — missions satellitaires menacées, programme GCOS sans pérennité. <b>Les yeux commençaient à se fermer ; le pari — ici tenu — de cette branche est qu'un réinvestissement public les rouvre à temps.</b>
 </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Deux canicules exceptionnelles en quatre semaines — toutes deux très précoces.</b> <b>Mai (21-30)</b> : le 26 mai, journée de mai la plus chaude jamais mesurée en France (24,8 °C de moyenne nationale) ; 37,8 °C à Angoulême-La Couronne, record absolu de mai en métropole ; première vigilance canicule de mai de l'histoire — mais ce sont des records <em>mensuels</em>, pas absolus (Météo-France). <b>Juin</b> : le 24 juin devient le jour le plus chaud jamais mesuré en France (29,9 °C de moyenne), la nuit du 22 au 23 la plus chaude depuis 1947 (21,6 °C), 72 départements en vigilance rouge (un record), la France affichant la plus forte anomalie de la planète (jusqu'à +20 °C sur l'Ouest). L'agroclimatologue Serge Zaka recense ~470 records, dont 118 records <em>absolus</em>, des pointes de 42-44 °C — « nous ne sommes qu'en juin ». Météo-France : épisodes de plus en plus précoces et intenses, une fréquence qui pourrait être multipliée par dix d'ici 2100.
+      <span class="obs-key">Observé — 2026</span><b>Deux canicules exceptionnelles en quatre semaines — toutes deux très précoces.</b> <b>Mai (21-30)</b> : le 26 mai, journée de mai la plus chaude jamais mesurée en France (24,8 °C de moyenne nationale) ; 37,8 °C à Angoulême-La Couronne, record absolu de mai en métropole ; première vigilance canicule de mai de l'histoire — mais ce sont des records <em>mensuels</em>, pas absolus (Météo-France). <b>Juin</b> : le 24 juin devient le jour le plus chaud jamais mesuré en France (29,9 °C de moyenne), la nuit du 22 au 23 la plus chaude depuis 1947 (21,6 °C), 72 départements en vigilance rouge (un record), la France affichant la plus forte anomalie de la planète (jusqu'à +20 °C sur l'Ouest). L'agroclimatologue Serge Zaka recense ~470 records, dont 118 records <em>absolus</em>, des pointes de 42-44 °C — « nous ne sommes qu'en juin ». Météo-France : épisodes de plus en plus précoces et intenses, une fréquence qui pourrait être multipliée par dix d'ici 2100. <b>Juillet : le volet hydrique.</b> L'ancrage 2026 n'est pas seulement thermique. Le 30 juillet, l'agroclimatologue Serge Zaka documente <b>la sécheresse de juillet la plus intense jamais observée en France</b> — devant 1976, 2003 et 2022 —, la bande <b>Poitou-Bourgogne</b> étant la plus touchée. Au même moment, la Normandie (Manche, Calvados, Orne, Eure) passe en <b>niveau de crise</b> avec des restrictions atteignant l'eau potable : le manque d'eau estival n'épargne plus la façade humide. Chaleur et sécheresse cessent d'être deux récits séparés. Le conflit entre refroidissement du parc nucléaire et débit des fleuves — connu en France depuis 2003, revu en 2018, 2019 et 2022 — change d'échelle ailleurs en Europe : le Danube tombe à <b>−108 cm</b> à l'est de la Croatie, contraignant Hongrie et Roumanie à réduire <b>simultanément</b> leur production nucléaire. Le mécanisme n'est pas nouveau ; sa simultanéité transfrontalière, en 2026, l'est.
       <span class="obs-note">Garde-fou — un printemps et un début d'été brûlants ne prédisent ni l'été ni le siècle : il y a eu 1953, 2001, et des parenthèses fraîches restent possibles (Météo-France rappelle 2023). Ces faits recalent le plancher de court terme et montrent des stress déjà projetés qui arrivent ; ils ne prouvent pas une trajectoire 2100.</span>
     </div>
 <div class="timeline">
@@ -3669,7 +3713,7 @@ _safe("initBranch", function(){
       <p class="lede">Épargné par les extrêmes — Atlantique frais, hivers arrosés et sans coups de froid — le département devient une <em>terre d'accueil, organisée pour recevoir</em> : tempêtes et recul côtier bien réels, et un creux AMOC à encaisser au milieu du siècle, mais jamais de grand écart thermique.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Juin 2026 : « le bouclier normand ne fonctionne plus » (Météo-France).</b> La façade Manche, longtemps tampon thermique, a été rattrapée : Cherbourg 37 °C (record absolu, +4 °C au-dessus du précédent), Bernières-sur-Mer 40,3 °C, Dieppe 37 °C ; à l'intérieur du département, Granville 39 °C et Pontorson ~41 °C (en mai déjà, Gouville-sur-Mer 35,3 °C). L'hypothèse d'une côte durablement épargnée par l'Atlantique frais s'en trouve <b>assouplie</b> : la modération maritime amortit encore, mais ne protège plus. Un record est un plancher — la côte ne redescendra plus durablement sous ~38 °C en pointe estivale, d'où le recalage du départ des projections Folligny/Manche.
+      <span class="obs-key">Observé — 2026</span><b>Juin 2026 : « le bouclier normand ne fonctionne plus » (Météo-France).</b> La façade Manche, longtemps tampon thermique, a été rattrapée : Cherbourg 37 °C (record absolu, +4 °C au-dessus du précédent), Bernières-sur-Mer 40,3 °C, Dieppe 37 °C ; à l'intérieur du département, Granville 39 °C et Pontorson ~41 °C (en mai déjà, Gouville-sur-Mer 35,3 °C). L'hypothèse d'une côte durablement épargnée par l'Atlantique frais s'en trouve <b>assouplie</b> : la modération maritime amortit encore, mais ne protège plus. Un record est un plancher — la côte ne redescendra plus durablement sous ~38 °C en pointe estivale, d'où le recalage du départ des projections Folligny/Manche. <b>Juillet 2026 : l'eau, plus seulement la chaleur.</b> Le 10 juillet, la préfecture place le département en vigilance orange <em>canicule</em> et prend le même jour un arrêté restreignant travaux et activités forestières ; quinze des quarante spectacles pyrotechniques prévus du 11 au 15 juillet sont annulés. Cette combinaison — chaleur, sécheresse, risque d'incendie — était jusqu'ici étrangère à ce littoral. Le 15 juillet, deux secteurs hydrographiques du département — le <b>Nord-Cotentin</b> et le bassin <b>Sienne-Soulles</b> — sont placés au <b>niveau maximal de crise</b> : plus de 110 communes sous interdiction totale d'arrosage, irrigation proscrite jusqu'au goutte-à-goutte. Fin juin déjà, l'autonomie des réservoirs de Saint-Lô Agglo était tombée à <b>douze heures</b> après une hausse de 50 % de la consommation, l'eau potable menacée dans neuf communes. Le bouclier normand ne cède pas seulement sur la température : il cède aussi sur la ressource.
       <span class="obs-note">Fait constaté, daté. Recale le plancher de court terme ; n'altère ni la hiérarchie des branches à 2100 (fixée par CMIP7) ni le raisonnement AMOC.</span>
     </div>
 <div class="timeline">
@@ -3773,6 +3817,10 @@ _safe("initBranch", function(){
   <div id="bo-hydroSvg" class="cg-svg"></div>
   <div class="cg-legend" id="bo-hydroLegend"></div>
 </div>
+
+  <div class="cult-src">
+    <span class="src-key">Méthode · lecture des courbes</span><b>Deux conventions de lecture.</b> <b>1 · Un point de départ commun.</b> Les trois branches partent du <b>même état 2030</b> : l'écart entre elles n'est pas un acquis de départ, il se construit après 2030 comme effet de scénario. <b>2 · La courbe tiretée est une recharge <em>nette</em>, pas un cumul de pluie.</b> Elle baisse quand le forçage augmente sans que l'hiver devienne plus sec — les projections donnent plutôt l'inverse sur l'ouest de la France : c'est l'<b>ETP hivernale</b> qui monte, et des pluies plus intenses qui <b>ruissellent au lieu de s'infiltrer</b>. Un hiver plus arrosé peut donc recharger moins.
+  </div>
         <div class="obs-2026">
       <span class="obs-key">Observé — 2026</span><b>Juin 2026 : Folligny encaisse ~40 °C.</b> Entre Granville (39 °C) et Pontorson (~41 °C), la commune se situe autour de 40 °C lors de l'épisode de juin — après un mois de mai déjà record sur la région (Gouville-sur-Mer 35,3 °C). Sur la côte voisine, Cherbourg bat son record absolu à 37 °C (+4 °C). <b>Un record est un plancher</b> : aucune branche ne peut désormais ramener la pointe estivale de Folligny durablement sous ~40 °C — d'où le recalage du <em>départ</em> des courbes (l'écart entre branches à 2100, fixé par CMIP7, reste identique). « Le bouclier normand ne fonctionne plus » (Météo-France).
       <span class="obs-note">Fait constaté, daté — pas une réévaluation de la trajectoire 2100. Le plancher 2026 remonte ; la divergence des branches vers 2100 reste celle des scénarios CMIP7.</span>
@@ -3859,7 +3907,7 @@ _safe("initBranch", function(){
       <p class="lede">Le cas-témoin. Climatiquement éprouvée — étés vers +44 °C, eau qui se raréfie — mais sans coup de grâce : ses hivers se réchauffent normalement et sa recharge tient. La Faye <em>décline et se convertit, sans se vider</em>.</p>
     </div>
         <div class="obs-2026">
-      <span class="obs-key">Observé — 2026</span><b>Charente, mai puis juin 2026.</b> Tout près de La Faye, Angoulême-La Couronne signe 37,8 °C le 26 mai (record absolu de mai en métropole), puis l'épisode de juin pousse Poitiers à 41,4 °C et Bordeaux à 41,8 °C — La Faye dans la même fourchette (~41-42 °C). La Charente a donc, comme une bonne partie du pays, été touchée lors des <b>deux</b> épisodes. Ici, le plancher de 43 °C retenu pour 2100 reste au-dessus des pointes observées : les courbes de La Faye sont <b>inchangées</b>, seul ce repère « observé 2026 » est ajouté.
+      <span class="obs-key">Observé — 2026</span><b>Charente, mai puis juin 2026.</b> Tout près de La Faye, Angoulême-La Couronne signe 37,8 °C le 26 mai (record absolu de mai en métropole), puis l'épisode de juin pousse Poitiers à 41,4 °C et Bordeaux à 41,8 °C — La Faye dans la même fourchette (~41-42 °C). La Charente a donc, comme une bonne partie du pays, été touchée lors des <b>deux</b> épisodes. Ici, le plancher de 43 °C retenu pour 2100 reste au-dessus des pointes observées : les courbes de La Faye sont <b>inchangées</b>, seul ce repère « observé 2026 » est ajouté. <b>Juillet 2026 — confirmation charentaise.</b> Le 12 juillet, la Charente est placée en <b>vigilance rouge canicule</b> et l'Angoumois relève <b>42 °C</b> : la valeur départementale est désormais mesurée, non plus estimée par voisinage — le plancher de 43 °C retenu ici reste 1 °C au-dessus. S'y ajoute le volet hydrique : la bande <b>Poitou-Bourgogne</b>, qui inclut le nord charentais, ressort comme la plus touchée par la sécheresse de juillet la plus intense jamais observée en France (analyse Serge Zaka, 30 juillet 2026, devant 1976, 2003 et 2022). Les courbes restent <b>inchangées</b>.
       <span class="obs-note">Fait constaté, daté. Aucune modification des projections La Faye : le plancher projeté est déjà cohérent avec 2026.</span>
     </div>
     <div class="climgraph">
@@ -3879,6 +3927,10 @@ _safe("initBranch", function(){
       <div id="bo-lafaye-hydroSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bo-lafaye-hydroLegend"></div>
     </div>
+
+      <div class="cult-src">
+        <span class="src-key">Méthode · lecture des courbes</span><b>Deux conventions de lecture.</b> <b>1 · Un point de départ commun.</b> Les trois branches partent du <b>même état 2030</b> : l'écart entre elles n'est pas un acquis de départ, il se construit après 2030 comme effet de scénario. <b>2 · La courbe tiretée est une recharge <em>nette</em>, pas un cumul de pluie.</b> Elle baisse quand le forçage augmente sans que l'hiver devienne plus sec — les projections donnent plutôt l'inverse sur l'ouest de la France : c'est l'<b>ETP hivernale</b> qui monte, et des pluies plus intenses qui <b>ruissellent au lieu de s'infiltrer</b>. Un hiver plus arrosé peut donc recharger moins.
+      </div>
 
 <div class="timeline">
 
@@ -4061,7 +4113,11 @@ _safe("initBranch", function(){
         </div>
         <div class="evt ici">
           <span class="evt-year">2026</span>
-          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p>France : <strong>deux canicules exceptionnelles et très précoces</strong> (mai puis juin) — des pointes de 42-44 °C, 72 départements en vigilance rouge (record), la plus forte anomalie de la planète sur l'Ouest. <strong>Le plancher de court terme est posé</strong> — mais c'est la trajectoire d'émissions, pas cet épisode, qui décidera de la suite.</p></div>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><p>France : <strong>deux canicules exceptionnelles et très précoces</strong> (mai puis juin) — des pointes de 42-44 °C, 72 départements en vigilance rouge (record), la plus forte anomalie de la planète sur l'Ouest ; <strong>la séquence se prolonge en juillet</strong>, où la chaleur cesse d'être le seul sujet. <strong>Le plancher de court terme est posé</strong> — mais c'est la trajectoire d'émissions, pas cet épisode, qui décidera de la suite.</p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2026</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat eau">Eau</span><span class="cat climat">Climat</span><p>France : <strong>la sécheresse de juillet la plus intense jamais observée</strong> — devant 1976, 2003 et 2022 (analyse Serge Zaka, 30 juillet) —, la bande <strong>Poitou-Bourgogne</strong> la plus touchée ; la Normandie passe en <strong>niveau de crise</strong>, restrictions atteignant l'eau potable, arrêtés limitant travaux et activités forestières. En Europe, le <strong>Danube à −108 cm</strong> contraint Hongrie et Roumanie à réduire <strong>simultanément</strong> leur production nucléaire. Chaleur et sécheresse cessent d'être deux récits séparés — un plancher constaté, non une pente : c'est la trajectoire d'émissions qui décidera de la fréquence.</p></div>
         </div>
         <div class="evt">
           <span class="evt-year">2027</span>
@@ -4210,11 +4266,21 @@ _safe("initBranch", function(){
     <div class="scope-head">
       <p class="where">À Folligny · agronomie d'un climat chaud mais lisible</p>
       <h2>Cultures &amp; plantation</h2>
-      <p class="lede">Que cultiver sous des étés à +38 °C mais des hivers doux (≈ −4 °C) ? La chaleur d'été combinée à des hivers doux <em>ouvre un peu la porte aux espèces méridionales</em>. Guide pratique fondé sur les contraintes physiques de cette branche.</p>
+      <p class="lede">Que cultiver sous des étés pointant à +41 °C mais des hivers doux (≈ −4 °C) ? La chaleur d'été combinée à des hivers sans gel profond <em>ouvre un peu la porte aux espèces méridionales</em>, sans que l'été impose de rupture de système. Guide pratique fondé sur les contraintes physiques de cette branche.</p>
     </div>
 
     <div class="cult-src">
-      <span class="src-key">Source · agroclimatologie</span>La logique de plantation de cet onglet s'appuie sur l'<b>agroclimatologie</b>, en particulier les travaux du Dr <b>Serge Zaka</b> (thèse, Université de Poitiers, 2016). Réponses thermiques des cultures : Zaka et al., <em>AoB PLANTS</em> 2016 (DOI 10.1093/aobpla/plw035) et <em>Agricultural and Forest Meteorology</em> 2016 (DOI 10.1016/j.agrformet.2016.10.004). Sensibilité du blé à la chaleur et à la demande évaporative : Leveau, Parent, Zaka, Martre, <em>Journal of Experimental Botany</em> (DOI 10.1093/jxb/erab431). Cadrage grand public : « Orages sur le climat » (S. Zaka et J. Szpirglas, HarperCollins, 2025), dont l'angle — <em>le manque de froid hivernal est l'un des problèmes les plus urgents pour l'agriculture</em> — recoupe le fil « hivers doux » de ce document (dormance des fruitiers mal levée, ravageurs non détruits). Démarche méthodologiquement proche : le cabinet <b>AgroClimat2050</b> (<a href="https://agroclimatologie.com" target="_blank" rel="noopener">agroclimatologie.com</a>) et sa cartographie prévisionnelle d'impact des événements météo sur l'agriculture. Les épisodes de mai-juin 2026 servent ici d'illustration vivante (échaudage, stress de la faune et de la flore). Zaka est mobilisé comme source du <b>volet agronomique</b>, non de la trajectoire climatique globale.
+      <span class="src-key">Source · agroclimatologie</span>La logique de plantation de cet onglet s'appuie sur l'<b>agroclimatologie</b>, en particulier les travaux du Dr <b>Serge Zaka</b> (thèse, Université de Poitiers, 2016). Réponses thermiques des cultures : Zaka et al., <em>AoB PLANTS</em> 2016 (DOI 10.1093/aobpla/plw035) et <em>Agricultural and Forest Meteorology</em> 2016 (DOI 10.1016/j.agrformet.2016.10.004). Diversité des réponses de la croissance foliaire et de la transpiration à la température et à la demande évaporative chez les <em>apparentés</em> du blé — une piste de sélection variétale, non un seuil : Leveau, Parent, Zaka, Martre, <em>Journal of Experimental Botany</em> 72(21), 2021, p. 7580-7593 (DOI 10.1093/jxb/erab431). Sur l'échaudage proprement dit : Gouache, Le Bris, Bogard, Deudon, Pagé, Gate, <em>European Journal of Agronomy</em> 39, 2012, p. 62-70 (options d'adaptation au stress thermique pendant le remplissage du blé, en France) ; Asseng et al., <em>Nature Climate Change</em> 5, 2015, p. 143-147. Cadrage grand public : « Orages sur le climat » (S. Zaka et J. Szpirglas, HarperCollins, 2025), dont l'angle — <em>le manque de froid hivernal est l'un des problèmes les plus urgents pour l'agriculture</em> — recoupe le fil « hivers doux » de ce document (dormance des fruitiers mal levée, ravageurs non détruits). Démarche méthodologiquement proche : le cabinet <b>AgroClimat2050</b> (<a href="https://agroclimatologie.com" target="_blank" rel="noopener">agroclimatologie.com</a>) et sa cartographie prévisionnelle d'impact des événements météo sur l'agriculture. Les épisodes de mai-juin 2026 servent ici d'illustration vivante (échaudage, stress de la faune et de la flore). Zaka est mobilisé comme source du <b>volet agronomique</b>, non de la trajectoire climatique globale.<br><br><b>Deux familles de chiffres, à ne pas confondre.</b> Les <b>pointes estivales</b> citées dans cet onglet (+40 °C vers 2050, +41 °C vers 2100 dans cette branche) proviennent des courbes du document : ce sont des <em>maxima</em>, non des moyennes. Les <b>seuils physiologiques</b> des espèces, eux, ne dépendent pas de la branche choisie. Le blé ne réagit pas à la pointe annuelle mais au nombre de jours passés au-dessus de son seuil <em>pendant le remplissage du grain</em> : chaque degré au-delà de 18-22 °C durant cette phase coûte de l'ordre de 3 à 4 % de rendement, et une exposition soutenue dans la plage 32-38 °C peut amputer la moitié du potentiel. C'est cette durée, et non le record de l'été, qui décide de la récolte.
+    </div>
+
+    <div class="obs-2026">
+      <span class="obs-key">Observé — 2026 (calendrier)</span><b>Le décalage projeté pour 2050 a eu lieu en 2026.</b> Cet onglet annonce, à l'horizon 2050, des moissons ramenées à juin. La récolte 2026 l'a fait : au 8 juillet, <b>59 % des surfaces</b> de blé tendre étaient déjà rentrées contre <b>16 %</b> en moyenne sur 2021-2025, et la moisson était close à la mi-juillet dans presque tout le pays — du jamais-vu selon la filière. Les conditions disent le reste : moissons de nuit et à l'aube faute de rosée matinale, et, dans plusieurs départements, l'étincelle d'une moissonneuse-batteuse suffisant à déclencher un feu. La plante ne résiste pas à la chaleur : elle lui échappe en finissant plus tôt. L'esquive phénologique n'est plus une stratégie d'adaptation à planifier pour 2050, c'est le régime en cours.
+      <span class="obs-note">Garde-fou — fait constaté et daté. Recale le calendrier agricole de court terme ; n'altère ni les courbes, ni les pointes estivales, ni la hiérarchie des branches à 2100. Une moisson précoce est une réponse de la plante, pas une preuve de trajectoire.</span>
+    </div>
+
+    <div class="obs-2026">
+      <span class="obs-key">Observé — 2026 (économie)</span><b>L'effet ciseau.</b> Le climat n'agit pas seul sur le coût de l'azote. Depuis l'escalade de fin février 2026 au Moyen-Orient, le gaz européen (TTF) a bondi de plus de 50 % en quelques semaines ; l'ammonitrate 33,5 % est passé d'environ 500 €/t à plus de 600 €/t entre mars et avril ; le Trésor rappelle qu'entre 20 et 30 % des exportations mondiales d'engrais transitent par le détroit d'Ormuz. Le mécanisme d'ajustement carbone aux frontières, entré en vigueur au 1<sup>er</sup> janvier 2026, ajoute une pression structurelle indépendante de la conjoncture. Le résultat est tombé : la <b>qualité a tenu</b>, le rendement non. Le blé tendre s'établit à ~<b>32 Mt</b> (Agreste, 15 juillet), <b>−4 %</b> sur un an, avec un rendement moyen de <b>69,3 q/ha</b> contre 74,2 en 2025 — <b>−6,6 %</b> malgré 2,8 % de surfaces en plus. Le ciseau est là, exactement : le coût de l'intrant progresse sous l'effet de la géopolitique et de la fiscalité carbone au moment où le rendement recule sous l'effet de la chaleur et de la sécheresse.
+      <span class="obs-note">Garde-fou — ce stress est conjoncturel et géopolitique, pas une donnée climatique : il n'infléchit ni les courbes ni les branches de ce document. Il illustre, au présent, la même vulnérabilité conjointe que les tensions nucléaire/débit des fleuves de l'onglet France — deux stress d'origines distinctes qui convergent sur l'exploitation.</span>
     </div>
 
     <div class="cult-toggle" id="bo-culttoggle">
@@ -4261,448 +4327,14 @@ _safe("initBranch", function(){
 </div>
 <div class="ftip" id="bo-ftip"></div>
 
-<script>
-  const tabs = document.querySelectorAll('.tab');
-  const scopes = document.querySelectorAll('.scope');
-  function activate(id){
-    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scope === id)));
-    scopes.forEach(s => s.classList.toggle('active', s.id === id));
-    const active = document.getElementById(id);
-    if(active){
-      const phases = active.querySelectorAll('.phase, .verdict, .axis, .synth-lede, .matrix, .chrono-warn, .chrono-phase');
-      phases.forEach((p,i)=>{ p.style.animation='none'; void p.offsetWidth;
-        p.style.animation=`fade .5s ease both`; p.style.animationDelay=(i*60)+'ms'; });
-    }
-  }
-  tabs.forEach(t => t.addEventListener('click', ()=> activate(t.dataset.scope)));
-  // keyboard arrows
-  document.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
-    const list=[...tabs]; const cur=list.findIndex(t=>t.getAttribute('aria-selected')==='true');
-    if(e.key==='ArrowRight'){e.preventDefault();const n=list[(cur+1)%list.length];n.focus();activate(n.dataset.scope);}
-    if(e.key==='ArrowLeft'){e.preventDefault();const n=list[(cur-1+list.length)%list.length];n.focus();activate(n.dataset.scope);}
-  });
-
-  /* ---------- CULTURES ---------- */
-  const cultData = {
-    "2050": {
-      label: "2050 — la chaleur s'installe",
-      items: [
-        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> est échaudé sous +38 °C mais tenable — moissons avancées à juin, non sacrifiées. Les hivers doux sécurisent la levée en sortie d'hiver. Montée du <strong>tournesol, sorgho en appoint, orge précoce</strong>. Pas de bascule C4 obligatoire : la contrainte hydrique est réelle, mais la recharge hivernale laisse de la marge. <em>(échaudage du blé — Leveau, Parent, Zaka, Martre, J. Exp. Bot., DOI 10.1093/jxb/erab431)</em>" },
-        { title: "Potager", txt: "Schéma à <strong>deux saisons</strong> (printemps / automne). Juillet-août : thermophiles paillés (tomate, poivron, aubergine, courgette). Hivers plus doux (−4 à −7 °C) → légumes d'hiver peu menacés, châssis allégé ou superflu. L'hiver doux est un gain net sur la saison froide." },
-        { title: "Fruitiers", txt: "<strong>Pommier cidre</strong> glisse vers variétés chaleur-tolérantes, récolte avancée. <strong>Vigne</strong> s'installe (dormance rustique, avide de chaleur). Cerisier, prunier : OK. <strong>Figuier</strong> facile. Les hivers doux (−4 °C) rendent l'<strong>olivier marginalement envisageable en situation abritée</strong> (mur exposé sud, microterrain), à tester prudemment." },
-        { title: "Haies", txt: "Renforcer le bocage existant : <strong>érable champêtre, charme, aubépine, noisetier, cornouiller mâle</strong>. Introduire dès maintenant <strong>chêne pubescent et cormier</strong> — 20 à 30 ans pour maturité, ce sont les plantations pour 2100. Pression sécheresse estivale réelle — le stress principal est hydrique, pas thermique." }
-      ]
-    },
-    "2100": {
-      label: "2100 — climat stabilisé",
-      items: [
-        { title: "Céréales", txt: "<strong>Sorgho et millet</strong> en sec là où l'eau manque — mais blé et orge restent possibles avec sobriété hydrique (étés ~+38 °C). <strong>Seigle</strong> sur sols pauvres et secs. Couverture permanente du sol obligatoire : le sol nu sous +38 °C ne pardonne pas. Semis décalés, moissons au plus tôt." },
-        { title: "Potager", txt: "Modèle <strong>paillage + ombrière + goutte-à-goutte économe</strong>. L'eau reste la contrainte n°1 — chaque litre compte. Été sous ombrage : gombo, patate douce, courge, niébé, aubergine. L'hiver doux (−4 °C) élargit la saison fraîche vers l'automne et le printemps sans protection lourde." },
-        { title: "Fruitiers", txt: "<strong>Vigne, pommier/poirier</strong> (porte-greffes vigoureux + ombrage partiel), <strong>figuier</strong> (repart de souche), <strong>kaki, grenadier</strong>. <strong>Olivier et agrume abrités envisageables</strong> (hiver mini ~−4 °C) — agroforesterie recommandée, situation protégée exigée. Contrainte principale : l'eau." },
-        { title: "Haies", txt: "Infrastructure vitale : ombre, brise-vent, fourrage, bois d'œuvre, biodiversité. Charpente résistante : <strong>chêne pubescent, érable champêtre, cormier, alisier, mûrier</strong>. Fixateurs d'azote : <strong>argousier, robinier</strong> (bois imputrescible, drageonnant). À surveiller : hêtre et frêne, fragiles sous sécheresse et sous pression hydrique croissante." }
-      ]
-    }
-  };
-
-  const relaisData = [
-    { tier: "Plantés une fois — vivent jusqu'à/au-delà de 2100", cls: "long", rows: [
-      { name: "Poirier (haute-tige)", meta: "60–100 ans", c: [[2026,2110]] },
-      { name: "Pommier cidre", meta: "60–100 ans · apogée ~2070", c: [[2026,2106]] },
-      { name: "Noyer", meta: "100–150 ans · récolte ~2040", c: [[2026,2110]] },
-      { name: "Châtaignier / cormier", meta: "séculaires", c: [[2026,2110]] },
-      { name: "Olivier (abrité)", meta: "séculaire · possible en situation abritée", c: [[2026,2110]] },
-      { name: "Figuier", meta: "rabattu/repart de souche", c: [[2026,2110]] },
-      { name: "Vigne", meta: "40–80 ans · 1 renouvellement", c: [[2026,2078],[2078,2110]] }
-    ]},
-    { tier: "Vie moyenne — 2 à 3 plantations", cls: "med", rows: [
-      { name: "Cerisier", meta: "25–40 ans", c: [[2026,2063],[2063,2100]] },
-      { name: "Amandier", meta: "30–50 ans · peu sensible au gel tardif", c: [[2026,2068],[2068,2110]] },
-      { name: "Prunier", meta: "20–30 ans", c: [[2026,2051],[2051,2076],[2076,2101]] }
-    ]},
-    { tier: "Relais serré — quasi une culture", cls: "short", rows: [
-      { name: "Abricotier", meta: "15–25 ans · gel tardif raréfié", c: [[2026,2046],[2046,2066],[2066,2086],[2086,2106]] },
-      { name: "Pêcher", meta: "8–15 ans · ~6 générations", c: [[2026,2038],[2038,2050],[2050,2062],[2062,2074],[2074,2086],[2086,2098],[2098,2110]] }
-    ]}
-  ];
-
-  function renderCult(p){
-    const d = cultData[p];
-    let cards = d.items.map(it => `<div class="cult-card"><h3>${it.title}</h3><p>${it.txt}</p></div>`).join("");
-    document.getElementById("cultpanel").innerHTML = `<div class="cult-label">${d.label}</div>${cards}`;
-  }
-
-  const AX0=2026, AX1=2110;
-  const pct = y => (y-AX0)/(AX1-AX0)*100;
-
-  function escapeXml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-  function renderFrise(){
-    const tMin=2026, tMax=2110;
-    const W=680, labelW=152, mr=12;
-    const plotW = W - labelW - mr;
-    const tx = yr => labelW + (yr-tMin)/(tMax-tMin)*plotW;
-    const axisH=24, tierH=22, rowH=24, barH=11, topPad=6, botPad=10;
-
-    let totalH = topPad + axisH;
-    relaisData.forEach(g => { totalH += tierH + g.rows.length*rowH; });
-    totalH += botPad;
-
-    const ticks=[2026,2050,2075,2100];
-    const decades=[2036,2046,2056,2066,2076,2086,2096,2106];
-    const plotTop = topPad + axisH;
-    const plotBot = totalH - botPad;
-
-    let s = `<svg viewBox="0 0 ${W} ${totalH.toFixed(0)}" role="img" aria-label="Frise des durées de vie productive des plantations de 2026 à 2110">`;
-    s += `<defs>`
-      + `<linearGradient id="bo-gLong" x1="0" x2="1"><stop offset="0" stop-color="#5b8aa6"/><stop offset="1" stop-color="#7db0c9"/></linearGradient>`
-      + `<linearGradient id="bo-gMed" x1="0" x2="1"><stop offset="0" stop-color="#d98a4e"/><stop offset="1" stop-color="#e8a368"/></linearGradient>`
-      + `<linearGradient id="bo-gShort" x1="0" x2="1"><stop offset="0" stop-color="#c45c3c"/><stop offset="1" stop-color="#dd7b54"/></linearGradient>`
-      + `</defs>`;
-
-    decades.forEach(yr=>{
-      const x=tx(yr).toFixed(1);
-      s += `<line x1="${x}" y1="${(plotTop-4).toFixed(1)}" x2="${x}" y2="${plotBot.toFixed(1)}" stroke="rgba(236,229,216,.05)" stroke-width="1"/>`;
-    });
-    ticks.forEach(yr=>{
-      const x=tx(yr), now=yr===2026;
-      s += `<line x1="${x.toFixed(1)}" y1="${(plotTop-4).toFixed(1)}" x2="${x.toFixed(1)}" y2="${plotBot.toFixed(1)}" stroke="${now?'rgba(232,116,59,.34)':'rgba(236,229,216,.11)'}" stroke-width="${now?1.4:1}"/>`;
-      s += `<text x="${x.toFixed(1)}" y="${(topPad+11).toFixed(0)}" text-anchor="${now?'start':'middle'}" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="${now?'#e8743b':'#7fa6bd'}">${yr}</text>`;
-    });
-
-    let y = plotTop;
-    relaisData.forEach(g=>{
-      s += `<text x="2" y="${(y+13).toFixed(1)}" font-family="'JetBrains Mono',monospace" font-size="8.5" letter-spacing="1.3" fill="#6f675b">${escapeXml(g.tier.toUpperCase())}</text>`;
-      y += tierH;
-      g.rows.forEach(r=>{
-        const barY = y + (rowH-barH)/2;
-        s += `<text x="${labelW-10}" y="${(barY+8.8).toFixed(1)}" text-anchor="end" font-family="Spectral,serif" font-size="12.5" fill="#ece3d3">${escapeXml(r.name)}</text>`;
-        const n=r.c.length;
-        r.c.forEach((seg,i)=>{
-          const x1=tx(seg[0]), w=tx(seg[1])-x1;
-          const grad = g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort';
-          const cohort = n>1?`cohorte ${i+1} sur ${n}`:'plantation unique';
-          const end = seg[1]>2100?'au-delà de 2100':seg[1];
-          s += `<rect class="bar ${g.cls}" x="${x1.toFixed(1)}" y="${barY.toFixed(1)}" width="${Math.max(w,2).toFixed(1)}" height="${barH}" rx="2" fill="url(#${grad})" `
-            + `data-name="${escapeXml(r.name)}" data-meta="${escapeXml(r.meta)}" data-period="${seg[0]} → ${end}" data-cohort="${cohort}"/>`;
-          if(i>0) s += `<rect x="${(x1-0.75).toFixed(1)}" y="${(barY-2).toFixed(1)}" width="1.5" height="${barH+4}" rx="0.5" fill="#d97a35"/>`;
-        });
-        y += rowH;
-      });
-    });
-
-    s += `</svg>`;
-    document.getElementById("frise").innerHTML = s;
-  }
-
-  document.querySelectorAll("#culttoggle button").forEach(b => {
-    b.addEventListener("click", () => {
-      document.querySelectorAll("#culttoggle button").forEach(x => x.classList.remove("on"));
-      b.classList.add("on");
-      renderCult(b.dataset.p);
-    });
-  });
-
-  renderCult("2050");
-  renderFrise();
-
-  /* ---- V2 : tooltip frise ---- */
-  const ftip = document.getElementById("ftip");
-  const friseEl = document.getElementById("frise");
-  friseEl.addEventListener("mouseover", e => {
-    const bar = e.target.closest(".bar");
-    if(!bar) return;
-    ftip.innerHTML = `<b>${bar.dataset.name}</b>`
-      + `<div class="meta">${bar.dataset.meta}</div>`
-      + `<div class="seg">${bar.dataset.cohort} · <em>${bar.dataset.period}</em></div>`;
-    ftip.classList.add("show");
-  });
-  friseEl.addEventListener("mousemove", e => {
-    if(!ftip.classList.contains("show")) return;
-    let x = e.clientX + 14, y = e.clientY + 14;
-    const r = ftip.getBoundingClientRect();
-    if(x + r.width > window.innerWidth - 10) x = e.clientX - r.width - 14;
-    if(y + r.height > window.innerHeight - 10) y = e.clientY - r.height - 14;
-    ftip.style.left = x + "px"; ftip.style.top = y + "px";
-  });
-  friseEl.addEventListener("mouseout", e => {
-    if(e.target.closest(".bar")) ftip.classList.remove("show");
-  });
-
-  /* ---- V2 : barre de progression ---- */
-  const progressEl = document.getElementById("progress");
-  function updateProgress(){
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    progressEl.style.width = h>0 ? (window.scrollY/h*100)+"%" : "0%";
-  }
-  window.addEventListener("scroll", updateProgress, {passive:true});
-  window.addEventListener("resize", updateProgress);
-  updateProgress();
-
-  /* ---- V2 : retour en haut ---- */
-  const fabTop = document.getElementById("fabTop");
-  window.addEventListener("scroll", () => {
-    fabTop.classList.toggle("show", window.scrollY > 600);
-  }, {passive:true});
-  fabTop.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
-
-  /* ---- V2 : impression / PDF (révèle tous les onglets + les 2 paliers) ---- */
-  function expandForPrint(){
-    document.body.classList.add("printing");
-    const panel = document.getElementById("cultpanel");
-    if(panel && !panel.dataset.expanded){
-      panel.dataset.saved = panel.innerHTML;
-      let both = "";
-      ["2050","2100"].forEach(p => {
-        const d = cultData[p];
-        both += `<div class="cult-label">${d.label}</div>`
-          + d.items.map(it => `<div class="cult-card"><h3>${it.title}</h3><p>${it.txt}</p></div>`).join("");
-      });
-      panel.innerHTML = both;
-      panel.dataset.expanded = "1";
-    }
-  }
-  function restoreAfterPrint(){
-    document.body.classList.remove("printing");
-    const panel = document.getElementById("cultpanel");
-    if(panel && panel.dataset.expanded){
-      panel.innerHTML = panel.dataset.saved;
-      delete panel.dataset.expanded; delete panel.dataset.saved;
-    }
-  }
-  document.getElementById("fabPdf").addEventListener("click", () => {
-    expandForPrint();
-    setTimeout(() => window.print(), 80);
-  });
-  window.addEventListener("beforeprint", expandForPrint);
-  window.addEventListener("afterprint", restoreAfterPrint);
-
-  /* ---- V3 : graphique climatique SVG ---- */
-  (function(){
-    const years = [2030,2042,2060,2077,2095];
-    const data = {
-      folligny: { label:"Folligny",      summer:[40,40,41,41,41], winter:[-7,-6,-5,-5,-4] },
-      lafaye:   { label:"La Faye",        summer:[43,44,44,44,44], winter:[-7,-5,-2,2,4] },
-      manche:   { label:"Manche (côte)",  summer:[38,38,39,39,39], winter:[-4,-4,-3,-3,-2] }
-    };
-    const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
-    const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
-    const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
-    const ys = t => mt + (yMax-t)/(yMax-yMin)*plotH;
-
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour Folligny et la côte de la Manche">`;
-
-    for(let t=-20;t<=50;t+=10){
-      const y=ys(t), isZero=t===0;
-      svg += `<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
-      svg += `<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${t>0?'+':''}${t}</text>`;
-    }
-    svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
-    svg += `<text class="cg-obs" x="${ml+4}" y="13">Observé 2026 — Folligny ~40 °C · côte ~38 °C (juin) : nouveau plancher</text>`;
-
-    [2030,2050,2070,2090].forEach(yr=>{
-      const x=xs(yr);
-      svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
-      svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
-    });
-
-    svg += `<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
-    svg += `<line class="cg-axis" x1="${ml}" y1="${mt+plotH}" x2="${W-mr}" y2="${mt+plotH}"/>`;
-
-    const order=["manche","folligny"];
-    order.forEach(key=>{
-      ["summer","winter"].forEach(season=>{
-        const pts = years.map((yr,i)=>`${xs(yr).toFixed(1)},${ys(data[key][season][i]).toFixed(1)}`).join(" ");
-        svg += `<polyline class="cg-line ${season} ${key}" points="${pts}"/>`;
-      });
-    });
-
-    order.forEach(key=>{
-      ["summer","winter"].forEach(season=>{
-        years.forEach((yr,i)=>{
-          const t=data[key][season][i];
-          svg += `<circle class="cg-dot ${key}" cx="${xs(yr).toFixed(1)}" cy="${ys(t).toFixed(1)}" r="3.4" `
-            + `data-place="${data[key].label}" data-year="${yr}" data-season="${season==='summer'?'été (max)':'hiver (min)'}" data-temp="${t>0?'+':''}${t} °C"/>`;
-        });
-      });
-    });
-
-    svg += `</svg>`;
-    document.getElementById("climSvg").innerHTML = svg;
-
-    document.getElementById("climLegend").innerHTML =
-      `<div class="lg"><span class="sw folligny"></span>Folligny</div>`
-     +`<div class="lg"><span class="sw manche"></span>Manche côte</div>`
-     +`<span class="sep">·</span>`
-     +`<span class="note">trait plein = été · tireté = hiver</span>`;
-
-    const tip = document.getElementById("ftip");
-    const svgEl = document.getElementById("climSvg");
-    svgEl.addEventListener("mouseover", e=>{
-      const d = e.target.closest(".cg-dot");
-      if(!d) return;
-      tip.innerHTML = `<b>${d.dataset.place}</b>`
-        + `<div class="meta">${d.dataset.year} · ${d.dataset.season}</div>`
-        + `<div class="seg"><em>${d.dataset.temp}</em></div>`;
-      tip.classList.add("show");
-    });
-    svgEl.addEventListener("mousemove", e=>{
-      if(!tip.classList.contains("show")) return;
-      let x=e.clientX+14, y=e.clientY+14;
-      const r=tip.getBoundingClientRect();
-      if(x+r.width>window.innerWidth-10) x=e.clientX-r.width-14;
-      if(y+r.height>window.innerHeight-10) y=e.clientY-r.height-14;
-      tip.style.left=x+"px"; tip.style.top=y+"px";
-    });
-    svgEl.addEventListener("mouseout", e=>{
-      if(e.target.closest(".cg-dot")) tip.classList.remove("show");
-    });
-  })();
-
-  /* ---- V4 : graphique hydrique SVG ---- */
-  (function(){
-    const years = [2030,2042,2060,2077,2095];
-    const data = {
-      folligny: { label:"Folligny",       ete:[-140,-160,-190,-205,-205], hiver:[405,408,405,402,400] },
-      lafaye:   { label:"La Faye",        ete:[-260,-290,-320,-340,-340], hiver:[280,255,230,205,190] },
-      manche:   { label:"Manche (côte)",  ete:[-110,-130,-150,-165,-170], hiver:[382,385,383,381,380] }
-    };
-    const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
-    const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
-    const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
-    const ys = v => mt + (yMax-v)/(yMax-yMin)*plotH;
-
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour Folligny et la côte de la Manche">`;
-
-    for(let v=-500;v<=400;v+=100){
-      const y=ys(v), isZero=v===0;
-      svg += `<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
-      svg += `<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${v>0?'+':''}${v}</text>`;
-    }
-    svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
-
-    [2030,2050,2070,2090].forEach(yr=>{
-      const x=xs(yr);
-      svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
-      svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
-    });
-
-    svg += `<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
-    svg += `<line class="cg-axis" x1="${ml}" y1="${mt+plotH}" x2="${W-mr}" y2="${mt+plotH}"/>`;
-
-    const order=["manche","folligny"];
-    const cls={ete:"summer",hiver:"winter"};
-    order.forEach(key=>{
-      ["ete","hiver"].forEach(season=>{
-        const pts = years.map((yr,i)=>`${xs(yr).toFixed(1)},${ys(data[key][season][i]).toFixed(1)}`).join(" ");
-        svg += `<polyline class="cg-line ${cls[season]} ${key}" points="${pts}"/>`;
-      });
-    });
-
-    order.forEach(key=>{
-      ["ete","hiver"].forEach(season=>{
-        years.forEach((yr,i)=>{
-          const v=data[key][season][i];
-          svg += `<circle class="cg-dot ${key}" cx="${xs(yr).toFixed(1)}" cy="${ys(v).toFixed(1)}" r="3.4" `
-            + `data-place="${data[key].label}" data-year="${yr}" data-season="${season==='ete'?'été · bilan P−ETP':'hiver · recharge nappes'}" data-val="${v>0?'+':''}${v} mm"/>`;
-        });
-      });
-    });
-
-    svg += `</svg>`;
-    document.getElementById("hydroSvg").innerHTML = svg;
-
-    document.getElementById("hydroLegend").innerHTML =
-      `<div class="lg"><span class="sw folligny"></span>Folligny</div>`
-     +`<div class="lg"><span class="sw manche"></span>Manche côte</div>`
-     +`<span class="sep">·</span>`
-     +`<span class="note">trait plein = bilan estival (P−ETP) · tireté = recharge hivernale</span>`;
-
-    const tip = document.getElementById("ftip");
-    const svgEl = document.getElementById("hydroSvg");
-    svgEl.addEventListener("mouseover", e=>{
-      const d = e.target.closest(".cg-dot");
-      if(!d) return;
-      tip.innerHTML = `<b>${d.dataset.place}</b>`
-        + `<div class="meta">${d.dataset.year} · ${d.dataset.season}</div>`
-        + `<div class="seg"><em>${d.dataset.val}</em></div>`;
-      tip.classList.add("show");
-    });
-    svgEl.addEventListener("mousemove", e=>{
-      if(!tip.classList.contains("show")) return;
-      let x=e.clientX+14, y=e.clientY+14;
-      const r=tip.getBoundingClientRect();
-      if(x+r.width>window.innerWidth-10) x=e.clientX-r.width-14;
-      if(y+r.height>window.innerHeight-10) y=e.clientY-r.height-14;
-      tip.style.left=x+"px"; tip.style.top=y+"px";
-    });
-    svgEl.addEventListener("mouseout", e=>{
-      if(e.target.closest(".cg-dot")) tip.classList.remove("show");
-    });
-  })();
-
-  /* ---- V3 : mode présentation plein écran ---- */
-  (function(){
-    const tabEls = [...document.querySelectorAll('.tab')];
-    const ids = tabEls.map(t=>t.dataset.scope);
-    const names = tabEls.map(t=>(t.childNodes[0].textContent||'').trim());
-    let idx = 0;
-    const wrap = document.querySelector('.wrap');
-
-    function show(i){
-      idx = (i + ids.length) % ids.length;
-      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
-      document.getElementById(ids[idx]).classList.add('pslide');
-      if(wrap) wrap.scrollTop = 0;
-      document.getElementById('pPos').textContent = `${names[idx]} · ${idx+1} / ${ids.length}`;
-    }
-    function enter(){
-      document.body.classList.add('presenting');
-      const cur = tabEls.findIndex(t=>t.getAttribute('aria-selected')==='true');
-      show(cur<0?0:cur);
-      const el = document.documentElement;
-      const rq = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
-      if(rq) rq.call(el).catch(()=>{ /* mode fenêtre accepté */ });
-    }
-    function exit(){
-      if(!document.body.classList.contains('presenting')) return;
-      document.body.classList.remove('presenting');
-      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
-      activate(ids[idx]);
-      const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
-      if(exitFn && document.fullscreenElement) exitFn.call(document).catch(()=>{});
-    }
-
-    document.getElementById('fabPresent').addEventListener('click', enter);
-    document.getElementById('pPrev').addEventListener('click', ()=>show(idx-1));
-    document.getElementById('pNext').addEventListener('click', ()=>show(idx+1));
-    document.getElementById('pQuit').addEventListener('click', exit);
-    document.addEventListener('keydown', e=>{
-      if(!document.body.classList.contains('presenting')) return;
-      if(e.key==='ArrowRight'){e.preventDefault();show(idx+1);}
-      else if(e.key==='ArrowLeft'){e.preventDefault();show(idx-1);}
-      else if(e.key==='Escape'){exit();}
-    });
-    ['fullscreenchange','webkitfullscreenchange','mozfullscreenchange'].forEach(ev=>{
-      document.addEventListener(ev, ()=>{
-        const active = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
-        if(!active) exit();
-      });
-    });
-  })();
-
-</script>
-
-
-
   </div>
 </div>
 <!-- ═══ SCRIPTS DE BRANCHES (inactifs jusqu'à l'ouverture) ═══════════════ -->
 <script type="text/plain" id="script-tpl-sombre">
 
-  const tabs = document.querySelectorAll('.tab');
-  const scopes = document.querySelectorAll('.scope');
+  const root = document.getElementById('screen-sombre');
+  const tabs = root.querySelectorAll('.tab');
+  const scopes = root.querySelectorAll('.scope');
   function activate(id){
     tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scope === id)));
     scopes.forEach(s => s.classList.toggle('active', s.id === id));
@@ -4715,7 +4347,7 @@ _safe("initBranch", function(){
   }
   tabs.forEach(t => t.addEventListener('click', ()=> activate(t.dataset.scope)));
   // keyboard arrows
-  document.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
+  root.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
     const list=[...tabs]; const cur=list.findIndex(t=>t.getAttribute('aria-selected')==='true');
     if(e.key==='ArrowRight'){e.preventDefault();const n=list[(cur+1)%list.length];n.focus();activate(n.dataset.scope);}
     if(e.key==='ArrowLeft'){e.preventDefault();const n=list[(cur-1+list.length)%list.length];n.focus();activate(n.dataset.scope);}
@@ -4726,8 +4358,8 @@ _safe("initBranch", function(){
     "2050": {
       label: "2050 — l'amplitude s'installe",
       items: [
-        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> tient mais échaudé sous +38 °C → moissons avancées (juin). <strong>Maïs pluvial</strong> décroché les étés secs. Montée du <strong>tournesol, sorgho</strong>, orge précoce. <em>(échaudage du blé — Leveau, Parent, Zaka, Martre, J. Exp. Bot., DOI 10.1093/jxb/erab431)</em>" },
-        { title: "Potager", txt: "Schéma à <strong>deux saisons</strong> (printemps/automne). Juillet-août : thermophiles (tomate paillée, poivron, aubergine). Hiver : poireau, chou kale, mâche rustiques au −12 °C." },
+        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> tient encore, mais l'été passe désormais plusieurs semaines au-dessus du seuil d'échaudage : le rendement ne se joue plus sur la résistance, il se joue sur l'<strong>esquive</strong> — variétés précoces, semis avancés, remplissage bouclé avant la mi-juillet. <strong>Maïs pluvial</strong> décroché les étés secs. Montée du <strong>tournesol, du sorgho</strong>, de l'orge précoce. Pointe estivale ~+43 °C, hiver jusqu'à −11 °C : dès cette date, c'est l'<em>amplitude</em> qui commande le choix variétal, pas la seule chaleur. <em>(pistes variétales chez les apparentés du blé — Leveau, Parent, Zaka, Martre, J. Exp. Bot. 72(21), 2021)</em>" },
+        { title: "Potager", txt: "Schéma à <strong>deux saisons</strong> (printemps/automne). Juillet-août : thermophiles (tomate paillée, poivron, aubergine), sous ombrage dès que la pointe dépasse +40 °C — ce qui devient l'ordinaire. Hiver : poireau, chou kale, mâche, rustiques jusqu'à −12 °C — soit très exactement ce que l'hiver de cette branche vient chercher vers 2050. La marge est nulle aux deux bouts de l'année : c'est le premier signal du climat d'amplitude." },
         { title: "Fruitiers", txt: "<strong>Pommier cidre</strong> glisse vers variétés chaleur-tolérantes, récolte avancée. <strong>Vigne</strong> s'installe (rustique dormance, avide chaleur). <strong>Cerisier, prunier</strong> OK; surveiller gel tardif." },
         { title: "Haies", txt: "Renforcer le bocage : <strong>érable champêtre, charme, aubépine, prunellier, noisetier, cornouiller mâle</strong>. Commencer à introduire <strong>chêne pubescent, cormier</strong> (20-30 ans pour maturité; plantez pour 2100)." }
       ]
@@ -4735,9 +4367,9 @@ _safe("initBranch", function(){
     "2100": {
       label: "2100 — climat d'amplitude verrouillé",
       items: [
-        { title: "Céréales", txt: "Bascule vers <strong>plantes C4 sobres eau</strong> : <strong>sorgho, millet, éleusine</strong> pluvial. Blé rare (précoce/irrigué → énergie absente). <strong>Seigle</strong> pour sols pauvres (−25 °C OK). À +43 °C la photosynthèse bloque : semis décalés, couverture permanente sol." },
-        { title: "Potager", txt: "Modèle <strong>paillage + ombrière + goutte-à-goutte économe</strong>. L'eau = contrainte n°1. Été sous ombrage : gombo, patate douce, courge, niébé, aubergine. Saison fraîche repoussée automne-hiver-printemps ; légumes d'hiver sous châssis (−15 °C exige protection)." },
-        { title: "Fruitiers", txt: "Paradoxe net : +43 °C <strong>n'autorise toujours pas olivier ni agrume</strong> (−15 °C les tue). Survivants : <strong>vigne</strong> (−18/-20 dormance), <strong>pommier/poirier</strong> porte-greffes vigoureux + ombrage, <strong>figuier</strong> (repart souche), <strong>kaki, grenadier</strong> en abrité/risque. <strong>Agroforesterie obligatoire.</strong>" },
+        { title: "Céréales", txt: "Bascule vers <strong>plantes C4 sobres en eau</strong> : <strong>sorgho, millet, éleusine</strong> en pluvial. Le blé n'est plus une culture de plein champ ici — sous une pointe à <strong>+46 °C</strong> et un été qui séjourne durablement au-dessus du seuil d'échaudage, il ne se maintiendrait qu'en variétés très précoces et irriguées, à un coût énergétique que cette branche ne permet plus. <strong>Seigle</strong> pour sols pauvres, rustique à −25 °C — ce qui compte ici autant que sa tolérance à la chaleur. Couverture permanente du sol obligatoire, semis décalés." },
+        { title: "Potager", txt: "Modèle <strong>paillage + ombrière + goutte-à-goutte économe</strong> — sous réserve que l'eau soit disponible <em>et autorisée</em>, ce qui n'est plus acquis. L'eau reste la contrainte n°1. Été sous ombrage : gombo, patate douce, courge, niébé, aubergine. Saison fraîche repoussée vers l'automne et le printemps ; légumes d'hiver sous châssis, car <strong>−15 °C</strong> dépasse la rusticité de la mâche comme du chou kale. Ici, contrairement aux autres branches, l'hiver ne libère rien : il ferme la seconde saison au lieu de l'ouvrir." },
+        { title: "Fruitiers", txt: "Paradoxe net, et il se creuse : une pointe à <strong>+46 °C</strong> <strong>n'autorise toujours pas olivier ni agrume</strong>, que l'hiver à −15 °C tue. C'est l'hiver, non l'été, qui ferme la porte méridionale — et c'est ce qui sépare cette branche de toutes les autres. Survivants : <strong>vigne</strong> (−18/-20 dormance), <strong>pommier/poirier</strong> porte-greffes vigoureux + ombrage, <strong>figuier</strong> (repart souche), <strong>kaki, grenadier</strong> en abrité/risque. <strong>Agroforesterie obligatoire.</strong>" },
         { title: "Haies", txt: "Infrastructure vraie : ombre, vent, fourrage, bois, biodiversité. Charpente résistante : <strong>chêne pubescent, érable, cormier, alisier, mûrier</strong>. Fixateurs N : <strong>argousier, caraganier</strong> (spécialiste −40 à +40 °C), <strong>robinier</strong> (bois imputrescible, drageonnant). Lisière : cornouiller, amélanchier, néflier, figuier abrité. <strong>À bannir : hêtre, frêne</strong> (sécheresse + maladie)." }
       ]
     }
@@ -4817,7 +4449,7 @@ _safe("initBranch", function(){
         const n=r.c.length;
         r.c.forEach((seg,i)=>{
           const x1=tx(seg[0]), w=tx(seg[1])-x1;
-          const grad = g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort';
+          const grad = 'bs-' + (g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort');
           const cohort = n>1?`cohorte ${i+1} sur ${n}`:'plantation unique';
           const end = seg[1]>2100?'au-delà de 2100':seg[1];
           s += `<rect class="bar ${g.cls}" x="${x1.toFixed(1)}" y="${barY.toFixed(1)}" width="${Math.max(w,2).toFixed(1)}" height="${barH}" rx="2" fill="url(#${grad})" `
@@ -4832,9 +4464,9 @@ _safe("initBranch", function(){
     document.getElementById("bs-frise").innerHTML = s;
   }
 
-  document.querySelectorAll("#culttoggle button").forEach(b => {
+  document.querySelectorAll("#bs-culttoggle button").forEach(b => {
     b.addEventListener("click", () => {
-      document.querySelectorAll("#culttoggle button").forEach(x => x.classList.remove("on"));
+      document.querySelectorAll("#bs-culttoggle button").forEach(x => x.classList.remove("on"));
       b.classList.add("on");
       renderCult(b.dataset.p);
     });
@@ -5001,9 +4633,9 @@ _safe("initBranch", function(){
   (function(){
     const years = [2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",       ete:[-160,-200,-250,-290,-320], hiver:[400,410,400,390,380] },
-      lafaye:   { label:"La Faye",        ete:[-300,-350,-420,-470,-510], hiver:[270,230,170,120,80] },
-      manche:   { label:"Manche (côte)",  ete:[-130,-160,-200,-230,-260], hiver:[380,385,375,365,355] }
+      folligny: { label:"Folligny",       ete:[-150,-200,-250,-290,-320], hiver:[400,402,400,390,380] },
+      lafaye:   { label:"La Faye",        ete:[-280,-350,-420,-470,-510], hiver:[270,230,170,120,80] },
+      manche:   { label:"Manche (côte)",  ete:[-120,-160,-200,-230,-260], hiver:[380,385,375,365,355] }
     };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
@@ -5082,15 +4714,16 @@ _safe("initBranch", function(){
 
   /* ---- V3 : mode présentation plein écran ---- */
   (function(){
-    const tabEls = [...document.querySelectorAll('.tab')];
+    const root = document.getElementById('screen-sombre');
+    const tabEls = [...root.querySelectorAll('.tab')];
     const ids = tabEls.map(t=>t.dataset.scope);
     const names = tabEls.map(t=>(t.childNodes[0].textContent||'').trim());
     let idx = 0;
-    const wrap = document.querySelector('.wrap');
+    const wrap = root.querySelector('.wrap');
 
     function show(i){
       idx = (i + ids.length) % ids.length;
-      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      root.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
       document.getElementById(ids[idx]).classList.add('pslide');
       if(wrap) wrap.scrollTop = 0;
       document.getElementById('bs-pPos').textContent = `${names[idx]} · ${idx+1} / ${ids.length}`;
@@ -5105,8 +4738,9 @@ _safe("initBranch", function(){
     }
     function exit(){
       if(!document.body.classList.contains('presenting')) return;
+      if(!root.classList.contains('active')) return;
       document.body.classList.remove('presenting');
-      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      root.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
       activate(ids[idx]);
       const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
       if(exitFn && document.fullscreenElement) exitFn.call(document).catch(()=>{});
@@ -5118,6 +4752,7 @@ _safe("initBranch", function(){
     document.getElementById('bs-pQuit').addEventListener('click', exit);
     document.addEventListener('keydown', e=>{
       if(!document.body.classList.contains('presenting')) return;
+      if(!root.classList.contains('active')) return;
       if(e.key==='ArrowRight'){e.preventDefault();show(idx+1);}
       else if(e.key==='ArrowLeft'){e.preventDefault();show(idx-1);}
       else if(e.key==='Escape'){exit();}
@@ -5170,7 +4805,7 @@ _safe("initBranch", function(){
   /* ---- La Faye : graphique hydrique SVG ---- */
   (function(){
     const years=[2030,2042,2060,2077,2095];
-    const data={ lafaye:{ label:"La Faye", ete:[-300,-350,-420,-470,-510], hiver:[270,230,170,120,80] } };
+    const data={ lafaye:{ label:"La Faye", ete:[-280,-350,-420,-470,-510], hiver:[270,230,170,120,80] } };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
     const xMin=2028,xMax=2097, yMin=-550,yMax=450;
@@ -5205,8 +4840,9 @@ _safe("initBranch", function(){
 </script>
 <script type="text/plain" id="script-tpl-median">
 
-  const tabs = document.querySelectorAll('.tab');
-  const scopes = document.querySelectorAll('.scope');
+  const root = document.getElementById('screen-median');
+  const tabs = root.querySelectorAll('.tab');
+  const scopes = root.querySelectorAll('.scope');
   function activate(id){
     tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scope === id)));
     scopes.forEach(s => s.classList.toggle('active', s.id === id));
@@ -5219,7 +4855,7 @@ _safe("initBranch", function(){
   }
   tabs.forEach(t => t.addEventListener('click', ()=> activate(t.dataset.scope)));
   // keyboard arrows
-  document.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
+  root.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
     const list=[...tabs]; const cur=list.findIndex(t=>t.getAttribute('aria-selected')==='true');
     if(e.key==='ArrowRight'){e.preventDefault();const n=list[(cur+1)%list.length];n.focus();activate(n.dataset.scope);}
     if(e.key==='ArrowLeft'){e.preventDefault();const n=list[(cur-1+list.length)%list.length];n.focus();activate(n.dataset.scope);}
@@ -5230,7 +4866,7 @@ _safe("initBranch", function(){
     "2050": {
       label: "2050 — la chaleur s'installe",
       items: [
-        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> est échaudé sous +38 °C mais tenable — moissons avancées à juin, pas abandonnées. Les hivers doux sécurisent la levée en sortie d'hiver. Montée du <strong>tournesol, sorgho en appoint, orge précoce</strong>. Pas de bascule C4 obligatoire : la contrainte hydrique est réelle, mais la recharge hivernale laisse de la marge. <em>(échaudage du blé — Leveau, Parent, Zaka, Martre, J. Exp. Bot., DOI 10.1093/jxb/erab431)</em>" },
+        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> reste une culture de plein champ, mais l'été mord : la pointe atteint ~+41 °C et le remplissage du grain se déroule de plus en plus souvent au-dessus du seuil d'échaudage. Moissons avancées à juin, pas abandonnées — l'esquive suffit encore. Les hivers doux sécurisent la levée en sortie d'hiver. Montée du <strong>tournesol, sorgho en appoint, orge précoce</strong>. Pas de bascule C4 obligatoire : la contrainte hydrique est réelle, mais la recharge hivernale laisse de la marge. <em>(pistes variétales chez les apparentés du blé — Leveau, Parent, Zaka, Martre, J. Exp. Bot. 72(21), 2021)</em>" },
         { title: "Potager", txt: "Schéma à <strong>deux saisons</strong> (printemps / automne). Juillet-août : thermophiles paillés (tomate, poivron, aubergine, courgette). Hivers plus doux (−4 à −7 °C) → légumes d'hiver peu menacés, châssis allégé ou superflu. L'hiver doux est un gain net sur la saison froide." },
         { title: "Fruitiers", txt: "<strong>Pommier cidre</strong> glisse vers variétés chaleur-tolérantes, récolte avancée. <strong>Vigne</strong> s'installe (dormance rustique, avide de chaleur). Cerisier, prunier : OK. <strong>Figuier</strong> facile. Les hivers doux (−4 °C) rendent l'<strong>olivier marginalement envisageable en situation abritée</strong> (mur exposé sud, microterrain), à tester prudemment." },
         { title: "Haies", txt: "Renforcer le bocage existant : <strong>érable champêtre, charme, aubépine, noisetier, cornouiller mâle</strong>. Introduire dès maintenant <strong>chêne pubescent et cormier</strong> — 20 à 30 ans pour maturité, ce sont les plantations pour 2100. Pression sécheresse estivale réelle — le stress principal est hydrique, pas thermique." }
@@ -5239,8 +4875,8 @@ _safe("initBranch", function(){
     "2100": {
       label: "2100 — climat stabilisé haut",
       items: [
-        { title: "Céréales", txt: "<strong>Sorgho et millet</strong> en sec là où l'eau manque — mais blé et orge restent possibles avec sobriété hydrique (étés ~+40 °C). <strong>Seigle</strong> sur sols pauvres et secs. Couverture permanente du sol obligatoire : le sol nu sous +40 °C ne pardonne pas. Semis décalés, moissons au plus tôt." },
-        { title: "Potager", txt: "Modèle <strong>paillage + ombrière + goutte-à-goutte économe</strong>. L'eau reste la contrainte n°1 — chaque litre compte. Été sous ombrage : gombo, patate douce, courge, niébé, aubergine. L'hiver doux (−4 °C) élargit la saison fraîche vers l'automne et le printemps sans protection lourde." },
+        { title: "Céréales", txt: "<strong>Sorgho et millet</strong> en sec là où l'eau manque — mais <strong>blé et orge se maintiennent</strong>, au prix d'une conduite entièrement réorganisée : variétés très précoces, semis décalés, remplissage terminé avant le cœur de l'été. La pointe monte à <strong>+44 °C</strong>, deux degrés seulement sous la branche la plus sombre : ce n'est plus l'été qui sépare les deux trajectoires, c'est l'hiver. <strong>Seigle</strong> sur sols pauvres et secs. Couverture permanente du sol obligatoire : sous une telle pointe, le sol nu ne pardonne pas." },
+        { title: "Potager", txt: "Modèle <strong>paillage + ombrière + goutte-à-goutte économe</strong>. L'eau reste la contrainte n°1 — chaque litre compte, et l'ombrage cesse d'être optionnel sous une pointe à +44 °C. Été sous ombrage : gombo, patate douce, courge, niébé, aubergine. En revanche l'hiver à −4 °C <em>rend</em> une saison entière : légumes d'hiver de plein champ sans protection lourde, saison fraîche étirée de l'automne au printemps. Le gain hivernal compense une part de la perte estivale — c'est le trait distinctif de cette branche." },
         { title: "Fruitiers", txt: "<strong>Vigne, pommier/poirier</strong> (porte-greffes vigoureux + ombrage partiel), <strong>figuier</strong> (repart de souche), <strong>kaki, grenadier</strong>. <strong>Olivier et agrume abrités envisageables</strong> (hiver mini ~−4 °C) — agroforesterie recommandée, situation protégée exigée. Contrainte principale : l'eau." },
         { title: "Haies", txt: "Infrastructure vitale : ombre, brise-vent, fourrage, bois d'œuvre, biodiversité. Charpente résistante : <strong>chêne pubescent, érable champêtre, cormier, alisier, mûrier</strong>. Fixateurs d'azote : <strong>argousier, robinier</strong> (bois imputrescible, drageonnant). À surveiller : hêtre et frêne, fragiles sous sécheresse et sous pression hydrique croissante." }
       ]
@@ -5322,7 +4958,7 @@ _safe("initBranch", function(){
         const n=r.c.length;
         r.c.forEach((seg,i)=>{
           const x1=tx(seg[0]), w=tx(seg[1])-x1;
-          const grad = g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort';
+          const grad = 'bm-' + (g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort');
           const cohort = n>1?`cohorte ${i+1} sur ${n}`:'plantation unique';
           const end = seg[1]>2100?'au-delà de 2100':seg[1];
           s += `<rect class="bar ${g.cls}" x="${x1.toFixed(1)}" y="${barY.toFixed(1)}" width="${Math.max(w,2).toFixed(1)}" height="${barH}" rx="2" fill="url(#${grad})" `
@@ -5337,9 +4973,9 @@ _safe("initBranch", function(){
     document.getElementById("bm-frise").innerHTML = s;
   }
 
-  document.querySelectorAll("#culttoggle button").forEach(b => {
+  document.querySelectorAll("#bm-culttoggle button").forEach(b => {
     b.addEventListener("click", () => {
-      document.querySelectorAll("#culttoggle button").forEach(x => x.classList.remove("on"));
+      document.querySelectorAll("#bm-culttoggle button").forEach(x => x.classList.remove("on"));
       b.classList.add("on");
       renderCult(b.dataset.p);
     });
@@ -5587,15 +5223,16 @@ _safe("initBranch", function(){
 
   /* ---- V3 : mode présentation plein écran ---- */
   (function(){
-    const tabEls = [...document.querySelectorAll('.tab')];
+    const root = document.getElementById('screen-median');
+    const tabEls = [...root.querySelectorAll('.tab')];
     const ids = tabEls.map(t=>t.dataset.scope);
     const names = tabEls.map(t=>(t.childNodes[0].textContent||'').trim());
     let idx = 0;
-    const wrap = document.querySelector('.wrap');
+    const wrap = root.querySelector('.wrap');
 
     function show(i){
       idx = (i + ids.length) % ids.length;
-      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      root.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
       document.getElementById(ids[idx]).classList.add('pslide');
       if(wrap) wrap.scrollTop = 0;
       document.getElementById('bm-pPos').textContent = `${names[idx]} · ${idx+1} / ${ids.length}`;
@@ -5610,8 +5247,9 @@ _safe("initBranch", function(){
     }
     function exit(){
       if(!document.body.classList.contains('presenting')) return;
+      if(!root.classList.contains('active')) return;
       document.body.classList.remove('presenting');
-      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      root.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
       activate(ids[idx]);
       const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
       if(exitFn && document.fullscreenElement) exitFn.call(document).catch(()=>{});
@@ -5623,6 +5261,7 @@ _safe("initBranch", function(){
     document.getElementById('bm-pQuit').addEventListener('click', exit);
     document.addEventListener('keydown', e=>{
       if(!document.body.classList.contains('presenting')) return;
+      if(!root.classList.contains('active')) return;
       if(e.key==='ArrowRight'){e.preventDefault();show(idx+1);}
       else if(e.key==='ArrowLeft'){e.preventDefault();show(idx-1);}
       else if(e.key==='Escape'){exit();}
@@ -5711,8 +5350,9 @@ _safe("initBranch", function(){
 
 <script type="text/plain" id="script-tpl-optimiste">
 
-  const tabs = document.querySelectorAll('.tab');
-  const scopes = document.querySelectorAll('.scope');
+  const root = document.getElementById('screen-optimiste');
+  const tabs = root.querySelectorAll('.tab');
+  const scopes = root.querySelectorAll('.scope');
   function activate(id){
     tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scope === id)));
     scopes.forEach(s => s.classList.toggle('active', s.id === id));
@@ -5725,7 +5365,7 @@ _safe("initBranch", function(){
   }
   tabs.forEach(t => t.addEventListener('click', ()=> activate(t.dataset.scope)));
   // keyboard arrows
-  document.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
+  root.querySelector('[role="tablist"]').addEventListener('keydown', e=>{
     const list=[...tabs]; const cur=list.findIndex(t=>t.getAttribute('aria-selected')==='true');
     if(e.key==='ArrowRight'){e.preventDefault();const n=list[(cur+1)%list.length];n.focus();activate(n.dataset.scope);}
     if(e.key==='ArrowLeft'){e.preventDefault();const n=list[(cur-1+list.length)%list.length];n.focus();activate(n.dataset.scope);}
@@ -5736,7 +5376,7 @@ _safe("initBranch", function(){
     "2050": {
       label: "2050 — la chaleur s'installe",
       items: [
-        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> est échaudé sous +38 °C mais tenable — moissons avancées à juin, non sacrifiées. Les hivers doux sécurisent la levée en sortie d'hiver. Montée du <strong>tournesol, sorgho en appoint, orge précoce</strong>. Pas de bascule C4 obligatoire : la contrainte hydrique est réelle, mais la recharge hivernale laisse de la marge. <em>(échaudage du blé — Leveau, Parent, Zaka, Martre, J. Exp. Bot., DOI 10.1093/jxb/erab431)</em>" },
+        { title: "Céréales", txt: "Le <strong>blé d'hiver</strong> reste une culture de plein champ et le demeure : la pointe plafonne vers ~+40 °C, le remplissage du grain n'est menacé que sur les années les plus chaudes. Moissons avancées à juin, non sacrifiées. Les hivers doux sécurisent la levée en sortie d'hiver. Montée du <strong>tournesol, sorgho en appoint, orge précoce</strong>. Pas de bascule C4 obligatoire : la contrainte hydrique est réelle, mais la recharge hivernale laisse de la marge. <em>(pistes variétales chez les apparentés du blé — Leveau, Parent, Zaka, Martre, J. Exp. Bot. 72(21), 2021)</em>" },
         { title: "Potager", txt: "Schéma à <strong>deux saisons</strong> (printemps / automne). Juillet-août : thermophiles paillés (tomate, poivron, aubergine, courgette). Hivers plus doux (−4 à −7 °C) → légumes d'hiver peu menacés, châssis allégé ou superflu. L'hiver doux est un gain net sur la saison froide." },
         { title: "Fruitiers", txt: "<strong>Pommier cidre</strong> glisse vers variétés chaleur-tolérantes, récolte avancée. <strong>Vigne</strong> s'installe (dormance rustique, avide de chaleur). Cerisier, prunier : OK. <strong>Figuier</strong> facile. Les hivers doux (−4 °C) rendent l'<strong>olivier marginalement envisageable en situation abritée</strong> (mur exposé sud, microterrain), à tester prudemment." },
         { title: "Haies", txt: "Renforcer le bocage existant : <strong>érable champêtre, charme, aubépine, noisetier, cornouiller mâle</strong>. Introduire dès maintenant <strong>chêne pubescent et cormier</strong> — 20 à 30 ans pour maturité, ce sont les plantations pour 2100. Pression sécheresse estivale réelle — le stress principal est hydrique, pas thermique." }
@@ -5745,8 +5385,8 @@ _safe("initBranch", function(){
     "2100": {
       label: "2100 — climat stabilisé",
       items: [
-        { title: "Céréales", txt: "<strong>Sorgho et millet</strong> en sec là où l'eau manque — mais blé et orge restent possibles avec sobriété hydrique (étés ~+38 °C). <strong>Seigle</strong> sur sols pauvres et secs. Couverture permanente du sol obligatoire : le sol nu sous +38 °C ne pardonne pas. Semis décalés, moissons au plus tôt." },
-        { title: "Potager", txt: "Modèle <strong>paillage + ombrière + goutte-à-goutte économe</strong>. L'eau reste la contrainte n°1 — chaque litre compte. Été sous ombrage : gombo, patate douce, courge, niébé, aubergine. L'hiver doux (−4 °C) élargit la saison fraîche vers l'automne et le printemps sans protection lourde." },
+        { title: "Céréales", txt: "<strong>Blé et orge restent le socle</strong>, avec sobriété hydrique : sous une pointe à <strong>+41 °C</strong>, l'été contraint le calendrier sans imposer de rupture de système. <strong>Sorgho et millet</strong> viennent en appoint là où l'eau manque, non en remplacement. <strong>Seigle</strong> sur sols pauvres et secs. Couverture permanente du sol recommandée ; semis décalés, moissons au plus tôt. C'est la seule branche où l'assolement de 2100 ressemble encore à celui de 2026." },
+        { title: "Potager", txt: "Modèle <strong>paillage + goutte-à-goutte économe</strong>, ombrière en appoint sur les créneaux de pointe plutôt qu'en permanence. L'eau reste la contrainte n°1. Été : les thermophiles classiques tiennent (tomate, poivron, aubergine, courgette), rejointes par le gombo, la patate douce et le niébé. L'hiver à −4 °C élargit la saison fraîche vers l'automne et le printemps sans protection lourde. Un potager exigeant, mais encore reconnaissable." },
         { title: "Fruitiers", txt: "<strong>Vigne, pommier/poirier</strong> (porte-greffes vigoureux + ombrage partiel), <strong>figuier</strong> (repart de souche), <strong>kaki, grenadier</strong>. <strong>Olivier et agrume abrités envisageables</strong> (hiver mini ~−4 °C) — agroforesterie recommandée, situation protégée exigée. Contrainte principale : l'eau." },
         { title: "Haies", txt: "Infrastructure vitale : ombre, brise-vent, fourrage, bois d'œuvre, biodiversité. Charpente résistante : <strong>chêne pubescent, érable champêtre, cormier, alisier, mûrier</strong>. Fixateurs d'azote : <strong>argousier, robinier</strong> (bois imputrescible, drageonnant). À surveiller : hêtre et frêne, fragiles sous sécheresse et sous pression hydrique croissante." }
       ]
@@ -5828,7 +5468,7 @@ _safe("initBranch", function(){
         const n=r.c.length;
         r.c.forEach((seg,i)=>{
           const x1=tx(seg[0]), w=tx(seg[1])-x1;
-          const grad = g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort';
+          const grad = 'bo-' + (g.cls==='long'?'gLong':g.cls==='med'?'gMed':'gShort');
           const cohort = n>1?`cohorte ${i+1} sur ${n}`:'plantation unique';
           const end = seg[1]>2100?'au-delà de 2100':seg[1];
           s += `<rect class="bar ${g.cls}" x="${x1.toFixed(1)}" y="${barY.toFixed(1)}" width="${Math.max(w,2).toFixed(1)}" height="${barH}" rx="2" fill="url(#${grad})" `
@@ -6012,9 +5652,9 @@ _safe("initBranch", function(){
   (function(){
     const years = [2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",       ete:[-140,-160,-190,-205,-205], hiver:[405,408,405,402,400] },
-      lafaye:   { label:"La Faye",        ete:[-260,-290,-320,-340,-340], hiver:[280,255,230,205,190] },
-      manche:   { label:"Manche (côte)",  ete:[-110,-130,-150,-165,-170], hiver:[382,385,383,381,380] }
+      folligny: { label:"Folligny",       ete:[-150,-160,-190,-205,-205], hiver:[400,408,405,402,400] },
+      lafaye:   { label:"La Faye",        ete:[-280,-290,-320,-340,-340], hiver:[270,255,230,205,190] },
+      manche:   { label:"Manche (côte)",  ete:[-120,-130,-150,-170,-170], hiver:[380,385,383,381,380] }
     };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
@@ -6093,15 +5733,16 @@ _safe("initBranch", function(){
 
   /* ---- V3 : mode présentation plein écran ---- */
   (function(){
-    const tabEls = [...document.querySelectorAll('.tab')];
+    const root = document.getElementById('screen-optimiste');
+    const tabEls = [...root.querySelectorAll('.tab')];
     const ids = tabEls.map(t=>t.dataset.scope);
     const names = tabEls.map(t=>(t.childNodes[0].textContent||'').trim());
     let idx = 0;
-    const wrap = document.querySelector('.wrap');
+    const wrap = root.querySelector('.wrap');
 
     function show(i){
       idx = (i + ids.length) % ids.length;
-      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      root.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
       document.getElementById(ids[idx]).classList.add('pslide');
       if(wrap) wrap.scrollTop = 0;
       document.getElementById('bo-pPos').textContent = `${names[idx]} · ${idx+1} / ${ids.length}`;
@@ -6116,8 +5757,9 @@ _safe("initBranch", function(){
     }
     function exit(){
       if(!document.body.classList.contains('presenting')) return;
+      if(!root.classList.contains('active')) return;
       document.body.classList.remove('presenting');
-      document.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
+      root.querySelectorAll('.scope').forEach(s=>s.classList.remove('pslide'));
       activate(ids[idx]);
       const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
       if(exitFn && document.fullscreenElement) exitFn.call(document).catch(()=>{});
@@ -6129,6 +5771,7 @@ _safe("initBranch", function(){
     document.getElementById('bo-pQuit').addEventListener('click', exit);
     document.addEventListener('keydown', e=>{
       if(!document.body.classList.contains('presenting')) return;
+      if(!root.classList.contains('active')) return;
       if(e.key==='ArrowRight'){e.preventDefault();show(idx+1);}
       else if(e.key==='ArrowLeft'){e.preventDefault();show(idx-1);}
       else if(e.key==='Escape'){exit();}
@@ -6181,7 +5824,7 @@ _safe("initBranch", function(){
   /* ---- La Faye : graphique hydrique SVG ---- */
   (function(){
     const years=[2030,2042,2060,2077,2095];
-    const data={ lafaye:{ label:"La Faye", ete:[-260,-290,-320,-340,-340], hiver:[280,255,230,205,190] } };
+    const data={ lafaye:{ label:"La Faye", ete:[-280,-290,-320,-340,-340], hiver:[270,255,230,205,190] } };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
     const xMin=2028,xMax=2097, yMin=-550,yMax=450;
@@ -6327,7 +5970,7 @@ _safe("initBranch", function(){
         shareModal.classList.remove('open');
       });
     }
-    if(window.Escape) document.addEventListener('keydown', function(e){ if(e.key==='Escape') shareModal.classList.remove('open'); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') shareModal.classList.remove('open'); });
   }
 
   /* État initial */
