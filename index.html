@@ -971,6 +971,101 @@ body.branch-open .hub-screen{display:none !important;}
 }
 
 </style>
+<style id="clim-css">
+  /* ================= BLOC CLIMATIQUE MENSUEL (relevé + diagrammes) ============ */
+  .climblock{margin:26px 0 6px;padding:22px 22px 20px;border:1px solid var(--line);
+    border-radius:3px;background:linear-gradient(180deg,var(--surface),var(--surface-2));}
+  .climblock .cb-head{margin:0 0 16px;}
+  .climblock .cb-head h3{font-family:"Fraunces",serif;font-weight:600;font-size:20px;
+    margin:0 0 6px;color:var(--ink);letter-spacing:-.01em;}
+  .climblock .cb-station{font-family:"JetBrains Mono",monospace;font-size:10.5px;
+    letter-spacing:.1em;color:var(--faint);text-transform:uppercase;margin:0 0 10px;}
+  .climblock .cb-lede{margin:0;font-size:15px;color:var(--ink-soft);max-width:74ch;line-height:1.55;}
+  .climblock .cb-lede strong{color:var(--ink);font-weight:600;}
+
+  /* --- bascule des millésimes --- */
+  .cb-switch{display:flex;gap:2px;margin:18px 0 12px;border:1px solid var(--line-strong);
+    border-radius:3px;overflow:hidden;width:max-content;max-width:100%;}
+  .cb-switch button{appearance:none;background:none;border:none;cursor:pointer;
+    font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;
+    color:var(--muted);padding:9px 16px;transition:background .18s,color .18s;white-space:nowrap;}
+  .cb-switch button:hover{color:var(--ink-soft);background:rgba(232,222,200,.05);}
+  .cb-switch button[aria-pressed="true"]{background:var(--accent,var(--ember));color:#12100c;font-weight:600;}
+  .cb-switch button .y2{display:block;font-size:9px;letter-spacing:.14em;opacity:.72;margin-top:2px;}
+
+  /* --- tableau --- */
+  .cb-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 6px;}
+  table.cb-table{border-collapse:collapse;width:100%;min-width:820px;
+    font-family:"JetBrains Mono",monospace;font-size:11.5px;}
+  table.cb-table th,table.cb-table td{border:1px solid rgba(232,222,200,.10);
+    padding:6px 4px;text-align:center;white-space:nowrap;}
+  table.cb-table thead th{font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft);
+    background:rgba(232,222,200,.05);text-transform:lowercase;font-weight:600;padding:8px 4px;}
+  table.cb-table thead th.cb-rowlab{text-align:left;padding-left:10px;min-width:186px;text-transform:none;}
+  table.cb-table thead th.cb-year{background:rgba(232,222,200,.09);color:var(--ink);}
+  table.cb-table td.cb-rowlab{text-align:left;padding-left:10px;font-family:"Spectral",serif;
+    font-size:13.5px;color:var(--ink-soft);background:rgba(232,222,200,.03);white-space:normal;line-height:1.3;}
+  table.cb-table td.cb-rowlab small{display:block;font-family:"JetBrains Mono",monospace;
+    font-size:9px;letter-spacing:.06em;color:var(--faint);margin-top:1px;text-transform:uppercase;}
+  table.cb-table td.cb-yearcol{font-weight:600;background:rgba(232,222,200,.06);}
+  table.cb-table tr.cb-sep td{border-top:2px solid var(--line-strong);}
+  .cb-cell{display:block;line-height:1.25;}
+  .cb-cell .cb-when{display:block;font-size:8.5px;color:var(--faint);letter-spacing:.04em;margin-top:1px;}
+  .cb-prec{color:#7fc4d6;}
+  .cb-hatch{background-image:repeating-linear-gradient(135deg,transparent,transparent 3px,rgba(232,222,200,.07) 3px,rgba(232,222,200,.07) 4px);}
+
+  /* --- petits multiples --- */
+  .cb-multi{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;margin:20px 0 0;}
+  .cb-mini{border:1px solid var(--line);border-radius:3px;padding:12px 10px 8px;background:rgba(15,13,11,.35);}
+  .cb-mini h4{margin:0 0 2px;font-family:"JetBrains Mono",monospace;font-size:11px;
+    letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase;}
+  .cb-mini .cb-mini-sub{margin:0 0 8px;font-family:"JetBrains Mono",monospace;font-size:9.5px;
+    letter-spacing:.06em;color:var(--faint);}
+  .cb-mini svg{display:block;width:100%;height:auto;}
+  .cb-mini[data-h="2026"] h4{color:var(--muted);}
+  .cbx-ghost{fill:none;stroke:var(--faint);stroke-width:1;stroke-dasharray:2 2.5;opacity:.85;}
+  .cbx-box{stroke:none;}
+  .cbx-prec{fill:#4d8ea4;opacity:.75;}
+  .cbx-precghost{fill:none;stroke:var(--faint);stroke-width:.8;stroke-dasharray:2 2.5;opacity:.8;}
+  .cbx-axis{stroke:var(--line-strong);stroke-width:1;}
+  .cbx-grid{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3;}
+  .cbx-lab{font-family:"JetBrains Mono",monospace;font-size:8px;fill:var(--faint);}
+  .cbx-val{font-family:"JetBrains Mono",monospace;font-size:8.5px;fill:var(--ink-soft);}
+  .cbx-zero{stroke:#7fa6bd;stroke-width:1;opacity:.55;}
+
+  .cb-legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 0;
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--faint);}
+  .cb-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px;}
+  .cb-legend i.k-hot{background:linear-gradient(180deg,var(--ember-hi),var(--ember-deep));}
+  .cb-legend i.k-pre{background:#4d8ea4;}
+  .cb-legend i.k-gho{background:none;border:1px dashed var(--faint);}
+
+  .cb-method{margin:16px 0 0;padding:14px 16px;border-left:2px solid var(--line-strong);
+    background:rgba(232,222,200,.03);font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .cb-method b{color:var(--ink-soft);font-weight:600;}
+  .cb-method .cb-key{display:block;font-family:"JetBrains Mono",monospace;font-size:9.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
+  .cb-method a{color:var(--ink-soft);}
+
+  @media (max-width:640px){
+    .climblock{padding:16px 12px 14px;}
+    .cb-switch button{padding:8px 11px;font-size:11px;}
+  }
+  @media print{
+    .climblock{background:#f6f2ea !important;border-color:#d8cfc0 !important;
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid;}
+    .climblock .cb-head h3{color:#9a4a18 !important;}
+    .climblock .cb-lede,.cb-method{color:#333 !important;}
+    .cb-switch{display:none !important;}
+    .cb-tablewrap[hidden]{display:block !important;}
+    .cb-tablewrap{margin-bottom:10px;}
+    table.cb-table{min-width:0;font-size:8pt;}
+    table.cb-table td.cb-rowlab{color:#222 !important;background:#efe9dd !important;}
+    table.cb-table thead th{color:#222 !important;background:#efe9dd !important;}
+    .cb-mini{background:#fff !important;border-color:#d8cfc0 !important;}
+    .cbx-lab,.cbx-val{fill:#555 !important;}
+  }
+</style>
 </head>
 <body>
 
@@ -1079,7 +1174,7 @@ const BRANCHES = [
     figs:[
       {lab:"Monde", val:"+3,5 °C"},
       {lab:"Mer", val:"+0,70 m"},
-      {lab:"Folligny", val:"été +46 °C / hiver −15 °C"}
+      {lab:"Folligny", val:"été +46 °C / hiver −14 °C"}
     ]
   },
   {
@@ -1090,7 +1185,7 @@ const BRANCHES = [
     figs:[
       {lab:"Monde", val:"+2,7 °C"},
       {lab:"Mer", val:"+0,57 m"},
-      {lab:"Folligny", val:"été +44 °C / hiver −4 °C"}
+      {lab:"Folligny", val:"été +44 °C / hiver −5 °C"}
     ]
   },
   {
@@ -1101,7 +1196,7 @@ const BRANCHES = [
     figs:[
       {lab:"Monde", val:"~+2,0 °C"},
       {lab:"Mer", val:"~+0,40 m"},
-      {lab:"Folligny", val:"été +41 °C / hiver −4 °C"}
+      {lab:"Folligny", val:"été +42 °C / hiver −5 °C"}
     ]
   }
 ];
@@ -1139,9 +1234,9 @@ const COMPARISON = [
     median:"S'affaiblit <strong>~50 %</strong> sans franchir — un seul visage, l'été",
     optimiste:'Affaiblissement modéré, <strong>pas de seuil</strong>' },
   { lab:"Folligny (Manche, 50) · été / hiver 2100",
-    sombre:'été <span class="num">+46 °C</span> / hiver <span class="num">−15 °C</span> — la côte se vide',
-    median:'été <span class="num">+44 °C</span> / hiver <span class="num">−4 °C</span> — commune de réception',
-    optimiste:'été <span class="num">+41 °C</span> / hiver <span class="num">−4 °C</span> — refuge respirable, accueil organisé' },
+    sombre:'été <span class="num">+46 °C</span> / hiver <span class="num">−14 °C</span> — la côte se vide',
+    median:'été <span class="num">+44 °C</span> / hiver <span class="num">−5 °C</span> — commune de réception',
+    optimiste:'été <span class="num">+42 °C</span> / hiver <span class="num">−5 °C</span> — refuge respirable, accueil organisé' },
   { lab:"La Faye (Charente, 16) · été / hiver 2100",
     sombre:'été <span class="num">+50 °C</span> / hiver gel exceptionnel — désertion estivale',
     median:'été <span class="num">+47 °C</span> / hiver gel rare — conversion, déclin lent',
@@ -1804,6 +1899,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="france" data-branch="sombre"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>L'État n'a pas été renversé : il s'est <em>retiré, ville après ville, source après source</em>, jusqu'à n'être plus qu'un gardien de verrous.</p>
@@ -1891,6 +1988,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="manche" data-branch="sombre"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>La chance de la Manche — sa fraîcheur — devient son fardeau : <em>tout le monde veut y venir</em>.</p>
@@ -1908,7 +2007,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire thermique — le climat à deux visages</h3>
-        <p>Étés (max) et hivers (min) projetés, 2030 → 2095. Les courbes <strong>s'ouvrent en ciseaux</strong> : les étés grimpent tandis que les hivers plongent sous l'effet AMOC. Les deux visages sont liés : l'anomalie froide atlantique déplace le courant-jet et favorise les <strong>dômes de chaleur</strong> continentaux — l'été 2015 en fut l'avant-goût documenté. Survole un point pour le détail.</p>
+        <p>Étés (max) et hivers (min) projetés, 2025 → 2095. Les courbes <strong>s'ouvrent en ciseaux</strong> : les étés grimpent tandis que les hivers plongent sous l'effet AMOC. Les deux visages sont liés : l'anomalie froide atlantique déplace le courant-jet et favorise les <strong>dômes de chaleur</strong> continentaux — l'été 2015 en fut l'avant-goût documenté. Survole un point pour le détail.</p>
       </div>
       <div id="bs-climSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bs-climLegend"></div>
@@ -1917,7 +2016,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
   <div class="cg-head">
     <h3>Trajectoire hydrique — le refuge a soif aussi</h3>
-    <p>Bilan estival (P−ETP, trait plein) et recharge hivernale des nappes (tireté), 2030 → 2095. Ordres de grandeur de scénario, pas des sorties de modèle. La rente de Folligny n'est pas la pluie d'été — le déficit se creuse partout — mais une <strong>recharge hivernale qui tient</strong>. <strong>En 2095, l'été hydrique de Folligny vaut celui du Sud-Ouest d'aujourd'hui.</strong> Survole un point pour le détail.</p>
+    <p>Bilan estival (P−ETP, trait plein) et recharge hivernale des nappes (tireté), 2025 → 2095. Ordres de grandeur de scénario, pas des sorties de modèle. La rente de Folligny n'est pas la pluie d'été — le déficit se creuse partout — mais une <strong>recharge hivernale qui tient</strong>. <strong>En 2095, l'été hydrique de Folligny vaut celui du Sud-Ouest d'aujourd'hui.</strong> Survole un point pour le détail.</p>
   </div>
   <div id="bs-hydroSvg" class="cg-svg"></div>
   <div class="cg-legend" id="bs-hydroLegend"></div>
@@ -1936,15 +2035,15 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2025 — 2030</p>
         <h3>La vie d'avant</h3>
-        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −7 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. Flamanville reste à ~90 km — hors de vue.</p></div>
+        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>~1 116 habitants, prés, fermes laitières, école, commerces. Communauté intacte. Le monde craque au loin ; ici, tout paraît normal.</p></div>
       </div>
 
       <div class="phase">
         <p class="phase-years">2030 — 2035</p>
         <h3>Les étés secs</h3>
-        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −7 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés secs en série ; les sources donnent moins en août. Premiers arrêtés de restriction durables sur la commune.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>L'école tient, les commerces aussi. Quelques maisons achetées par des familles venues du Sud — anecdotique, croit-on.</p></div>
       </div>
@@ -1952,7 +2051,7 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2035 — 2040</p>
         <h3>Le seuil, vu d'ici</h3>
-        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −9 °C</span></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −8 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Le seuil de l'AMOC est franchi au large — ici, cela se traduit par des coups de froid hivernaux plus durs et des tempêtes plus violentes.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Les services de l'État s'amincissent (médecins, permanences, routes). Le bourg commence à se penser comme un lieu qui devra <strong>compter sur lui-même</strong>.</p></div>
       </div>
@@ -1960,7 +2059,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2040 — 2045</p>
         <h3>Les sources baissent</h3>
-        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −10 °C</span></div>
+        <div class="chips"><span class="chip heat">été +43 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −8 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p><strong>L'eau estivale se tend</strong> — sources et forages tirent la langue : la contrainte de fond du lieu s'installe.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Le solde migratoire redevient positif — quelques familles du Sud chaque année, une pression légère sur le logement. Pas encore une vague : <strong>elle viendra après 2060</strong>.</p></div>
       </div>
@@ -1968,16 +2067,16 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2045 — 2050</p>
         <h3>Avant la vague</h3>
-        <div class="chips"><span class="chip heat">été +43 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −11 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés qui tutoient +43 °C ; premiers étés où les citernes deviennent indispensables.</p></div>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −9 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés qui tutoient +44 °C ; premiers étés où les citernes deviennent indispensables.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Le rationnement énergétique national (post-2045) s'installe. Premières <strong>mutualisations informelles</strong> — citernes partagées, matériel — qui préfigurent la régie d'eau communale de la décennie suivante. Le bourg pressent ce qui vient.</p></div>
       </div>
 
       <div class="phase crit">
         <p class="phase-years">2050 — 2070</p>
         <h3>La commune-refuge</h3>
-        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip crit">hiver −12 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés brutaux ; hivers de coups de froid soudains (vers les extrêmes à -15 °C en fin de siècle) malgré des moyennes peu froides — l'empreinte de l'AMOC.</p></div>
+        <div class="chips"><span class="chip heat">été +45 °C</span><span class="chip crit">hiver −10 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés brutaux ; hivers de coups de froid soudains (vers les extrêmes à −14 °C en fin de siècle) malgré des moyennes peu froides — l'empreinte de l'AMOC.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Folligny devient une <strong>commune de réception</strong> : la population enfle (peut-être le double de 2026 — redistribution pure, dans une France qui se contracte), et tout sature — l'eau d'été surtout, le logement, le lien social. L'État a largement retiré ses services ; le bourg <strong>s'auto-organise</strong> : régie d'eau communale, alimentation, ateliers de réparation low-tech (Hamant, Bihouix). Tension permanente : accueillir ou fermer la porte. Et la vraie variable est l'<strong>âge des arrivants</strong> : le refuge ne tient que si les bras suivent — régie, champs, ateliers ; le scénario suppose des familles en âge de travailler, fuyant le Sud, plutôt que des retraités.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>La <strong>gare de Folligny</strong>, vieux nœud ferroviaire, redevient la porte du bourg — les familles arrivent, le lait repart. Aux champs, matériel partagé (CUMA) et batteries sodium : une mécanique qu'on peut comprendre, donc garder.</p></div>
       </div>
@@ -1985,20 +2084,22 @@ _safe("initBranch", function(){
       <div class="phase crit">
         <p class="phase-years">2070 — 2085</p>
         <h3>Gérée à la goutte</h3>
-        <div class="chips"><span class="chip heat">été +45 °C</span><span class="chip crit">hiver −14 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
+        <div class="chips"><span class="chip heat">été +45 °C</span><span class="chip crit">hiver −12 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un bourg dense, quasi autonome, qui gère <strong>sa propre eau et sa propre nourriture</strong> sous un État quasi absent : résilient s'il a choisi la mutualisation, fragile s'il s'est fracturé. La survie estivale tient à l'eau — citernes, récupération, rationnement. L'ordre se maintient localement, ou se dispute.</p></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés à +45 °C, coups de froid hivernaux à -14 °C : le grand écart annuel devient la norme.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés à +45 °C, coups de froid hivernaux à −12 °C : le grand écart annuel devient la norme.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>Moins d'écrans, mais la radio, la carte papier, le téléphone filaire de la mairie. Le réseau cuivré, lui, avait été <strong>démantelé dès les années 2030</strong> — le métal récupéré, fondu pour des renouvelables qui ne tournent plus : ce qui reste de filaire est rebricolé localement. La <strong>forge-atelier du bourg est redevenue stratégique</strong> : on y refait les pièces qu'on ne livre plus.</p></div>
       </div>
 
       <div class="phase crit">
         <p class="phase-years">2085 — 2100</p>
         <h3>Refuge, au prix fort</h3>
-        <div class="chips"><span class="chip heat">été +46 °C</span><span class="chip crit">hiver −15 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
+        <div class="chips"><span class="chip heat">été +46 °C</span><span class="chip crit">hiver −14 °C</span><span class="chip crit">eau ▮▮▮▮</span></div>
         <div class="line-soc"><span class="tag">Société</span><p>En 2100, Folligny est un <strong>bourg dense, rationné en eau, largement autogéré</strong> dans une France fracturée. Un refuge qui a payé son habitabilité relative par le surpeuplement, la rareté et la perte du vieux monde rural tranquille. Habité, dur, méconnaissable.</p></div>
       </div>
 
     </div>
+    <div class="climblock" data-clim="folligny" data-branch="sombre"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>Folligny survit — non parce qu'il a été épargné, mais parce qu'il <em>a réappris à vivre avec peu, et à se gouverner lui-même</em>.</p>
@@ -2019,7 +2120,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire thermique — un seul visage, l'été</h3>
-        <p>Étés (max) et hivers (min) projetés, 2030 → 2095. Ici, pas de ciseau hivernal : sans le creux de l'AMOC, les hivers se réchauffent normalement — c'est l'été qui décroche. Survole un point pour le détail.</p>
+        <p>Étés (max) et hivers (min) projetés, 2025 → 2095. Ici, pas de ciseau hivernal : sans le creux de l'AMOC, les hivers se réchauffent normalement — c'est l'été qui décroche. Survole un point pour le détail.</p>
       </div>
       <div id="bs-lafaye-climSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bs-lafaye-climLegend"></div>
@@ -2028,7 +2129,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire hydrique — la recharge hivernale cède</h3>
-        <p>Bilan estival (P−ETP, trait plein) et recharge hivernale des nappes (tireté), 2030 → 2095. Ordres de grandeur de scénario, pas des sorties de modèle. Ici la recharge d'hiver elle-même s'effrite : c'est le cœur du basculement — l'eau s'en va. Survole un point pour le détail.</p>
+        <p>Bilan estival (P−ETP, trait plein) et recharge hivernale des nappes (tireté), 2025 → 2095. Ordres de grandeur de scénario, pas des sorties de modèle. Ici la recharge d'hiver elle-même s'effrite : c'est le cœur du basculement — l'eau s'en va. Survole un point pour le détail.</p>
       </div>
       <div id="bs-lafaye-hydroSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bs-lafaye-hydroLegend"></div>
@@ -2106,6 +2207,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="lafaye" data-branch="sombre"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>La Faye perd, non par malchance climatique, mais parce que <em>l'eau et la chaleur l'emportent sur tout le reste</em>.</p>
@@ -2214,7 +2317,23 @@ _safe("initBranch", function(){
     <div class="chrono">
 
       <div class="chrono-phase">
-        <h3 class="cp-title"><span class="cp-years">2026 — 2035</span>Le seuil franchi</h3>
+        <h3 class="cp-title"><span class="cp-years">2025 — 2035</span>Le seuil franchi</h3>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><p>Monde : <strong>troisième année la plus chaude</strong> jamais mesurée — 14,97 °C, soit <strong>+1,47 °C</strong> au-dessus du préindustriel, à 0,01 °C de 2023 et derrière 2024 (+1,60 °C). Sur trois ans glissants la moyenne atteint <strong>+1,52 °C</strong> : la cible de Paris est franchie en tendance, plus de dix ans avant le calendrier attendu. Cent vingt records mensuels dans plus de soixante-dix pays ; l'Europe du Nord, l'Asie centrale et le Sahel connaissent leur année la plus chaude ; la banquise combinée des deux pôles tombe à son <strong>plus bas niveau historique</strong>. <em>Le tronc commun des trois branches part d'ici — et il est déjà au-dessus de la cible.</em></p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><p>Europe : <strong>saison d'incendies sans précédent</strong> — plus d'<strong>un million d'hectares</strong> brûlés dans l'UE, l'équivalent de Chypre, sur 7 783 feux répartis dans 25 États membres ; <strong>100 000 ha dès la fin mars</strong>. Le Portugal et l'Espagne concentrent 460 585 ha sur la seule canicule d'août. Hors UE, 2,2 millions d'hectares, dont 30 % en Ukraine. L'Europe enregistre ses plus fortes émissions annuelles dues aux feux. Les incendies partent plus tôt, durent plus longtemps et gagnent des régions du Nord jusque-là épargnées. <em>La saison du feu remonte vers le nord : ce qui était méditerranéen devient continental.</em></p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><span class="cat eau">Eau</span><p>France : l'incendie du <strong>massif des Corbières</strong> (Aude) brûle <strong>17 000 ha en trois semaines</strong> et fait un mort — le plus grand feu français depuis les Landes de 1949, le pire du pourtour méditerranéen depuis un demi-siècle. Le même mois, Cognac inscrit <strong>41,4 °C</strong>, record d'août de la station de référence de La Faye. <em>Un record est un plancher — celui-ci vaut aussi pour le calendrier : août n'est plus le seul mois à risque.</em></p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat etat">État</span><p>Monde : la <strong>COP30 de Belém</strong> (10-22 novembre, 189 pays) s'achève sur un texte qui ne mentionne <strong>plus la sortie des énergies fossiles</strong> — un recul sur Dubaï — et sans engagement contraignant sur la déforestation, pour une COP pourtant amazonienne. Acquis : triplement du financement de l'adaptation d'ici 2035 et un fonds forêts doté de ~9 Md$. <em>La fenêtre coopérative ne s'est pas fermée cette année-là ; elle a cessé de s'ouvrir.</em></p></div>
+        </div>
         <div class="evt ici">
   <span class="evt-year">2026</span>
   <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−24 % de naissances</strong> vs 2010. Le triage de 2049 s'écrit en creux.</p></div>
@@ -2764,6 +2883,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="france" data-branch="median"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>L'État ne s'est pas retiré : il s'est <em>reconfiguré — hiérarchisant, différenciant, mutualisant</em> — pour tenir un territoire plus chaud avec moins de moyens.</p>
@@ -2851,6 +2972,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="manche" data-branch="median"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>La chance de la Manche — sa fraîcheur, ses hivers doux et arrosés — devient un atout durable : <em>on y vient, et on peut y rester</em>.</p>
@@ -2868,7 +2991,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire thermique — étés chauds, hivers doux</h3>
-        <p>Étés (max) et hivers (min) projetés, 2030 → 2095. Le trait marquant : les hivers de Folligny <strong>ne plongent pas</strong> — AMOC affaiblie mais sans seuil, donc pas de coups de froid. Les hivers se réchauffent <strong>normalement</strong> : pas de ciseau, un seul visage — l'été, qui chauffe. Survole un point pour le détail.</p>
+        <p>Étés (max) et hivers (min) projetés, 2025 → 2095. Le trait marquant : les hivers de Folligny <strong>ne plongent pas</strong> — AMOC affaiblie mais sans seuil, donc pas de coups de froid. Les hivers se réchauffent <strong>normalement</strong> : pas de ciseau, un seul visage — l'été, qui chauffe. Survole un point pour le détail.</p>
       </div>
       <div id="bm-climSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bm-climLegend"></div>
@@ -2877,7 +3000,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
   <div class="cg-head">
     <h3>Trajectoire hydrique — le refuge garde sa recharge</h3>
-    <p>Bilan estival (P−ETP, trait plein) et recharge hivernale (tireté), 2030 → 2095. Le déficit d'été se creuse partout — la rente de Folligny n'est pas la pluie d'été, mais une <strong>recharge hivernale qui tient</strong>. Survole un point pour le détail.</p>
+    <p>Bilan estival (P−ETP, trait plein) et recharge hivernale (tireté), 2025 → 2095. Le déficit d'été se creuse partout — la rente de Folligny n'est pas la pluie d'été, mais une <strong>recharge hivernale qui tient</strong>. Survole un point pour le détail.</p>
   </div>
   <div id="bm-hydroSvg" class="cg-svg"></div>
   <div class="cg-legend" id="bm-hydroLegend"></div>
@@ -2895,15 +3018,15 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2025 — 2030</p>
         <h3>La vie d'avant</h3>
-        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −7 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. Flamanville reste à ~90 km — hors de vue.</p></div>
+        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>~1 116 habitants, prés, fermes laitières, école, commerces. Communauté intacte. Le monde craque au loin ; ici, tout paraît normal.</p></div>
       </div>
 
       <div class="phase">
         <p class="phase-years">2030 — 2035</p>
         <h3>Les étés secs</h3>
-        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés secs en série ; les sources donnent moins en août. Premiers arrêtés de restriction durables sur la commune.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>L'école tient, les commerces aussi. Quelques maisons achetées par des familles venues du Sud — anecdotique, croit-on.</p></div>
       </div>
@@ -2911,7 +3034,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2035 — 2040</p>
         <h3>Le seuil non franchi, vu d'ici</h3>
-        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −5 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>L'AMOC s'affaiblit au large — ici, cela se traduit par des tempêtes un peu plus vives sur la côte proche, mais <strong>les hivers se radoucissent</strong> : un seul visage climatique s'installe.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Les services de l'État s'amincissent — médecins, permanences, routes. Le bourg commence à se penser comme un lieu qui devra <strong>compter davantage sur lui-même</strong> : non par abandon, mais par nécessité calculée.</p></div>
       </div>
@@ -2919,7 +3042,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2040 — 2045</p>
         <h3>Les sources baissent</h3>
-        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="chips"><span class="chip heat">été +43 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p><strong>L'eau estivale se tend</strong> — sources et forages sous pression, recharge hivernale intacte mais insuffisante pour compenser le déficit d'été. La contrainte de fond du lieu s'installe — une tension durable, pas une urgence.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Le solde migratoire redevient positif — quelques familles du Sud chaque année, pression légère sur le logement. Pas encore une vague : <strong>elle viendra après 2060, progressive</strong>. Le bourg s'étonne de se voir convoité.</p></div>
       </div>
@@ -2927,16 +3050,16 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2045 — 2050</p>
         <h3>Avant l'afflux</h3>
-        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −4 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés qui tutoient +41 °C ; les citernes deviennent utiles certaines années, sans être encore indispensables. L'hiver doux recharge — la marge existe, elle se réduit.</p></div>
+        <div class="chips"><span class="chip heat">été +43 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés qui tutoient +43 °C ; les citernes deviennent utiles certaines années, sans être encore indispensables. L'hiver doux recharge — la marge existe, elle se réduit.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Le rationnement énergétique national (post-panne européenne) s'installe par épisodes. Premières <strong>mutualisations informelles</strong> — citernes partagées, matériel agricole — qui préfigurent la régie d'eau communale : le bourg pressent ce qui vient et s'y prépare.</p></div>
       </div>
 
       <div class="phase">
         <p class="phase-years">2050 — 2070</p>
         <h3>La commune qui s'étoffe</h3>
-        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés chauds — +42 °C — hivers doux et lisibles. L'empreinte de l'AMOC affaiblie se voit dans les tempêtes atlantiques, pas dans le thermomètre hivernal : avantage décisif pour planifier, semer, rester.</p></div>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip">hiver −5 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés chauds — +44 °C — hivers doux et lisibles. L'empreinte de l'AMOC affaiblie se voit dans les tempêtes atlantiques, pas dans le thermomètre hivernal : avantage décisif pour planifier, semer, rester.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Folligny devient <strong>commune de réception</strong> : la population croît nettement (~+25–35 % vs 2026, redistribution dans une France qui se contracte), sans saturer. L'eau d'été est tendue — <strong>mais tenue</strong> : interconnexion, sobriété, régie communale. L'État différencie ses services ; le bourg complète sans le remplacer. Variable clé : l'âge des arrivants — le scénario suppose des familles en âge de travailler, pas des retraités.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>La <strong>gare de Folligny</strong> redevient la porte du bourg — les familles arrivent, le lait repart. Matériel partagé en CUMA élargie, batteries sodium : une mécanique que l'on comprend, donc que l'on garde.</p></div>
       </div>
@@ -2944,8 +3067,8 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2070 — 2085</p>
         <h3>Gérée, pas rationnée à la goutte</h3>
-        <div class="chips"><span class="chip heat">été +43 °C</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés à +43 °C, hivers doux : un climat chaud mais d'un seul tenant — <strong>sans grand écart</strong>. La lisibilité est elle-même une ressource : on peut anticiper, planifier, adapter.</p></div>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip">hiver −5 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés à +44 °C, hivers doux : un climat chaud mais d'un seul tenant — <strong>sans grand écart</strong>. La lisibilité est elle-même une ressource : on peut anticiper, planifier, adapter.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un bourg dense, largement autonome pour son eau et sa nourriture, sous un État frugal mais <em>présent</em>. Résilient par la mutualisation (Hamant). La survie estivale tient à l'eau — récupération, sobriété, régie — sans rationnement dramatique. Tendu, pas désespéré.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>Moins d'écrans qu'avant, mais une connectivité qui tient : fibre mutualisée, relais hybrides, radio et filaire d'appoint. Le réseau cuivré, lui, avait été <strong>démantelé dès les années 2030</strong> — le métal récupéré, fondu pour des renouvelables qui, ici, <strong>tournent encore</strong>. La <strong>forge-atelier du bourg</strong> n'est pas un pis-aller : c'est un low-tech choisi et entretenu (Hamant, Bihouix), où l'on répare plutôt que remplacer.</p></div>
       </div>
@@ -2953,11 +3076,13 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2085 — 2100</p>
         <h3>Refuge, à coût soutenable</h3>
-        <div class="chips"><span class="chip heat">été +44 °C →</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="chips"><span class="chip heat">été +44 °C →</span><span class="chip">hiver −5 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
         <div class="line-soc"><span class="tag">Société</span><p>En 2100, Folligny est un bourg dense, géré à l'eau près, largement autogéré — mais <strong>habitable sans drame</strong> : il a payé sa densité par la tension, non par la rareté extrême. Habité, transformé, vivable.</p></div>
       </div>
 
     </div>
+    <div class="climblock" data-clim="folligny" data-branch="median"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>Folligny tient — non parce qu'il a été épargné, mais parce qu'il a <em>absorbé l'afflux et appris la sobriété sans jamais basculer dans la survie</em>.</p>
@@ -2978,7 +3103,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire thermique — un seul visage, l'été</h3>
-        <p>Étés (max) et hivers (min) projetés, 2030 → 2095. Ici, pas de ciseau hivernal : sans le creux de l'AMOC, les hivers se réchauffent normalement — c'est l'été qui décroche. Survole un point pour le détail.</p>
+        <p>Étés (max) et hivers (min) projetés, 2025 → 2095. Ici, pas de ciseau hivernal : sans le creux de l'AMOC, les hivers se réchauffent normalement — c'est l'été qui décroche. Survole un point pour le détail.</p>
       </div>
       <div id="bm-lafaye-climSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bm-lafaye-climLegend"></div>
@@ -2987,7 +3112,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire hydrique — la recharge hivernale cède</h3>
-        <p>Bilan estival (P−ETP, trait plein) et recharge hivernale des nappes (tireté), 2030 → 2095. Ordres de grandeur de scénario, pas des sorties de modèle. Ici la recharge d'hiver elle-même s'effrite : c'est le cœur du basculement — l'eau s'en va. Survole un point pour le détail.</p>
+        <p>Bilan estival (P−ETP, trait plein) et recharge hivernale des nappes (tireté), 2025 → 2095. Ordres de grandeur de scénario, pas des sorties de modèle. Ici la recharge d'hiver elle-même s'effrite : c'est le cœur du basculement — l'eau s'en va. Survole un point pour le détail.</p>
       </div>
       <div id="bm-lafaye-hydroSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bm-lafaye-hydroLegend"></div>
@@ -3065,6 +3190,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="lafaye" data-branch="median"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>La Faye perd du terrain, non par effondrement, mais parce que <em>l'eau et la chaleur la forcent à se réinventer plus pauvre</em> — sans la rendre invivable.</p>
@@ -3171,7 +3298,23 @@ _safe("initBranch", function(){
     <div class="chrono">
 
       <div class="chrono-phase">
-        <h3 class="cp-title"><span class="cp-years">2026 — 2035</span>Les premiers chocs</h3>
+        <h3 class="cp-title"><span class="cp-years">2025 — 2035</span>Les premiers chocs</h3>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><p>Monde : <strong>troisième année la plus chaude</strong> jamais mesurée — 14,97 °C, soit <strong>+1,47 °C</strong> au-dessus du préindustriel, à 0,01 °C de 2023 et derrière 2024 (+1,60 °C). Sur trois ans glissants la moyenne atteint <strong>+1,52 °C</strong> : la cible de Paris est franchie en tendance, plus de dix ans avant le calendrier attendu. Cent vingt records mensuels dans plus de soixante-dix pays ; l'Europe du Nord, l'Asie centrale et le Sahel connaissent leur année la plus chaude ; la banquise combinée des deux pôles tombe à son <strong>plus bas niveau historique</strong>. <em>Point de départ commun des trois branches : ce n'est plus une projection, c'est un relevé.</em></p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><p>Europe : <strong>saison d'incendies sans précédent</strong> — plus d'<strong>un million d'hectares</strong> brûlés dans l'UE, l'équivalent de Chypre, sur 7 783 feux répartis dans 25 États membres ; <strong>100 000 ha dès la fin mars</strong>. Le Portugal et l'Espagne concentrent 460 585 ha sur la seule canicule d'août. Hors UE, 2,2 millions d'hectares, dont 30 % en Ukraine. L'Europe enregistre ses plus fortes émissions annuelles dues aux feux. Les incendies partent plus tôt, durent plus longtemps et gagnent des régions du Nord jusque-là épargnées. <em>L'UE tire les leçons de la saison et renforce ses moyens communs — la réponse suit, en retard d'un été.</em></p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><span class="cat eau">Eau</span><p>France : l'incendie du <strong>massif des Corbières</strong> (Aude) brûle <strong>17 000 ha en trois semaines</strong> et fait un mort — le plus grand feu français depuis les Landes de 1949, le pire du pourtour méditerranéen depuis un demi-siècle. Le même mois, Cognac inscrit <strong>41,4 °C</strong>, record d'août de la station de référence de La Faye. <em>Un record est un plancher. La question n'est plus s'il sera dépassé, mais à quelle vitesse.</em></p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat etat">État</span><p>Monde : la <strong>COP30 de Belém</strong> (10-22 novembre, 189 pays) s'achève sur un texte qui ne mentionne <strong>plus la sortie des énergies fossiles</strong> — un recul sur Dubaï — et sans engagement contraignant sur la déforestation, pour une COP pourtant amazonienne. Acquis : triplement du financement de l'adaptation d'ici 2035 et un fonds forêts doté de ~9 Md$. <em>Un accord a minima, mais un accord : le multilatéralisme plie sans rompre — c'est exactement le registre de cette branche.</em></p></div>
+        </div>
         <div class="evt ici">
           <span class="evt-year">2026</span>
           <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−24 % de naissances</strong> vs 2010. Le vocabulaire du triage se lit ici en négatif — ce sont les signaux d'un tri négocié qui s'annonce.</p></div>
@@ -3699,6 +3842,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="france" data-branch="optimiste"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>L'État ne s'est pas effacé : il s'est <em>réarmé pour la transition — planifiant, redistribuant, mutualisant</em> — au prix d'une fiscalité lourde et de deux générations d'effort.</p>
@@ -3786,6 +3931,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="manche" data-branch="optimiste"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>La fraîcheur de la Manche — ses hivers doux et arrosés — devient un atout durable, payé d'un littoral reculé et d'un accueil organisé sans relâche : <em>on y vient, et l'on peut y rester</em>.</p>
@@ -3803,7 +3950,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire thermique — étés chauds, hivers doux</h3>
-        <p>Étés (max) et hivers (min) projetés, 2030 → 2095. Le trait marquant : les hivers de Folligny <strong>ne plongent pas</strong> — AMOC affaiblie mais sans seuil, donc pas de coups de froid. Les hivers se réchauffent <strong>normalement</strong> : pas de ciseau, un seul visage — l'été, qui chauffe. Survole un point pour le détail.</p>
+        <p>Étés (max) et hivers (min) projetés, 2025 → 2095. Le trait marquant : les hivers de Folligny <strong>ne plongent pas</strong> — AMOC affaiblie mais sans seuil, donc pas de coups de froid. Les hivers se réchauffent <strong>normalement</strong> : pas de ciseau, un seul visage — l'été, qui chauffe. Survole un point pour le détail.</p>
       </div>
       <div id="bo-climSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bo-climLegend"></div>
@@ -3812,7 +3959,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
   <div class="cg-head">
     <h3>Trajectoire hydrique — le refuge garde sa recharge</h3>
-    <p>Bilan estival (P−ETP, trait plein) et recharge hivernale (tireté), 2030 → 2095. Le déficit d'été se creuse partout — la rente de Folligny n'est pas la pluie d'été, mais une <strong>recharge hivernale qui tient</strong>. Survole un point pour le détail.</p>
+    <p>Bilan estival (P−ETP, trait plein) et recharge hivernale (tireté), 2025 → 2095. Le déficit d'été se creuse partout — la rente de Folligny n'est pas la pluie d'été, mais une <strong>recharge hivernale qui tient</strong>. Survole un point pour le détail.</p>
   </div>
   <div id="bo-hydroSvg" class="cg-svg"></div>
   <div class="cg-legend" id="bo-hydroLegend"></div>
@@ -3830,15 +3977,15 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2025 — 2030</p>
         <h3>La vie d'avant</h3>
-        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −7 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud. Flamanville reste à ~90 km — hors de vue.</p></div>
+        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Premiers étés vraiment chauds à l'intérieur des terres, mais doux face au Sud.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>~1 116 habitants, prés, fermes laitières, école, commerces. Communauté intacte. Le monde craque au loin ; ici, tout paraît normal.</p></div>
       </div>
 
       <div class="phase">
         <p class="phase-years">2030 — 2035</p>
         <h3>Les étés secs</h3>
-        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
+        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −6 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>Étés secs en série ; les sources donnent moins en août. Premiers arrêtés de restriction durables sur la commune.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>L'école tient, les commerces aussi. Quelques maisons achetées par des familles venues du Sud — anecdotique, croit-on.</p></div>
       </div>
@@ -3846,7 +3993,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2035 — 2040</p>
         <h3>Le seuil non franchi, vu d'ici</h3>
-        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▯▯</span><span class="chip">hiver −5 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p>L'AMOC s'affaiblit au large — ici, cela se traduit par des tempêtes un peu plus vives sur la côte proche, mais <strong>les hivers se radoucissent</strong> : un seul visage climatique s'installe.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Les services de l'État s'amincissent — médecins, permanences, routes. Le bourg commence à se penser comme un lieu qui devra <strong>compter davantage sur lui-même</strong> : non par renoncement, mais par nécessité calculée.</p></div>
       </div>
@@ -3854,7 +4001,7 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2040 — 2045</p>
         <h3>Les sources baissent</h3>
-        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
         <div class="line-clim"><span class="tag">Climat</span><p><strong>L'eau estivale se tend</strong> — sources et forages sous pression, recharge hivernale intacte mais insuffisante pour compenser le déficit d'été. La contrainte de fond du lieu s'installe — une tension durable, pas une urgence.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Le solde migratoire redevient positif — quelques familles du Sud chaque année, pression légère sur le logement. Pas encore une vague : <strong>elle viendra après 2060, progressive</strong>. Le bourg s'étonne de se voir convoité.</p></div>
       </div>
@@ -3862,16 +4009,16 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2045 — 2050</p>
         <h3>Avant l'afflux</h3>
-        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −4 °C</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés qui tutoient +40 °C ; les citernes deviennent utiles certaines années, sans être encore indispensables. L'hiver doux recharge — la marge existe, elle se réduit.</p></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip water">eau ▮▮▮▯</span><span class="chip">hiver −5 °C</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés qui tutoient +42 °C ; les citernes deviennent utiles certaines années, sans être encore indispensables. L'hiver doux recharge — la marge existe, elle se réduit.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Le rationnement énergétique national (post-panne européenne) s'installe par épisodes. Premières <strong>mutualisations informelles</strong> — citernes partagées, matériel agricole — qui préfigurent la régie d'eau communale : le bourg pressent ce qui vient et s'y prépare.</p></div>
       </div>
 
       <div class="phase">
         <p class="phase-years">2050 — 2070</p>
         <h3>La commune qui s'étoffe</h3>
-        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés chauds — +41 °C — hivers doux et lisibles. L'empreinte de l'AMOC affaiblie se voit dans les tempêtes atlantiques, pas dans le thermomètre hivernal : avantage décisif pour planifier, semer, rester.</p></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip">hiver −5 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés chauds — +42 °C — hivers doux et lisibles. L'empreinte de l'AMOC affaiblie se voit dans les tempêtes atlantiques, pas dans le thermomètre hivernal : avantage décisif pour planifier, semer, rester.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Folligny devient <strong>commune de réception</strong> : la population croît nettement (~+25–35 % vs 2026, redistribution dans une France qui se contracte), sans saturer. L'eau d'été est tendue — <strong>mais tenue</strong> : interconnexion, sobriété, régie communale. L'État différencie ses services ; le bourg complète sans le remplacer. Variable clé : l'âge des arrivants — le scénario suppose des familles en âge de travailler, pas des retraités.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>La <strong>gare de Folligny</strong> redevient la porte du bourg — les familles arrivent, le lait repart. Matériel partagé en CUMA élargie, batteries sodium : une mécanique que l'on comprend, donc que l'on garde.</p></div>
       </div>
@@ -3879,8 +4026,8 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2070 — 2085</p>
         <h3>Gérée, pas rationnée à la goutte</h3>
-        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
-        <div class="line-clim"><span class="tag">Climat</span><p>Étés à +41 °C, hivers doux : un climat chaud mais d'un seul tenant — <strong>sans grand écart</strong>. La lisibilité est elle-même une ressource : on peut anticiper, planifier, adapter.</p></div>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip">hiver −5 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés à +42 °C, hivers doux : un climat chaud mais d'un seul tenant — <strong>sans grand écart</strong>. La lisibilité est elle-même une ressource : on peut anticiper, planifier, adapter.</p></div>
         <div class="line-soc"><span class="tag">Société</span><p>Un bourg dense, largement autonome pour son eau et sa nourriture, sous un État frugal mais <strong>présent</strong>. Résilient par la mutualisation (Hamant). La survie estivale tient à l'eau — récupération, sobriété, régie — sans rationnement dramatique. Tendu, pas désespéré.</p></div>
         <div class="line-tech"><span class="tag">Technique</span><p>Moins d'écrans qu'avant, mais une connectivité qui tient : fibre mutualisée, relais hybrides, radio et filaire d'appoint. Le réseau cuivré, lui, avait été <strong>démantelé dès les années 2030</strong> — le métal récupéré, fondu pour des renouvelables qui, ici, <strong>tournent encore</strong>. La <strong>forge-atelier du bourg</strong> n'est pas un pis-aller : c'est un low-tech choisi et entretenu (Hamant, Bihouix), où l'on répare plutôt que remplacer.</p></div>
       </div>
@@ -3888,11 +4035,13 @@ _safe("initBranch", function(){
       <div class="phase">
         <p class="phase-years">2085 — 2100</p>
         <h3>Refuge, à coût soutenable</h3>
-        <div class="chips"><span class="chip heat">été +41 °C ↘</span><span class="chip">hiver −4 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
+        <div class="chips"><span class="chip heat">été +42 °C ↘</span><span class="chip">hiver −5 °C</span><span class="chip water">eau ▮▮▮▯</span></div>
         <div class="line-soc"><span class="tag">Société</span><p>En 2100, Folligny est un bourg dense, géré à l'eau près, largement autogéré — mais <strong>habitable sans drame</strong> : il a payé sa densité par la tension, non par la rareté extrême. Habité, transformé, vivable.</p></div>
       </div>
 
     </div>
+    <div class="climblock" data-clim="folligny" data-branch="optimiste"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>Folligny tient — non parce qu'il a été épargné, mais parce qu'il a <em>absorbé l'afflux et appris la sobriété sans jamais basculer dans la survie</em>.</p>
@@ -3913,7 +4062,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire thermique — un seul visage, l'été</h3>
-        <p>Étés (max) et hivers (min) projetés, 2030 → 2095. Ici, pas de ciseau hivernal : sans le creux de l'AMOC, les hivers se réchauffent normalement — c'est l'été qui décroche. Survole un point pour le détail.</p>
+        <p>Étés (max) et hivers (min) projetés, 2025 → 2095. Ici, pas de ciseau hivernal : sans le creux de l'AMOC, les hivers se réchauffent normalement — c'est l'été qui décroche. Survole un point pour le détail.</p>
       </div>
       <div id="bo-lafaye-climSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bo-lafaye-climLegend"></div>
@@ -3922,7 +4071,7 @@ _safe("initBranch", function(){
     <div class="climgraph">
       <div class="cg-head">
         <h3>Trajectoire hydrique — la recharge hivernale cède</h3>
-        <p>Bilan estival (P−ETP, trait plein) et recharge hivernale des nappes (tireté), 2030 → 2095. Ordres de grandeur de scénario, pas des sorties de modèle. Ici la recharge d'hiver elle-même s'effrite : c'est le cœur du basculement — l'eau s'en va. Survole un point pour le détail.</p>
+        <p>Bilan estival (P−ETP, trait plein) et recharge hivernale des nappes (tireté), 2025 → 2095. Ordres de grandeur de scénario, pas des sorties de modèle. Ici la recharge d'hiver elle-même s'effrite : c'est le cœur du basculement — l'eau s'en va. Survole un point pour le détail.</p>
       </div>
       <div id="bo-lafaye-hydroSvg" class="cg-svg"></div>
       <div class="cg-legend" id="bo-lafaye-hydroLegend"></div>
@@ -4000,6 +4149,8 @@ _safe("initBranch", function(){
       </div>
 
     </div>
+    <div class="climblock" data-clim="lafaye" data-branch="optimiste"></div>
+
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>La Faye perd du terrain, non par rupture, mais parce que <em>l'eau et la chaleur la forcent à se réinventer plus pauvre</em> — sans la rendre invivable.</p>
@@ -4106,7 +4257,23 @@ _safe("initBranch", function(){
     <div class="chrono">
 
       <div class="chrono-phase">
-        <h3 class="cp-title"><span class="cp-years">2026 — 2035</span>Les premiers chocs</h3>
+        <h3 class="cp-title"><span class="cp-years">2025 — 2035</span>Les premiers chocs</h3>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><p>Monde : <strong>troisième année la plus chaude</strong> jamais mesurée — 14,97 °C, soit <strong>+1,47 °C</strong> au-dessus du préindustriel, à 0,01 °C de 2023 et derrière 2024 (+1,60 °C). Sur trois ans glissants la moyenne atteint <strong>+1,52 °C</strong> : la cible de Paris est franchie en tendance, plus de dix ans avant le calendrier attendu. Cent vingt records mensuels dans plus de soixante-dix pays ; l'Europe du Nord, l'Asie centrale et le Sahel connaissent leur année la plus chaude ; la banquise combinée des deux pôles tombe à son <strong>plus bas niveau historique</strong>. <em>C'est d'ici que part la bifurcation : le retard est acquis, la pente ne l'est pas.</em></p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat climat">Climat</span><p>Europe : <strong>saison d'incendies sans précédent</strong> — plus d'<strong>un million d'hectares</strong> brûlés dans l'UE, l'équivalent de Chypre, sur 7 783 feux répartis dans 25 États membres ; <strong>100 000 ha dès la fin mars</strong>. Le Portugal et l'Espagne concentrent 460 585 ha sur la seule canicule d'août. Hors UE, 2,2 millions d'hectares, dont 30 % en Ukraine. L'Europe enregistre ses plus fortes émissions annuelles dues aux feux. Les incendies partent plus tôt, durent plus longtemps et gagnent des régions du Nord jusque-là épargnées. <em>Le choc de 2025 devient l'argument politique qui débloque les moyens communs — la prise de conscience précède ici l'action de peu.</em></p></div>
+        </div>
+        <div class="evt ici">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat climat">Climat</span><span class="cat eau">Eau</span><p>France : l'incendie du <strong>massif des Corbières</strong> (Aude) brûle <strong>17 000 ha en trois semaines</strong> et fait un mort — le plus grand feu français depuis les Landes de 1949, le pire du pourtour méditerranéen depuis un demi-siècle. Le même mois, Cognac inscrit <strong>41,4 °C</strong>, record d'août de la station de référence de La Faye. <em>Un record est un plancher. Dans cette branche, c'est aussi le déclencheur d'une doctrine du feu et de l'eau.</em></p></div>
+        </div>
+        <div class="evt">
+          <span class="evt-year">2025</span>
+          <div class="evt-body"><span class="cat etat">État</span><p>Monde : la <strong>COP30 de Belém</strong> (10-22 novembre, 189 pays) s'achève sur un texte qui ne mentionne <strong>plus la sortie des énergies fossiles</strong> — un recul sur Dubaï — et sans engagement contraignant sur la déforestation, pour une COP pourtant amazonienne. Acquis : triplement du financement de l'adaptation d'ici 2035 et un fonds forêts doté de ~9 Md$. <em>Le point bas d'où repart la mobilisation : la décennie suivante se joue sur ce que les États font sans le texte.</em></p></div>
+        </div>
         <div class="evt ici">
           <span class="evt-year">2026</span>
           <div class="evt-body"><span class="ici-tag">ICI</span><span class="cat etat">État</span><p>France : les DGS documentent l'entrée en <strong>« gestion de crise permanente »</strong> (PwC) — adaptation chiffrée à 21 Md€ d'ici 2030 (IGF), non financée ; <strong>−24 % de naissances</strong> vs 2010. Le vocabulaire des arbitrages se lit ici en négatif — ce sont les signaux d'une planification qui s'amorce.</p></div>
@@ -4548,19 +4715,19 @@ _safe("initBranch", function(){
 
   /* ---- V3 : graphique climatique SVG ---- */
   (function(){
-    const years = [2030,2042,2060,2077,2095];
+    const years = [2025,2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",      summer:[40,42,44,45,46], winter:[-7,-10,-12,-14,-15] },
-      lafaye:   { label:"La Faye",        summer:[43,46,48,49,50], winter:[-7,-5,0,4,8.6] },
-      manche:   { label:"Manche (côte)",  summer:[38,40,42,43,44], winter:[-4,-7,-9,-10,-12] }
+      folligny: { label:"Folligny",      summer:[41,42,43,45,45,46], winter:[-6,-7,-8,-10,-12,-14] },
+      lafaye:   { label:"La Faye",        summer:[40,43,46,48,49,50], winter:[-8,-7,-5,0,4,8.6] },
+      manche:   { label:"Manche (côte)",  summer:[34,38,40,42,43,44], winter:[-5,-4,-7,-9,-10,-12] }
     };
     const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
+    const xMin=2023,xMax=2097, yMin=-20,yMax=55;
     const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
     const ys = t => mt + (yMax-t)/(yMax-yMin)*plotH;
 
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour Folligny et la côte de la Manche">`;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2025 à 2095 pour Folligny et la côte de la Manche">`;
 
     for(let t=-20;t<=50;t+=10){
       const y=ys(t), isZero=t===0;
@@ -4570,7 +4737,7 @@ _safe("initBranch", function(){
     svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
     svg += `<text class="cg-obs" x="${ml+4}" y="13">Observé 2026 — Folligny ~40 °C · côte ~38 °C (juin) : nouveau plancher</text>`;
 
-    [2030,2050,2070,2090].forEach(yr=>{
+    [2025,2040,2060,2080].forEach(yr=>{
       const x=xs(yr);
       svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
@@ -4631,19 +4798,19 @@ _safe("initBranch", function(){
 
   /* ---- V4 : graphique hydrique SVG ---- */
   (function(){
-    const years = [2030,2042,2060,2077,2095];
+    const years = [2025,2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",       ete:[-150,-200,-250,-290,-320], hiver:[400,402,400,390,380] },
-      lafaye:   { label:"La Faye",        ete:[-280,-350,-420,-470,-510], hiver:[270,230,170,120,80] },
-      manche:   { label:"Manche (côte)",  ete:[-120,-160,-200,-230,-260], hiver:[380,385,375,365,355] }
+      folligny: { label:"Folligny",       ete:[-135,-150,-200,-250,-290,-320], hiver:[402,400,402,400,390,380] },
+      lafaye:   { label:"La Faye",        ete:[-255,-280,-350,-420,-470,-510], hiver:[285,270,230,170,120,80] },
+      manche:   { label:"Manche (côte)",  ete:[-108,-120,-160,-200,-230,-260], hiver:[382,380,385,375,365,355] }
     };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
+    const xMin=2023,xMax=2097, yMin=-550,yMax=450;
     const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
     const ys = v => mt + (yMax-v)/(yMax-yMin)*plotH;
 
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour Folligny et la côte de la Manche">`;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2025 à 2095 pour Folligny et la côte de la Manche">`;
 
     for(let v=-500;v<=400;v+=100){
       const y=ys(v), isZero=v===0;
@@ -4652,7 +4819,7 @@ _safe("initBranch", function(){
     }
     svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
 
-    [2030,2050,2070,2090].forEach(yr=>{
+    [2025,2040,2060,2080].forEach(yr=>{
       const x=xs(yr);
       svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
@@ -4769,20 +4936,20 @@ _safe("initBranch", function(){
 
   /* ---- La Faye : graphique climatique SVG ---- */
   (function(){
-    const years=[2030,2042,2060,2077,2095];
-    const data={ lafaye:{ label:"La Faye", summer:[43,46,48,49,50], winter:[-7,-5,0,4,8.6] } };
+    const years=[2025,2030,2042,2060,2077,2095];
+    const data={ lafaye:{ label:"La Faye", summer:[40,43,46,48,49,50], winter:[-8,-7,-5,0,4,8.6] } };
     const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
+    const xMin=2023,xMax=2097, yMin=-20,yMax=55;
     const xs=y=>ml+(y-xMin)/(xMax-xMin)*plotW;
     const ys=t=>mt+(yMax-t)/(yMax-yMin)*plotH;
-    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour La Faye (Charente)">`;
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2025 à 2095 pour La Faye (Charente)">`;
     for(let t=-20;t<=50;t+=10){ const y=ys(t),isZero=t===0;
       svg+=`<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
       svg+=`<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${t>0?'+':''}${t}</text>`; }
     svg+=`<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
     svg+=`<text class="cg-obs" x="${ml+4}" y="13">Observé 2026 — La Faye ~41–42 °C (mai–juin)</text>`;
-    [2030,2050,2070,2090].forEach(yr=>{ const x=xs(yr);
+    [2025,2040,2060,2080].forEach(yr=>{ const x=xs(yr);
       svg+=`<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg+=`<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`; });
     svg+=`<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
@@ -4804,19 +4971,19 @@ _safe("initBranch", function(){
 
   /* ---- La Faye : graphique hydrique SVG ---- */
   (function(){
-    const years=[2030,2042,2060,2077,2095];
-    const data={ lafaye:{ label:"La Faye", ete:[-280,-350,-420,-470,-510], hiver:[270,230,170,120,80] } };
+    const years=[2025,2030,2042,2060,2077,2095];
+    const data={ lafaye:{ label:"La Faye", ete:[-255,-280,-350,-420,-470,-510], hiver:[285,270,230,170,120,80] } };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
+    const xMin=2023,xMax=2097, yMin=-550,yMax=450;
     const xs=y=>ml+(y-xMin)/(xMax-xMin)*plotW;
     const ys=v=>mt+(yMax-v)/(yMax-yMin)*plotH;
-    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour La Faye (Charente)">`;
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2025 à 2095 pour La Faye (Charente)">`;
     for(let v=-500;v<=400;v+=100){ const y=ys(v),isZero=v===0;
       svg+=`<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
       svg+=`<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${v>0?'+':''}${v}</text>`; }
     svg+=`<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
-    [2030,2050,2070,2090].forEach(yr=>{ const x=xs(yr);
+    [2025,2040,2060,2080].forEach(yr=>{ const x=xs(yr);
       svg+=`<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg+=`<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`; });
     svg+=`<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
@@ -5057,19 +5224,19 @@ _safe("initBranch", function(){
 
   /* ---- V3 : graphique climatique SVG ---- */
   (function(){
-    const years = [2030,2042,2060,2077,2095];
+    const years = [2025,2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",      summer:[40,41,42,43,44], winter:[-7,-6,-5,-5,-4] },
-      lafaye:   { label:"La Faye",        summer:[43,44,45,46,47], winter:[-7,-5,-2,2,5] },
-      manche:   { label:"Manche (côte)",  summer:[38,39,40,41,42], winter:[-4,-4,-3,-3,-2] }
+      folligny: { label:"Folligny",      summer:[41,41,43,44,44,44], winter:[-6,-6,-5,-5,-5,-5] },
+      lafaye:   { label:"La Faye",        summer:[40,43,44,45,46,47], winter:[-8,-7,-5,-2,2,5] },
+      manche:   { label:"Manche (côte)",  summer:[34,38,39,40,41,42], winter:[-5,-4,-4,-3,-3,-2] }
     };
     const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
+    const xMin=2023,xMax=2097, yMin=-20,yMax=55;
     const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
     const ys = t => mt + (yMax-t)/(yMax-yMin)*plotH;
 
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour Folligny et la côte de la Manche">`;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2025 à 2095 pour Folligny et la côte de la Manche">`;
 
     for(let t=-20;t<=50;t+=10){
       const y=ys(t), isZero=t===0;
@@ -5079,7 +5246,7 @@ _safe("initBranch", function(){
     svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
     svg += `<text class="cg-obs" x="${ml+4}" y="13">Observé 2026 — Folligny ~40 °C · côte ~38 °C (juin) : nouveau plancher</text>`;
 
-    [2030,2050,2070,2090].forEach(yr=>{
+    [2025,2040,2060,2080].forEach(yr=>{
       const x=xs(yr);
       svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
@@ -5140,19 +5307,19 @@ _safe("initBranch", function(){
 
   /* ---- V4 : graphique hydrique SVG ---- */
   (function(){
-    const years = [2030,2042,2060,2077,2095];
+    const years = [2025,2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",       ete:[-150,-180,-210,-235,-260], hiver:[400,405,400,395,390] },
-      lafaye:   { label:"La Faye",        ete:[-280,-320,-360,-400,-430], hiver:[270,240,200,170,150] },
-      manche:   { label:"Manche (côte)",  ete:[-120,-145,-170,-195,-215], hiver:[380,385,380,375,370] }
+      folligny: { label:"Folligny",       ete:[-135,-150,-180,-210,-235,-260], hiver:[402,400,405,400,395,390] },
+      lafaye:   { label:"La Faye",        ete:[-255,-280,-320,-360,-400,-430], hiver:[285,270,240,200,170,150] },
+      manche:   { label:"Manche (côte)",  ete:[-108,-120,-145,-170,-195,-215], hiver:[382,380,385,380,375,370] }
     };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
+    const xMin=2023,xMax=2097, yMin=-550,yMax=450;
     const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
     const ys = v => mt + (yMax-v)/(yMax-yMin)*plotH;
 
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour Folligny et la côte de la Manche">`;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2025 à 2095 pour Folligny et la côte de la Manche">`;
 
     for(let v=-500;v<=400;v+=100){
       const y=ys(v), isZero=v===0;
@@ -5161,7 +5328,7 @@ _safe("initBranch", function(){
     }
     svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
 
-    [2030,2050,2070,2090].forEach(yr=>{
+    [2025,2040,2060,2080].forEach(yr=>{
       const x=xs(yr);
       svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
@@ -5278,20 +5445,20 @@ _safe("initBranch", function(){
 
   /* ---- La Faye : graphique climatique SVG ---- */
   (function(){
-    const years=[2030,2042,2060,2077,2095];
-    const data={ lafaye:{ label:"La Faye", summer:[43,44,45,46,47], winter:[-7,-5,-2,2,5] } };
+    const years=[2025,2030,2042,2060,2077,2095];
+    const data={ lafaye:{ label:"La Faye", summer:[40,43,44,45,46,47], winter:[-8,-7,-5,-2,2,5] } };
     const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
+    const xMin=2023,xMax=2097, yMin=-20,yMax=55;
     const xs=y=>ml+(y-xMin)/(xMax-xMin)*plotW;
     const ys=t=>mt+(yMax-t)/(yMax-yMin)*plotH;
-    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour La Faye (Charente)">`;
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2025 à 2095 pour La Faye (Charente)">`;
     for(let t=-20;t<=50;t+=10){ const y=ys(t),isZero=t===0;
       svg+=`<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
       svg+=`<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${t>0?'+':''}${t}</text>`; }
     svg+=`<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
     svg+=`<text class="cg-obs" x="${ml+4}" y="13">Observé 2026 — La Faye ~41–42 °C (mai–juin)</text>`;
-    [2030,2050,2070,2090].forEach(yr=>{ const x=xs(yr);
+    [2025,2040,2060,2080].forEach(yr=>{ const x=xs(yr);
       svg+=`<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg+=`<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`; });
     svg+=`<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
@@ -5313,19 +5480,19 @@ _safe("initBranch", function(){
 
   /* ---- La Faye : graphique hydrique SVG ---- */
   (function(){
-    const years=[2030,2042,2060,2077,2095];
-    const data={ lafaye:{ label:"La Faye", ete:[-280,-320,-360,-400,-430], hiver:[270,240,200,170,150] } };
+    const years=[2025,2030,2042,2060,2077,2095];
+    const data={ lafaye:{ label:"La Faye", ete:[-255,-280,-320,-360,-400,-430], hiver:[285,270,240,200,170,150] } };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
+    const xMin=2023,xMax=2097, yMin=-550,yMax=450;
     const xs=y=>ml+(y-xMin)/(xMax-xMin)*plotW;
     const ys=v=>mt+(yMax-v)/(yMax-yMin)*plotH;
-    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour La Faye (Charente)">`;
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2025 à 2095 pour La Faye (Charente)">`;
     for(let v=-500;v<=400;v+=100){ const y=ys(v),isZero=v===0;
       svg+=`<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
       svg+=`<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${v>0?'+':''}${v}</text>`; }
     svg+=`<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
-    [2030,2050,2070,2090].forEach(yr=>{ const x=xs(yr);
+    [2025,2040,2060,2080].forEach(yr=>{ const x=xs(yr);
       svg+=`<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg+=`<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`; });
     svg+=`<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
@@ -5567,19 +5734,19 @@ _safe("initBranch", function(){
 
   /* ---- V3 : graphique climatique SVG ---- */
   (function(){
-    const years = [2030,2042,2060,2077,2095];
+    const years = [2025,2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",      summer:[40,40,41,41,41], winter:[-7,-6,-5,-5,-4] },
-      lafaye:   { label:"La Faye",        summer:[43,44,44,44,44], winter:[-7,-5,-2,2,4] },
-      manche:   { label:"Manche (côte)",  summer:[38,38,39,39,39], winter:[-4,-4,-3,-3,-2] }
+      folligny: { label:"Folligny",      summer:[41,41,42,42,42,42], winter:[-6,-6,-5,-5,-5,-5] },
+      lafaye:   { label:"La Faye",        summer:[40,43,44,44,44,44], winter:[-8,-7,-5,-2,2,4] },
+      manche:   { label:"Manche (côte)",  summer:[34,38,38,39,39,39], winter:[-5,-4,-4,-3,-3,-2] }
     };
     const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
+    const xMin=2023,xMax=2097, yMin=-20,yMax=55;
     const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
     const ys = t => mt + (yMax-t)/(yMax-yMin)*plotH;
 
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour Folligny et la côte de la Manche">`;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2025 à 2095 pour Folligny et la côte de la Manche">`;
 
     for(let t=-20;t<=50;t+=10){
       const y=ys(t), isZero=t===0;
@@ -5589,7 +5756,7 @@ _safe("initBranch", function(){
     svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
     svg += `<text class="cg-obs" x="${ml+4}" y="13">Observé 2026 — Folligny ~40 °C · côte ~38 °C (juin) : nouveau plancher</text>`;
 
-    [2030,2050,2070,2090].forEach(yr=>{
+    [2025,2040,2060,2080].forEach(yr=>{
       const x=xs(yr);
       svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
@@ -5650,19 +5817,19 @@ _safe("initBranch", function(){
 
   /* ---- V4 : graphique hydrique SVG ---- */
   (function(){
-    const years = [2030,2042,2060,2077,2095];
+    const years = [2025,2030,2042,2060,2077,2095];
     const data = {
-      folligny: { label:"Folligny",       ete:[-150,-160,-190,-205,-205], hiver:[400,408,405,402,400] },
-      lafaye:   { label:"La Faye",        ete:[-280,-290,-320,-340,-340], hiver:[270,255,230,205,190] },
-      manche:   { label:"Manche (côte)",  ete:[-120,-130,-150,-170,-170], hiver:[380,385,383,381,380] }
+      folligny: { label:"Folligny",       ete:[-135,-150,-160,-190,-205,-205], hiver:[402,400,408,405,402,400] },
+      lafaye:   { label:"La Faye",        ete:[-255,-280,-290,-320,-340,-340], hiver:[285,270,255,230,205,190] },
+      manche:   { label:"Manche (côte)",  ete:[-108,-120,-130,-150,-170,-170], hiver:[382,380,385,383,381,380] }
     };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
+    const xMin=2023,xMax=2097, yMin=-550,yMax=450;
     const xs = y => ml + (y-xMin)/(xMax-xMin)*plotW;
     const ys = v => mt + (yMax-v)/(yMax-yMin)*plotH;
 
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour Folligny et la côte de la Manche">`;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2025 à 2095 pour Folligny et la côte de la Manche">`;
 
     for(let v=-500;v<=400;v+=100){
       const y=ys(v), isZero=v===0;
@@ -5671,7 +5838,7 @@ _safe("initBranch", function(){
     }
     svg += `<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
 
-    [2030,2050,2070,2090].forEach(yr=>{
+    [2025,2040,2060,2080].forEach(yr=>{
       const x=xs(yr);
       svg += `<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg += `<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`;
@@ -5788,20 +5955,20 @@ _safe("initBranch", function(){
 
   /* ---- La Faye : graphique climatique SVG ---- */
   (function(){
-    const years=[2030,2042,2060,2077,2095];
-    const data={ lafaye:{ label:"La Faye", summer:[43,44,44,44,44], winter:[-7,-5,-2,2,4] } };
+    const years=[2025,2030,2042,2060,2077,2095];
+    const data={ lafaye:{ label:"La Faye", summer:[40,43,44,44,44,44], winter:[-8,-7,-5,-2,2,4] } };
     const W=680,H=410, ml=46,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-20,yMax=55;
+    const xMin=2023,xMax=2097, yMin=-20,yMax=55;
     const xs=y=>ml+(y-xMin)/(xMax-xMin)*plotW;
     const ys=t=>mt+(yMax-t)/(yMax-yMin)*plotH;
-    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2030 à 2095 pour La Faye (Charente)">`;
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trajectoires de température été et hiver de 2025 à 2095 pour La Faye (Charente)">`;
     for(let t=-20;t<=50;t+=10){ const y=ys(t),isZero=t===0;
       svg+=`<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
       svg+=`<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${t>0?'+':''}${t}</text>`; }
     svg+=`<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 °C — gel / dégel</text>`;
     svg+=`<text class="cg-obs" x="${ml+4}" y="13">Observé 2026 — La Faye ~41–42 °C (mai–juin)</text>`;
-    [2030,2050,2070,2090].forEach(yr=>{ const x=xs(yr);
+    [2025,2040,2060,2080].forEach(yr=>{ const x=xs(yr);
       svg+=`<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg+=`<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`; });
     svg+=`<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
@@ -5823,19 +5990,19 @@ _safe("initBranch", function(){
 
   /* ---- La Faye : graphique hydrique SVG ---- */
   (function(){
-    const years=[2030,2042,2060,2077,2095];
-    const data={ lafaye:{ label:"La Faye", ete:[-280,-290,-320,-340,-340], hiver:[270,255,230,205,190] } };
+    const years=[2025,2030,2042,2060,2077,2095];
+    const data={ lafaye:{ label:"La Faye", ete:[-255,-280,-290,-320,-340,-340], hiver:[285,270,255,230,205,190] } };
     const W=680,H=410, ml=56,mr=14,mt=18,mb=42;
     const plotW=W-ml-mr, plotH=H-mt-mb;
-    const xMin=2028,xMax=2097, yMin=-550,yMax=450;
+    const xMin=2023,xMax=2097, yMin=-550,yMax=450;
     const xs=y=>ml+(y-xMin)/(xMax-xMin)*plotW;
     const ys=v=>mt+(yMax-v)/(yMax-yMin)*plotH;
-    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2030 à 2095 pour La Faye (Charente)">`;
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bilan hydrique estival et recharge hivernale de 2025 à 2095 pour La Faye (Charente)">`;
     for(let v=-500;v<=400;v+=100){ const y=ys(v),isZero=v===0;
       svg+=`<line class="${isZero?'cg-zero':'cg-grid'}" x1="${ml}" y1="${y.toFixed(1)}" x2="${W-mr}" y2="${y.toFixed(1)}"/>`;
       svg+=`<text class="cg-tick ${isZero?'zero':''}" x="${ml-8}" y="${(y+3).toFixed(1)}" text-anchor="end">${v>0?'+':''}${v}</text>`; }
     svg+=`<text class="cg-zlabel" x="${W-mr}" y="${(ys(0)-5).toFixed(1)}" text-anchor="end">0 mm — équilibre</text>`;
-    [2030,2050,2070,2090].forEach(yr=>{ const x=xs(yr);
+    [2025,2040,2060,2080].forEach(yr=>{ const x=xs(yr);
       svg+=`<line class="cg-grid" x1="${x.toFixed(1)}" y1="${mt}" x2="${x.toFixed(1)}" y2="${mt+plotH}"/>`;
       svg+=`<text class="cg-tick" x="${x.toFixed(1)}" y="${mt+plotH+18}" text-anchor="middle">${yr}</text>`; });
     svg+=`<line class="cg-axis" x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt+plotH}"/>`;
@@ -5989,6 +6156,357 @@ _safe("initBranch", function(){
   }
 })();
 
+</script>
+
+<script id="clim-js">
+/* =====================================================================
+   BLOC CLIMATIQUE MENSUEL — relevé façon fiche station + petits multiples
+   Une seule source de vérité (SITES + le moteur DELTA) pour 12 blocs
+   (4 périmètres x 3 branches). Rendu au chargement : les panneaux de
+   branche sont déjà dans le DOM, seuls leurs scripts sont différés.
+   ===================================================================== */
+(function(){
+  "use strict";
+
+  var MOIS  = ["jan.","fév.","mars","avril","mai","juin","juil.","août","sep.","oct.","nov.","déc."];
+  var INIT  = ["J","F","M","A","M","J","J","A","S","O","N","D"];
+
+  /* --- Forme saisonnière du réchauffement (Ouest/Centre France) :
+         l'été prend beaucoup plus que l'hiver. Moyenne = 1. --- */
+  var S = [0.659,0.686,0.777,0.869,1.006,1.235,1.463,1.510,1.326,1.006,0.777,0.686];
+  /* --- Poids mensuel de l'empreinte AMOC (hiver seulement) --- */
+  var W = [1.00,1.00,0.80,0.45,0.15,0,0,0,0,0.20,0.60,0.95];
+  /* --- Sensibilité des précipitations, en fraction par °C régional --- */
+  var P = [0.035,0.035,0.020,0.000,-0.030,-0.070,-0.090,-0.090,-0.050,0.000,0.030,0.035];
+
+  /* Anomalie mondiale au centre des normales 1991-2020 (~2005) */
+  var GBASE = 0.90;
+  /* Réchauffement mondial par branche (cohérent avec TEMP du hub) */
+  var GLOB = {
+    sombre:   {"2050":2.60, "2100":3.50},
+    median:   {"2050":2.34, "2100":2.70},
+    optimiste:{"2050":2.00, "2100":1.90}
+  };
+  /* Empreinte AMOC en 2100 : [refroidissement des moyennes, des extrêmes].
+     Côte : les moyennes bougent peu, les extrêmes plongent — le « climat à
+     deux visages ». Intérieur : hivers plus perturbés, pas plus froids. */
+  var AMOC = {
+    cote:      {sombre:[2.0,10.0], median:[0.40,1.00], optimiste:[0.15,0.30]},
+    interieur: {sombre:[0.5, 2.50], median:[0.15,0.50], optimiste:[0.05,0.20]}
+  };
+  /* Une nuit décennale se situe à ~62 % du chemin entre la minimale moyenne
+     du mois et le record absolu de la série : écart mesuré, pas postulé. */
+  var K_DEC = 0.55;
+  /* Montée en charge : le seuil est franchi ~2035-45 dans la branche sombre */
+  var RAMP = {"2050":{sombre:0.40, median:0.25, optimiste:0.25},
+              "2100":{sombre:1.00, median:1.00, optimiste:1.00}};
+
+  var K_HOT  = 1.30;  /* les extrêmes chauds montent plus vite que les moyennes */
+  var K_COLD = 1.60;  /* et les nuits froides se réchauffent plus vite encore :
+                         asymétrie documentée des extrêmes de moyenne latitude */
+
+  /* =================================================================
+     STATIONS DE RÉFÉRENCE — normales 1991-2020 (données publiées)
+     recH / recC : [valeur, année] ; records absolus toutes séries.
+     ================================================================= */
+  var SITES = {
+    france: {
+      titre:"France — le climat moyen d'un pays tempéré",
+      station:"Bourges (18) · 161 m · station-témoin de la « France moyenne »",
+      src:"Météo-France, fiche climatologique 1991-2020, Bourges (18033001)",
+      srcUrl:"https://donneespubliques.meteofrance.fr/FichesClim/FICHECLIM_18033001.pdf",
+      type:"interieur", amp:1.55,
+      lede:"Bourges n'est pas la France, mais c'est le point du territoire dont le cycle annuel ressemble le plus à sa moyenne : ni littoral, ni montagne, ni Midi. Ce que le tableau montre ici, c'est <strong>la déformation du calendrier national</strong> — un été qui s'allonge par les deux bouts et un hiver qui perd son gel.",
+      tmax:[7.4,8.9,13.1,16.3,20.1,23.8,26.2,26.2,22.1,17.2,11.2,7.9],
+      tmoy:[4.5,5.1,8.4,11.1,14.8,18.4,20.5,20.5,16.7,12.9,7.9,5.0],
+      tmin:[1.6,1.4,3.7,5.8,9.5,13.0,14.8,14.7,11.3,8.5,4.6,2.2],
+      prec:[58.0,51.0,52.8,62.0,75.9,58.4,63.5,53.5,56.7,74.2,69.3,67.4],
+      recH:[[17.6,2002],[22.8,2019],[29.4,1955],[29.4,1949],[32.1,2025],[39.5,2019],[41.7,2019],[39.9,2003],[36.4,2023],[31.9,2023],[23.4,2015],[20.0,1989]],
+      recC:[[-20.4,1985],[-16.4,1956],[-11.3,2005],[-3.8,2022],[-2.6,1957],[3.4,1969],[4.6,1948],[4.6,1946],[1.8,1962],[-5.0,1997],[-9.1,1998],[-14.0,1946]]
+    },
+    manche: {
+      titre:"Manche — la côte, mois par mois",
+      station:"Cherbourg-Homet (50) · 19 m · le littoral, dans sa version la plus maritime",
+      src:"Météo-France, fiche climatologique 1991-2020, Cherbourg-Homet (50129001)",
+      srcUrl:"https://donneespubliques.meteofrance.fr/FichesClim/FICHECLIM_50129001.pdf",
+      type:"cote", amp:1.30,
+      lede:"Ce tableau est celui du <strong>rivage</strong>, pas du département : Homet est posé sur la pointe du Cotentin, à quelques centaines de mètres de l'eau. C'est délibéré — c'est la face du territoire qui porte la « rente maritime », avec l'amplitude annuelle la plus faible de France continentale (11,3 °C entre janvier et août, contre 22 à Bourges). Pour l'intérieur du département et le bocage, lisez le tableau de Folligny, adossé à Coutances : plus chaud l'été, nettement plus froid la nuit.",
+      tmax:[9.4,9.4,11.1,12.9,15.4,18.4,20.2,20.7,19.0,16.2,12.6,10.0],
+      tmoy:[7.4,7.3,8.7,10.2,12.7,15.4,17.3,17.9,16.4,13.8,10.5,8.0],
+      tmin:[5.4,5.1,6.3,7.5,9.9,12.4,14.5,15.1,13.8,11.5,8.5,6.0],
+      prec:[105.4,80.5,65.8,63.2,54.8,51.8,48.4,51.7,66.6,115.1,121.6,139.0],
+      recH:[[16.5,1998],[19.8,1990],[22.6,1990],[25.2,1984],[29.5,2005],[38.0,2026],[31.0,1996],[34.2,2013],[31.4,1984],[30.0,2011],[19.4,1992],[16.0,1989]],
+      recC:[[-8.6,1987],[-8.0,1991],[-1.0,1985],[0.6,1970],[0.6,1979],[5.8,1989],[9.0,1984],[9.2,1979],[6.4,1975],[1.5,2003],[-3.5,1998],[-4.8,1978]],
+      obs:"Un record est un plancher, ici aussi : juin 2026 a porté la façade à ~38 °C — Cherbourg 37 °C (record absolu, +4 °C d'un coup), Bernières-sur-Mer 40,3 °C, Granville 39 °C. La ligne de juin est recalée sur ce plancher ; les autres mois gardent la série homologuée du Homet. « Le bouclier normand ne fonctionne plus » (Météo-France)."
+    },
+    folligny: {
+      titre:"Folligny — l'année d'un bourg du bocage",
+      station:"Coutances (50) · 80 m · à 30 km — extrêmes recalés sur la commune",
+      src:"Météo-France, fiche climatologique 1991-2020, Coutances (50147001)",
+      srcUrl:"https://donneespubliques.meteofrance.fr/FichesClim/FICHECLIM_50147001.pdf",
+      type:"cote", amp:1.35,
+      lede:"Avranches, à 20 km, n'a pas de normales publiées. La base est donc <strong>Coutances : même département, même bocage, même altitude, même distance à la mer</strong> — et surtout les mêmes 1 093 mm d'eau par an, ce qu'aucune station de cap ou de plaine ne pouvait donner. Les extrêmes de juin et d'août sont recalés sur ce que la commune a réellement encaissé en 2026 (~40 °C, entre Granville 39 °C et Pontorson 41 °C).",
+      tmax:[8.8,9.6,12.0,14.7,17.8,20.6,22.5,22.5,20.3,16.4,12.3,9.4],
+      tmoy:[6.0,6.3,8.2,10.3,13.3,16.1,17.9,17.9,15.8,12.7,9.2,6.5],
+      tmin:[3.2,3.0,4.4,5.9,8.8,11.6,13.4,13.4,11.3,9.1,6.0,3.6],
+      prec:[109.6,86.5,75.6,71.7,68.9,64.5,67.3,79.6,82.4,120.0,122.3,144.4],
+      recH:[[15.5,1975],[21.5,2019],[24.6,2021],[26.9,2018],[30.5,2005],[40.0,2026],[39.5,2022],[39.0,2026],[33.0,2020],[28.6,2023],[21.9,2015],[16.6,1979]],
+      recC:[[-14.4,1985],[-13.0,1986],[-5.4,1987],[-2.5,2006],[-1.1,2019],[2.7,1985],[4.6,1984],[3.9,1986],[0.5,1986],[-2.8,1997],[-5.5,2010],[-7.1,1991]],
+      obs:"Un record est un plancher : les pointes de juin et d'août 2026 (~39-40 °C) remplacent ici les valeurs de la série de Coutances pour ces deux mois. Juillet garde le record réel de la station — 39,5 °C en 2022 — qui dit déjà où en est ce bocage."
+    },
+    lafaye: {
+      titre:"La Faye — l'année d'une terre céréalière",
+      station:"Cognac-Châteaubernard (16) · 30 m · à ~45 km — référence Charente",
+      src:"Météo-France, fiche climatologique 1991-2020, Cognac (16089001) ; records via Infoclimat (07412)",
+      srcUrl:"https://donneespubliques.meteofrance.fr/FichesClim/FICHECLIM_16089001.pdf",
+      type:"interieur", amp:1.60,
+      lede:"Vingt-quatre journées à 30 °C ou plus par an, et 29 nuits de gel : c'est le climat qui a fait le terroir charentais — céréales d'hiver, vigne, eau-de-vie. Le tableau montre <strong>ce qui arrive au calendrier agricole</strong> quand l'été gagne deux mois et que le gel disparaît.",
+      tmax:[9.7,11.3,14.9,17.7,21.3,24.8,27.0,27.3,23.8,19.1,13.5,10.4],
+      tmoy:[6.5,7.1,10.1,12.5,16.1,19.4,21.3,21.3,18.1,14.6,9.8,7.1],
+      tmin:[3.3,3.0,5.2,7.3,10.9,14.0,15.6,15.4,12.5,10.1,6.1,3.7],
+      prec:[71.9,50.8,52.9,65.0,61.6,60.2,45.0,53.2,62.8,76.4,87.9,84.1],
+      recH:[[18.4,1993],[24.4,2019],[26.2,2005],[31.0,2005],[36.1,2026],[42.7,2026],[40.3,2019],[41.4,2025],[36.8,2023],[32.0,2023],[24.7,2015],[20.5,1989]],
+      recC:[[-17.5,1985],[-19.4,1956],[-10.2,1958],[-4.4,2022],[-0.2,1974],[3.0,1975],[6.4,1948],[5.5,1946],[2.2,1977],[-3.8,1947],[-8.4,1956],[-14.5,1946]],
+      obs:"Mai et juin 2026 ont réécrit deux mois de la série d'un coup : 36,1 °C le 1<sup>er</sup> mai, 42,7 °C en juin — le record annuel de la station date désormais de cette année-là."
+    }
+  };
+
+  /* =================================================================
+     MOTEUR — un millésime projeté à partir des normales
+     ================================================================= */
+  function project(site, branch, horizon){
+    var g  = GLOB[branch][horizon] - GBASE;          /* °C mondiaux gagnés depuis ~2005 */
+    var a  = AMOC[site.type][branch];
+    var r  = RAMP[horizon][branch];
+    var Am = a[0]*r, Ae = a[1]*r;
+    var dTreg = g * site.amp;                        /* réchauffement régional annuel */
+    var o = {tmax:[],tmoy:[],tmin:[],prec:[],recH:[],recC:[],dT:[]};
+    for(var m=0;m<12;m++){
+      var dMean = dTreg*S[m] - Am*W[m];
+      o.dT.push(dMean);
+      o.tmax.push(site.tmax[m] + dMean);
+      o.tmoy.push(site.tmoy[m] + dMean);
+      o.tmin.push(site.tmin[m] + dMean);
+      o.prec.push(Math.max(2, site.prec[m] * (1 + P[m]*dTreg)));
+      o.recH.push([site.recH[m][0] + Math.max(0,dTreg*S[m])*K_HOT, horizon]);
+      /* le froid extrême ne se déduit pas d'un record des années 1950 :
+         on le reconstruit sous la minimale moyenne projetée, à l'écart
+         décennal mesuré sur la série de la station elle-même. */
+      var gap = (site.tmin[m] - site.recC[m][0]) * K_DEC;
+      o.recC.push([site.tmin[m] + dTreg*S[m]*K_COLD - Am*W[m] - gap - Ae*W[m], horizon]);
+    }
+    return o;
+  }
+  function observed(site){
+    return {tmax:site.tmax, tmoy:site.tmoy, tmin:site.tmin, prec:site.prec,
+            recH:site.recH, recC:site.recC, dT:[0,0,0,0,0,0,0,0,0,0,0,0]};
+  }
+
+  /* =================================================================
+     RENDU — teinte des cellules
+     ================================================================= */
+  function tint(v){
+    /* -20 °C → acier profond ; 12 °C → neutre ; 45 °C → braise vive */
+    var t, r, gg, b, al;
+    if(v <= 12){ t = Math.max(0,Math.min(1,(12-v)/32)); r=79; gg=125; b=150; al=0.05+0.42*t*t; }
+    else { t = Math.max(0,Math.min(1,(v-12)/33)); r=217; gg=110; b=45;
+           if(v>36){ r=200; gg=65; b=42; } al=0.05+0.55*t*t; }
+    return "rgba("+r+","+gg+","+b+","+al.toFixed(3)+")";
+  }
+  function f1(v){ return (Math.round(v*10)/10).toString().replace(".",","); }
+  function f2(v){ return v.toFixed(2).replace(".",","); }
+  function f0(v){ return Math.round(v).toString(); }
+  function mean(a){ var s=0; for(var i=0;i<a.length;i++) s+=a[i]; return s/a.length; }
+  function sum(a){ var s=0; for(var i=0;i<a.length;i++) s+=a[i]; return s; }
+
+  function tableFor(site, data, horizon, isObs){
+    var labH = isObs ? "Record de chaleur<small>absolu, série observée</small>"
+                     : "Pointe de chaleur<small>journée la plus chaude d'une décennie</small>";
+    var labC = isObs ? "Record de froid<small>absolu, série observée</small>"
+                     : "Pointe de froid<small>nuit la plus froide d'une décennie</small>";
+    var h = '<div class="cb-tablewrap" data-h="'+horizon+'"'+(isObs?'':' hidden')+'>'
+          + '<table class="cb-table"><thead><tr><th class="cb-rowlab">'
+          + (isObs? "Mois · normales 1991-2020" : "Mois · projection "+horizon)
+          + '</th>';
+    for(var m=0;m<12;m++) h += '<th>'+MOIS[m]+'</th>';
+    h += '<th class="cb-year">année</th></tr></thead><tbody>';
+
+    function row(lab, vals, fmt, cls, yrs, agg){
+      var s = '<tr'+(cls?' class="'+cls+'"':'')+'><td class="cb-rowlab">'+lab+'</td>';
+      for(var m=0;m<12;m++){
+        var v = vals[m];
+        var bg = (fmt==="prec") ? "" : ' style="background:'+tint(v)+'"';
+        var txt = (fmt==="prec") ? '<span class="cb-prec">'+f0(v)+'</span>' : f1(v);
+        var when = (yrs && isObs) ? '<span class="cb-when">'+yrs[m]+'</span>' : '';
+        s += '<td'+bg+(fmt==="prec"&&!isObs?' class="cb-hatch"':'')+'><span class="cb-cell">'+txt+when+'</span></td>';
+      }
+      s += '<td class="cb-yearcol">'+(fmt==="prec"? '<span class="cb-prec">'+f0(agg)+'</span>' : f1(agg))+'</td></tr>';
+      return s;
+    }
+
+    var yH=[], yC=[];
+    for(var i=0;i<12;i++){ yH.push(data.recH[i][1]); yC.push(data.recC[i][1]); }
+    var maxH=-99, maxHi=0, minC=99, minCi=0;
+    for(i=0;i<12;i++){
+      if(data.recH[i][0]>maxH){ maxH=data.recH[i][0]; maxHi=i; }
+      if(data.recC[i][0]<minC){ minC=data.recC[i][0]; minCi=i; }
+    }
+    var recHv=[], recCv=[];
+    for(i=0;i<12;i++){ recHv.push(data.recH[i][0]); recCv.push(data.recC[i][0]); }
+
+    h += row(labH, recHv, "t", null, yH, maxH);
+    h += row("Maximale moyenne", data.tmax, "t", "cb-sep", null, mean(data.tmax));
+    h += row("Moyenne",          data.tmoy, "t", null, null, mean(data.tmoy));
+    h += row("Minimale moyenne", data.tmin, "t", null, null, mean(data.tmin));
+    h += row(labC, recCv, "t", "cb-sep", yC, minC);
+    h += row("Précipitations<small>hauteur en mm</small>", data.prec, "prec", "cb-sep", null, sum(data.prec));
+    h += '</tbody></table></div>';
+    return h;
+  }
+
+  /* --- diagramme : boîtes max/min + barres de pluie, échelle partagée --- */
+  function mini(series, ref, horizon, scale, sub){
+    var Wd=300, Ht=210, ml=22, mr=6, mt=10, precH=42, gap=14;
+    var plotH = Ht - mt - precH - gap - 14;
+    var y0=mt, y1=mt+plotH;
+    var ys = function(t){ return y1 - (t-scale.tmin)/(scale.tmax-scale.tmin)*plotH; };
+    var pw = (Wd-ml-mr)/12, bw = Math.min(15, pw*0.62);
+    var py1 = Ht-14, py0 = py1-precH;
+    var pys = function(p){ return py1 - Math.min(1,p/scale.pmax)*precH; };
+    var s = '<svg viewBox="0 0 '+Wd+' '+Ht+'" role="img" aria-label="Diagramme climatique '+horizon+'">';
+
+    /* grille °C */
+    var step = (scale.tmax-scale.tmin) > 45 ? 20 : 10;
+    for(var g=Math.ceil(scale.tmin/step)*step; g<=scale.tmax; g+=step){
+      s += '<line class="'+(g===0?"cbx-zero":"cbx-grid")+'" x1="'+ml+'" y1="'+ys(g).toFixed(1)+'" x2="'+(Wd-mr)+'" y2="'+ys(g).toFixed(1)+'"/>';
+      s += '<text class="cbx-lab" x="'+(ml-4)+'" y="'+(ys(g)+3).toFixed(1)+'" text-anchor="end">'+g+'</text>';
+    }
+    /* boîtes */
+    for(var m=0;m<12;m++){
+      var x = ml + m*pw + (pw-bw)/2;
+      if(ref){
+        var gy0=ys(ref.tmax[m]), gy1=ys(ref.tmin[m]);
+        s += '<rect class="cbx-ghost" x="'+(x-2.5).toFixed(1)+'" y="'+gy0.toFixed(1)+'" width="'+(bw+5).toFixed(1)+'" height="'+Math.max(1,gy1-gy0).toFixed(1)+'" rx="2"/>';
+      }
+      var b0=ys(series.tmax[m]), b1=ys(series.tmin[m]);
+      s += '<rect class="cbx-box" x="'+x.toFixed(1)+'" y="'+b0.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+Math.max(1.5,b1-b0).toFixed(1)+'" rx="2.5" fill="url(#cbGrad)"/>';
+    }
+    /* pluie */
+    s += '<line class="cbx-axis" x1="'+ml+'" y1="'+py1+'" x2="'+(Wd-mr)+'" y2="'+py1+'"/>';
+    for(m=0;m<12;m++){
+      var xx = ml + m*pw + (pw-bw)/2;
+      if(ref){
+        s += '<rect class="cbx-precghost" x="'+(xx-2.5).toFixed(1)+'" y="'+pys(ref.prec[m]).toFixed(1)+'" width="'+(bw+5).toFixed(1)+'" height="'+Math.max(0.8,py1-pys(ref.prec[m])).toFixed(1)+'"/>';
+      }
+      s += '<rect class="cbx-prec" x="'+xx.toFixed(1)+'" y="'+pys(series.prec[m]).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+Math.max(0.8,py1-pys(series.prec[m])).toFixed(1)+'"/>';
+      s += '<text class="cbx-lab" x="'+(ml+m*pw+pw/2).toFixed(1)+'" y="'+(py1+10)+'" text-anchor="middle">'+INIT[m]+'</text>';
+    }
+    s += '</svg>';
+    return '<div class="cb-mini" data-h="'+horizon+'"><h4>'+horizon+'</h4><p class="cb-mini-sub">'+sub+'</p>'+s+'</div>';
+  }
+
+  /* =================================================================
+     ASSEMBLAGE
+     ================================================================= */
+  var BRANCHNAME = {sombre:"l'arc sombre", median:"la ligne de crête", optimiste:"la bifurcation"};
+
+  function build(el){
+    var key = el.getAttribute("data-clim"), branch = el.getAttribute("data-branch");
+    var site = SITES[key]; if(!site) return;
+
+    var d2026 = observed(site),
+        d2050 = project(site, branch, "2050"),
+        d2100 = project(site, branch, "2100");
+
+    /* échelle commune aux trois vignettes */
+    var lo=99, hi=-99, pmax=0, all=[d2026,d2050,d2100];
+    for(var i=0;i<3;i++) for(var m=0;m<12;m++){
+      if(all[i].tmin[m]<lo) lo=all[i].tmin[m];
+      if(all[i].tmax[m]>hi) hi=all[i].tmax[m];
+      if(all[i].prec[m]>pmax) pmax=all[i].prec[m];
+    }
+    var scale = {tmin:Math.floor((lo-3)/5)*5, tmax:Math.ceil((hi+3)/5)*5, pmax:Math.ceil(pmax/10)*10};
+
+    var dTs = f1(mean(d2100.tmoy)-mean(d2026.tmoy));
+    var dEt = f1(d2100.tmoy[7]-d2026.tmoy[7]);
+    var dHi = f1(d2100.tmoy[0]-d2026.tmoy[0]);
+
+    var h = ''
+      + '<div class="cb-head">'
+      +   '<p class="cb-station">Relevé mensuel · '+site.station+'</p>'
+      +   '<h3>'+site.titre+'</h3>'
+      +   '<p class="cb-lede">'+site.lede+'</p>'
+      + '</div>'
+      + '<div class="cb-switch" role="group" aria-label="Millésime">'
+      +   '<button type="button" data-h="2026" aria-pressed="true">2026<span class="y2">observé</span></button>'
+      +   '<button type="button" data-h="2050" aria-pressed="false">2050<span class="y2">projeté</span></button>'
+      +   '<button type="button" data-h="2100" aria-pressed="false">2100<span class="y2">projeté</span></button>'
+      + '</div>'
+      + tableFor(site, d2026, "2026", true)
+      + tableFor(site, d2050, "2050", false)
+      + tableFor(site, d2100, "2100", false)
+      + '<div class="cb-multi">'
+      +   mini(d2026, null,  "2026", scale, "normales 1991-2020")
+      +   mini(d2050, d2026, "2050", scale, BRANCHNAME[branch])
+      +   mini(d2100, d2026, "2100", scale, BRANCHNAME[branch])
+      + '</div>'
+      + '<div class="cb-legend">'
+      +   '<span><i class="k-hot"></i>boîte = de la minimale à la maximale moyenne du mois</span>'
+      +   '<span><i class="k-pre"></i>précipitations (mm)</span>'
+      +   '<span><i class="k-gho"></i>silhouette 2026, pour lire le déplacement</span>'
+      + '</div>'
+      + '<div class="cb-method">'
+      +   '<span class="cb-key">Méthode · comment lire</span>'
+      +   '<b>La colonne 2026 est mesurée ; 2050 et 2100 sont calculées, pas modélisées.</b> '
+      +   'On applique aux normales de la station le réchauffement mondial de la branche '
+      +   '('+f1(GLOB[branch]["2100"])+' °C en 2100), amplifié d\'un facteur '+f2(site.amp)+' pour ce territoire, '
+      +   'puis réparti dans l\'année selon une forme saisonnière où l\'été prend deux fois plus que l\'hiver. '
+      +   'Résultat ici : <b>+'+dTs+' °C en moyenne annuelle en 2100, mais +'+dEt+' °C en août contre '+(parseFloat(dHi.replace(",","."))>=0?"+":"")+dHi+' °C en janvier</b> — '
+      +   'c\'est tout l\'objet de ce tableau. '
+      +   '<b>Les deux lignes de pointe ne se construisent pas de la même façon</b>, faute de quoi elles mentiraient. '
+      +   'Côté chaud, on décale le record mensuel observé du réchauffement du mois, majoré de 30 % — les extrêmes montent plus vite que les moyennes. '
+      +   'Côté froid, on ne peut pas décaler un record des années 1950 : dans un monde à +'+f1(GLOB[branch]["2100"])+' °C il ne peut plus se produire. '
+      +   'On reconstruit donc la nuit la plus froide d\'une décennie sous la minimale moyenne du mois, à l\'écart mesuré sur la série de la station (55 % de la distance entre minimale moyenne et record absolu) ; on la réchauffe de 60 % de plus que la moyenne — les nuits froides remontent plus vite que le reste, c\'est l\'asymétrie bien établie des extrêmes de moyenne latitude — puis on lui retranche l\'empreinte AMOC de la branche. '
+      +   'Conséquence à lire avec soin : <b>la colonne 2026 affiche des records absolus, plus extrêmes qu\'un décennal</b> — comparer 2026 et 2100 sur ces deux lignes sous-estime le mouvement réel. '
+      +   '<b>Les précipitations sont l\'entrée la plus incertaine</b> — hachurées pour cette raison : le signal d\'été (plus sec) est robuste, celui d\'hiver ne l\'est pas, '
+      +   'et un hiver plus arrosé peut recharger moins (ETP en hausse, ruissellement). '
+      +   (site.obs ? '<br><br><b>Observé — 2026.</b> '+site.obs+' ' : '')
+      +   '<br><br>Source des normales : <a href="'+site.srcUrl+'" target="_blank" rel="noopener">'+site.src+'</a>. '
+      +   'Outil de réflexion : ces colonnes disent une direction et un ordre de grandeur, pas une prévision.'
+      + '</div>';
+
+    el.innerHTML = h;
+
+    /* bascule */
+    var btns = el.querySelectorAll(".cb-switch button");
+    var wraps = el.querySelectorAll(".cb-tablewrap");
+    for(var b=0;b<btns.length;b++){
+      btns[b].addEventListener("click", function(){
+        var hz = this.getAttribute("data-h");
+        for(var k=0;k<btns.length;k++) btns[k].setAttribute("aria-pressed", String(btns[k].getAttribute("data-h")===hz));
+        for(k=0;k<wraps.length;k++) wraps[k].hidden = (wraps[k].getAttribute("data-h")!==hz);
+      });
+    }
+  }
+
+  function boot(){
+    /* dégradé partagé, injecté une fois */
+    if(!document.getElementById("cbDefs")){
+      var d = document.createElementNS("http://www.w3.org/2000/svg","svg");
+      d.setAttribute("id","cbDefs"); d.setAttribute("width","0"); d.setAttribute("height","0");
+      d.style.position="absolute";
+      d.innerHTML = '<defs><linearGradient id="cbGrad" x1="0" y1="0" x2="0" y2="1">'
+                  + '<stop offset="0%" stop-color="#f2a655"/><stop offset="55%" stop-color="#d97a35"/>'
+                  + '<stop offset="100%" stop-color="#b5481f"/></linearGradient></defs>';
+      document.body.appendChild(d);
+    }
+    var nodes = document.querySelectorAll(".climblock[data-clim]");
+    for(var i=0;i<nodes.length;i++) build(nodes[i]);
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
 </script>
 
 </body>
