@@ -927,6 +927,27 @@ body.branch-open .hub-screen{display:none !important;}
 }
 .share-btn:hover{border-color:var(--accent-hi);color:var(--accent-hi);}
 
+/* Sélecteur de langue */
+.lang-switch{
+  position:fixed;top:14px;right:14px;z-index:500;
+  display:flex;gap:4px;background:var(--surface);
+  border:1px solid var(--line-strong);border-radius:20px;
+  padding:4px;box-shadow:var(--shadow);
+}
+.lang-switch a{
+  display:flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;
+  font-size:16px;text-decoration:none;line-height:1;
+  transition:all .2s;filter:grayscale(.65);opacity:.5;
+}
+.lang-switch a:hover{filter:grayscale(0);opacity:1;background:var(--surface-2);}
+.lang-switch a.active{
+  filter:grayscale(0);opacity:1;background:var(--surface-2);
+  box-shadow:inset 0 0 0 1.5px var(--accent-hi);cursor:default;pointer-events:none;
+}
+@media print{.lang-switch{display:none !important;}}
+@media (max-width:640px){.lang-switch{top:8px;right:8px;padding:3px;}.lang-switch a{width:26px;height:26px;font-size:14px;}}
+
 /* Modal partage */
 .share-modal{
   display:none;position:fixed;inset:0;z-index:9999;
@@ -1068,6 +1089,12 @@ body.branch-open .hub-screen{display:none !important;}
 </style>
 </head>
 <body>
+
+<!-- ================= SÉLECTEUR DE LANGUE ================= -->
+<nav class="lang-switch" aria-label="Langue">
+  <a href="index.html" class="active" title="Français (actuel)" aria-label="Français (actuel)" aria-current="page">🇫🇷</a>
+  <a href="index.en.html" title="View in English" aria-label="View in English">🇬🇧</a>
+</nav>
 
 <!-- ═══ HUB ═══════════════════════════════════════════════════════════════ -->
 <div class="app-screen hub-screen active" id="screen-hub">
