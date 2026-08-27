@@ -1068,6 +1068,34 @@ body.branch-open .hub-screen{display:none !important;}
     letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
   .cb-method a{color:var(--ink-soft);}
 
+  /* --- geo picker --- */
+  .geopick{margin:26px 0 6px;}
+  .geopick-head{margin:0 0 14px;}
+  .geopick-key{display:block;font-family:"JetBrains Mono",monospace;font-size:9.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;}
+  .geopick-sub{margin:0;font-size:14px;line-height:1.55;color:var(--muted);max-width:70ch;}
+  .geopick-row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;
+    padding:16px;border:1px solid var(--line);border-radius:3px;
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));}
+  .geopick-row label{display:flex;flex-direction:column;gap:6px;flex:1 1 190px;min-width:0;}
+  .geopick-row label span{font-family:"JetBrains Mono",monospace;font-size:9.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--faint);}
+  .geopick-row select{
+    appearance:none;-webkit-appearance:none;width:100%;
+    background:var(--bg);color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:3px;
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;
+    padding:10px 30px 10px 12px;cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),
+                     linear-gradient(135deg,currentColor 50%,transparent 50%);
+    background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+    transition:border-color .18s,color .18s;
+  }
+  .geopick-row select:hover{border-color:var(--ember);}
+  .geopick-row select:focus-visible{outline:2px solid var(--ember);outline-offset:2px;}
+  .geopick .climblock{margin-top:14px;}
+
   @media (max-width:640px){
     .climblock{padding:16px 12px 14px;}
     .cb-switch button{padding:8px 11px;font-size:11px;}
@@ -1083,6 +1111,8 @@ body.branch-open .hub-screen{display:none !important;}
     table.cb-table{min-width:0;font-size:8pt;}
     table.cb-table td.cb-rowlab{color:#222 !important;background:#efe9dd !important;}
     table.cb-table thead th{color:#222 !important;background:#efe9dd !important;}
+    .geopick-row{display:none !important;}
+    .geopick-sub{color:#333 !important;}
     .cb-mini{background:#fff !important;border-color:#d8cfc0 !important;}
     .cbx-lab,.cbx-val{fill:#555 !important;}
   }
@@ -1668,6 +1698,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-manche">Manche<span class="sc">dept. 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bs-allemagne">Duitsland<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bs-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bs-synthese">Synthese<span class="sc">overkoepelend</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-chrono">Chronologie<span class="sc">breukpunten</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-cultures">Gewassen<span class="sc">aanplant</span></button>
@@ -2245,6 +2277,102 @@ _safe("initBranch", function(){
   </section>
 
   <!-- ============ OVERKOEPELENDE SYNTHESE ============ -->
+  <!-- ============ DUITSLAND ============ -->
+  <section class="scope" id="bs-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Duitsland · Noordrijn-Westfalen</p>
+      <h2>De slagader en de grendel</h2>
+      <p class="lede">Frankrijk laat zich lezen via zijn grondwater; Duitsland laat zich lezen via <em>één rivier</em>. De Rijn is daar geen landschap: hij is de bloedsomloop van een zware industrie die nooit een plan B heeft gehad. In deze tak begeeft de grendel het niet in één keer — hij sluit zich elk decennium één zomer verder.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Waargenomen — 2026</span><b>De zomer van 2026 heeft de bodem verlegd, en hij deed het twee maanden te vroeg.</b> Op 30 juli staat de Rijn bij Lobith, vijf kilometer stroomafwaarts van Emmerich, op <b>6,47 m NAP</b> — onder het record van augustus 2022, in een reeks die in 1866 begint. Op 6 augustus valt de afvoer daar terug tot <b>655 m³/s</b>, de laagste waarde ooit op dat moment van het jaar gemeten sinds 1901; het KNMI schrijft dat het breken van het absolute record van <b>620 m³/s (november 1947)</b> „zeker niet uitgesloten kan worden”. Stroomopwaarts begeeft de keten van Duitse peilschalen het samen: Kaub <b>5 cm</b> op 17 augustus tegenover 25 cm op 22 oktober 2018 — en <em>elke dag</em> onder het record van 2018 vanaf 3 augustus; Keulen 46 cm tegenover 69; Düsseldorf <b>−2 cm</b> tegenover 23; Duisburg-Ruhrort 126 cm tegenover 153. <b>Wat telt is niet het record, maar de datum.</b> 2018 piekte in oktober, 2022 laat in augustus; 2026 zit begin augustus al onder de historische bodems, met twee maanden laagwater voor de boeg. <b>De kosten zijn onmiddellijk en becijferd</b>: de konvooien laden nog maar 20 tot 30 procent van hun capaciteit, het vrachttarief Rotterdam–Karlsruhe stijgt van ongeveer <b>45 €/t eind juni naar 150-160 €/t half augustus</b>, en het IfW Kiel raamt de afname van het Duitse bbp in het derde kwartaal op <b>0,1-0,2 punt</b>. Ter herinnering: het laagwater van 2018 — 130 opeenvolgende dagen onder 78 cm bij Kaub — kostte volgens de Bundesbank 0,2 bbp-punten in het derde kwartaal, zo'n 250 mln € voor BASF, en drukte de industriële productie 1,5 % op jaarbasis. Eén orde van grootte zegt alles over het probleem: <b>er zijn 60 vrachtwagens nodig om één enkel schip van 1 500 ton te vervangen</b>.
+      <span class="obs-note">Voorbehoud — drie recordjaren in acht jaar (2018, 2022, 2026) vormen geen statistische trend, en een laagwaterperiode hangt eerst van het weer van dat jaar af. Wel vaststaand is de richting van het hydrologische langetermijnsignaal (ICBR, rapport nr. 297): nattere winters, magerdere zomers. De feiten van 2026 verleggen een waargenomen bodem; ze bewijzen niet het traject van de eeuw.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>De Duitse rode draad</h4>
+      <p>Drie afhankelijkheden stapelen zich op dezelfde rivier, en het klimaat brengt ze op hetzelfde moment van het jaar met elkaar in concurrentie. <strong>De logistiek</strong>: chemie, staal, kolen, aardolieproducten, granen en cacao gaan de Rijn op omdat niets anders die volumes kan dragen. <strong>De koeling</strong>: thermisch en industrieel onttrekt en loost zij in een rivier waarvan de temperatuur stijgt naarmate de afvoer daalt. <strong>De vulling</strong>: de uitstap uit de Rijnlandse bruinkool laat kraters achter die onder water moeten, en het gekozen plan voert er Rijnwater naartoe.</p>
+      <p>Het hydrologische referentiescenario (ICBR nr. 297, 2024, RCP8.5) geeft voor Lobith, voor 2031-2060 en ten opzichte van 1981-2010, een <strong>gemiddelde winterafvoer 23 tot 44 % hoger</strong> en een <strong>zomerlaagwater (NM7Q) tot 36 % lager</strong> — met verdere verscherping richting 2071-2100. Met andere woorden: <strong>meer water wanneer men het niet nodig heeft, minder wanneer alles ervan afhangt</strong>. In deze tak droogt niet de rivier op — het is de industriële kalender die onverenigbaar wordt met de hydrologische.</p>
+    </div>
+
+    <div class="geopick" data-branch="sombre" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bs-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 inwoners</p>
+      <h2>De laatste peilschaal</h2>
+      <p class="lede">Emmerich is de laatste Duitse stad aan de Rijn. Wat langs haar kaden trekt heeft het land al verlaten; wat haar peilschaal aangeeft is het saldo van alles wat stroomopwaarts is onttrokken. In deze tak ontdekt de stad dat <em>aan het eind van de slagader liggen</em> geen positie is — maar een blootstelling.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Waargenomen — 2026</span><b>Op 4 augustus 2026 wijst de Pegel Emmerich −4 cm aan</b>, onder zijn bodem van augustus 2022 (−1 cm). Elf dagen later staakt het station volgens de Duitse vakpers <b>de publicatie</b>: de rivier is onder het meetbereik van de schaal gezakt. De laatste Duitse peilschaal aan de Rijn viel stil middenin het laagwater — dat beeld heeft die zomer meer voor het begrip van het probleem gedaan dan tien rapporten.
+      <span class="obs-note">Voorbehoud — de onderbreking van de publicatie wordt door de pers gemeld en heeft op het moment van schrijven geen bestuurlijke bevestiging die dit document heeft kunnen verifiëren; ze wordt hier aangehaald als persfeit, niet als hydrologisch gegeven. De meting van −4 cm op 4 augustus wordt daarentegen door meerdere bronnen eensluidend genoemd.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>De zomer waarin de peilschaal stilviel</h3>
+        <div class="chips"><span class="chip heat">pieken 39-40 °C</span><span class="chip water">Rijn ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>Terugkerende droge zomers, laagwater dat in juli begint in plaats van in september. De winter blijft zacht en nat: de aanvulling gebeurt nog, maar op het verkeerde moment van het jaar.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De stad leeft nog van logistiek en van de grens. Laagwater wordt behandeld als een <strong>ongeval</strong> — meerkosten opgevangen, ladingen verlicht, vrachtwagens bijgezet. Niemand is nog bereid het als een seizoen te behandelen.</p></div>
+        <div class="line-tech"><span class="tag">Techniek</span><p>De uitbreiding naar drie sporen van de lijn <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, het Duitse verlengstuk van de <strong>Betuweroute</strong>, vordert traag. Het is het enige massavervangmiddel voor de rivier, en het is al een generatie in aanbouw: in deze tak wordt die werf achteraf de zwaarste beslissing van de periode.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2042</p>
+        <h3>Laagwater wordt een seizoen</h3>
+        <div class="chips"><span class="chip heat">zomer +40 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>Het regime kantelt in de door de ICBR aangekondigde richting: nattere winters, duidelijk magerdere zomers. Laagwater is geen gebeurtenis meer — het bezet juli, augustus en september, bijna elk jaar.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De industrie van de Nederrijn houdt op te hopen op een terugkeer naar normaal en <strong>herdimensioneert</strong>: veiligheidsvoorraden, schepen met geringe diepgang, contracten gekoppeld aan de waterstand. Wat een risico was wordt een blijvende kostenpost — en dus een reden om te verhuizen.</p></div>
+        <div class="line-def"><span class="tag">Veiligheid</span><p>De waterverdeling bij de grens wordt een politiek onderwerp. In Nederland duwt de dalende afvoer de <strong>zouttong</strong> naar de drinkwaterinnamepunten van het westen; in Duitsland beperkt zij de industriële onttrekkingen. Beide behoeften twisten om dezelfde afvoer bij Lobith, enkele kilometers van Emmerich.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2042 — 2055</p>
+        <h3>De drempel overschreden — twee gezichten aan de Nederrijn</h3>
+        <div class="chips"><span class="chip heat">zomer +42 °C</span><span class="chip crit">winter −16 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>De AMOC-drempel is overschreden. De Nederrijn is de Normandische kust niet: op 200 km van de Noordzee ontvangt hij een <strong>gedempte versie</strong> van de afdruk — de wintergemiddelden bewegen nauwelijks, maar de <strong>koudegolven</strong> keren terug, bovenop zomers die blijven stijgen. De klimaattabel op deze pagina toont het verschil: de zomer wint, de winter begint te schommelen.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>Het slechtste logistieke scenario voltrekt zich: <strong>ijswinters</strong> die de scheepvaart enkele weken blokkeren komen bovenop laagwaterzomers die haar maanden blokkeren. Het betrouwbaar bevaarbare venster krimpt tot lente en herfst. Dit is geen rivier voor zware industrie meer; dit is een seizoensrivier.</p></div>
+        <div class="line-tech"><span class="tag">Techniek</span><p>De modal shift is geen crisisoptie meer: het spoor via Emmerich wordt <strong>de hoofdinfrastructuur</strong>, en zijn capaciteit het werkelijke plafond van de regionale economie.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2055 — 2070</p>
+        <h3>Wie het water het eerst krijgt</h3>
+        <div class="chips"><span class="chip heat">zomer +43 °C</span><span class="chip water">Rijn ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De vraag wordt uitdrukkelijk politiek en grensoverschrijdend: bij beperkte afvoer kunnen <strong>Nederlands drinkwater, Duitse industriële koeling en het vullen van de bruinkoolrestmeren</strong> niet meer samen bediend worden. De leiding die Garzweiler en Hambach moest vullen — <strong>41 km, tot 18 m³/s onttrokken bij Dormagen</strong>, een vulling gespreid over decennia — was ontworpen voor een rivier die niet meer bestaat. Elke zomer wordt de afweging opnieuw gevoerd.</p></div>
+        <div class="line-def"><span class="tag">Veiligheid</span><p>Emmerich ligt precies daar waar die afweging zichtbaar wordt. De stad heeft niet de macht om ze te beslechten — ze ondergaat het resultaat, en wordt een <strong>wrijvingspunt</strong> tussen twee staten die dezelfde afvoer op hetzelfde moment nodig hebben.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>De spoorstad</h3>
+        <div class="chips"><span class="chip heat">zomer +44 °C</span><span class="chip crit">winter −18 °C</span><span class="chip water">Rijn ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De rivieridentiteit van Emmerich vervaagt achter haar spoorwegidentiteit. Wat aan bedrijvigheid rest hangt aan de <strong>corridor Rotterdam–Ruhr</strong> en aan de grensovergang. De stad krimpt, maar ze houdt stand: ze ligt aan een as die nog verdedigd wordt, in een land dat er niet veel meer verdedigt.</p></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>Het klimaat met twee gezichten is gevestigd: lange hittegolven, korte en hevige koudegolven. De maandtabel toont een augustus die drie keer zoveel heeft opgenomen als januari.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Een haven zonder rivier</h3>
+        <div class="chips"><span class="chip heat">zomer +45 °C ↗</span><span class="chip water">Rijn ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De kaden staan er nog; het water een deel van het jaar niet meer. Emmerich eindigt de eeuw als <strong>doorgangsstad</strong> — spoor, grens, overslag — die overleefde door op te houden te zijn wat ze was. Dat is geen ineenstorting: het is een <strong>ondergane omschakeling</strong>, uitgevoerd zonder ooit besloten te zijn.</p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="sombre"></div>
+
+    <div class="verdict">
+      <h4>In één zin</h4>
+      <p>Emmerich heeft haar rivier niet verloren: <em>ze heeft het recht verloren ervan af te hangen</em>.</p>
+    </div>
+  </section>
+
   <section class="scope" id="bs-synthese" role="tabpanel">
     <div class="scope-head">
       <p class="where">Overkoepelende lezing</p>
@@ -2652,6 +2780,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-manche">Manche<span class="sc">dept. 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bm-allemagne">Duitsland<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bm-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bm-synthese">Synthese<span class="sc">overkoepelend</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-chrono">Chronologie<span class="sc">breukpunten</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-cultures">Gewassen<span class="sc">aanplant</span></button>
@@ -3228,6 +3358,93 @@ _safe("initBranch", function(){
   </section>
 
   <!-- ============ OVERKOEPELENDE SYNTHESE ============ -->
+  <!-- ============ DUITSLAND ============ -->
+  <section class="scope" id="bm-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Duitsland · Noordrijn-Westfalen</p>
+      <h2>De rivier onder quota</h2>
+      <p class="lede">Dezelfde rivier, dezelfde fysica, dezelfde reeks records — maar een land dat het deze keer <em>ziet aankomen</em>. In deze tak verliest Duitsland de Rijn niet: het houdt op hem vanzelfsprekend te vinden, en betaalt dat in investeringen, in regels en in traagheid.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Waargenomen — 2026</span><b>De zomer van 2026 heeft de bodem verlegd, en hij deed het twee maanden te vroeg.</b> Op 30 juli staat de Rijn bij Lobith, vijf kilometer stroomafwaarts van Emmerich, op <b>6,47 m NAP</b> — onder het record van augustus 2022, in een reeks die in 1866 begint. Op 6 augustus valt de afvoer daar terug tot <b>655 m³/s</b>, de laagste waarde ooit op dat moment van het jaar gemeten sinds 1901; het KNMI schrijft dat het breken van het absolute record van <b>620 m³/s (november 1947)</b> „zeker niet uitgesloten kan worden”. Stroomopwaarts begeeft de keten van Duitse peilschalen het samen: Kaub <b>5 cm</b> op 17 augustus tegenover 25 cm op 22 oktober 2018 — en <em>elke dag</em> onder het record van 2018 vanaf 3 augustus; Keulen 46 cm tegenover 69; Düsseldorf <b>−2 cm</b> tegenover 23; Duisburg-Ruhrort 126 cm tegenover 153. <b>Wat telt is niet het record, maar de datum.</b> 2018 piekte in oktober, 2022 laat in augustus; 2026 zit begin augustus al onder de historische bodems. De konvooien laden nog maar 20 tot 30 procent van hun capaciteit, het vrachttarief Rotterdam–Karlsruhe stijgt van ongeveer <b>45 €/t eind juni naar 150-160 €/t half augustus</b>, en het IfW Kiel raamt de afname van het Duitse bbp in het derde kwartaal op <b>0,1-0,2 punt</b>. In 2018 — 130 opeenvolgende dagen onder 78 cm bij Kaub — had de Bundesbank hetzelfde effect op 0,2 punten geraamd, met zo'n 250 mln € verlies voor BASF en een industriële productie 1,5 % lager op jaarbasis.
+      <span class="obs-note">Voorbehoud — drie recordjaren in acht jaar (2018, 2022, 2026) vormen geen statistische trend, en een laagwaterperiode hangt eerst van het weer van dat jaar af. Wel vaststaand is de richting van het langetermijnsignaal (ICBR, rapport nr. 297): nattere winters, magerdere zomers. Deze feiten verleggen een waargenomen bodem; ze bewijzen niet het traject van de eeuw.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>De Duitse rode draad</h4>
+      <p>Het verschil met de donkere tak is niet hydrologisch — de rivier doet ongeveer hetzelfde. Het is <strong>institutioneel</strong>. Het signaal van 2026 wordt deze keer <em>gelezen</em>: laagwater wordt niet langer behandeld als een verzekerbaar ongeval maar als een ontwerprandvoorwaarde. Zoals elders in deze tak <strong>trekt de verzekering zich als eerste terug</strong> — dekking voor laagwatermeerkosten wordt schaars ruim voordat de staat beweegt, en het is die terugtrekking die de afweging afdwingt.</p>
+      <p>Het referentiescenario (ICBR nr. 297, 2024, RCP8.5) geeft voor Lobith, voor 2031-2060, een <strong>winterafvoer 23 tot 44 % hoger</strong> en een <strong>zomerlaagwater tot 36 % lager</strong>. In deze tak worden die cijfers een afdwingbare norm: geschreven gebruiksprioriteiten, een gesubsidieerde vloot met geringe diepgang, gefinancierde verschuiving naar het spoor, en de leiding voor het vullen van de bruinkoolmeren <strong>naar beneden heronderhandeld</strong> in plaats van opgegeven. Het resultaat is redding noch ineenstorting: <strong>een rivier die minder presteert, in een land dat zich rond dat minder heeft geherorganiseerd</strong>.</p>
+    </div>
+
+    <div class="geopick" data-branch="median" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bm-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 inwoners</p>
+      <h2>De stad die van beroep veranderde</h2>
+      <p class="lede">Emmerich is de laatste Duitse stad aan de Rijn — en dus de eerste die ziet wat er van de rivier overblijft na alle onttrekkingen stroomopwaarts. In deze tak ondergaat ze haar omschakeling niet: <em>ze voert ze aan</em>, met vertraging, met publiek geld en met veel ruzie.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Waargenomen — 2026</span><b>Op 4 augustus 2026 wijst de Pegel Emmerich −4 cm aan</b>, onder zijn bodem van augustus 2022 (−1 cm). Elf dagen later staakt het station volgens de Duitse vakpers <b>de publicatie</b>: de rivier is onder het meetbereik van de schaal gezakt. De laatste Duitse peilschaal aan de Rijn viel stil middenin het laagwater.
+      <span class="obs-note">Voorbehoud — de onderbreking van de publicatie wordt door de pers gemeld en heeft op het moment van schrijven geen bestuurlijke bevestiging die dit document heeft kunnen verifiëren; ze wordt aangehaald als persfeit, niet als hydrologisch gegeven. De meting van −4 cm op 4 augustus wordt door meerdere bronnen eensluidend genoemd.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>De zomer die als argument diende</h3>
+        <div class="chips"><span class="chip heat">pieken 39-40 °C</span><span class="chip water">Rijn ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>Terugkerende droge zomers, laagwater vanaf juli. De winter blijft zacht en nat: de aanvulling gebeurt, maar op het verkeerde moment van het jaar.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>2026 wordt het dossier dat iedereen aanhaalt. De verzekeraars verhogen de eigen risico's op laagwatermeerkosten en trekken zich dan uit sommige contracten terug: het is dat <strong>prijssignaal</strong>, geen politiek besluit, dat het debat over de afhankelijkheid van de rivier opent.</p></div>
+        <div class="line-tech"><span class="tag">Techniek</span><p>De uitbreiding naar drie sporen van de lijn <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, het Duitse verlengstuk van de <strong>Betuweroute</strong>, is geen inrichtingsproject meer maar een <strong>aanpassingsprioriteit</strong>. Ze vordert eindelijk — vijftien jaar later dan nodig was.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2045</p>
+        <h3>De prioriteiten opschrijven vóór je ze nodig hebt</h3>
+        <div class="chips"><span class="chip heat">zomer +38 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>Het regime kantelt in de door de ICBR aangekondigde richting: nattere winters, duidelijk magerdere zomers. Laagwater bezet nu twee tot drie maanden per jaar.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>Tussen Duitsland en Nederland wordt een <strong>verdelingsregime voor de Nederrijn</strong> onderhandeld: een rangorde van gebruiken bij lage afvoer — drinkwater, ecologie, koeling, scheepvaart, mijnbouwvulling. Het <strong>leidingproject naar Garzweiler en Hambach wordt verkleind en uitgesmeerd</strong>: men ziet niet af van het vullen van de kraters, men aanvaardt dat het veel langer zal duren.</p></div>
+        <div class="line-def"><span class="tag">Veiligheid</span><p>De spanningen verdwijnen niet, ze worden procedureel. In Nederland blijft het oprukken van de <strong>zouttong</strong> naar de innamepunten van het westen het harde punt; het wordt bij verdrag beslecht, niet bij krachtsverhouding.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2060</p>
+        <h3>De drempel, gedempt</h3>
+        <div class="chips"><span class="chip heat">zomer +39 °C</span><span class="chip crit">winter −11 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>De AMOC-afdruk blijft in deze tak gematigd, en de Nederrijn ontvangt er slechts een gedempte versie van: de winters worden weer wat wisselvalliger zonder weer koud te worden. De zomer daarentegen blijft stijgen — <strong>hij is het die de dienst uitmaakt</strong>.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>Emmerich heeft nu twee economieën: wat van de rivier rest, en de spoorcorridor. De omslag is gemaakt, hij was duur, en niemand presenteert hem als een succes — alleen als wat gedaan moest worden.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2060 — 2080</p>
+        <h3>Een smallere welvaart</h3>
+        <div class="chips"><span class="chip heat">zomer +40 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De stad is kleiner dan in 2025 en meer gespecialiseerd. De kaden bedienen een korter seizoen; het spoor draagt de rest. Wat verloren is gegaan is niet de levensstandaard — het is <strong>de marge</strong>: niets is nog overgedimensioneerd, alles is berekend.</p></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>De vorst is vrijwel uit de kalender verdwenen. De maandtabel toont een augustus die meer dan het dubbele heeft opgenomen van wat januari opnam.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2080 — 2100</p>
+        <h3>Een seizoensrivier, een stabiele stad</h3>
+        <div class="chips"><span class="chip heat">zomer +41 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De Rijn is een <strong>seizoensinfrastructuur</strong> geworden — betrouwbaar in de lente en de herfst, onzeker in de zomer — en de economie van de Nederrijn is daarop gebouwd. Emmerich eindigt de eeuw verkleind maar bestuurd: ze heeft haar overvloed ingeruild voor voorspelbaarheid.</p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="median"></div>
+
+    <div class="verdict">
+      <h4>In één zin</h4>
+      <p>Emmerich heeft haar rivier niet gered: <em>ze is opgehouden een stad te zijn die er zonder het te weten van afhangt</em>.</p>
+    </div>
+  </section>
+
   <section class="scope" id="bm-synthese" role="tabpanel">
     <div class="scope-head">
       <p class="where">Overkoepelende lezing</p>
@@ -3610,6 +3827,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-manche">Manche<span class="sc">dept. 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-allemagne">Duitsland<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bo-synthese">Synthese<span class="sc">overkoepelend</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-chrono">Chronologie<span class="sc">breukpunten</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-cultures">Gewassen<span class="sc">aanplant</span></button>
@@ -4185,6 +4404,92 @@ _safe("initBranch", function(){
   </section>
 
   <!-- ============ OVERKOEPELENDE SYNTHESE ============ -->
+  <!-- ============ DUITSLAND ============ -->
+  <section class="scope" id="bo-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Duitsland · Noordrijn-Westfalen</p>
+      <h2>De heronderhandelde slagader</h2>
+      <p class="lede">In deze tak doet Duitsland met de Rijn wat het met zijn elektriciteit heeft gedaan: het beslist vroeg, het betaalt veel, en het behoudt het wezenlijke. <em>Maar de oude rivier — die je twaalf maanden per jaar tot de rand kon beladen — komt niet terug.</em></p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Waargenomen — 2026</span><b>De zomer van 2026 heeft de bodem verlegd, en hij deed het twee maanden te vroeg.</b> Op 30 juli staat de Rijn bij Lobith, vijf kilometer stroomafwaarts van Emmerich, op <b>6,47 m NAP</b> — onder het record van augustus 2022, in een reeks die in 1866 begint. Op 6 augustus valt de afvoer daar terug tot <b>655 m³/s</b>, de laagste waarde ooit op dat moment van het jaar gemeten sinds 1901; het KNMI schrijft dat het breken van het absolute record van <b>620 m³/s (november 1947)</b> „zeker niet uitgesloten kan worden”. Kaub zakt op 17 augustus naar <b>5 cm</b> tegenover 25 cm op 22 oktober 2018, en blijft <em>elke dag</em> vanaf 3 augustus onder het record van 2018; Keulen 46 cm tegenover 69; Düsseldorf <b>−2 cm</b> tegenover 23; Duisburg-Ruhrort 126 cm tegenover 153. De konvooien laden nog maar 20 tot 30 procent van hun capaciteit, het vrachttarief Rotterdam–Karlsruhe stijgt van ongeveer <b>45 €/t eind juni naar 150-160 €/t half augustus</b>, en het IfW Kiel raamt het effect op het bbp van het derde kwartaal op <b>0,1-0,2 punt</b> — de orde van grootte die de Bundesbank in 2018 al had gemeten.
+      <span class="obs-note">Voorbehoud — drie recordjaren in acht jaar (2018, 2022, 2026) vormen geen statistische trend, en een laagwaterperiode hangt eerst van het weer van dat jaar af. Wel vaststaand is de richting van het langetermijnsignaal (ICBR, rapport nr. 297): nattere winters, magerdere zomers. Deze feiten verleggen een waargenomen bodem; ze bewijzen niet het traject van de eeuw.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>De Duitse rode draad</h4>
+      <p>Wat deze tak onderscheidt is geen helderziendheid — de feiten van 2026 zijn overal dezelfde — maar dat het antwoord komt <strong>terwijl de rivier nog werkt</strong>, en niet erna. De verschuiving naar het spoor wordt gefinancierd vóór ze nodig is; de lijn <strong>Emmerich–Oberhausen</strong> wordt in de jaren 2030 voltooid in plaats van zich voort te slepen; het verdelingsregime voor de Nederrijn wordt met Nederland onderhandeld als een verdrag, niet als crisisbeheer. En de leiding die de bruinkoolkraters moest vullen wordt <strong>al in het ontwerp opnieuw gedimensioneerd</strong>, in plaats van tot in het absurde verdedigd te worden.</p>
+      <p>De prijs is reëel en wordt vooraf betaald: belastingen, gestrande activa, lange werven, en een zware industrie die zich terugtrekt op wat ze zonder de rivier kan bevoorraden. Het hydrologische referentiescenario (ICBR nr. 297, RCP8.5 — <strong>strenger dan het traject van deze tak</strong>) blijft de ontwerpgrens: men bouwt voor het ergere en krijgt iets beters. Resultaat: <strong>de slagader houdt stand, maar ze draagt niet meer alles</strong>.</p>
+    </div>
+
+    <div class="geopick" data-branch="optimiste" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bo-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 inwoners</p>
+      <h2>De haven die vooruitliep</h2>
+      <p class="lede">Emmerich is de laatste Duitse stad aan de Rijn: wat langs haar kaden trekt is het saldo van alles wat stroomopwaarts is onttrokken. In deze tak gebruikt ze haar plaats aan het eind van de keten om <em>eerder te zien dan de anderen</em> — en maakt daar een argument van.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Waargenomen — 2026</span><b>Op 4 augustus 2026 wijst de Pegel Emmerich −4 cm aan</b>, onder zijn bodem van augustus 2022 (−1 cm). Elf dagen later staakt het station volgens de Duitse vakpers <b>de publicatie</b>: de rivier is onder het meetbereik van de schaal gezakt. De laatste Duitse peilschaal aan de Rijn viel stil middenin het laagwater — in deze tak is het dat beeld dat politiek de doorslag geeft.
+      <span class="obs-note">Voorbehoud — de onderbreking van de publicatie wordt door de pers gemeld en heeft op het moment van schrijven geen bestuurlijke bevestiging die dit document heeft kunnen verifiëren; ze wordt aangehaald als persfeit, niet als hydrologisch gegeven. De meting van −4 cm op 4 augustus wordt door meerdere bronnen eensluidend genoemd.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>De aanleiding</h3>
+        <div class="chips"><span class="chip heat">pieken 39-40 °C</span><span class="chip water">Rijn ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>Terugkerende droge zomers, laagwater vanaf juli. De winter blijft zacht en nat: de aanvulling gebeurt nog, maar ze komt wanneer men haar niet nodig heeft.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>Het stilvallen van de peilschaal in augustus 2026 wordt het argument dat de kredieten losmaakt. De vraag in Berlijn en Düsseldorf luidt niet meer „hoe komen we deze zomer door” maar <strong>„wat doen we wanneer dit het normale is”</strong>.</p></div>
+        <div class="line-tech"><span class="tag">Techniek</span><p>De uitbreiding naar drie sporen van de lijn <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, het Duitse verlengstuk van de <strong>Betuweroute</strong>, wordt behandeld als een klimaatnoodwerk en niet als een inrichtingsproject. Ze wordt <strong>in de jaren 2030 voltooid</strong>.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2045</p>
+        <h3>Twee slagaders in plaats van één</h3>
+        <div class="chips"><span class="chip heat">zomer +37 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>Het regime kantelt in de door de ICBR aangekondigde richting: nattere winters, magerdere zomers. Het laagwater bezet twee maanden per jaar — maar de logistiek stopt er niet meer mee.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>Emmerich wordt een erkend <strong>overslagknooppunt</strong>: wat 's zomers niet meer over het water kan gaat over het spoor, en de wissel tussen beide modaliteiten is gepland in plaats van ondergaan. De stad wint banen die ze anders niet zou hebben gehad — en verliest de rustige rente van de rivier.</p></div>
+        <div class="line-def"><span class="tag">Veiligheid</span><p>De waterverdeling bij de grens wordt geregeld door een Duits-Nederlands <strong>laagwaterverdrag</strong>: voorrang voor drinkwater en voor het tegenhouden van de <strong>zouttong</strong>, daarna ecologie, daarna economische gebruiken. Het wordt getekend vóór de crisis die het zou hebben opgelegd.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2065</p>
+        <h3>Wat niet terugkomt</h3>
+        <div class="chips"><span class="chip heat">zomer +38 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klimaat</span><p>De AMOC-afdruk blijft in deze tak zwak en de Nederrijn merkt er bijna niets van: de winters worden simpelweg warmer. <strong>Vorst wordt een afwijking</strong> — de maandtabel toont januariminima die niet meer onder nul zakken.</p></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De vertakking heeft standgehouden, en toch keert de oude riviereconomie niet terug: de zomervolumes blijven structureel lager, en de industrie die ervan afhing is verhuisd of afgeslankt. <strong>Wat gered is, is het vermogen om te beslissen; niet de wereld van daarvoor.</strong></p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2065 — 2085</p>
+        <h3>Weer een gewone stad</h3>
+        <div class="chips"><span class="chip heat">zomer +39 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>Emmerich houdt op een onderwerp te zijn. Ze leeft van de corridor, van een rivier op halve kracht en van een grens die banaal is geworden. Dat is het betrouwbaarste teken dat de aanpassing heeft gewerkt: <strong>niemand heeft het er nog over</strong>.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>De rivier die men niet meer blind gelooft</h3>
+        <div class="chips"><span class="chip heat">zomer +40 °C</span><span class="chip water">Rijn ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Samenleving</span><p>De Rijn stroomt nog, lager en onregelmatiger. Emmerich eindigt de eeuw bewoond, actief, en verlost van een illusie: die van een slagader die niet kon uitvallen. <strong>De rivier is niet verloren gegaan — het blinde vertrouwen erin wel.</strong></p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="optimiste"></div>
+
+    <div class="verdict">
+      <h4>In één zin</h4>
+      <p>Emmerich is niet door het klimaat gered: <em>ze is gered doordat ze erop is opgehouden te wedden</em>.</p>
+    </div>
+  </section>
+
   <section class="scope" id="bo-synthese" role="tabpanel">
     <div class="scope-head">
       <p class="where">Dwarslezing</p>
@@ -6207,6 +6512,18 @@ _safe("initBranch", function(){
   /* --- Gevoeligheid van de neerslag, als fractie per regionale °C --- */
   var P = [0.035,0.035,0.020,0.000,-0.030,-0.070,-0.090,-0.090,-0.050,0.000,0.030,0.035];
 
+  /* --- Varianten voor Noordwest-Duitsland (Rijnbekken) --------------------
+     S_DE: dezelfde zomerse asymmetrie als in West-Frankrijk, maar een
+     winter die iets sneller opwarmt — het verdwijnen van de continentale
+     vorst weegt zwaarder ten oosten van de Rijn dan ten westen van de
+     Seine. Gemiddelde = 1.
+     P_DE: hetzelfde teken als in Frankrijk (nattere winters, drogere
+     zomers), met een licht gedempte zomeramplitude — het Rijnbekken is
+     minder blootgesteld aan de uitbreiding van de Hadley-cel dan
+     zuidwestelijk Frankrijk. */
+  var S_DE = [0.700,0.720,0.805,0.885,1.000,1.205,1.415,1.460,1.290,1.000,0.795,0.725];
+  var P_DE = [0.040,0.040,0.025,0.005,-0.025,-0.055,-0.070,-0.070,-0.040,0.005,0.035,0.040];
+
   /* Wereldwijde anomalie in het midden van de normalen 1991-2020 (~2005) */
   var GBASE = 0.90;
   /* Wereldwijde opwarming per tak (consistent met TEMP van de hub) */
@@ -6219,8 +6536,9 @@ _safe("initBranch", function(){
      Kust: de gemiddelden bewegen weinig, de extremen duiken — het "klimaat met
      twee gezichten". Binnenland: onstuimiger winters, niet kouder. */
   var AMOC = {
-    cote:      {sombre:[2.0,10.0], median:[0.40,1.00], optimiste:[0.15,0.30]},
-    interieur: {sombre:[0.5, 2.50], median:[0.15,0.50], optimiste:[0.05,0.20]}
+    cote:       {sombre:[2.0,10.00], median:[0.40,1.00], optimiste:[0.15,0.30]},
+    mer_du_nord:{sombre:[1.1, 5.50], median:[0.25,0.70], optimiste:[0.09,0.25]},
+    interieur:  {sombre:[0.5, 2.50], median:[0.15,0.50], optimiste:[0.05,0.20]}
   };
   /* Een decennale nacht bevindt zich op ~62% van het traject tussen het
      gemiddelde minimum van de maand en het absolute record van de reeks:
@@ -6297,7 +6615,72 @@ _safe("initBranch", function(){
       recH:[[18.4,1993],[24.4,2019],[26.2,2005],[31.0,2005],[36.1,2026],[42.7,2026],[40.3,2019],[41.4,2025],[36.8,2023],[32.0,2023],[24.7,2015],[20.5,1989]],
       recC:[[-17.5,1985],[-19.4,1956],[-10.2,1958],[-4.4,2022],[-0.2,1974],[3.0,1975],[6.4,1948],[5.5,1946],[2.2,1977],[-3.8,1947],[-8.4,1956],[-14.5,1946]],
       obs:"Mei en juni 2026 herschreven in één klap twee maanden van de reeks: 36,1 °C op 1 mei, 42,7 °C in juni — het jaarrecord van het station dateert voortaan van dat jaar."
+    },
+    /* ---------------------------------------------------------------
+       DUITSLAND — drie schaalniveaus, één bron: de DWD.
+       Een bewust en gedocumenteerd methodeverschil met Frankrijk: het
+       nationale en het regionale niveau berusten niet op een
+       referentiestation maar op de officiële VLAKTEGEMIDDELDEN
+       (Flächenmittel) van de DWD, hier berekend over de dertig jaren
+       1991-2020. Controle: de twaalf maandgemiddelden komen exact uit op
+       de jaarnormaal uit het afzonderlijk uitgelezen jaarbestand van de
+       DWD (Duitsland 9,30 °C / 791 mm; Noordrijn-Westfalen 9,96 °C /
+       870 mm).
+       Voor maxima en minima publiceert de DWD geen vlaktegemiddelden: de
+       maandelijkse dagamplitude komt van Düsseldorf (normalen 1991-2020),
+       het enige station van de Rijnvlakte waarvan de volledige klimaatfiche
+       — extremen inbegrepen — openbaar toegankelijk is. De jaartallen van
+       de records ontbreken in die bron: het jaarveld blijft leeg in plaats
+       van gereconstrueerd te worden.
+       --------------------------------------------------------------- */
+    allemagne: {
+      titre:"Duitsland — het gemiddelde van een continentaal land",
+      station:"Nationaal vlaktegemiddelde (DWD) · amplitude en extremen: Düsseldorf, 37 m",
+      src:"DWD, vlaktegemiddelden 1991-2020 (Flächenmittel, berekend uit de maandreeksen); dagamplitude en extremen: normalen 1991-2020 van Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/",
+      type:"interieur", amp:1.60, S:S_DE, P:P_DE,
+      lede:"Waar Frankrijk zich liet lezen via een referentiestation, leest Duitsland zich via zijn <strong>vlaktegemiddelde</strong>: maand na maand, en sinds 1881, publiceert de DWD de gemiddelde temperatuur en neerslag van het nationale grondgebied. Dat is geen plaats, dat is het land zelf. Wat de tabel toont is <strong>de vervorming van een continentale kalender</strong> — een winter net boven nul die zijn vorst verliest, en een zomer die bijna drie keer zoveel opneemt als januari.",
+      tmax:[3.5,4.7,8.8,14.1,18.2,21.6,23.6,23.3,18.6,13.4,7.7,4.2],
+      tmoy:[0.9,1.5,4.6,9.0,13.1,16.4,18.3,18.0,13.8,9.4,4.8,1.8],
+      tmin:[-2.0,-1.8,0.3,3.5,7.5,10.8,12.9,12.8,9.2,5.7,1.6,-0.9],
+      prec:[64.9,53.2,57.1,44.7,69.6,75.5,87.2,77.8,64.4,63.3,62.7,71.0],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"De gemiddelden en de neerslag zijn <b>nationale vlaktegemiddelden van de DWD</b>, niet die van een station: ze hebben dus geen eigen record. De twee extremenregels zijn die van <b>Düsseldorf</b>, aangehaald als ijkpunt voor de vlakte — ze zijn milder dan de nationale extremen, die aan de Alpen en aan de koudekommen van het oosten toebehoren. Ook de van Düsseldorf overgenomen dagamplitude <b>onderschat het nationale gemiddelde maximum met ongeveer 0,4 °C</b>: het landsgemiddelde is continentaler dan het Rijndal."
+    },
+    nrw: {
+      titre:"Noordrijn-Westfalen — de dichtstbevolkte deelstaat van Duitsland",
+      station:"Vlaktegemiddelde van de deelstaat (DWD) · amplitude en extremen: Düsseldorf, 37 m",
+      src:"DWD, vlaktegemiddelden 1991-2020 voor de deelstaat Noordrijn-Westfalen; dagamplitude en extremen: normalen 1991-2020 van Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/",
+      type:"interieur", amp:1.55, S:S_DE, P:P_DE,
+      lede:"Achttien miljoen inwoners, het dichtste industriële apparaat van Europa, en een klimaat dat niets extreems heeft: <strong>+9,96 °C jaargemiddelde, 870 mm neerslag</strong>. Precies dat maakt deze deelstaat interessant — hij heeft zich nooit aan iets hoeven aanpassen. De tabel toont wat er gebeurt met een gematigde, goed bevloeide regio die gebouwd is voor een klimaat dat ophoudt te bestaan.",
+      tmax:[4.9,6.0,9.9,14.6,18.4,21.5,23.6,23.2,19.0,14.1,8.9,5.5],
+      tmoy:[2.3,2.8,5.7,9.5,13.3,16.3,18.3,17.9,14.2,10.1,6.0,3.1],
+      tmin:[-0.6,-0.5,1.4,4.0,7.7,10.7,12.9,12.7,9.6,6.4,2.8,0.4],
+      prec:[81.5,67.3,64.6,48.4,63.5,72.5,83.0,82.2,71.1,72.8,75.3,87.3],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"Gemiddelden en neerslag: <b>vlaktegemiddelde van de deelstaat</b>, dat de Rijnvlakte vermengt met de hoogten van het Sauerland en de Eifel — vandaar een neerslagtotaal (870 mm) dat duidelijk boven dat van de Nederrijn ligt. Amplitude en extremen overgenomen van <b>Düsseldorf</b>: ze beschrijven de vlakte, niet de hoogten, en <b>onderschatten dus de spreiding van de deelstaat</b>.",
+      obs:"Het absolute hitterecord van Duitsland behoort aan deze deelstaat toe, en aan haar laagste vlakte: <b>41,2 °C op 25 juli 2019</b>, gelijktijdig bij de DWD-stations <b>Duisburg-Baerl</b> en <b>Tönisvorst</b> — een vijftigtal kilometer van Emmerich. De DWD heeft hun het record officieel toegekend in december 2020, na annulering van de waarde van Lingen."
+    },
+    emmerich: {
+      titre:"Emmerich am Rhein — de laatste stad voor de grens",
+      station:"Bocholt-Liedern (DWD 554) · 23 m · op 20 km — dezelfde breedtegraad tot op 500 m",
+      src:"DWD, normalen 1991-2020, Bocholt-Liedern (554); dagamplitude en extremen: normalen 1991-2020 van Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/multi_annual/mean_91-20/",
+      type:"mer_du_nord", amp:1.50, S:S_DE, P:P_DE,
+      lede:"Emmerich (51,834 °N · 19 m) heeft geen station met volledige normalen. De gekozen basis is <strong>Bocholt-Liedern: 20 km naar het oosten, dezelfde breedtegraad tot op 500 meter, dezelfde hoogte tot op 4 meter</strong> — een nauwkeuriger analoog dan Coutances dat is voor Folligny. Wat de tabel hier toont is het meest maritieme klimaat van Duitsland dat verliest wat het beschermde: <strong>winters zonder vorst en zomers van het Rijndal</strong>, in de gemeente waar de stroom het land verlaat.",
+      tmax:[5.8,6.9,10.7,15.3,19.1,22.0,24.2,23.6,19.6,14.8,9.7,6.3],
+      tmoy:[3.2,3.7,6.5,10.2,14.0,16.8,18.9,18.3,14.8,10.8,6.8,3.9],
+      tmin:[0.3,0.4,2.2,4.7,8.4,11.2,13.5,13.1,10.2,7.1,3.6,1.2],
+      prec:[73.4,49.4,48.6,41.4,53.5,73.2,85.8,93.8,86.3,90.8,78.0,85.0],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"Drie bouwstenen van verschillende herkomst, als zodanig te lezen. <b>De maandgemiddelden</b> zijn die van het DWD-station Bocholt-Liedern (554), op 20 km. <b>De dagamplitude en de twee extremenregels</b> komen uit Düsseldorf, 60 km stroomopwaarts aan dezelfde rivier, het enige station van de Rijnvlakte waarvan de volledige fiche 1991-2020 toegankelijk is: de getoonde extremen zijn dus die van Düsseldorf, niet die van Emmerich, en omdat die locatie stedelijker is, zijn ze aan de koude kant waarschijnlijk wat te mild. <b>De neerslagregel</b> is die van Bocholt-Liedern; het is het minst zekere gegeven van deze tabel, aangezien het Westmünsterland wat natter is dan het eigenlijke Rijndal. <b>Het gekozen AMOC-profiel is een tussenprofiel</b> („Noordzee\"): op 200 km van de kust maar onder de overheersende maritieme stroming ontvangt de Nederrijn een gedempte versie van de afdruk die de Manche treft.",
+      obs:"Het ankerpunt 2026 voor Emmerich is niet thermisch maar hydrologisch. Op <b>4 augustus 2026 zakt de Pegel Emmerich naar −4 cm</b>, onder zijn bodem van augustus 2022 (−1 cm); vijf kilometer stroomafwaarts, bij Lobith, valt de Rijnafvoer op 6 augustus terug tot <b>655 m³/s</b> — de laagste waarde ooit op dat moment van het jaar gemeten sinds 1901, bij een absoluut record van 620 m³/s in november 1947 (KNMI). Diezelfde maand duikt Kaub <em>elke dag</em> vanaf 3 augustus onder zijn record van 2018."
     }
+
   };
 
   /* =================================================================
@@ -6309,20 +6692,23 @@ _safe("initBranch", function(){
     var r  = RAMP[horizon][branch];
     var Am = a[0]*r, Ae = a[1]*r;
     var dTreg = g * site.amp;                        /* jaarlijkse regionale opwarming */
+    /* Seizoensvormen: Frankrijk als standaard, per locatie te overschrijven.
+       Geen enkele Franse locatie draagt deze sleutels — geen regressie. */
+    var Sx = site.S || S, Px = site.P || P, Wx = site.W || W;
     var o = {tmax:[],tmoy:[],tmin:[],prec:[],recH:[],recC:[],dT:[]};
     for(var m=0;m<12;m++){
-      var dMean = dTreg*S[m] - Am*W[m];
+      var dMean = dTreg*Sx[m] - Am*Wx[m];
       o.dT.push(dMean);
       o.tmax.push(site.tmax[m] + dMean);
       o.tmoy.push(site.tmoy[m] + dMean);
       o.tmin.push(site.tmin[m] + dMean);
-      o.prec.push(Math.max(2, site.prec[m] * (1 + P[m]*dTreg)));
-      o.recH.push([site.recH[m][0] + Math.max(0,dTreg*S[m])*K_HOT, horizon]);
+      o.prec.push(Math.max(2, site.prec[m] * (1 + Px[m]*dTreg)));
+      o.recH.push([site.recH[m][0] + Math.max(0,dTreg*Sx[m])*K_HOT, horizon]);
       /* extreme kou wordt niet afgeleid van een record uit de jaren 1950:
          het wordt gereconstrueerd onder het geprojecteerde gemiddelde minimum,
          op het decennale verschil gemeten op de reeks van het station zelf. */
       var gap = (site.tmin[m] - site.recC[m][0]) * K_DEC;
-      o.recC.push([site.tmin[m] + dTreg*S[m]*K_COLD - Am*W[m] - gap - Ae*W[m], horizon]);
+      o.recC.push([site.tmin[m] + dTreg*Sx[m]*K_COLD - Am*Wx[m] - gap - Ae*Wx[m], horizon]);
     }
     return o;
   }
@@ -6499,6 +6885,7 @@ _safe("initBranch", function(){
       +   'Met zorg te lezen gevolg: <b>de kolom 2026 toont absolute records, extremer dan een decennaal record</b> — 2026 en 2100 vergelijken op deze twee lijnen onderschat de werkelijke beweging. '
       +   '<b>De neerslag is de meest onzekere invoer</b> — daarom gearceerd: het zomersignaal (droger) is robuust, dat van de winter niet, '
       +   'en een natter wordende winter kan minder aanvullen (hogere ETP, afvloeiing). '
+      +   (site.meth ? '<br><br><b>Opbouw van deze tabel.</b> '+site.meth+' ' : '')
       +   (site.obs ? '<br><br><b>Waargenomen — 2026.</b> '+site.obs+' ' : '')
       +   '<br><br>Bron van de normalen: <a href="'+site.srcUrl+'" target="_blank" rel="noopener">'+site.src+'</a>. '
       +   'Denkinstrument: deze kolommen geven een richting en een orde van grootte aan, geen voorspelling.'
@@ -6518,6 +6905,112 @@ _safe("initBranch", function(){
     }
   }
 
+  /* =================================================================
+     GEOGRAFISCHE KEUZE — Land › Regio › Plaats
+     Een declaratieve boom bovenop SITES: een land toevoegen is een zuivere
+     data-operatie, zonder de HTML aan te raken. Elke tak draagt zijn eigen
+     instantie, onafhankelijk van de twee andere.
+     ================================================================= */
+  var GEO = [
+    {id:"fr", nom:"Frankrijk", regions:[
+      {id:"fr-nat",      nom:"Nationale schaal", villes:[
+        {id:"france",    nom:"Bourges — referentiestation"}]},
+      {id:"fr-manche",   nom:"Manche (50)", villes:[
+        {id:"manche",    nom:"Cherbourg-Homet — de kust"},
+        {id:"folligny",  nom:"Folligny — de bocage"}]},
+      {id:"fr-charente", nom:"Charente (16)", villes:[
+        {id:"lafaye",    nom:"La Faye — graanland"}]}
+    ]},
+    {id:"de", nom:"Duitsland", regions:[
+      {id:"de-nat",  nom:"Nationale schaal", villes:[
+        {id:"allemagne", nom:"Vlaktegemiddelde DWD"}]},
+      {id:"de-nrw",  nom:"Nordrhein-Westfalen", villes:[
+        {id:"nrw",       nom:"Vlaktegemiddelde van de deelstaat"},
+        {id:"emmerich",  nom:"Emmerich am Rhein (46446)"}]}
+    ]}
+  ];
+
+  function geoFind(siteKey){
+    for(var i=0;i<GEO.length;i++) for(var j=0;j<GEO[i].regions.length;j++){
+      var vs = GEO[i].regions[j].villes;
+      for(var k=0;k<vs.length;k++) if(vs[k].id===siteKey)
+        return {pays:GEO[i], region:GEO[i].regions[j], ville:vs[k]};
+    }
+    return null;
+  }
+  function fillSelect(sel, items, current){
+    sel.innerHTML = "";
+    for(var i=0;i<items.length;i++){
+      var o = document.createElement("option");
+      o.value = items[i].id; o.textContent = items[i].nom;
+      if(items[i].id===current) o.selected = true;
+      sel.appendChild(o);
+    }
+  }
+
+  function mountPicker(el){
+    var branch  = el.getAttribute("data-branch");
+    var start   = el.getAttribute("data-start") || "allemagne";
+    if(!SITES[start]) start = "allemagne";
+
+    var uid = "gp-"+branch;
+    el.innerHTML = ''
+      + '<div class="geopick-head">'
+      +   '<span class="geopick-key">Een gebied verkennen</span>'
+      +   '<p class="geopick-sub">Dezelfde rekenmethode, toegepast op elk van de gedocumenteerde gebieden. De tabellen worden voor deze tak opnieuw berekend.</p>'
+      + '</div>'
+      + '<div class="geopick-row">'
+      +   '<label><span>Land</span><select id="'+uid+'-pays"></select></label>'
+      +   '<label><span>Regio</span><select id="'+uid+'-region"></select></label>'
+      +   '<label><span>Gebied</span><select id="'+uid+'-ville"></select></label>'
+      + '</div>'
+      + '<div class="climblock" data-clim="'+start+'" data-branch="'+branch+'"></div>';
+
+    var selP = el.querySelector("#"+uid+"-pays"),
+        selR = el.querySelector("#"+uid+"-region"),
+        selV = el.querySelector("#"+uid+"-ville"),
+        blk  = el.querySelector(".climblock");
+
+    var cur = geoFind(start);
+
+    function paint(siteKey){
+      blk.setAttribute("data-clim", siteKey);
+      build(blk);
+    }
+    function syncRegions(paysId, wantRegion, wantVille){
+      var pays = null;
+      for(var i=0;i<GEO.length;i++) if(GEO[i].id===paysId) pays = GEO[i];
+      if(!pays) return;
+      var regId = wantRegion;
+      var ok = false;
+      for(var j=0;j<pays.regions.length;j++) if(pays.regions[j].id===regId) ok = true;
+      if(!ok) regId = pays.regions[0].id;
+      fillSelect(selR, pays.regions, regId);
+      syncVilles(pays, regId, wantVille);
+    }
+    function syncVilles(pays, regId, wantVille){
+      var reg = null;
+      for(var j=0;j<pays.regions.length;j++) if(pays.regions[j].id===regId) reg = pays.regions[j];
+      if(!reg) return;
+      var vId = wantVille, ok = false;
+      for(var k=0;k<reg.villes.length;k++) if(reg.villes[k].id===vId) ok = true;
+      if(!ok) vId = reg.villes[0].id;
+      fillSelect(selV, reg.villes, vId);
+      paint(vId);
+    }
+
+    fillSelect(selP, GEO, cur.pays.id);
+    syncRegions(cur.pays.id, cur.region.id, cur.ville.id);
+
+    selP.addEventListener("change", function(){ syncRegions(selP.value, null, null); });
+    selR.addEventListener("change", function(){
+      var pays = null;
+      for(var i=0;i<GEO.length;i++) if(GEO[i].id===selP.value) pays = GEO[i];
+      syncVilles(pays, selR.value, null);
+    });
+    selV.addEventListener("change", function(){ paint(selV.value); });
+  }
+
   function boot(){
     /* gedeelde kleurovergang, eenmalig geïnjecteerd */
     if(!document.getElementById("cbDefs")){
@@ -6529,8 +7022,14 @@ _safe("initBranch", function(){
                   + '<stop offset="100%" stop-color="#b5481f"/></linearGradient></defs>';
       document.body.appendChild(d);
     }
+    var picks = document.querySelectorAll(".geopick[data-branch]");
+    for(var p=0;p<picks.length;p++) mountPicker(picks[p]);
+
     var nodes = document.querySelectorAll(".climblock[data-clim]");
-    for(var i=0;i<nodes.length;i++) build(nodes[i]);
+    for(var i=0;i<nodes.length;i++){
+      if(nodes[i].closest && nodes[i].closest(".geopick")) continue;
+      build(nodes[i]);
+    }
   }
 
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

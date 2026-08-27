@@ -1068,9 +1068,39 @@ body.branch-open .hub-screen{display:none !important;}
     letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
   .cb-method a{color:var(--ink-soft);}
 
+  /* --- sélecteur géographique Pays › Région › Territoire --- */
+  .geopick{margin:26px 0 6px;}
+  .geopick-head{margin:0 0 14px;}
+  .geopick-key{display:block;font-family:"JetBrains Mono",monospace;font-size:9.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;}
+  .geopick-sub{margin:0;font-size:14px;line-height:1.55;color:var(--muted);max-width:70ch;}
+  .geopick-row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;
+    padding:16px;border:1px solid var(--line);border-radius:3px;
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));}
+  .geopick-row label{display:flex;flex-direction:column;gap:6px;flex:1 1 190px;min-width:0;}
+  .geopick-row label span{font-family:"JetBrains Mono",monospace;font-size:9.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--faint);}
+  .geopick-row select{
+    appearance:none;-webkit-appearance:none;width:100%;
+    background:var(--bg);color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:3px;
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;
+    padding:10px 30px 10px 12px;cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),
+                     linear-gradient(135deg,currentColor 50%,transparent 50%);
+    background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+    transition:border-color .18s,color .18s;
+  }
+  .geopick-row select:hover{border-color:var(--ember);}
+  .geopick-row select:focus-visible{outline:2px solid var(--ember);outline-offset:2px;}
+  .geopick .climblock{margin-top:14px;}
+
   @media (max-width:640px){
     .climblock{padding:16px 12px 14px;}
     .cb-switch button{padding:8px 11px;font-size:11px;}
+    .geopick-row{padding:12px;gap:10px;}
+    .geopick-row label{flex:1 1 100%;}
   }
   @media print{
     .climblock{background:#f6f2ea !important;border-color:#d8cfc0 !important;
@@ -1085,6 +1115,8 @@ body.branch-open .hub-screen{display:none !important;}
     table.cb-table thead th{color:#222 !important;background:#efe9dd !important;}
     .cb-mini{background:#fff !important;border-color:#d8cfc0 !important;}
     .cbx-lab,.cbx-val{fill:#555 !important;}
+    .geopick-row{display:none !important;}
+    .geopick-sub{color:#333 !important;}
   }
 </style>
 </head>
@@ -1668,6 +1700,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-manche">Manche<span class="sc">dépt 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bs-allemagne">Allemagne<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bs-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bs-synthese">Synthèse<span class="sc">transversale</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-chrono">Chronologie<span class="sc">ruptures</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-cultures">Cultures<span class="sc">plantation</span></button>
@@ -2244,6 +2278,102 @@ _safe("initBranch", function(){
     </div>
   </section>
 
+  <!-- ============ ALLEMAGNE ============ -->
+  <section class="scope" id="bs-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Allemagne · Nordrhein-Westfalen</p>
+      <h2>L'artère et le verrou</h2>
+      <p class="lede">La France se lit par ses nappes ; l'Allemagne se lit par <em>un fleuve</em>. Le Rhin n'y est pas un paysage : c'est l'appareil circulatoire d'une industrie lourde qui n'a jamais eu de plan B. Dans cette branche, le verrou ne cède pas d'un coup — il se ferme un été de plus chaque décennie.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Observé — 2026</span><b>L'été 2026 a déplacé le plancher, et il l'a fait deux mois trop tôt.</b> Le 30 juillet, le Rhin passe à Lobith, cinq kilomètres en aval d'Emmerich, à <b>6,47 m NAP</b> — sous le record d'août 2022, dans une série ouverte en 1866. Le 6 août, le débit y tombe à <b>655 m³/s</b>, la valeur la plus basse jamais mesurée à cette période de l'année depuis 1901 ; le KNMI écrit que battre le record absolu de <b>620 m³/s (novembre 1947)</b> « ne peut certainement pas être exclu ». En amont, la chaîne des limnimètres allemands cède ensemble : Kaub <b>5 cm</b> le 17 août contre 25 cm le 22 octobre 2018 — et sous le record de 2018 <em>chaque jour</em> depuis le 3 août ; Köln 46 cm contre 69 ; Düsseldorf <b>−2 cm</b> contre 23 ; Duisburg-Ruhrort 126 cm contre 153. <b>Ce qui compte n'est pas le record, c'est la date.</b> 2018 avait culminé en octobre, 2022 en août tardif ; 2026 est déjà sous les planchers historiques début août, avec deux mois d'étiage devant lui. <b>Le coût est immédiat et chiffré</b> : les convois ne chargent plus que 20 à 30 % de leur capacité, le fret Rotterdam–Karlsruhe passe d'environ <b>45 €/t fin juin à 150-160 €/t mi-août</b>, et l'IfW Kiel évalue l'amputation du PIB allemand du troisième trimestre à <b>0,1-0,2 point</b>. Pour mémoire, l'étiage de 2018 — 130 jours consécutifs sous 78 cm à Kaub — avait coûté 0,2 point de PIB au troisième trimestre selon la Bundesbank, ~250 M€ à BASF, et fait reculer la production industrielle de 1,5 % en glissement annuel. Ordre de grandeur qui dit tout du problème : <b>il faut 60 camions pour remplacer une seule barge de 1 500 tonnes</b>.
+      <span class="obs-note">Garde-fou — trois années de records en huit ans (2018, 2022, 2026) ne font pas une tendance statistique, et un étiage dépend d'abord de la météo de l'année. Ce qui est établi, en revanche, c'est le sens du signal hydrologique de long terme (IKSR, rapport n° 297) : hivers plus abondants, étés plus maigres. Les faits de 2026 recalent un plancher observé ; ils ne démontrent pas la trajectoire du siècle.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>Le fil rouge allemand</h4>
+      <p>Trois dépendances se superposent sur le même fleuve, et le climat les met en concurrence au même moment de l'année. <strong>La logistique</strong> : produits chimiques, acier, charbon, pétrole, céréales, cacao remontent le Rhin parce que rien d'autre ne peut porter ces volumes. <strong>Le refroidissement</strong> : thermique et industriel, il prélève et restitue dans un fleuve dont la température monte quand le débit baisse. <strong>Le remplissage</strong> : la sortie du lignite rhénan laisse des cratères à noyer, et le plan retenu consiste à y conduire de l'eau du Rhin.</p>
+      <p>Le scénario de référence hydrologique (IKSR n° 297, 2024, RCP8.5) donne à Lobith, pour 2031-2060 et par rapport à 1981-2010, un débit moyen d'<strong>hiver en hausse de 23 à 44 %</strong> et un <strong>étiage d'été (NM7Q) en baisse pouvant atteindre −36 %</strong> — l'aggravation se poursuivant sur 2071-2100. Autrement dit : <strong>plus d'eau quand on n'en a pas besoin, moins quand tout en dépend</strong>. Dans cette branche, ce n'est pas le fleuve qui s'assèche — c'est le calendrier industriel qui devient incompatible avec le calendrier hydrologique.</p>
+    </div>
+
+    <div class="geopick" data-branch="sombre" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bs-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 habitants</p>
+      <h2>Le dernier limnimètre</h2>
+      <p class="lede">Emmerich est la dernière ville allemande sur le Rhin. Ce qui passe devant ses quais est déjà sorti du pays ; ce que son limnimètre affiche est le solde de tout ce qui s'est prélevé en amont. Dans cette branche, la ville découvre qu'être <em>au bout de l'artère</em> n'est pas une position — c'est une exposition.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Observé — 2026</span><b>Le 4 août 2026, le Pegel Emmerich affiche −4 cm</b>, sous son plancher d'août 2022 (−1 cm). Onze jours plus tard, selon la presse spécialisée allemande, <b>la station cesse de publier</b> : le fleuve est passé sous la plage de mesure de l'échelle. Le dernier limnimètre allemand du Rhin s'est tu au milieu de l'étiage — l'image, cet été-là, a fait plus pour la compréhension du problème que dix rapports.
+      <span class="obs-note">Garde-fou — l'interruption de publication est rapportée par la presse et n'a pas, à la date de rédaction, de confirmation administrative que ce document ait pu vérifier ; elle est citée ici comme fait de presse, non comme donnée hydrologique. Le relevé de −4 cm du 4 août, lui, est repris de manière concordante par plusieurs sources.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>L'été où le limnimètre s'est tu</h3>
+        <div class="chips"><span class="chip heat">pointes 39-40 °C</span><span class="chip water">Rhin ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés secs récurrents, étiages qui commencent en juillet au lieu de septembre. L'hiver reste doux et pluvieux : la recharge existe encore, mais elle arrive au mauvais moment de l'année.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>La ville vit encore de la logistique et de la frontière. Les étiages sont traités comme des <strong>accidents</strong> — surcoûts absorbés, allègement des chargements, camions d'appoint. Personne n'est encore prêt à les traiter comme une saison.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>La mise à trois voies de la ligne <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, prolongement allemand de la <strong>Betuweroute</strong>, avance lentement. C'est le seul substitut de masse au fleuve, et il est en travaux depuis une génération : dans cette branche, ce chantier devient rétrospectivement la décision la plus lourde de la période.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2042</p>
+        <h3>L'étiage devient une saison</h3>
+        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le régime bascule dans le sens annoncé par l'IKSR : hivers plus abondants, étés nettement plus maigres. L'étiage cesse d'être un événement — il occupe juillet, août et septembre presque chaque année.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Les industriels du Rhin inférieur cessent d'espérer le retour à la normale et <strong>redimensionnent</strong> : stocks de sécurité, barges à faible tirant d'eau, contrats indexés sur le niveau du fleuve. Ce qui était un risque devient une ligne de coût permanente — et donc un motif de délocalisation.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>Le partage de l'eau au passage de la frontière devient un objet politique. Aux Pays-Bas, la baisse du débit fait remonter le <strong>biseau salé</strong> vers les prises d'eau potable de l'Ouest ; en Allemagne, elle bride les prélèvements industriels. Les deux besoins se disputent le même débit à Lobith, à quelques kilomètres d'Emmerich.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2042 — 2055</p>
+        <h3>Le seuil franchi — deux visages sur le bas Rhin</h3>
+        <div class="chips"><span class="chip heat">été +42 °C</span><span class="chip crit">hiver −16 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le seuil AMOC est franchi. Le bas Rhin n'est pas la côte normande : à 200 km de la mer du Nord, il reçoit une <strong>version amortie</strong> de l'empreinte — les moyennes hivernales bougent peu, mais les <strong>coups de froid</strong> reviennent, par-dessus des étés qui continuent de monter. Le tableau climatique de cette page montre l'écart : l'été gagne, l'hiver se met à osciller.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le pire scénario logistique se réalise : des <strong>hivers de glace</strong> qui bloquent la navigation quelques semaines s'ajoutent aux étés d'étiage qui la bloquent plusieurs mois. La fenêtre navigable fiable se réduit au printemps et à l'automne. Ce n'est plus un fleuve d'industrie lourde ; c'est un fleuve saisonnier.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>Le report modal cesse d'être une option de crise : le rail par Emmerich devient <strong>l'infrastructure principale</strong>, et sa capacité, le vrai plafond de l'économie régionale.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2055 — 2070</p>
+        <h3>Qui prend l'eau en premier</h3>
+        <div class="chips"><span class="chip heat">été +43 °C</span><span class="chip water">Rhin ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>La question devient explicitement politique et transfrontalière : à débit contraint, <strong>l'eau potable néerlandaise, le refroidissement industriel allemand et le remplissage des lacs résiduels du lignite</strong> ne peuvent plus être servis ensemble. La conduite de transfert prévue pour noyer Garzweiler et Hambach — <strong>41 km, jusqu'à 18 m³/s prélevés à Dormagen</strong>, un remplissage étalé sur des décennies — avait été conçue dans un fleuve qui n'existe plus. Chaque été, l'arbitrage se rejoue.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>Emmerich se retrouve à l'endroit exact où l'arbitrage se matérialise. La ville n'a pas le pouvoir de le trancher — elle en subit le résultat, et devient un <strong>point de friction</strong> entre deux États qui ont besoin du même débit au même moment.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>La ville-rail</h3>
+        <div class="chips"><span class="chip heat">été +44 °C</span><span class="chip crit">hiver −18 °C</span><span class="chip water">Rhin ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>L'identité fluviale d'Emmerich s'efface derrière son identité ferroviaire. Ce qui reste d'activité tient au <strong>corridor Rotterdam–Ruhr</strong> et au poste-frontière. La ville se contracte, mais elle tient : elle est sur un axe que l'on défend, dans un pays qui n'en défend plus beaucoup.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le climat « à deux visages » est installé : canicules longues, coups de froid brefs et violents. Le tableau mensuel montre un mois d'août qui a pris trois fois ce qu'a pris janvier.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Un port sans fleuve</h3>
+        <div class="chips"><span class="chip heat">été +45 °C ↗</span><span class="chip water">Rhin ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Les quais sont toujours là ; l'eau, une partie de l'année, ne l'est plus. Emmerich finit le siècle en <strong>ville de passage</strong> — rail, frontière, transbordement — qui a survécu en cessant d'être ce qu'elle était. Ce n'est pas un effondrement : c'est une <strong>reconversion subie</strong>, menée sans jamais avoir été décidée.</p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="sombre"></div>
+
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>Emmerich n'a pas perdu son fleuve : <em>elle a perdu le droit d'en dépendre</em>.</p>
+    </div>
+  </section>
+
   <!-- ============ SYNTHÈSE TRANSVERSALE ============ -->
   <section class="scope" id="bs-synthese" role="tabpanel">
     <div class="scope-head">
@@ -2652,6 +2782,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-manche">Manche<span class="sc">dépt 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bm-allemagne">Allemagne<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bm-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bm-synthese">Synthèse<span class="sc">transversale</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-chrono">Chronologie<span class="sc">ruptures</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-cultures">Cultures<span class="sc">plantation</span></button>
@@ -3227,6 +3359,93 @@ _safe("initBranch", function(){
     </div>
   </section>
 
+  <!-- ============ ALLEMAGNE ============ -->
+  <section class="scope" id="bm-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Allemagne · Nordrhein-Westfalen</p>
+      <h2>Le fleuve mis sous quota</h2>
+      <p class="lede">Même fleuve, même physique, même série de records — mais un pays qui, cette fois, <em>voit venir</em>. Dans cette branche l'Allemagne ne perd pas le Rhin : elle cesse de le tenir pour acquis, et le paie en investissements, en règles et en lenteur.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Observé — 2026</span><b>L'été 2026 a déplacé le plancher, et il l'a fait deux mois trop tôt.</b> Le 30 juillet, le Rhin passe à Lobith, cinq kilomètres en aval d'Emmerich, à <b>6,47 m NAP</b> — sous le record d'août 2022, dans une série ouverte en 1866. Le 6 août, le débit y tombe à <b>655 m³/s</b>, la valeur la plus basse jamais mesurée à cette période de l'année depuis 1901 ; le KNMI écrit que battre le record absolu de <b>620 m³/s (novembre 1947)</b> « ne peut certainement pas être exclu ». En amont, la chaîne des limnimètres allemands cède ensemble : Kaub <b>5 cm</b> le 17 août contre 25 cm le 22 octobre 2018 — et sous le record de 2018 <em>chaque jour</em> depuis le 3 août ; Köln 46 cm contre 69 ; Düsseldorf <b>−2 cm</b> contre 23 ; Duisburg-Ruhrort 126 cm contre 153. <b>Ce qui compte n'est pas le record, c'est la date.</b> 2018 avait culminé en octobre, 2022 en août tardif ; 2026 est déjà sous les planchers historiques début août. Les convois ne chargent plus que 20 à 30 % de leur capacité, le fret Rotterdam–Karlsruhe passe d'environ <b>45 €/t fin juin à 150-160 €/t mi-août</b>, et l'IfW Kiel évalue l'amputation du PIB allemand du troisième trimestre à <b>0,1-0,2 point</b>. En 2018 — 130 jours consécutifs sous 78 cm à Kaub — la Bundesbank avait chiffré le même effet à 0,2 point, avec ~250 M€ de pertes pour BASF et une production industrielle en recul de 1,5 % sur un an.
+      <span class="obs-note">Garde-fou — trois années de records en huit ans (2018, 2022, 2026) ne font pas une tendance statistique, et un étiage dépend d'abord de la météo de l'année. Ce qui est établi, c'est le sens du signal de long terme (IKSR, rapport n° 297) : hivers plus abondants, étés plus maigres. Ces faits recalent un plancher observé, ils ne démontrent pas la trajectoire du siècle.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>Le fil rouge allemand</h4>
+      <p>La différence avec la branche sombre n'est pas hydrologique — le fleuve fait à peu près la même chose. Elle est <strong>institutionnelle</strong>. Le signal de 2026 est cette fois <em>lu</em> : les étiages cessent d'être traités comme des accidents assurables et deviennent une contrainte de dimensionnement. Comme ailleurs dans cette branche, <strong>l'assurance se retire la première</strong> — les contrats couvrant les surcoûts d'étiage se raréfient bien avant que l'État ne bouge, et c'est ce retrait qui force l'arbitrage.</p>
+      <p>Le scénario de référence (IKSR n° 297, 2024, RCP8.5) donne à Lobith, pour 2031-2060, un débit d'<strong>hiver en hausse de 23 à 44 %</strong> et un <strong>étiage d'été jusqu'à −36 %</strong>. Dans cette branche, ces chiffres deviennent une norme opposable : priorités d'usage écrites, flotte à faible tirant d'eau subventionnée, report ferroviaire financé, et la conduite de remplissage des lacs du lignite <strong>renégociée à la baisse</strong> plutôt qu'abandonnée. Le résultat n'est ni un sauvetage ni un effondrement : <strong>un fleuve qui fonctionne moins, dans un pays qui s'est réorganisé autour de ce moins</strong>.</p>
+    </div>
+
+    <div class="geopick" data-branch="median" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bm-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 habitants</p>
+      <h2>La ville qui a changé de métier</h2>
+      <p class="lede">Emmerich est la dernière ville allemande sur le Rhin — donc la première à voir ce qui reste du fleuve après tous les prélèvements amont. Dans cette branche, elle ne subit pas sa reconversion : <em>elle la mène</em>, avec du retard, de l'argent public et beaucoup de disputes.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Observé — 2026</span><b>Le 4 août 2026, le Pegel Emmerich affiche −4 cm</b>, sous son plancher d'août 2022 (−1 cm). Onze jours plus tard, selon la presse spécialisée allemande, <b>la station cesse de publier</b> : le fleuve est passé sous la plage de mesure de l'échelle. Le dernier limnimètre allemand du Rhin s'est tu au milieu de l'étiage.
+      <span class="obs-note">Garde-fou — l'interruption de publication est rapportée par la presse et n'a pas, à la date de rédaction, de confirmation administrative que ce document ait pu vérifier ; elle est citée comme fait de presse, non comme donnée hydrologique. Le relevé de −4 cm du 4 août est repris de manière concordante par plusieurs sources.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>L'été qui a servi d'argument</h3>
+        <div class="chips"><span class="chip heat">pointes 39-40 °C</span><span class="chip water">Rhin ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés secs récurrents, étiages qui commencent en juillet. L'hiver reste doux et arrosé : la recharge existe, mais au mauvais moment de l'année.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>2026 devient le dossier que tout le monde cite. Les assureurs relèvent les franchises sur les surcoûts d'étiage, puis se retirent de certains contrats : c'est ce <strong>signal de prix</strong>, pas une décision politique, qui ouvre le débat sur la dépendance au fleuve.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>La mise à trois voies de la ligne <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, prolongement allemand de la <strong>Betuweroute</strong>, cesse d'être un chantier d'aménagement pour devenir une <strong>priorité d'adaptation</strong>. Elle avance enfin — avec quinze ans de retard sur ce qu'il aurait fallu.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2045</p>
+        <h3>Écrire les priorités avant d'en avoir besoin</h3>
+        <div class="chips"><span class="chip heat">été +38 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le régime bascule dans le sens annoncé par l'IKSR : hivers plus abondants, étés nettement plus maigres. L'étiage occupe désormais deux à trois mois par an.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Un <strong>régime de partage du bas Rhin</strong> se négocie entre l'Allemagne et les Pays-Bas : ordre de priorité des usages en période de basses eaux — eau potable, écologie, refroidissement, navigation, remplissage minier. Le <strong>projet de conduite vers Garzweiler et Hambach est réduit et étalé</strong> : on ne renonce pas à noyer les cratères, on accepte que cela prenne beaucoup plus longtemps.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>Les tensions ne disparaissent pas, elles se procéduralisent. Aux Pays-Bas, la remontée du <strong>biseau salé</strong> vers les prises d'eau de l'Ouest reste le point dur ; il est arbitré par traité, pas par rapport de force.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2060</p>
+        <h3>Le seuil, amorti</h3>
+        <div class="chips"><span class="chip heat">été +39 °C</span><span class="chip crit">hiver −11 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'empreinte AMOC reste modérée dans cette branche, et le bas Rhin n'en reçoit qu'une version amortie : les hivers redeviennent un peu plus variables sans redevenir froids. L'été, lui, continue de monter — <strong>c'est lui qui commande</strong>.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Emmerich a désormais deux économies : ce qui reste du fleuve, et le corridor ferroviaire. La bascule est faite, elle a coûté cher, et personne ne la présente comme une réussite — seulement comme ce qu'il fallait faire.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2060 — 2080</p>
+        <h3>Une prospérité plus étroite</h3>
+        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>La ville est plus petite qu'en 2025 et plus spécialisée. Les quais servent une saison plus courte ; le rail porte le reste. Ce qui a été perdu n'est pas le niveau de vie — c'est <strong>la marge</strong> : plus rien n'est surdimensionné, tout est calculé.</p></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le gel a quasiment disparu du calendrier. Le tableau mensuel montre un mois d'août qui a pris plus du double de ce qu'a pris janvier.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2080 — 2100</p>
+        <h3>Un fleuve saisonnier, une ville stable</h3>
+        <div class="chips"><span class="chip heat">été +41 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le Rhin est devenu une <strong>infrastructure saisonnière</strong> — fiable au printemps et à l'automne, incertaine l'été — et l'économie du bas Rhin est bâtie là-dessus. Emmerich finit le siècle diminuée mais gouvernée : elle a échangé son abondance contre de la prévisibilité.</p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="median"></div>
+
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>Emmerich n'a pas sauvé son fleuve : <em>elle a cessé d'être une ville qui en dépend sans le savoir</em>.</p>
+    </div>
+  </section>
+
   <!-- ============ SYNTHÈSE TRANSVERSALE ============ -->
   <section class="scope" id="bm-synthese" role="tabpanel">
     <div class="scope-head">
@@ -3611,6 +3830,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-manche">Manche<span class="sc">dépt 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-allemagne">Allemagne<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bo-synthese">Synthèse<span class="sc">transversale</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-chrono">Chronologie<span class="sc">ruptures</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-cultures">Cultures<span class="sc">plantation</span></button>
@@ -4183,6 +4404,92 @@ _safe("initBranch", function(){
     <div class="verdict">
       <h4>En une phrase</h4>
       <p>La Faye perd du terrain, non par rupture, mais parce que <em>l'eau et la chaleur la forcent à se réinventer plus pauvre</em> — sans la rendre invivable.</p>
+    </div>
+  </section>
+
+  <!-- ============ ALLEMAGNE ============ -->
+  <section class="scope" id="bo-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Allemagne · Nordrhein-Westfalen</p>
+      <h2>L'artère renégociée</h2>
+      <p class="lede">Dans cette branche, l'Allemagne fait avec le Rhin ce qu'elle a fait avec son électricité : elle décide tôt, elle paie beaucoup, et elle garde l'essentiel. <em>Mais l'ancien fleuve — celui qu'on chargeait à pleine capacité douze mois sur douze — ne revient pas.</em></p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Observé — 2026</span><b>L'été 2026 a déplacé le plancher, et il l'a fait deux mois trop tôt.</b> Le 30 juillet, le Rhin passe à Lobith, cinq kilomètres en aval d'Emmerich, à <b>6,47 m NAP</b> — sous le record d'août 2022, dans une série ouverte en 1866. Le 6 août, le débit y tombe à <b>655 m³/s</b>, la valeur la plus basse jamais mesurée à cette période de l'année depuis 1901 ; le KNMI écrit que battre le record absolu de <b>620 m³/s (novembre 1947)</b> « ne peut certainement pas être exclu ». Kaub descend à <b>5 cm</b> le 17 août contre 25 cm le 22 octobre 2018, et reste sous le record de 2018 <em>chaque jour</em> à partir du 3 août ; Köln 46 cm contre 69 ; Düsseldorf <b>−2 cm</b> contre 23 ; Duisburg-Ruhrort 126 cm contre 153. Les convois ne chargent plus que 20 à 30 % de leur capacité, le fret Rotterdam–Karlsruhe passe d'environ <b>45 €/t fin juin à 150-160 €/t mi-août</b>, et l'IfW Kiel chiffre l'effet sur le PIB du troisième trimestre à <b>0,1-0,2 point</b> — l'ordre de grandeur déjà mesuré par la Bundesbank en 2018.
+      <span class="obs-note">Garde-fou — trois années de records en huit ans (2018, 2022, 2026) ne font pas une tendance statistique, et un étiage dépend d'abord de la météo de l'année. Ce qui est établi, c'est le sens du signal de long terme (IKSR, rapport n° 297) : hivers plus abondants, étés plus maigres. Ces faits recalent un plancher observé, ils ne démontrent pas la trajectoire du siècle.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>Le fil rouge allemand</h4>
+      <p>Ce qui distingue cette branche n'est pas la clairvoyance — les faits de 2026 sont les mêmes partout — mais le fait que la réponse arrive <strong>pendant que le fleuve fonctionne encore</strong>, et non après. Le report modal est financé avant d'être nécessaire ; la ligne <strong>Emmerich–Oberhausen</strong> est achevée dans les années 2030 au lieu de traîner ; le régime de partage du bas Rhin est négocié avec les Pays-Bas comme un traité, pas comme une gestion de crise. Et la conduite destinée à noyer les cratères du lignite est <strong>redimensionnée dès la conception</strong>, au lieu d'être défendue jusqu'à l'absurde.</p>
+      <p>Le prix est réel et il est payé d'avance : fiscalité, actifs échoués, chantiers longs, et une industrie lourde qui se rétracte sur ce qu'elle peut approvisionner sans le fleuve. Le scénario hydrologique de référence (IKSR n° 297, RCP8.5 — <strong>plus sévère que la trajectoire de cette branche</strong>) reste la borne de dimensionnement : on construit pour le pire et on obtient un peu mieux. Résultat : <strong>l'artère tient, mais elle ne porte plus tout</strong>.</p>
+    </div>
+
+    <div class="geopick" data-branch="optimiste" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bo-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 habitants</p>
+      <h2>Le port qui a pris de l'avance</h2>
+      <p class="lede">Emmerich est la dernière ville allemande sur le Rhin : ce qui passe devant ses quais est le solde de tout ce qui s'est prélevé en amont. Dans cette branche, elle utilise sa position de bout de chaîne pour <em>voir venir avant les autres</em> — et pour en faire un argument.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Observé — 2026</span><b>Le 4 août 2026, le Pegel Emmerich affiche −4 cm</b>, sous son plancher d'août 2022 (−1 cm). Onze jours plus tard, selon la presse spécialisée allemande, <b>la station cesse de publier</b> : le fleuve est passé sous la plage de mesure de l'échelle. Le dernier limnimètre allemand du Rhin s'est tu au milieu de l'étiage — dans cette branche, c'est cette image qui sert de déclencheur politique.
+      <span class="obs-note">Garde-fou — l'interruption de publication est rapportée par la presse et n'a pas, à la date de rédaction, de confirmation administrative que ce document ait pu vérifier ; elle est citée comme fait de presse, non comme donnée hydrologique. Le relevé de −4 cm du 4 août est repris de manière concordante par plusieurs sources.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>Le déclencheur</h3>
+        <div class="chips"><span class="chip heat">pointes 39-40 °C</span><span class="chip water">Rhin ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Étés secs récurrents, étiages qui démarrent en juillet. L'hiver reste doux et arrosé : la recharge existe encore, mais elle arrive quand on n'en a pas besoin.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le silence du limnimètre en août 2026 devient l'argument qui débloque les crédits. La question posée à Berlin et à Düsseldorf n'est plus « comment passer cet été » mais <strong>« que fait-on quand ceci est la normale »</strong>.</p></div>
+        <div class="line-tech"><span class="tag">Technique</span><p>La mise à trois voies de la ligne <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, prolongement allemand de la <strong>Betuweroute</strong>, est traitée comme un ouvrage d'urgence climatique et non comme un projet d'aménagement. Elle est <strong>achevée dans les années 2030</strong>.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2045</p>
+        <h3>Deux artères au lieu d'une</h3>
+        <div class="chips"><span class="chip heat">été +37 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>Le régime bascule dans le sens annoncé par l'IKSR : hivers plus abondants, étés plus maigres. L'étiage occupe deux mois par an — mais la logistique ne s'arrête plus avec lui.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Emmerich devient un <strong>nœud de transbordement</strong> assumé : ce qui ne peut plus passer par l'eau l'été passe par le rail, et le basculement d'un mode à l'autre est planifié plutôt que subi. La ville gagne des emplois qu'elle n'aurait pas eus — et perd la rente tranquille du fleuve.</p></div>
+        <div class="line-def"><span class="tag">Sécurité</span><p>Le partage de l'eau au passage de la frontière est réglé par un <strong>traité de basses eaux</strong> germano-néerlandais : priorité à l'eau potable et à la lutte contre le <strong>biseau salé</strong>, puis à l'écologie, puis aux usages économiques. Il est signé avant la crise qui l'aurait imposé.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2065</p>
+        <h3>Ce qu'on ne récupère pas</h3>
+        <div class="chips"><span class="chip heat">été +38 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Climat</span><p>L'empreinte AMOC reste faible dans cette branche et le bas Rhin n'en perçoit presque rien : les hivers se réchauffent, simplement. <strong>Le gel devient une anomalie</strong> — le tableau mensuel montre des minimales de janvier qui ne descendent plus sous zéro.</p></div>
+        <div class="line-soc"><span class="tag">Société</span><p>La bifurcation a tenu, et pourtant l'ancienne économie fluviale ne revient pas : les volumes d'été restent structurellement inférieurs, et l'industrie qui en dépendait s'est déplacée ou allégée. <strong>Ce qui a été sauvé, c'est la capacité à décider ; pas le monde d'avant.</strong></p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2065 — 2085</p>
+        <h3>Une ville de nouveau ordinaire</h3>
+        <div class="chips"><span class="chip heat">été +39 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Emmerich cesse d'être un sujet. Elle vit du corridor, d'un fleuve à demi-régime et d'une frontière devenue banale. C'est le signe le plus fiable que l'adaptation a fonctionné : <strong>plus personne n'en parle</strong>.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Le fleuve qu'on a appris à ne plus croire</h3>
+        <div class="chips"><span class="chip heat">été +40 °C</span><span class="chip water">Rhin ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Société</span><p>Le Rhin coule encore, plus bas et plus irrégulier. Emmerich finit le siècle habitée, active, et débarrassée d'une illusion : celle d'une artère qui ne pouvait pas manquer. <strong>Le fleuve n'a pas été perdu — la confiance aveugle qu'on lui faisait, si.</strong></p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="optimiste"></div>
+
+    <div class="verdict">
+      <h4>En une phrase</h4>
+      <p>Emmerich n'a pas été sauvée par le climat : <em>elle a été sauvée par le fait d'avoir cessé de parier dessus</em>.</p>
     </div>
   </section>
 
@@ -6190,9 +6497,10 @@ _safe("initBranch", function(){
 <script id="clim-js">
 /* =====================================================================
    BLOC CLIMATIQUE MENSUEL — relevé façon fiche station + petits multiples
-   Une seule source de vérité (SITES + le moteur DELTA) pour 12 blocs
-   (4 périmètres x 3 branches). Rendu au chargement : les panneaux de
-   branche sont déjà dans le DOM, seuls leurs scripts sont différés.
+   Une seule source de vérité (SITES + le moteur DELTA) pour les blocs
+   statiques (périmètres x 3 branches) et pour le sélecteur géographique.
+   Rendu au chargement : les panneaux de branche sont déjà dans le DOM,
+   seuls leurs scripts sont différés.
    ===================================================================== */
 (function(){
   "use strict";
@@ -6201,12 +6509,25 @@ _safe("initBranch", function(){
   var INIT  = ["J","F","M","A","M","J","J","A","S","O","N","D"];
 
   /* --- Forme saisonnière du réchauffement (Ouest/Centre France) :
-         l'été prend beaucoup plus que l'hiver. Moyenne = 1. --- */
+         l'été prend beaucoup plus que l'hiver. Moyenne = 1.
+         Valeur par défaut : un site peut la surcharger via sa clé `S`.
+         (Voir S_DE plus bas pour la plaine nord-allemande.) --- */
   var S = [0.659,0.686,0.777,0.869,1.006,1.235,1.463,1.510,1.326,1.006,0.777,0.686];
   /* --- Poids mensuel de l'empreinte AMOC (hiver seulement) --- */
   var W = [1.00,1.00,0.80,0.45,0.15,0,0,0,0,0.20,0.60,0.95];
-  /* --- Sensibilité des précipitations, en fraction par °C régional --- */
+  /* --- Sensibilité des précipitations, en fraction par °C régional.
+         Défaut surchargeable par site via la clé `P`. --- */
   var P = [0.035,0.035,0.020,0.000,-0.030,-0.070,-0.090,-0.090,-0.050,0.000,0.030,0.035];
+
+  /* --- Variantes Allemagne du Nord-Ouest (bassin rhénan) ------------------
+     S_DE : même asymétrie estivale qu'en France de l'Ouest, mais un hiver
+     qui se réchauffe un peu plus vite — la disparition du gel continental
+     pèse davantage à l'est du Rhin qu'à l'ouest de la Seine. Moyenne = 1.
+     P_DE : même signe que la France (hivers plus humides, étés plus secs),
+     amplitude estivale légèrement amortie — le bassin rhénan est moins
+     exposé que le Sud-Ouest à l'expansion de la cellule de Hadley. */
+  var S_DE = [0.700,0.720,0.805,0.885,1.000,1.205,1.415,1.460,1.290,1.000,0.795,0.725];
+  var P_DE = [0.040,0.040,0.025,0.005,-0.025,-0.055,-0.070,-0.070,-0.040,0.005,0.035,0.040];
 
   /* Anomalie mondiale au centre des normales 1991-2020 (~2005) */
   var GBASE = 0.90;
@@ -6218,10 +6539,14 @@ _safe("initBranch", function(){
   };
   /* Empreinte AMOC en 2100 : [refroidissement des moyennes, des extrêmes].
      Côte : les moyennes bougent peu, les extrêmes plongent — le « climat à
-     deux visages ». Intérieur : hivers plus perturbés, pas plus froids. */
+     deux visages ». Intérieur : hivers plus perturbés, pas plus froids.
+     Mer du Nord : le bas Rhin est à 200 km de la mer mais reste sous le
+     flux maritime dominant — l'empreinte y est réelle et amortie, entre
+     les deux profils français. */
   var AMOC = {
-    cote:      {sombre:[2.0,10.0], median:[0.40,1.00], optimiste:[0.15,0.30]},
-    interieur: {sombre:[0.5, 2.50], median:[0.15,0.50], optimiste:[0.05,0.20]}
+    cote:       {sombre:[2.0,10.00], median:[0.40,1.00], optimiste:[0.15,0.30]},
+    mer_du_nord:{sombre:[1.1, 5.50], median:[0.25,0.70], optimiste:[0.09,0.25]},
+    interieur:  {sombre:[0.5, 2.50], median:[0.15,0.50], optimiste:[0.05,0.20]}
   };
   /* Une nuit décennale se situe à ~62 % du chemin entre la minimale moyenne
      du mois et le record absolu de la série : écart mesuré, pas postulé. */
@@ -6297,6 +6622,72 @@ _safe("initBranch", function(){
       recH:[[18.4,1993],[24.4,2019],[26.2,2005],[31.0,2005],[36.1,2026],[42.7,2026],[40.3,2019],[41.4,2025],[36.8,2023],[32.0,2023],[24.7,2015],[20.5,1989]],
       recC:[[-17.5,1985],[-19.4,1956],[-10.2,1958],[-4.4,2022],[-0.2,1974],[3.0,1975],[6.4,1948],[5.5,1946],[2.2,1977],[-3.8,1947],[-8.4,1956],[-14.5,1946]],
       obs:"Mai et juin 2026 ont réécrit deux mois de la série d'un coup : 36,1 °C le 1<sup>er</sup> mai, 42,7 °C en juin — le record annuel de la station date désormais de cette année-là."
+    },
+
+    /* ---------------------------------------------------------------
+       ALLEMAGNE — trois échelles, une source : le DWD.
+       Différence de méthode avec la France, assumée et documentée :
+       les échelles nationale et régionale ne reposent pas sur une
+       station-témoin mais sur les MOYENNES DE SURFACE officielles
+       (Flächenmittel) du DWD, calculées ici sur les 30 années
+       1991-2020. Contrôle : les 12 moyennes mensuelles retombent
+       exactement sur la normale annuelle du fichier annuel du DWD,
+       extrait séparément (Allemagne 9,30 °C / 791 mm ;
+       Nordrhein-Westfalen 9,96 °C / 870 mm).
+       Le DWD ne publie pas de moyennes de surface pour les maximales
+       et les minimales : l'amplitude diurne mensuelle est reprise de
+       Düsseldorf (normales 1991-2020), seule station de la plaine
+       rhénane dont la fiche complète — extrêmes compris — soit
+       publiquement accessible. Les années des records ne figurent pas
+       dans cette source : le champ année est laissé vide plutôt que
+       reconstitué.
+       --------------------------------------------------------------- */
+    allemagne: {
+      titre:"Allemagne — la moyenne d'un pays continental",
+      station:"Moyenne de surface nationale (DWD) · amplitude et extrêmes : Düsseldorf, 37 m",
+      src:"DWD, moyennes de surface 1991-2020 (Flächenmittel, calculées sur les séries mensuelles) ; amplitude diurne et extrêmes : normales 1991-2020 de Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/",
+      type:"interieur", amp:1.60, S:S_DE, P:P_DE,
+      lede:"Là où la France se lisait par une station-témoin, l'Allemagne se lit par sa <strong>moyenne de surface</strong> : le DWD publie, mois par mois et depuis 1881, la température et les précipitations moyennes du territoire national. Ce n'est pas un lieu, c'est le pays lui-même. Ce que le tableau montre, c'est <strong>la déformation d'un calendrier continental</strong> — un hiver à peine au-dessus de zéro qui perd son gel, un été qui prend presque trois fois ce que prend janvier.",
+      tmax:[3.5,4.7,8.8,14.1,18.2,21.6,23.6,23.3,18.6,13.4,7.7,4.2],
+      tmoy:[0.9,1.5,4.6,9.0,13.1,16.4,18.3,18.0,13.8,9.4,4.8,1.8],
+      tmin:[-2.0,-1.8,0.3,3.5,7.5,10.8,12.9,12.8,9.2,5.7,1.6,-0.9],
+      prec:[64.9,53.2,57.1,44.7,69.6,75.5,87.2,77.8,64.4,63.3,62.7,71.0],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"Les moyennes et les précipitations sont des <b>moyennes de surface nationales du DWD</b>, pas celles d'une station : elles n'ont donc pas de record propre. Les deux lignes d'extrêmes sont celles de <b>Düsseldorf</b>, citées comme repère de plaine — elles sont plus douces que les extrêmes nationaux, qui appartiennent aux Alpes et aux cuvettes de l'Est. L'amplitude diurne, elle aussi reprise de Düsseldorf, <b>sous-estime d'environ 0,4 °C la maximale moyenne nationale</b> : la moyenne du pays est plus continentale que la vallée du Rhin."
+    },
+    nrw: {
+      titre:"Nordrhein-Westfalen — le Land le plus peuplé d'Allemagne",
+      station:"Moyenne de surface du Land (DWD) · amplitude et extrêmes : Düsseldorf, 37 m",
+      src:"DWD, moyennes de surface 1991-2020 du Land de Nordrhein-Westfalen ; amplitude diurne et extrêmes : normales 1991-2020 de Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/",
+      type:"interieur", amp:1.55, S:S_DE, P:P_DE,
+      lede:"Dix-huit millions d'habitants, l'appareil industriel le plus dense d'Europe, et un climat qui n'a rien d'extrême : <strong>+9,96 °C de moyenne annuelle, 870 mm d'eau</strong>. C'est précisément ce qui rend ce Land intéressant — il n'a jamais eu besoin de s'adapter à quoi que ce soit. Le tableau montre ce qui arrive à une région tempérée, arrosée et bâtie pour un climat qui cesse d'exister.",
+      tmax:[4.9,6.0,9.9,14.6,18.4,21.5,23.6,23.2,19.0,14.1,8.9,5.5],
+      tmoy:[2.3,2.8,5.7,9.5,13.3,16.3,18.3,17.9,14.2,10.1,6.0,3.1],
+      tmin:[-0.6,-0.5,1.4,4.0,7.7,10.7,12.9,12.7,9.6,6.4,2.8,0.4],
+      prec:[81.5,67.3,64.6,48.4,63.5,72.5,83.0,82.2,71.1,72.8,75.3,87.3],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"Moyennes et précipitations : <b>moyenne de surface du Land</b>, qui mêle la plaine rhénane et les reliefs du Sauerland et de l'Eifel — d'où un total d'eau (870 mm) nettement supérieur à celui du bas Rhin. Amplitude et extrêmes repris de <b>Düsseldorf</b> : ils décrivent la plaine, non les hauteurs, et <b>sous-estiment donc les écarts du Land</b>.",
+      obs:"Le record absolu de chaleur de l'Allemagne appartient à ce Land, et à sa plaine la plus basse : <b>41,2 °C le 25 juillet 2019</b>, simultanément aux stations DWD de <b>Duisburg-Baerl</b> et de <b>Tönisvorst</b> — à une cinquantaine de kilomètres d'Emmerich. Le DWD leur a officiellement attribué le record en décembre 2020, après annulation de la valeur de Lingen."
+    },
+    emmerich: {
+      titre:"Emmerich am Rhein — la dernière ville avant la frontière",
+      station:"Bocholt-Liedern (DWD 554) · 23 m · à 20 km — même latitude à 500 m près",
+      src:"DWD, normales 1991-2020, Bocholt-Liedern (554) ; amplitude diurne et extrêmes : normales 1991-2020 de Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/multi_annual/mean_91-20/",
+      type:"mer_du_nord", amp:1.50, S:S_DE, P:P_DE,
+      lede:"Emmerich (51,834 °N · 19 m) n'a pas de station à normales complètes. La base retenue est <strong>Bocholt-Liedern : 20 km à l'est, la même latitude à 500 mètres près, la même altitude à 4 mètres près</strong> — un analogue plus proche que Coutances ne l'est de Folligny. Ce que le tableau montre ici, c'est le climat le plus océanique d'Allemagne en train de perdre ce qui le protégeait : <strong>des hivers sans gel et des étés de vallée du Rhin</strong>, sur la commune où le fleuve quitte le pays.",
+      tmax:[5.8,6.9,10.7,15.3,19.1,22.0,24.2,23.6,19.6,14.8,9.7,6.3],
+      tmoy:[3.2,3.7,6.5,10.2,14.0,16.8,18.9,18.3,14.8,10.8,6.8,3.9],
+      tmin:[0.3,0.4,2.2,4.7,8.4,11.2,13.5,13.1,10.2,7.1,3.6,1.2],
+      prec:[73.4,49.4,48.6,41.4,53.5,73.2,85.8,93.8,86.3,90.8,78.0,85.0],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"Trois briques d'origines distinctes, à lire comme telles. <b>Les moyennes mensuelles</b> sont celles de la station DWD de Bocholt-Liedern (554), à 20 km. <b>L'amplitude diurne et les deux lignes d'extrêmes</b> viennent de Düsseldorf, 60 km en amont sur le même fleuve, seule station de la plaine rhénane dont la fiche 1991-2020 complète soit accessible : les extrêmes affichés sont donc ceux de Düsseldorf, pas ceux d'Emmerich, et l'agglomération étant plus urbaine, ils sont probablement un peu trop doux côté froid. <b>La ligne de précipitations</b> est celle de Bocholt-Liedern ; c'est la donnée la moins assurée de ce tableau, le Westmünsterland étant un peu plus arrosé que la vallée du Rhin proprement dite. <b>Le profil AMOC retenu est intermédiaire</b> (« mer du Nord ») : à 200 km de la côte mais sous le flux maritime dominant, le bas Rhin reçoit une version amortie de l'empreinte que subit la Manche.",
+      obs:"L'ancrage 2026 d'Emmerich n'est pas thermique, il est hydrologique. Le <b>4 août 2026, le Pegel Emmerich descend à −4 cm</b>, sous son plancher d'août 2022 (−1 cm) ; cinq kilomètres en aval, à Lobith, le débit du Rhin tombe à <b>655 m³/s le 6 août</b> — la valeur la plus basse jamais mesurée à cette date depuis 1901, le record absolu étant de 620 m³/s en novembre 1947 (KNMI). Le même mois, Kaub passe sous son record de 2018 <em>chaque jour</em> à partir du 3 août."
     }
   };
 
@@ -6309,20 +6700,23 @@ _safe("initBranch", function(){
     var r  = RAMP[horizon][branch];
     var Am = a[0]*r, Ae = a[1]*r;
     var dTreg = g * site.amp;                        /* réchauffement régional annuel */
+    /* Formes saisonnières : défaut France, surchargeables par site.
+       Aucun site français ne porte ces clés — non-régression garantie. */
+    var Sx = site.S || S, Px = site.P || P, Wx = site.W || W;
     var o = {tmax:[],tmoy:[],tmin:[],prec:[],recH:[],recC:[],dT:[]};
     for(var m=0;m<12;m++){
-      var dMean = dTreg*S[m] - Am*W[m];
+      var dMean = dTreg*Sx[m] - Am*Wx[m];
       o.dT.push(dMean);
       o.tmax.push(site.tmax[m] + dMean);
       o.tmoy.push(site.tmoy[m] + dMean);
       o.tmin.push(site.tmin[m] + dMean);
-      o.prec.push(Math.max(2, site.prec[m] * (1 + P[m]*dTreg)));
-      o.recH.push([site.recH[m][0] + Math.max(0,dTreg*S[m])*K_HOT, horizon]);
+      o.prec.push(Math.max(2, site.prec[m] * (1 + Px[m]*dTreg)));
+      o.recH.push([site.recH[m][0] + Math.max(0,dTreg*Sx[m])*K_HOT, horizon]);
       /* le froid extrême ne se déduit pas d'un record des années 1950 :
          on le reconstruit sous la minimale moyenne projetée, à l'écart
          décennal mesuré sur la série de la station elle-même. */
       var gap = (site.tmin[m] - site.recC[m][0]) * K_DEC;
-      o.recC.push([site.tmin[m] + dTreg*S[m]*K_COLD - Am*W[m] - gap - Ae*W[m], horizon]);
+      o.recC.push([site.tmin[m] + dTreg*Sx[m]*K_COLD - Am*Wx[m] - gap - Ae*Wx[m], horizon]);
     }
     return o;
   }
@@ -6499,6 +6893,7 @@ _safe("initBranch", function(){
       +   'Conséquence à lire avec soin : <b>la colonne 2026 affiche des records absolus, plus extrêmes qu\'un décennal</b> — comparer 2026 et 2100 sur ces deux lignes sous-estime le mouvement réel. '
       +   '<b>Les précipitations sont l\'entrée la plus incertaine</b> — hachurées pour cette raison : le signal d\'été (plus sec) est robuste, celui d\'hiver ne l\'est pas, '
       +   'et un hiver plus arrosé peut recharger moins (ETP en hausse, ruissellement). '
+      +   (site.meth ? '<br><br><b>Construction de ce tableau.</b> '+site.meth+' ' : '')
       +   (site.obs ? '<br><br><b>Observé — 2026.</b> '+site.obs+' ' : '')
       +   '<br><br>Source des normales : <a href="'+site.srcUrl+'" target="_blank" rel="noopener">'+site.src+'</a>. '
       +   'Outil de réflexion : ces colonnes disent une direction et un ordre de grandeur, pas une prévision.'
@@ -6518,6 +6913,112 @@ _safe("initBranch", function(){
     }
   }
 
+  /* =================================================================
+     SÉLECTEUR GÉOGRAPHIQUE — Pays › Région › Ville
+     Un arbre déclaratif au-dessus de SITES : ajouter un pays est une
+     opération de données, sans toucher au HTML. Chaque branche porte sa
+     propre instance, indépendante des deux autres.
+     ================================================================= */
+  var GEO = [
+    {id:"fr", nom:"France", regions:[
+      {id:"fr-nat",      nom:"Échelle nationale", villes:[
+        {id:"france",    nom:"Bourges — station-témoin"}]},
+      {id:"fr-manche",   nom:"Manche (50)", villes:[
+        {id:"manche",    nom:"Cherbourg-Homet — le rivage"},
+        {id:"folligny",  nom:"Folligny — le bocage"}]},
+      {id:"fr-charente", nom:"Charente (16)", villes:[
+        {id:"lafaye",    nom:"La Faye — terre céréalière"}]}
+    ]},
+    {id:"de", nom:"Allemagne", regions:[
+      {id:"de-nat",  nom:"Échelle nationale", villes:[
+        {id:"allemagne", nom:"Moyenne de surface DWD"}]},
+      {id:"de-nrw",  nom:"Nordrhein-Westfalen", villes:[
+        {id:"nrw",       nom:"Moyenne de surface du Land"},
+        {id:"emmerich",  nom:"Emmerich am Rhein (46446)"}]}
+    ]}
+  ];
+
+  function geoFind(siteKey){
+    for(var i=0;i<GEO.length;i++) for(var j=0;j<GEO[i].regions.length;j++){
+      var vs = GEO[i].regions[j].villes;
+      for(var k=0;k<vs.length;k++) if(vs[k].id===siteKey)
+        return {pays:GEO[i], region:GEO[i].regions[j], ville:vs[k]};
+    }
+    return null;
+  }
+  function fillSelect(sel, items, current){
+    sel.innerHTML = "";
+    for(var i=0;i<items.length;i++){
+      var o = document.createElement("option");
+      o.value = items[i].id; o.textContent = items[i].nom;
+      if(items[i].id===current) o.selected = true;
+      sel.appendChild(o);
+    }
+  }
+
+  function mountPicker(el){
+    var branch  = el.getAttribute("data-branch");
+    var start   = el.getAttribute("data-start") || "allemagne";
+    if(!SITES[start]) start = "allemagne";
+
+    var uid = "gp-"+branch;
+    el.innerHTML = ''
+      + '<div class="geopick-head">'
+      +   '<span class="geopick-key">Explorer un territoire</span>'
+      +   '<p class="geopick-sub">Le même moteur, la même méthode, appliqués à n\'importe lequel des territoires documentés. Les tableaux se recalculent pour cette branche.</p>'
+      + '</div>'
+      + '<div class="geopick-row">'
+      +   '<label><span>Pays</span><select id="'+uid+'-pays"></select></label>'
+      +   '<label><span>Région</span><select id="'+uid+'-region"></select></label>'
+      +   '<label><span>Territoire</span><select id="'+uid+'-ville"></select></label>'
+      + '</div>'
+      + '<div class="climblock" data-clim="'+start+'" data-branch="'+branch+'"></div>';
+
+    var selP = el.querySelector("#"+uid+"-pays"),
+        selR = el.querySelector("#"+uid+"-region"),
+        selV = el.querySelector("#"+uid+"-ville"),
+        blk  = el.querySelector(".climblock");
+
+    var cur = geoFind(start);
+
+    function paint(siteKey){
+      blk.setAttribute("data-clim", siteKey);
+      build(blk);
+    }
+    function syncRegions(paysId, wantRegion, wantVille){
+      var pays = null;
+      for(var i=0;i<GEO.length;i++) if(GEO[i].id===paysId) pays = GEO[i];
+      if(!pays) return;
+      var regId = wantRegion;
+      var ok = false;
+      for(var j=0;j<pays.regions.length;j++) if(pays.regions[j].id===regId) ok = true;
+      if(!ok) regId = pays.regions[0].id;
+      fillSelect(selR, pays.regions, regId);
+      syncVilles(pays, regId, wantVille);
+    }
+    function syncVilles(pays, regId, wantVille){
+      var reg = null;
+      for(var j=0;j<pays.regions.length;j++) if(pays.regions[j].id===regId) reg = pays.regions[j];
+      if(!reg) return;
+      var vId = wantVille, ok = false;
+      for(var k=0;k<reg.villes.length;k++) if(reg.villes[k].id===vId) ok = true;
+      if(!ok) vId = reg.villes[0].id;
+      fillSelect(selV, reg.villes, vId);
+      paint(vId);
+    }
+
+    fillSelect(selP, GEO, cur.pays.id);
+    syncRegions(cur.pays.id, cur.region.id, cur.ville.id);
+
+    selP.addEventListener("change", function(){ syncRegions(selP.value, null, null); });
+    selR.addEventListener("change", function(){
+      var pays = null;
+      for(var i=0;i<GEO.length;i++) if(GEO[i].id===selP.value) pays = GEO[i];
+      syncVilles(pays, selR.value, null);
+    });
+    selV.addEventListener("change", function(){ paint(selV.value); });
+  }
+
   function boot(){
     /* dégradé partagé, injecté une fois */
     if(!document.getElementById("cbDefs")){
@@ -6529,8 +7030,16 @@ _safe("initBranch", function(){
                   + '<stop offset="100%" stop-color="#b5481f"/></linearGradient></defs>';
       document.body.appendChild(d);
     }
+    /* les sélecteurs d'abord : ils fabriquent leur propre climblock
+       et le construisent eux-mêmes. */
+    var picks = document.querySelectorAll(".geopick[data-branch]");
+    for(var p=0;p<picks.length;p++) mountPicker(picks[p]);
+
     var nodes = document.querySelectorAll(".climblock[data-clim]");
-    for(var i=0;i<nodes.length;i++) build(nodes[i]);
+    for(var i=0;i<nodes.length;i++){
+      if(nodes[i].closest && nodes[i].closest(".geopick")) continue;
+      build(nodes[i]);
+    }
   }
 
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

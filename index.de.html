@@ -1068,6 +1068,34 @@ body.branch-open .hub-screen{display:none !important;}
     letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
   .cb-method a{color:var(--ink-soft);}
 
+  /* --- geo picker --- */
+  .geopick{margin:26px 0 6px;}
+  .geopick-head{margin:0 0 14px;}
+  .geopick-key{display:block;font-family:"JetBrains Mono",monospace;font-size:9.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:7px;}
+  .geopick-sub{margin:0;font-size:14px;line-height:1.55;color:var(--muted);max-width:70ch;}
+  .geopick-row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;
+    padding:16px;border:1px solid var(--line);border-radius:3px;
+    background:linear-gradient(180deg,var(--surface),var(--surface-2));}
+  .geopick-row label{display:flex;flex-direction:column;gap:6px;flex:1 1 190px;min-width:0;}
+  .geopick-row label span{font-family:"JetBrains Mono",monospace;font-size:9.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--faint);}
+  .geopick-row select{
+    appearance:none;-webkit-appearance:none;width:100%;
+    background:var(--bg);color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:3px;
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;
+    padding:10px 30px 10px 12px;cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),
+                     linear-gradient(135deg,currentColor 50%,transparent 50%);
+    background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+    transition:border-color .18s,color .18s;
+  }
+  .geopick-row select:hover{border-color:var(--ember);}
+  .geopick-row select:focus-visible{outline:2px solid var(--ember);outline-offset:2px;}
+  .geopick .climblock{margin-top:14px;}
+
   @media (max-width:640px){
     .climblock{padding:16px 12px 14px;}
     .cb-switch button{padding:8px 11px;font-size:11px;}
@@ -1083,6 +1111,8 @@ body.branch-open .hub-screen{display:none !important;}
     table.cb-table{min-width:0;font-size:8pt;}
     table.cb-table td.cb-rowlab{color:#222 !important;background:#efe9dd !important;}
     table.cb-table thead th{color:#222 !important;background:#efe9dd !important;}
+    .geopick-row{display:none !important;}
+    .geopick-sub{color:#333 !important;}
     .cb-mini{background:#fff !important;border-color:#d8cfc0 !important;}
     .cbx-lab,.cbx-val{fill:#555 !important;}
   }
@@ -1668,6 +1698,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-manche">Manche<span class="sc">Dép. 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bs-allemagne">Deutschland<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bs-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bs-synthese">Synthese<span class="sc">übergreifend</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-chrono">Chronologie<span class="sc">Umbrüche</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bs-cultures">Kulturen<span class="sc">Anbau</span></button>
@@ -2245,6 +2277,102 @@ _safe("initBranch", function(){
   </section>
 
   <!-- ============ ÜBERGREIFENDE SYNTHESE ============ -->
+  <!-- ============ DEUTSCHLAND ============ -->
+  <section class="scope" id="bs-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Deutschland · Nordrhein-Westfalen</p>
+      <h2>Die Schlagader und der Riegel</h2>
+      <p class="lede">Frankreich liest sich über seine Grundwasserleiter; Deutschland liest sich über <em>einen Strom</em>. Der Rhein ist dort keine Landschaft: er ist der Kreislauf einer Schwerindustrie, die nie einen Plan B hatte. In diesem Zweig gibt der Riegel nicht auf einmal nach — er schließt sich pro Jahrzehnt um einen Sommer weiter.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Beobachtet — 2026</span><b>Der Sommer 2026 hat den Boden verschoben, und er hat es zwei Monate zu früh getan.</b> Am 30. Juli steht der Rhein bei Lobith, fünf Kilometer flussabwärts von Emmerich, bei <b>6,47 m NAP</b> — unter dem Rekord vom August 2022, in einer Reihe, die 1866 beginnt. Am 6. August fällt der Abfluss dort auf <b>655 m³/s</b>, den niedrigsten je zu dieser Jahreszeit gemessenen Wert seit 1901; das KNMI schreibt, ein Unterschreiten des absoluten Rekords von <b>620 m³/s (November 1947)</b> „könne keineswegs ausgeschlossen werden“. Flussaufwärts gibt die Kette der deutschen Pegel gemeinsam nach: Kaub <b>5 cm</b> am 17. August gegenüber 25 cm am 22. Oktober 2018 — und ab dem 3. August <em>an jedem Tag</em> unter dem Rekord von 2018; Köln 46 cm gegenüber 69; Düsseldorf <b>−2 cm</b> gegenüber 23; Duisburg-Ruhrort 126 cm gegenüber 153. <b>Entscheidend ist nicht der Rekord, sondern das Datum.</b> 2018 kulminierte im Oktober, 2022 im späten August; 2026 liegt bereits Anfang August unter den historischen Böden, mit zwei Monaten Niedrigwasser vor sich. <b>Die Kosten sind unmittelbar und beziffert</b>: die Schiffe laden nur noch 20 bis 30 Prozent ihrer Kapazität, die Fracht Rotterdam–Karlsruhe steigt von rund <b>45 €/t Ende Juni auf 150-160 €/t Mitte August</b>, und das IfW Kiel beziffert den Dämpfer auf das deutsche BIP im dritten Quartal auf <b>0,1-0,2 Punkte</b>. Zur Erinnerung: das Niedrigwasser von 2018 — 130 aufeinanderfolgende Tage unter 78 cm in Kaub — kostete laut Bundesbank 0,2 BIP-Punkte im dritten Quartal, BASF rund 250 Mio. €, und ließ die Industrieproduktion im Jahresvergleich um 1,5 % zurückgehen. Eine Größenordnung, die alles sagt: <b>es braucht 60 Lastwagen, um einen einzigen Schubverband von 1 500 Tonnen zu ersetzen</b>.
+      <span class="obs-note">Vorbehalt — drei Rekordjahre in acht Jahren (2018, 2022, 2026) ergeben keinen statistischen Trend, und ein Niedrigwasser hängt zuerst vom Wetter des Jahres ab. Belegt ist dagegen die Richtung des langfristigen hydrologischen Signals (IKSR, Bericht Nr. 297): abflussreichere Winter, magerere Sommer. Die Fakten von 2026 verschieben einen beobachteten Boden; sie beweisen nicht die Bahn des Jahrhunderts.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>Der rote Faden Deutschlands</h4>
+      <p>Drei Abhängigkeiten überlagern sich auf demselben Strom, und das Klima bringt sie zur selben Jahreszeit in Konkurrenz. <strong>Die Logistik</strong>: Chemie, Stahl, Kohle, Mineralöl, Getreide, Kakao gehen den Rhein hinauf, weil nichts anderes diese Mengen tragen kann. <strong>Die Kühlung</strong>: thermisch wie industriell entnimmt und gibt sie zurück in einen Strom, dessen Temperatur steigt, wenn der Abfluss fällt. <strong>Die Befüllung</strong>: der Ausstieg aus der rheinischen Braunkohle hinterlässt Krater, die geflutet werden müssen — und der beschlossene Weg führt Rheinwasser dorthin.</p>
+      <p>Das hydrologische Referenzszenario (IKSR Nr. 297, 2024, RCP8.5) gibt für Lobith, für 2031-2060 und gegenüber 1981-2010, einen <strong>mittleren Winterabfluss um 23 bis 44 % höher</strong> und ein <strong>sommerliches Niedrigwasser (NM7Q) um bis zu 36 % niedriger</strong> — mit weiterer Verschärfung bis 2071-2100. Anders gesagt: <strong>mehr Wasser, wenn man es nicht braucht, weniger, wenn alles davon abhängt</strong>. In diesem Zweig trocknet nicht der Strom aus — es ist der industrielle Kalender, der mit dem hydrologischen unvereinbar wird.</p>
+    </div>
+
+    <div class="geopick" data-branch="sombre" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bs-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 Einwohner</p>
+      <h2>Der letzte Pegel</h2>
+      <p class="lede">Emmerich ist die letzte deutsche Stadt am Rhein. Was an ihren Kaimauern vorbeizieht, hat das Land bereits verlassen; was ihr Pegel anzeigt, ist der Saldo all dessen, was flussaufwärts entnommen wurde. In diesem Zweig erfährt die Stadt, dass <em>am Ende der Schlagader zu liegen</em> keine Position ist — sondern eine Aussetzung.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Beobachtet — 2026</span><b>Am 4. August 2026 zeigt der Pegel Emmerich −4 cm</b>, unter seinem Tiefstwert vom August 2022 (−1 cm). Elf Tage später stellt die Station laut deutscher Fachpresse <b>die Veröffentlichung ein</b>: der Strom ist unter den Messbereich der Latte gefallen. Der letzte deutsche Rheinpegel verstummte mitten im Niedrigwasser — dieses Bild hat in jenem Sommer mehr zum Verständnis des Problems beigetragen als zehn Berichte.
+      <span class="obs-note">Vorbehalt — die Unterbrechung der Veröffentlichung wird von der Presse berichtet und hat zum Redaktionsschluss keine behördliche Bestätigung, die dieses Dokument hätte prüfen können; sie wird hier als Pressefaktum angeführt, nicht als hydrologische Angabe. Der Wert von −4 cm am 4. August wird dagegen von mehreren Quellen übereinstimmend genannt.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>Der Sommer, in dem der Pegel verstummte</h3>
+        <div class="chips"><span class="chip heat">Spitzen 39-40 °C</span><span class="chip water">Rhein ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Wiederkehrende Trockensommer, Niedrigwasser ab Juli statt ab September. Der Winter bleibt mild und regnerisch: die Grundwasserneubildung findet noch statt, aber zur falschen Jahreszeit.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Die Stadt lebt weiter von Logistik und Grenze. Niedrigwasser gilt als <strong>Störfall</strong> — Mehrkosten werden absorbiert, Ladungen verringert, Lastwagen zugeschaltet. Niemand ist bereit, es als Jahreszeit zu behandeln.</p></div>
+        <div class="line-tech"><span class="tag">Technik</span><p>Der dreigleisige Ausbau der Strecke <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, deutsche Fortsetzung der <strong>Betuweroute</strong>, kommt nur langsam voran. Er ist der einzige Massenersatz für den Strom — und seit einer Generation im Bau: in diesem Zweig wird diese Baustelle rückblickend zur schwerwiegendsten Entscheidung der Periode.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2042</p>
+        <h3>Niedrigwasser wird zur Jahreszeit</h3>
+        <div class="chips"><span class="chip heat">Sommer +40 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Das Regime kippt in die von der IKSR angekündigte Richtung: abflussreichere Winter, deutlich magerere Sommer. Niedrigwasser ist kein Ereignis mehr — es besetzt Juli, August und September, fast jedes Jahr.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Die Industrie am Niederrhein hört auf, auf die Rückkehr zur Normalität zu hoffen, und <strong>dimensioniert neu</strong>: Sicherheitsbestände, Schiffe mit geringem Tiefgang, an den Wasserstand gekoppelte Verträge. Was ein Risiko war, wird zur dauerhaften Kostenposition — und damit zu einem Verlagerungsgrund.</p></div>
+        <div class="line-def"><span class="tag">Sicherheit</span><p>Die Wasserteilung an der Grenze wird politisch. In den Niederlanden schiebt der sinkende Abfluss die <strong>Salzgrenze</strong> auf die Trinkwasserentnahmen des Westens zu; in Deutschland begrenzt er die industriellen Entnahmen. Beide Bedürfnisse streiten sich um denselben Abfluss bei Lobith, wenige Kilometer von Emmerich.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2042 — 2055</p>
+        <h3>Die Schwelle überschritten — zwei Gesichter am Niederrhein</h3>
+        <div class="chips"><span class="chip heat">Sommer +42 °C</span><span class="chip crit">Winter −16 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Die AMOC-Schwelle ist überschritten. Der Niederrhein ist nicht die normannische Küste: 200 km von der Nordsee entfernt erhält er eine <strong>gedämpfte Fassung</strong> des Abdrucks — die Wintermittel bewegen sich kaum, aber die <strong>Kälteeinbrüche</strong> kehren zurück, über Sommern, die weiter steigen. Die Klimatabelle dieser Seite zeigt die Spreizung: der Sommer gewinnt, der Winter beginnt zu schwanken.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Das schlimmste Logistikszenario tritt ein: <strong>Eiswinter</strong>, die die Schifffahrt für einige Wochen blockieren, treten zu den Niedrigwassersommern hinzu, die sie für Monate blockieren. Das verlässlich schiffbare Fenster schrumpft auf Frühjahr und Herbst. Das ist kein Strom für Schwerindustrie mehr; das ist ein saisonaler Strom.</p></div>
+        <div class="line-tech"><span class="tag">Technik</span><p>Die Verlagerung auf die Schiene ist keine Krisenoption mehr: die Bahn über Emmerich wird zur <strong>Hauptinfrastruktur</strong>, und ihre Kapazität zur eigentlichen Obergrenze der regionalen Wirtschaft.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2055 — 2070</p>
+        <h3>Wer das Wasser zuerst bekommt</h3>
+        <div class="chips"><span class="chip heat">Sommer +43 °C</span><span class="chip water">Rhein ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Die Frage wird ausdrücklich politisch und grenzüberschreitend: bei knappem Abfluss lassen sich <strong>niederländisches Trinkwasser, deutsche Industriekühlung und die Befüllung der Braunkohle-Restseen</strong> nicht mehr gemeinsam bedienen. Die zur Flutung von Garzweiler und Hambach vorgesehene Leitung — <strong>41 km, bis zu 18 m³/s Entnahme bei Dormagen</strong>, eine über Jahrzehnte gestreckte Befüllung — war für einen Strom entworfen, den es nicht mehr gibt. Jeden Sommer wird neu abgewogen.</p></div>
+        <div class="line-def"><span class="tag">Sicherheit</span><p>Emmerich liegt genau dort, wo diese Abwägung sichtbar wird. Die Stadt hat nicht die Macht, sie zu entscheiden — sie erleidet ihr Ergebnis und wird zum <strong>Reibungspunkt</strong> zwischen zwei Staaten, die denselben Abfluss zur selben Zeit brauchen.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2070 — 2085</p>
+        <h3>Die Bahnstadt</h3>
+        <div class="chips"><span class="chip heat">Sommer +44 °C</span><span class="chip crit">Winter −18 °C</span><span class="chip water">Rhein ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Emmerichs Flussidentität verblasst hinter seiner Bahnidentität. Was an Aktivität bleibt, hängt am <strong>Korridor Rotterdam–Ruhr</strong> und am Grenzübergang. Die Stadt schrumpft, aber sie hält: sie liegt an einer Achse, die verteidigt wird, in einem Land, das nicht mehr viele verteidigt.</p></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Das Klima mit zwei Gesichtern ist etabliert: lange Hitzewellen, kurze und heftige Kälteeinbrüche. Die Monatstabelle zeigt einen August, der das Dreifache dessen aufgenommen hat, was der Januar aufnahm.</p></div>
+      </div>
+
+      <div class="phase crit">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Ein Hafen ohne Strom</h3>
+        <div class="chips"><span class="chip heat">Sommer +45 °C ↗</span><span class="chip water">Rhein ▮▮▮▮</span></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Die Kaimauern stehen noch; das Wasser steht einen Teil des Jahres nicht mehr. Emmerich beendet das Jahrhundert als <strong>Durchgangsstadt</strong> — Bahn, Grenze, Umschlag —, die überlebt hat, indem sie aufhörte zu sein, was sie war. Das ist kein Zusammenbruch: es ist eine <strong>erlittene Umstellung</strong>, vollzogen, ohne je beschlossen worden zu sein.</p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="sombre"></div>
+
+    <div class="verdict">
+      <h4>In einem Satz</h4>
+      <p>Emmerich hat nicht seinen Strom verloren: <em>es hat das Recht verloren, von ihm abzuhängen</em>.</p>
+    </div>
+  </section>
+
   <section class="scope" id="bs-synthese" role="tabpanel">
     <div class="scope-head">
       <p class="where">Übergreifende Lesart</p>
@@ -2652,6 +2780,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-manche">Manche<span class="sc">Dép. 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bm-allemagne">Deutschland<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bm-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bm-synthese">Synthese<span class="sc">übergreifend</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-chrono">Chronologie<span class="sc">Umbrüche</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bm-cultures">Kulturen<span class="sc">Anbau</span></button>
@@ -3228,6 +3358,93 @@ _safe("initBranch", function(){
   </section>
 
   <!-- ============ ÜBERGREIFENDE SYNTHESE ============ -->
+  <!-- ============ DEUTSCHLAND ============ -->
+  <section class="scope" id="bm-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Deutschland · Nordrhein-Westfalen</p>
+      <h2>Der bewirtschaftete Strom</h2>
+      <p class="lede">Derselbe Strom, dieselbe Physik, dieselbe Rekordserie — aber ein Land, das diesmal <em>kommen sieht</em>. In diesem Zweig verliert Deutschland den Rhein nicht: es hört auf, ihn für selbstverständlich zu halten, und bezahlt das mit Investitionen, Regeln und Langsamkeit.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Beobachtet — 2026</span><b>Der Sommer 2026 hat den Boden verschoben, und er hat es zwei Monate zu früh getan.</b> Am 30. Juli steht der Rhein bei Lobith, fünf Kilometer flussabwärts von Emmerich, bei <b>6,47 m NAP</b> — unter dem Rekord vom August 2022, in einer Reihe, die 1866 beginnt. Am 6. August fällt der Abfluss dort auf <b>655 m³/s</b>, den niedrigsten je zu dieser Jahreszeit gemessenen Wert seit 1901; das KNMI schreibt, ein Unterschreiten des absoluten Rekords von <b>620 m³/s (November 1947)</b> „könne keineswegs ausgeschlossen werden“. Flussaufwärts gibt die Kette der deutschen Pegel gemeinsam nach: Kaub <b>5 cm</b> am 17. August gegenüber 25 cm am 22. Oktober 2018 — und ab dem 3. August <em>an jedem Tag</em> unter dem Rekord von 2018; Köln 46 cm gegenüber 69; Düsseldorf <b>−2 cm</b> gegenüber 23; Duisburg-Ruhrort 126 cm gegenüber 153. <b>Entscheidend ist nicht der Rekord, sondern das Datum.</b> 2018 kulminierte im Oktober, 2022 im späten August; 2026 liegt bereits Anfang August unter den historischen Böden. Die Schiffe laden nur noch 20 bis 30 Prozent ihrer Kapazität, die Fracht Rotterdam–Karlsruhe steigt von rund <b>45 €/t Ende Juni auf 150-160 €/t Mitte August</b>, und das IfW Kiel beziffert den Dämpfer auf das deutsche BIP im dritten Quartal auf <b>0,1-0,2 Punkte</b>. 2018 — 130 aufeinanderfolgende Tage unter 78 cm in Kaub — hatte die Bundesbank denselben Effekt auf 0,2 Punkte beziffert, bei rund 250 Mio. € Verlust für BASF und einem Rückgang der Industrieproduktion um 1,5 % im Jahresvergleich.
+      <span class="obs-note">Vorbehalt — drei Rekordjahre in acht Jahren (2018, 2022, 2026) ergeben keinen statistischen Trend, und ein Niedrigwasser hängt zuerst vom Wetter des Jahres ab. Belegt ist die Richtung des langfristigen Signals (IKSR, Bericht Nr. 297): abflussreichere Winter, magerere Sommer. Diese Fakten verschieben einen beobachteten Boden, sie beweisen nicht die Bahn des Jahrhunderts.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>Der rote Faden Deutschlands</h4>
+      <p>Der Unterschied zum dunklen Zweig ist nicht hydrologisch — der Strom tut ungefähr dasselbe. Er ist <strong>institutionell</strong>. Das Signal von 2026 wird diesmal <em>gelesen</em>: Niedrigwasser gilt nicht mehr als versicherbarer Störfall, sondern als Auslegungsgröße. Wie andernorts in diesem Zweig <strong>zieht sich die Versicherung zuerst zurück</strong> — Verträge, die Niedrigwasser-Mehrkosten decken, werden knapp, lange bevor der Staat sich bewegt, und es ist dieser Rückzug, der die Abwägung erzwingt.</p>
+      <p>Das Referenzszenario (IKSR Nr. 297, 2024, RCP8.5) gibt für Lobith, für 2031-2060, einen <strong>Winterabfluss um 23 bis 44 % höher</strong> und ein <strong>sommerliches Niedrigwasser um bis zu 36 % niedriger</strong>. In diesem Zweig werden diese Zahlen zur einklagbaren Norm: schriftliche Nutzungsprioritäten, geförderte Flachwasserflotte, finanzierte Verlagerung auf die Schiene, und die Leitung zur Befüllung der Braunkohleseen <strong>nach unten neu verhandelt</strong> statt aufgegeben. Das Ergebnis ist weder Rettung noch Zusammenbruch: <strong>ein Strom, der weniger leistet, in einem Land, das sich um dieses Weniger herum neu organisiert hat</strong>.</p>
+    </div>
+
+    <div class="geopick" data-branch="median" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bm-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 Einwohner</p>
+      <h2>Die Stadt, die ihren Beruf gewechselt hat</h2>
+      <p class="lede">Emmerich ist die letzte deutsche Stadt am Rhein — also die erste, die sieht, was vom Strom nach allen Entnahmen flussaufwärts übrig bleibt. In diesem Zweig erleidet sie ihre Umstellung nicht: <em>sie führt sie</em>, mit Verspätung, öffentlichem Geld und viel Streit.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Beobachtet — 2026</span><b>Am 4. August 2026 zeigt der Pegel Emmerich −4 cm</b>, unter seinem Tiefstwert vom August 2022 (−1 cm). Elf Tage später stellt die Station laut deutscher Fachpresse <b>die Veröffentlichung ein</b>: der Strom ist unter den Messbereich der Latte gefallen. Der letzte deutsche Rheinpegel verstummte mitten im Niedrigwasser.
+      <span class="obs-note">Vorbehalt — die Unterbrechung der Veröffentlichung wird von der Presse berichtet und hat zum Redaktionsschluss keine behördliche Bestätigung, die dieses Dokument hätte prüfen können; sie wird als Pressefaktum angeführt, nicht als hydrologische Angabe. Der Wert von −4 cm am 4. August wird von mehreren Quellen übereinstimmend genannt.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>Der Sommer, der als Argument diente</h3>
+        <div class="chips"><span class="chip heat">Spitzen 39-40 °C</span><span class="chip water">Rhein ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Wiederkehrende Trockensommer, Niedrigwasser ab Juli. Der Winter bleibt mild und feucht: die Neubildung findet statt, aber zur falschen Jahreszeit.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>2026 wird zur Akte, die alle zitieren. Die Versicherer erhöhen die Selbstbehalte für Niedrigwasser-Mehrkosten und ziehen sich dann aus Teilen des Geschäfts zurück: es ist dieses <strong>Preissignal</strong>, keine politische Entscheidung, das die Debatte über die Abhängigkeit vom Strom eröffnet.</p></div>
+        <div class="line-tech"><span class="tag">Technik</span><p>Der dreigleisige Ausbau der Strecke <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, deutsche Fortsetzung der <strong>Betuweroute</strong>, ist kein Verkehrsprojekt mehr, sondern eine <strong>Anpassungspriorität</strong>. Er kommt endlich voran — fünfzehn Jahre später, als es nötig gewesen wäre.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2045</p>
+        <h3>Prioritäten schreiben, bevor man sie braucht</h3>
+        <div class="chips"><span class="chip heat">Sommer +38 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Das Regime kippt in die von der IKSR angekündigte Richtung: abflussreichere Winter, deutlich magerere Sommer. Niedrigwasser besetzt nun zwei bis drei Monate im Jahr.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Zwischen Deutschland und den Niederlanden wird ein <strong>Verteilungsregime für den Niederrhein</strong> ausgehandelt: eine Rangfolge der Nutzungen bei Niedrigwasser — Trinkwasser, Ökologie, Kühlung, Schifffahrt, bergbauliche Befüllung. Das <strong>Leitungsprojekt nach Garzweiler und Hambach wird verkleinert und gestreckt</strong>: man verzichtet nicht darauf, die Krater zu fluten, man akzeptiert, dass es sehr viel länger dauert.</p></div>
+        <div class="line-def"><span class="tag">Sicherheit</span><p>Die Spannungen verschwinden nicht, sie werden verfahrensförmig. In den Niederlanden bleibt das Vordringen der <strong>Salzgrenze</strong> zu den Entnahmen des Westens der harte Punkt; er wird per Vertrag geregelt, nicht per Kräfteverhältnis.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2060</p>
+        <h3>Die Schwelle, gedämpft</h3>
+        <div class="chips"><span class="chip heat">Sommer +39 °C</span><span class="chip crit">Winter −11 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Der AMOC-Abdruck bleibt in diesem Zweig moderat, und der Niederrhein erhält davon nur eine gedämpfte Fassung: die Winter werden wieder etwas wechselhafter, ohne wieder kalt zu werden. Der Sommer dagegen steigt weiter — <strong>er ist es, der bestimmt</strong>.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Emmerich hat nun zwei Wirtschaften: was vom Strom bleibt, und den Bahnkorridor. Die Umstellung ist vollzogen, sie war teuer, und niemand stellt sie als Erfolg dar — nur als das, was zu tun war.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2060 — 2080</p>
+        <h3>Ein schmalerer Wohlstand</h3>
+        <div class="chips"><span class="chip heat">Sommer +40 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Die Stadt ist kleiner als 2025 und stärker spezialisiert. Die Kaimauern bedienen eine kürzere Saison; die Bahn trägt den Rest. Verloren ist nicht der Lebensstandard — verloren ist <strong>die Reserve</strong>: nichts ist mehr überdimensioniert, alles ist gerechnet.</p></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Der Frost ist aus dem Kalender fast verschwunden. Die Monatstabelle zeigt einen August, der mehr als doppelt so viel aufgenommen hat wie der Januar.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2080 — 2100</p>
+        <h3>Ein saisonaler Strom, eine stabile Stadt</h3>
+        <div class="chips"><span class="chip heat">Sommer +41 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Der Rhein ist zu einer <strong>saisonalen Infrastruktur</strong> geworden — verlässlich im Frühjahr und im Herbst, unsicher im Sommer — und die Wirtschaft des Niederrheins ist darauf gebaut. Emmerich beendet das Jahrhundert verkleinert, aber regiert: es hat seinen Überfluss gegen Berechenbarkeit eingetauscht.</p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="median"></div>
+
+    <div class="verdict">
+      <h4>In einem Satz</h4>
+      <p>Emmerich hat seinen Strom nicht gerettet: <em>es hat aufgehört, eine Stadt zu sein, die von ihm abhängt, ohne es zu wissen</em>.</p>
+    </div>
+  </section>
+
   <section class="scope" id="bm-synthese" role="tabpanel">
     <div class="scope-head">
       <p class="where">Übergreifende Lesart</p>
@@ -3611,6 +3828,8 @@ _safe("initBranch", function(){
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-manche">Manche<span class="sc">Dép. 50</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-folligny">Folligny<span class="sc">50320</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-lafaye">La Faye<span class="sc">Charente</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-allemagne">Deutschland<span class="sc">NRW</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-scope="bo-emmerich">Emmerich<span class="sc">46446</span></button>
       <button class="tab tab-synth" role="tab" aria-selected="false" data-scope="bo-synthese">Synthese<span class="sc">übergreifend</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-chrono">Chronologie<span class="sc">Umbrüche</span></button>
       <button class="tab" role="tab" aria-selected="false" data-scope="bo-cultures">Kulturen<span class="sc">Anbau</span></button>
@@ -4187,6 +4406,92 @@ _safe("initBranch", function(){
   </section>
 
   <!-- ============ SYNTHÈSE TRANSVERSALE ============ -->
+  <!-- ============ DEUTSCHLAND ============ -->
+  <section class="scope" id="bo-allemagne" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Deutschland · Nordrhein-Westfalen</p>
+      <h2>Die neu verhandelte Schlagader</h2>
+      <p class="lede">In diesem Zweig macht Deutschland mit dem Rhein, was es mit seinem Strom gemacht hat: es entscheidet früh, es zahlt viel, und es behält das Wesentliche. <em>Aber der alte Strom — der, den man zwölf Monate im Jahr voll beladen konnte — kehrt nicht zurück.</em></p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Beobachtet — 2026</span><b>Der Sommer 2026 hat den Boden verschoben, und er hat es zwei Monate zu früh getan.</b> Am 30. Juli steht der Rhein bei Lobith, fünf Kilometer flussabwärts von Emmerich, bei <b>6,47 m NAP</b> — unter dem Rekord vom August 2022, in einer Reihe, die 1866 beginnt. Am 6. August fällt der Abfluss dort auf <b>655 m³/s</b>, den niedrigsten je zu dieser Jahreszeit gemessenen Wert seit 1901; das KNMI schreibt, ein Unterschreiten des absoluten Rekords von <b>620 m³/s (November 1947)</b> „könne keineswegs ausgeschlossen werden“. Kaub sinkt am 17. August auf <b>5 cm</b> gegenüber 25 cm am 22. Oktober 2018 und bleibt ab dem 3. August <em>an jedem Tag</em> unter dem Rekord von 2018; Köln 46 cm gegenüber 69; Düsseldorf <b>−2 cm</b> gegenüber 23; Duisburg-Ruhrort 126 cm gegenüber 153. Die Schiffe laden nur noch 20 bis 30 Prozent ihrer Kapazität, die Fracht Rotterdam–Karlsruhe steigt von rund <b>45 €/t Ende Juni auf 150-160 €/t Mitte August</b>, und das IfW Kiel beziffert den Effekt auf das BIP des dritten Quartals auf <b>0,1-0,2 Punkte</b> — die Größenordnung, die die Bundesbank bereits 2018 gemessen hatte.
+      <span class="obs-note">Vorbehalt — drei Rekordjahre in acht Jahren (2018, 2022, 2026) ergeben keinen statistischen Trend, und ein Niedrigwasser hängt zuerst vom Wetter des Jahres ab. Belegt ist die Richtung des langfristigen Signals (IKSR, Bericht Nr. 297): abflussreichere Winter, magerere Sommer. Diese Fakten verschieben einen beobachteten Boden, sie beweisen nicht die Bahn des Jahrhunderts.</span>
+    </div>
+
+    <div class="panel thesis">
+      <h4>Der rote Faden Deutschlands</h4>
+      <p>Was diesen Zweig auszeichnet, ist nicht Weitsicht — die Fakten von 2026 sind überall dieselben — sondern dass die Antwort kommt, <strong>während der Strom noch funktioniert</strong>, und nicht danach. Die Verlagerung auf die Schiene wird finanziert, bevor sie nötig ist; die Strecke <strong>Emmerich–Oberhausen</strong> wird in den 2030er Jahren fertiggestellt, statt sich hinzuziehen; das Verteilungsregime für den Niederrhein wird mit den Niederlanden als Vertrag ausgehandelt, nicht als Krisenbewältigung. Und die Leitung zur Flutung der Braunkohlekrater wird <strong>schon im Entwurf neu dimensioniert</strong>, statt bis zur Absurdität verteidigt zu werden.</p>
+      <p>Der Preis ist real und wird im Voraus gezahlt: Steuern, gestrandete Vermögenswerte, lange Baustellen, und eine Schwerindustrie, die sich auf das zurückzieht, was sie ohne den Strom versorgen kann. Das hydrologische Referenzszenario (IKSR Nr. 297, RCP8.5 — <strong>strenger als die Bahn dieses Zweigs</strong>) bleibt die Auslegungsgrenze: man baut für das Schlimmere und erhält etwas Besseres. Ergebnis: <strong>die Schlagader hält, aber sie trägt nicht mehr alles</strong>.</p>
+    </div>
+
+    <div class="geopick" data-branch="optimiste" data-start="allemagne"></div>
+  </section>
+
+  <!-- ============ EMMERICH ============ -->
+  <section class="scope" id="bo-emmerich" role="tabpanel">
+    <div class="scope-head">
+      <p class="where">Emmerich am Rhein · 46446 · Kreis Kleve · ~31 000 Einwohner</p>
+      <h2>Der Hafen, der vorgesorgt hat</h2>
+      <p class="lede">Emmerich ist die letzte deutsche Stadt am Rhein: was an ihren Kaimauern vorbeizieht, ist der Saldo all dessen, was flussaufwärts entnommen wurde. In diesem Zweig nutzt sie ihre Lage am Ende der Kette, um <em>früher zu sehen als die anderen</em> — und macht daraus ein Argument.</p>
+    </div>
+
+    <div class="obs-block">
+      <span class="obs-key">Beobachtet — 2026</span><b>Am 4. August 2026 zeigt der Pegel Emmerich −4 cm</b>, unter seinem Tiefstwert vom August 2022 (−1 cm). Elf Tage später stellt die Station laut deutscher Fachpresse <b>die Veröffentlichung ein</b>: der Strom ist unter den Messbereich der Latte gefallen. Der letzte deutsche Rheinpegel verstummte mitten im Niedrigwasser — in diesem Zweig ist es dieses Bild, das politisch zündet.
+      <span class="obs-note">Vorbehalt — die Unterbrechung der Veröffentlichung wird von der Presse berichtet und hat zum Redaktionsschluss keine behördliche Bestätigung, die dieses Dokument hätte prüfen können; sie wird als Pressefaktum angeführt, nicht als hydrologische Angabe. Der Wert von −4 cm am 4. August wird von mehreren Quellen übereinstimmend genannt.</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase">
+        <p class="phase-years">2025 — 2032</p>
+        <h3>Der Auslöser</h3>
+        <div class="chips"><span class="chip heat">Spitzen 39-40 °C</span><span class="chip water">Rhein ▮▮▯▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Wiederkehrende Trockensommer, Niedrigwasser ab Juli. Der Winter bleibt mild und feucht: die Neubildung findet noch statt, aber sie kommt, wenn man sie nicht braucht.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Das Verstummen des Pegels im August 2026 wird zum Argument, das die Mittel freigibt. Die Frage in Berlin und Düsseldorf lautet nicht mehr „wie kommen wir durch diesen Sommer“, sondern <strong>„was tun wir, wenn das der Normalfall ist“</strong>.</p></div>
+        <div class="line-tech"><span class="tag">Technik</span><p>Der dreigleisige Ausbau der Strecke <strong>Emmerich–Oberhausen (ABS 46/2)</strong>, deutsche Fortsetzung der <strong>Betuweroute</strong>, wird als klimatisches Dringlichkeitsbauwerk behandelt und nicht als Verkehrsprojekt. Er wird <strong>in den 2030er Jahren fertiggestellt</strong>.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2032 — 2045</p>
+        <h3>Zwei Schlagadern statt einer</h3>
+        <div class="chips"><span class="chip heat">Sommer +37 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Das Regime kippt in die von der IKSR angekündigte Richtung: abflussreichere Winter, magerere Sommer. Das Niedrigwasser besetzt zwei Monate im Jahr — aber die Logistik steht damit nicht mehr still.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Emmerich wird zum erklärten <strong>Umschlagknoten</strong>: was im Sommer nicht mehr über das Wasser kann, geht über die Schiene, und der Wechsel zwischen beiden Verkehrsträgern ist geplant statt erlitten. Die Stadt gewinnt Arbeitsplätze, die sie sonst nicht gehabt hätte — und verliert die ruhige Rente des Stroms.</p></div>
+        <div class="line-def"><span class="tag">Sicherheit</span><p>Die Wasserteilung an der Grenze wird durch einen deutsch-niederländischen <strong>Niedrigwasservertrag</strong> geregelt: Vorrang für Trinkwasser und die Abwehr der <strong>Salzgrenze</strong>, dann Ökologie, dann wirtschaftliche Nutzungen. Er wird vor der Krise unterzeichnet, die ihn erzwungen hätte.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2045 — 2065</p>
+        <h3>Was nicht zurückkommt</h3>
+        <div class="chips"><span class="chip heat">Sommer +38 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-clim"><span class="tag">Klima</span><p>Der AMOC-Abdruck bleibt in diesem Zweig schwach, und der Niederrhein spürt fast nichts davon: die Winter werden einfach wärmer. <strong>Frost wird zur Anomalie</strong> — die Monatstabelle zeigt Januar-Minima, die nicht mehr unter null sinken.</p></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Die Weichenstellung hat gehalten, und dennoch kehrt die alte Flusswirtschaft nicht zurück: die Sommermengen bleiben strukturell niedriger, und die Industrie, die davon abhing, hat sich verlagert oder verschlankt. <strong>Gerettet wurde die Fähigkeit zu entscheiden; nicht die Welt von vorher.</strong></p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2065 — 2085</p>
+        <h3>Wieder eine gewöhnliche Stadt</h3>
+        <div class="chips"><span class="chip heat">Sommer +39 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Emmerich hört auf, ein Thema zu sein. Es lebt vom Korridor, von einem Strom auf halber Leistung und von einer Grenze, die banal geworden ist. Das ist das verlässlichste Zeichen dafür, dass die Anpassung funktioniert hat: <strong>niemand spricht mehr darüber</strong>.</p></div>
+      </div>
+
+      <div class="phase">
+        <p class="phase-years">2085 — 2100</p>
+        <h3>Der Strom, dem man nicht mehr blind glaubt</h3>
+        <div class="chips"><span class="chip heat">Sommer +40 °C</span><span class="chip water">Rhein ▮▮▮▯</span></div>
+        <div class="line-soc"><span class="tag">Gesellschaft</span><p>Der Rhein fließt weiter, niedriger und unregelmäßiger. Emmerich beendet das Jahrhundert bewohnt, aktiv und von einer Illusion befreit: der einer Schlagader, die nicht ausfallen konnte. <strong>Verloren ist nicht der Strom — verloren ist das blinde Vertrauen in ihn.</strong></p></div>
+      </div>
+
+    </div>
+    <div class="climblock" data-clim="emmerich" data-branch="optimiste"></div>
+
+    <div class="verdict">
+      <h4>In einem Satz</h4>
+      <p>Emmerich wurde nicht vom Klima gerettet: <em>es wurde davon gerettet, aufgehört zu haben, darauf zu wetten</em>.</p>
+    </div>
+  </section>
+
   <section class="scope" id="bo-synthese" role="tabpanel">
     <div class="scope-head">
       <p class="where">Übergreifende Lesart</p>
@@ -6208,6 +6513,18 @@ _safe("initBranch", function(){
   /* --- Empfindlichkeit der Niederschläge, als Anteil pro °C regional --- */
   var P = [0.035,0.035,0.020,0.000,-0.030,-0.070,-0.090,-0.090,-0.050,0.000,0.030,0.035];
 
+  /* --- Varianten für Nordwestdeutschland (Rheineinzugsgebiet) -------------
+     S_DE: dieselbe sommerliche Asymmetrie wie in Westfrankreich, aber ein
+     Winter, der sich etwas schneller erwärmt — das Verschwinden des
+     kontinentalen Frosts wiegt östlich des Rheins schwerer als westlich
+     der Seine. Mittelwert = 1.
+     P_DE: gleiches Vorzeichen wie in Frankreich (feuchtere Winter,
+     trockenere Sommer), sommerliche Amplitude leicht gedämpft — das
+     Rheinbecken ist der Ausweitung der Hadley-Zelle weniger ausgesetzt
+     als der französische Südwesten. */
+  var S_DE = [0.700,0.720,0.805,0.885,1.000,1.205,1.415,1.460,1.290,1.000,0.795,0.725];
+  var P_DE = [0.040,0.040,0.025,0.005,-0.025,-0.055,-0.070,-0.070,-0.040,0.005,0.035,0.040];
+
   /* Globale Anomalie im Zentrum der Normwerte 1991-2020 (~2005) */
   var GBASE = 0.90;
   /* Globale Erwärmung nach Zweig (kohärent mit TEMP des Hubs) */
@@ -6220,8 +6537,9 @@ _safe("initBranch", function(){
      Küste: die Durchschnitte bewegen sich wenig, die Extreme stürzen ab — das
      „Klima mit zwei Gesichtern". Landesinneres: unruhigere Winter, nicht kälter. */
   var AMOC = {
-    cote:      {sombre:[2.0,10.0], median:[0.40,1.00], optimiste:[0.15,0.30]},
-    interieur: {sombre:[0.5, 2.50], median:[0.15,0.50], optimiste:[0.05,0.20]}
+    cote:       {sombre:[2.0,10.00], median:[0.40,1.00], optimiste:[0.15,0.30]},
+    mer_du_nord:{sombre:[1.1, 5.50], median:[0.25,0.70], optimiste:[0.09,0.25]},
+    interieur:  {sombre:[0.5, 2.50], median:[0.15,0.50], optimiste:[0.05,0.20]}
   };
   /* Eine dekadische Nacht liegt bei ~62 % des Wegs zwischen dem mittleren Minimum
      des Monats und dem absoluten Rekord der Reihe: gemessener, kein angenommener Abstand. */
@@ -6297,7 +6615,71 @@ _safe("initBranch", function(){
       recH:[[18.4,1993],[24.4,2019],[26.2,2005],[31.0,2005],[36.1,2026],[42.7,2026],[40.3,2019],[41.4,2025],[36.8,2023],[32.0,2023],[24.7,2015],[20.5,1989]],
       recC:[[-17.5,1985],[-19.4,1956],[-10.2,1958],[-4.4,2022],[-0.2,1974],[3.0,1975],[6.4,1948],[5.5,1946],[2.2,1977],[-3.8,1947],[-8.4,1956],[-14.5,1946]],
       obs:"Mai und Juni 2026 haben zwei Monate der Reihe auf einen Schlag neu geschrieben: 36,1 °C am 1. Mai, 42,7 °C im Juni — der Jahresrekord der Station stammt nun aus diesem Jahr."
+    },
+    /* ---------------------------------------------------------------
+       DEUTSCHLAND — drei Maßstäbe, eine Quelle: der DWD.
+       Bewusster und dokumentierter Methodenunterschied zu Frankreich:
+       die nationale und die regionale Ebene beruhen nicht auf einer
+       Referenzstation, sondern auf den amtlichen FLÄCHENMITTELN des DWD,
+       hier über die 30 Jahre 1991-2020 berechnet. Kontrolle: die zwölf
+       Monatsmittel treffen exakt die Jahresnormale aus der separat
+       ausgelesenen Jahresdatei des DWD (Deutschland 9,30 °C / 791 mm;
+       Nordrhein-Westfalen 9,96 °C / 870 mm).
+       Für Maxima und Minima veröffentlicht der DWD keine Flächenmittel:
+       die monatliche Tagesamplitude stammt von Düsseldorf (Normalwerte
+       1991-2020), der einzigen Station der Rheinebene, deren vollständige
+       Klimatafel — Extremwerte eingeschlossen — öffentlich zugänglich ist.
+       Die Jahreszahlen der Rekorde fehlen in dieser Quelle: das Jahresfeld
+       bleibt leer, statt rekonstruiert zu werden.
+       --------------------------------------------------------------- */
+    allemagne: {
+      titre:"Deutschland — das Mittel eines kontinentalen Landes",
+      station:"Nationales Flächenmittel (DWD) · Amplitude und Extremwerte: Düsseldorf, 37 m",
+      src:"DWD, Flächenmittel 1991-2020 (aus den Monatsreihen berechnet); Tagesamplitude und Extremwerte: Normalwerte 1991-2020 Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/",
+      type:"interieur", amp:1.60, S:S_DE, P:P_DE,
+      lede:"Wo Frankreich sich über eine Referenzstation lesen ließ, liest sich Deutschland über sein <strong>Flächenmittel</strong>: der DWD veröffentlicht Monat für Monat und seit 1881 die mittlere Temperatur und den mittleren Niederschlag des Bundesgebiets. Das ist kein Ort, das ist das Land selbst. Was die Tabelle zeigt, ist <strong>die Verformung eines kontinentalen Kalenders</strong> — ein Winter knapp über null, der seinen Frost verliert, und ein Sommer, der fast das Dreifache dessen aufnimmt, was der Januar aufnimmt.",
+      tmax:[3.5,4.7,8.8,14.1,18.2,21.6,23.6,23.3,18.6,13.4,7.7,4.2],
+      tmoy:[0.9,1.5,4.6,9.0,13.1,16.4,18.3,18.0,13.8,9.4,4.8,1.8],
+      tmin:[-2.0,-1.8,0.3,3.5,7.5,10.8,12.9,12.8,9.2,5.7,1.6,-0.9],
+      prec:[64.9,53.2,57.1,44.7,69.6,75.5,87.2,77.8,64.4,63.3,62.7,71.0],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"Mittelwerte und Niederschlag sind <b>nationale Flächenmittel des DWD</b>, nicht die einer Station: sie haben daher keinen eigenen Rekord. Die beiden Extremzeilen sind die von <b>Düsseldorf</b> und dienen als Anhaltspunkt für die Ebene — sie sind milder als die nationalen Extremwerte, die den Alpen und den Kältelöchern des Ostens gehören. Auch die von Düsseldorf übernommene Tagesamplitude <b>unterschätzt das nationale Mittel der Maxima um etwa 0,4 °C</b>: das Landesmittel ist kontinentaler als das Rheintal."
+    },
+    nrw: {
+      titre:"Nordrhein-Westfalen — das bevölkerungsreichste Land Deutschlands",
+      station:"Flächenmittel des Landes (DWD) · Amplitude und Extremwerte: Düsseldorf, 37 m",
+      src:"DWD, Flächenmittel 1991-2020 für das Land Nordrhein-Westfalen; Tagesamplitude und Extremwerte: Normalwerte 1991-2020 Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/",
+      type:"interieur", amp:1.55, S:S_DE, P:P_DE,
+      lede:"Achtzehn Millionen Einwohner, der dichteste Industrieapparat Europas — und ein Klima, das nichts Extremes hat: <strong>+9,96 °C im Jahresmittel, 870 mm Niederschlag</strong>. Genau das macht dieses Land interessant: es musste sich nie an irgendetwas anpassen. Die Tabelle zeigt, was mit einer gemäßigten, gut durchfeuchteten Region geschieht, die für ein Klima gebaut wurde, das aufhört zu existieren.",
+      tmax:[4.9,6.0,9.9,14.6,18.4,21.5,23.6,23.2,19.0,14.1,8.9,5.5],
+      tmoy:[2.3,2.8,5.7,9.5,13.3,16.3,18.3,17.9,14.2,10.1,6.0,3.1],
+      tmin:[-0.6,-0.5,1.4,4.0,7.7,10.7,12.9,12.7,9.6,6.4,2.8,0.4],
+      prec:[81.5,67.3,64.6,48.4,63.5,72.5,83.0,82.2,71.1,72.8,75.3,87.3],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"Mittelwerte und Niederschlag: <b>Flächenmittel des Landes</b>, das die Rheinebene mit den Höhen des Sauerlands und der Eifel mischt — daher eine Niederschlagssumme (870 mm) deutlich über der des Niederrheins. Amplitude und Extremwerte von <b>Düsseldorf</b>: sie beschreiben die Ebene, nicht die Höhen, und <b>unterschätzen daher die Spannweiten des Landes</b>.",
+      obs:"Der absolute Hitzerekord Deutschlands gehört diesem Land — und seiner tiefsten Ebene: <b>41,2 °C am 25. Juli 2019</b>, gleichzeitig an den DWD-Stationen <b>Duisburg-Baerl</b> und <b>Tönisvorst</b>, rund fünfzig Kilometer von Emmerich entfernt. Der DWD hat ihnen den Rekord im Dezember 2020 offiziell zuerkannt, nach Annullierung des Werts von Lingen."
+    },
+    emmerich: {
+      titre:"Emmerich am Rhein — die letzte Stadt vor der Grenze",
+      station:"Bocholt-Liedern (DWD 554) · 23 m · 20 km entfernt — dieselbe Breite auf 500 m genau",
+      src:"DWD, Normalwerte 1991-2020, Bocholt-Liedern (554); Tagesamplitude und Extremwerte: Normalwerte 1991-2020 Düsseldorf",
+      srcUrl:"https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/multi_annual/mean_91-20/",
+      type:"mer_du_nord", amp:1.50, S:S_DE, P:P_DE,
+      lede:"Emmerich (51,834 °N · 19 m) hat keine Station mit vollständigen Normalwerten. Als Basis dient <strong>Bocholt-Liedern: 20 km östlich, dieselbe geografische Breite auf 500 Meter genau, dieselbe Höhe auf 4 Meter genau</strong> — ein näherer Stellvertreter, als Coutances es für Folligny ist. Was die Tabelle hier zeigt, ist das maritimste Klima Deutschlands dabei, seinen Schutz zu verlieren: <strong>Winter ohne Frost und Sommer des Rheintals</strong>, in der Gemeinde, in der der Strom das Land verlässt.",
+      tmax:[5.8,6.9,10.7,15.3,19.1,22.0,24.2,23.6,19.6,14.8,9.7,6.3],
+      tmoy:[3.2,3.7,6.5,10.2,14.0,16.8,18.9,18.3,14.8,10.8,6.8,3.9],
+      tmin:[0.3,0.4,2.2,4.7,8.4,11.2,13.5,13.1,10.2,7.1,3.6,1.2],
+      prec:[73.4,49.4,48.6,41.4,53.5,73.2,85.8,93.8,86.3,90.8,78.0,85.0],
+      recH:[[17.3,""],[21.0,""],[25.7,""],[28.8,""],[33.8,""],[38.7,""],[40.7,""],[38.5,""],[34.0,""],[27.7,""],[21.0,""],[17.5,""]],
+      recC:[[-20.8,""],[-15.4,""],[-16.1,""],[-6.3,""],[-1.2,""],[2.4,""],[4.8,""],[5.0,""],[0.7,""],[-6.2,""],[-9.4,""],[-15.3,""]],
+      meth:"Drei Bausteine unterschiedlicher Herkunft, entsprechend zu lesen. <b>Die Monatsmittel</b> stammen von der DWD-Station Bocholt-Liedern (554), 20 km entfernt. <b>Tagesamplitude und die beiden Extremzeilen</b> kommen aus Düsseldorf, 60 km flussaufwärts am selben Strom, der einzigen Station der Rheinebene mit vollständig zugänglicher Klimatafel 1991-2020: die angezeigten Extremwerte sind also die von Düsseldorf, nicht die von Emmerich, und da die dortige Lage städtischer ist, dürften sie auf der Kälteseite etwas zu mild ausfallen. <b>Die Niederschlagszeile</b> ist die von Bocholt-Liedern; sie ist der unsicherste Wert dieser Tabelle, da das Westmünsterland etwas feuchter ist als das eigentliche Rheintal. <b>Das gewählte AMOC-Profil ist ein Zwischenprofil</b> („Nordsee“): 200 km von der Küste entfernt, aber unter der vorherrschenden maritimen Strömung, erhält der Niederrhein eine gedämpfte Fassung dessen, was die Manche trifft.",
+      obs:"Der Anker 2026 für Emmerich ist nicht thermischer, sondern hydrologischer Natur. Am <b>4. August 2026 fällt der Pegel Emmerich auf −4 cm</b>, unter seinen Tiefstwert vom August 2022 (−1 cm); fünf Kilometer flussabwärts, bei Lobith, sinkt der Rheinabfluss am 6. August auf <b>655 m³/s</b> — der niedrigste je zu diesem Zeitpunkt gemessene Wert seit 1901, bei einem absoluten Rekord von 620 m³/s im November 1947 (KNMI). Im selben Monat unterschreitet Kaub seinen Rekord von 2018 <em>an jedem einzelnen Tag</em> ab dem 3. August."
     }
+
   };
 
   /* =================================================================
@@ -6309,20 +6691,24 @@ _safe("initBranch", function(){
     var r  = RAMP[horizon][branch];
     var Am = a[0]*r, Ae = a[1]*r;
     var dTreg = g * site.amp;                        /* jährliche regionale Erwärmung */
+    /* Jahreszeitliche Formen: Standard Frankreich, pro Standort
+       überschreibbar. Kein französischer Standort trägt diese Schlüssel —
+       Regressionsfreiheit ist damit garantiert. */
+    var Sx = site.S || S, Px = site.P || P, Wx = site.W || W;
     var o = {tmax:[],tmoy:[],tmin:[],prec:[],recH:[],recC:[],dT:[]};
     for(var m=0;m<12;m++){
-      var dMean = dTreg*S[m] - Am*W[m];
+      var dMean = dTreg*Sx[m] - Am*Wx[m];
       o.dT.push(dMean);
       o.tmax.push(site.tmax[m] + dMean);
       o.tmoy.push(site.tmoy[m] + dMean);
       o.tmin.push(site.tmin[m] + dMean);
-      o.prec.push(Math.max(2, site.prec[m] * (1 + P[m]*dTreg)));
-      o.recH.push([site.recH[m][0] + Math.max(0,dTreg*S[m])*K_HOT, horizon]);
+      o.prec.push(Math.max(2, site.prec[m] * (1 + Px[m]*dTreg)));
+      o.recH.push([site.recH[m][0] + Math.max(0,dTreg*Sx[m])*K_HOT, horizon]);
       /* die extreme Kälte lässt sich nicht aus einem Rekord der 1950er ableiten:
          sie wird unter dem projizierten mittleren Minimum rekonstruiert, im
          dekadischen Abstand, der an der Stationsreihe selbst gemessen wurde. */
       var gap = (site.tmin[m] - site.recC[m][0]) * K_DEC;
-      o.recC.push([site.tmin[m] + dTreg*S[m]*K_COLD - Am*W[m] - gap - Ae*W[m], horizon]);
+      o.recC.push([site.tmin[m] + dTreg*Sx[m]*K_COLD - Am*Wx[m] - gap - Ae*Wx[m], horizon]);
     }
     return o;
   }
@@ -6499,6 +6885,7 @@ _safe("initBranch", function(){
       +   'Mit Vorsicht zu lesende Konsequenz: <b>die Spalte 2026 zeigt absolute Rekorde, extremer als ein Jahrzehntwert</b> — 2026 und 2100 auf diesen beiden Zeilen zu vergleichen, unterschätzt die reale Bewegung. '
       +   '<b>Die Niederschläge sind der unsicherste Eingabewert</b> — deshalb schraffiert: das Sommersignal (trockener) ist robust, das winterliche nicht, '
       +   'und ein feuchterer Winter kann weniger neu auffüllen (steigende ETP, Abfluss). '
+      +   (site.meth ? '<br><br><b>Aufbau dieser Tabelle.</b> '+site.meth+' ' : '')
       +   (site.obs ? '<br><br><b>Beobachtet — 2026.</b> '+site.obs+' ' : '')
       +   '<br><br>Quelle der Normwerte: <a href="'+site.srcUrl+'" target="_blank" rel="noopener">'+site.src+'</a>. '
       +   'Reflexionswerkzeug: diese Spalten geben eine Richtung und eine Größenordnung an, keine Vorhersage.'
@@ -6518,6 +6905,112 @@ _safe("initBranch", function(){
     }
   }
 
+  /* =================================================================
+     GEOGRAFISCHE AUSWAHL — Land › Region › Ort
+     Ein deklarativer Baum über SITES: ein Land hinzuzufügen ist ein
+     reiner Datenvorgang, ohne Eingriff ins HTML. Jeder Zweig trägt seine
+     eigene, von den beiden anderen unabhängige Instanz.
+     ================================================================= */
+  var GEO = [
+    {id:"fr", nom:"Frankreich", regions:[
+      {id:"fr-nat",      nom:"Landesweit", villes:[
+        {id:"france",    nom:"Bourges — Referenzstation"}]},
+      {id:"fr-manche",   nom:"Manche (50)", villes:[
+        {id:"manche",    nom:"Cherbourg-Homet — die Küste"},
+        {id:"folligny",  nom:"Folligny — die Bocage"}]},
+      {id:"fr-charente", nom:"Charente (16)", villes:[
+        {id:"lafaye",    nom:"La Faye — Getreideland"}]}
+    ]},
+    {id:"de", nom:"Deutschland", regions:[
+      {id:"de-nat",  nom:"Landesweit", villes:[
+        {id:"allemagne", nom:"Flächenmittel DWD"}]},
+      {id:"de-nrw",  nom:"Nordrhein-Westfalen", villes:[
+        {id:"nrw",       nom:"Flächenmittel des Landes"},
+        {id:"emmerich",  nom:"Emmerich am Rhein (46446)"}]}
+    ]}
+  ];
+
+  function geoFind(siteKey){
+    for(var i=0;i<GEO.length;i++) for(var j=0;j<GEO[i].regions.length;j++){
+      var vs = GEO[i].regions[j].villes;
+      for(var k=0;k<vs.length;k++) if(vs[k].id===siteKey)
+        return {pays:GEO[i], region:GEO[i].regions[j], ville:vs[k]};
+    }
+    return null;
+  }
+  function fillSelect(sel, items, current){
+    sel.innerHTML = "";
+    for(var i=0;i<items.length;i++){
+      var o = document.createElement("option");
+      o.value = items[i].id; o.textContent = items[i].nom;
+      if(items[i].id===current) o.selected = true;
+      sel.appendChild(o);
+    }
+  }
+
+  function mountPicker(el){
+    var branch  = el.getAttribute("data-branch");
+    var start   = el.getAttribute("data-start") || "allemagne";
+    if(!SITES[start]) start = "allemagne";
+
+    var uid = "gp-"+branch;
+    el.innerHTML = ''
+      + '<div class="geopick-head">'
+      +   '<span class="geopick-key">Ein Gebiet erkunden</span>'
+      +   '<p class="geopick-sub">Dieselbe Rechenmethode, auf jedes der dokumentierten Gebiete angewandt. Die Tabellen werden für diesen Zweig neu berechnet.</p>'
+      + '</div>'
+      + '<div class="geopick-row">'
+      +   '<label><span>Land</span><select id="'+uid+'-pays"></select></label>'
+      +   '<label><span>Region</span><select id="'+uid+'-region"></select></label>'
+      +   '<label><span>Gebiet</span><select id="'+uid+'-ville"></select></label>'
+      + '</div>'
+      + '<div class="climblock" data-clim="'+start+'" data-branch="'+branch+'"></div>';
+
+    var selP = el.querySelector("#"+uid+"-pays"),
+        selR = el.querySelector("#"+uid+"-region"),
+        selV = el.querySelector("#"+uid+"-ville"),
+        blk  = el.querySelector(".climblock");
+
+    var cur = geoFind(start);
+
+    function paint(siteKey){
+      blk.setAttribute("data-clim", siteKey);
+      build(blk);
+    }
+    function syncRegions(paysId, wantRegion, wantVille){
+      var pays = null;
+      for(var i=0;i<GEO.length;i++) if(GEO[i].id===paysId) pays = GEO[i];
+      if(!pays) return;
+      var regId = wantRegion;
+      var ok = false;
+      for(var j=0;j<pays.regions.length;j++) if(pays.regions[j].id===regId) ok = true;
+      if(!ok) regId = pays.regions[0].id;
+      fillSelect(selR, pays.regions, regId);
+      syncVilles(pays, regId, wantVille);
+    }
+    function syncVilles(pays, regId, wantVille){
+      var reg = null;
+      for(var j=0;j<pays.regions.length;j++) if(pays.regions[j].id===regId) reg = pays.regions[j];
+      if(!reg) return;
+      var vId = wantVille, ok = false;
+      for(var k=0;k<reg.villes.length;k++) if(reg.villes[k].id===vId) ok = true;
+      if(!ok) vId = reg.villes[0].id;
+      fillSelect(selV, reg.villes, vId);
+      paint(vId);
+    }
+
+    fillSelect(selP, GEO, cur.pays.id);
+    syncRegions(cur.pays.id, cur.region.id, cur.ville.id);
+
+    selP.addEventListener("change", function(){ syncRegions(selP.value, null, null); });
+    selR.addEventListener("change", function(){
+      var pays = null;
+      for(var i=0;i<GEO.length;i++) if(GEO[i].id===selP.value) pays = GEO[i];
+      syncVilles(pays, selR.value, null);
+    });
+    selV.addEventListener("change", function(){ paint(selV.value); });
+  }
+
   function boot(){
     /* gemeinsamer Verlauf, einmalig eingefügt */
     if(!document.getElementById("cbDefs")){
@@ -6529,8 +7022,14 @@ _safe("initBranch", function(){
                   + '<stop offset="100%" stop-color="#b5481f"/></linearGradient></defs>';
       document.body.appendChild(d);
     }
+    var picks = document.querySelectorAll(".geopick[data-branch]");
+    for(var p=0;p<picks.length;p++) mountPicker(picks[p]);
+
     var nodes = document.querySelectorAll(".climblock[data-clim]");
-    for(var i=0;i<nodes.length;i++) build(nodes[i]);
+    for(var i=0;i<nodes.length;i++){
+      if(nodes[i].closest && nodes[i].closest(".geopick")) continue;
+      build(nodes[i]);
+    }
   }
 
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
